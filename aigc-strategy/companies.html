@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <script src="./auth.js"></script>
+  <script>document.addEventListener('DOMContentLoaded',function(){FireworkSSO.protect();});</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="last-modified" content="2026-05-21T13:27:00+09:00">
+  <title>カンパニーズ提案 — AIGC戦略</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏪</text></svg>">
+  <meta name="description" content="カンパニーズへのAIGCプレイリスト販売提案 — 100本100万円まとめ売りモデルの検討">
+  <meta property="og:title" content="カンパニーズ提案 — AIGC戦略">
+  <meta property="og:description" content="カンパニーズへのAIGCプレイリスト販売提案 — 100本100万円まとめ売りモデルの検討">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://riderkarubo.github.io/pages/aigc-strategy/companies.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="カンパニーズ提案 — AIGC戦略">
+  <meta name="twitter:description" content="カンパニーズへのAIGCプレイリスト販売提案 — 100本100万円まとめ売りモデルの検討">
+  <style>
+    :root {
+      --bg: #0d0d0d;
+      --surface: #1a1a1a;
+      --surface2: #242424;
+      --border: #2e2e2e;
+      --accent: #00d4aa;
+      --accent2: #7c4dff;
+      --warn: #ff6b35;
+      --text: #f0f0f0;
+      --text-muted: #888;
+      --text-sub: #bbb;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    .header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-title { font-size: 16px; font-weight: 700; color: var(--accent); }
+    .header-back {
+      font-size: 13px; color: var(--text-muted);
+      text-decoration: none;
+      display: flex; align-items: center; gap: 6px;
+    }
+    .header-back:hover { color: var(--text); }
+
+    .main { max-width: 800px; margin: 0 auto; padding: 32px 24px 80px; }
+
+    .page-title {
+      font-size: 26px; font-weight: 800;
+      margin-bottom: 6px;
+    }
+    .page-subtitle {
+      font-size: 13px; color: var(--text-muted);
+      margin-bottom: 32px;
+    }
+
+    /* ===== STATUS badge ===== */
+    .status-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: #2a1810; border: 1px solid var(--warn);
+      color: var(--warn); border-radius: 20px;
+      padding: 4px 14px; font-size: 12px; font-weight: 600;
+      margin-bottom: 28px;
+    }
+    .status-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--warn);
+      animation: pulse 1.6s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; } 50% { opacity: 0.3; }
+    }
+
+    /* ===== Cards ===== */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 20px;
+    }
+    .card-title {
+      font-size: 15px; font-weight: 700;
+      margin-bottom: 14px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .card-title .icon { font-size: 18px; }
+    .card-title .tag {
+      font-size: 11px; font-weight: 600;
+      background: var(--surface2); color: var(--text-muted);
+      border-radius: 4px; padding: 2px 8px; margin-left: auto;
+    }
+
+    /* ===== Concept box ===== */
+    .concept-box {
+      background: #0d2420;
+      border: 1px solid var(--accent);
+      border-radius: 10px;
+      padding: 20px 24px;
+      margin-bottom: 20px;
+    }
+    .concept-box .label {
+      font-size: 11px; font-weight: 700;
+      color: var(--accent); letter-spacing: 0.08em;
+      margin-bottom: 10px;
+    }
+    .concept-box .value {
+      font-size: 22px; font-weight: 800;
+      color: var(--text);
+    }
+    .concept-box .sub {
+      font-size: 13px; color: var(--text-sub); margin-top: 6px;
+    }
+
+    /* ===== Grid ===== */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+    @media (max-width: 600px) { .two-col { grid-template-columns: 1fr; } }
+
+    .metric-card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px 20px;
+    }
+    .metric-card .m-label { font-size: 11px; color: var(--text-muted); margin-bottom: 6px; }
+    .metric-card .m-value { font-size: 22px; font-weight: 800; color: var(--accent); }
+    .metric-card .m-sub { font-size: 12px; color: var(--text-sub); margin-top: 4px; }
+
+    /* ===== List ===== */
+    ul.detail-list {
+      list-style: none; padding: 0;
+    }
+    ul.detail-list li {
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px; color: var(--text-sub);
+      display: flex; gap: 10px; align-items: flex-start;
+    }
+    ul.detail-list li:last-child { border-bottom: none; }
+    ul.detail-list li .bullet {
+      color: var(--accent); font-weight: 700; flex-shrink: 0;
+    }
+
+    /* ===== Discussion ===== */
+    .discussion-item {
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+    }
+    .discussion-item:last-child { border-bottom: none; }
+    .discussion-who {
+      font-size: 11px; font-weight: 700;
+      color: var(--accent); margin-bottom: 4px;
+    }
+    .discussion-text { color: var(--text-sub); line-height: 1.6; }
+
+    /* ===== Check list ===== */
+    .check-item {
+      display: flex; align-items: flex-start; gap: 10px;
+      padding: 10px 0; border-bottom: 1px solid var(--border);
+      font-size: 13px;
+    }
+    .check-item:last-child { border-bottom: none; }
+    .check-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+    .check-text { color: var(--text-sub); line-height: 1.5; }
+    .check-text strong { color: var(--text); }
+
+    /* ===== Next step ===== */
+    .next-step {
+      background: #1a1428;
+      border: 1px solid var(--accent2);
+      border-radius: 10px;
+      padding: 18px 20px;
+      margin-bottom: 12px;
+    }
+    .next-step .ns-who { font-size: 11px; font-weight: 700; color: var(--accent2); margin-bottom: 6px; }
+    .next-step .ns-text { font-size: 13px; color: var(--text-sub); line-height: 1.5; }
+
+    /* ===== Warn box ===== */
+    .warn-box {
+      background: #1f1408;
+      border: 1px solid var(--warn);
+      border-radius: 10px;
+      padding: 16px 20px;
+      font-size: 13px;
+      color: var(--text-sub);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+    .warn-box .warn-label {
+      font-size: 11px; font-weight: 700;
+      color: var(--warn); margin-bottom: 6px;
+    }
+
+    /* ===== footer ===== */
+    .footer {
+      text-align: center; padding: 24px;
+      font-size: 11px; color: var(--text-muted);
+      border-top: 1px solid var(--border);
+      margin-top: 40px;
+    }
+
+    @media print {
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color-adjust: exact !important;
+      }
+      @page { size: A4; margin: 10mm; }
+      .card, .concept-box, .warn-box, .next-step, .metric-card {
+        page-break-inside: avoid;
+        break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-title">カンパニーズ提案</div>
+  <a href="./index.html" class="header-back">← AIGC戦略トップ</a>
+</header>
+
+<div class="main">
+  <h1 class="page-title">カンパニーズへのAIGC提案</h1>
+  <p class="page-subtitle">Last Updated: 2026年5月21日 13:27 — 5/21定例（単価・ターゲット業界・検証環境の整理）を反映</p>
+
+  <div class="status-badge">
+    <div class="status-dot"></div>
+    現段階では見送り — カンパニーズ経由はリスク高と判断（5/21定例）
+  </div>
+
+  <!-- 5/21定例の結論 -->
+  <div class="warn-box" style="border-color:var(--warn);background:#1f1408;">
+    <div class="warn-label">5/21定例の結論：カンパニーズ経由の本格展開は現段階で見送り</div>
+    ①効率性 ②拡大性の観点で整理したところ、カンパニーズ経由での本格展開は現段階だとハードルが高いという結論になりました…！<br>
+    <span style="color:var(--text-muted);font-size:12px;margin-top:8px;display:inline-block;">→ 今後、日本で様々なサンプルや事例ができて、動画制作の工数がかからなくなるのであれば、また改めてアプローチするのはアリ。</span>
+  </div>
+
+  <!-- 見送りの主因 -->
+  <div class="card">
+    <div class="card-title"><span class="icon">⚠️</span>提案ハードルが高い理由 <span class="tag">5/21定例</span></div>
+    <ul class="detail-list">
+      <li><span class="bullet">→</span><strong style="color:var(--text);">効果検証ができない：</strong>先方の加盟店はFWプレイヤー未導入や、導入していてもGA連携できない企業がほとんど。AIGCにおける効果データの連携やKPI設計、ケーススタディの横展開が難しい</li>
+      <li><span class="bullet">→</span><strong style="color:var(--text);">統制リスク：</strong>カンパニーズ経由だと、カンパニーズの先のクライアントの修正ラリーのフィードバックや、案件のコントロールが効きにくいのがネック</li>
+      <li><span class="bullet">→</span><strong style="color:var(--text);">見せられるデモがない：</strong>現状はグローバルのモックのみで、日本向けの量産フローもサンプルも未整備</li>
+    </ul>
+  </div>
+
+  <!-- コンセプト（検討していた案として残す） -->
+  <div class="concept-box" style="opacity:0.7;">
+    <div class="label">検討していた提案コンセプト（保留）</div>
+    <div class="value">100本 まとめ買取モデル</div>
+    <div class="sub">カンパニーズが事前に100本分を一括購入 → 自社顧客（加盟店）に販売する卸売型</div>
+  </div>
+
+  <!-- 数字 -->
+  <div class="two-col">
+    <div class="metric-card">
+      <div class="m-label">想定単価（5/21時点の方向感）</div>
+      <div class="m-value">¥20,000 / 本</div>
+      <div class="m-sub">当初1万案 → カンパニーズ側の費用上乗せも踏まえ「一本2万」で一旦設定する方向</div>
+    </div>
+    <div class="metric-card">
+      <div class="m-label">段階的な受注本数の試行</div>
+      <div class="m-value">5 → 50 → 100本</div>
+      <div class="m-sub">まず5本作成 → 評価後に50本 → 最終目標100本</div>
+    </div>
+  </div>
+
+  <!-- メリット -->
+  <div class="card">
+    <div class="card-title"><span class="icon">✅</span>このモデルのメリット</div>
+    <ul class="detail-list">
+      <li><span class="bullet">→</span>Firework側：毎回の受発注コストが不要。まとめて納品してコスト効率UP</li>
+      <li><span class="bullet">→</span>カンパニーズ側：現行のプレイリスト販売と同じ仕組みで扱える。新商品ラインとして追加しやすい</li>
+      <li><span class="bullet">→</span>加盟店側：撮影なしで動画コンテンツを手軽に導入できる（歯医者・アパレル等）</li>
+      <li><span class="bullet">→</span>カンパニーズが毎回顧客を訪問しているため、販路として効率的</li>
+    </ul>
+  </div>
+
+  <!-- Kazukiさんの事前判断軸 -->
+  <div class="card">
+    <div class="card-title"><span class="icon">🔍</span>事前判断すべき2点 <span class="tag">Kazuki-san提示</span></div>
+    <div class="check-item">
+      <div class="check-icon">1️⃣</div>
+      <div class="check-text">
+        <strong>効率性：</strong>カンパニーズの先にいる顧客ごとに毎回Firework側の手間がかかることはないか？<br>
+        → まとめ納品で対応できるなら問題なし
+      </div>
+    </div>
+    <div class="check-item">
+      <div class="check-icon">2️⃣</div>
+      <div class="check-text">
+        <strong>拡大生：</strong>単価を下げてでも本数を増やしたいとなったとき、合計でどれくらいの量を見込めるか？<br>
+        → カンパニーズ加盟店数 × 購入本数で試算が必要
+      </div>
+    </div>
+  </div>
+
+  <!-- Issyさんの論点 -->
+  <div class="warn-box">
+    <div class="warn-label">要検討：単価1万の場合のクオリティ定義</div>
+    単価1万円だとクオリティ・制作フローの調整が必要。先方と1回ディスカッションして「アパレルで1本1万で納品するならどんなクリエイティブが良いか」を決めてから進める必要がある。（Issy）
+  </div>
+
+  <!-- 対象業種 -->
+  <div class="card">
+    <div class="card-title"><span class="icon">🏪</span>カンパニーズの想定販売先業種 <span class="tag">5/21更新</span></div>
+    <ul class="detail-list">
+      <li><span class="bullet">→</span><strong style="color:var(--text);">アパレル：</strong>量産クリエイティブの最有力。商品画像・モデル着用画像からコーデ提案・シーン提案の動画を量産できる。ただしカンパニーズの加盟店は現状アパレルは「1社」のみ</li>
+      <li><span class="bullet">→</span><strong style="color:var(--text);">現状の加盟店が多い業界：</strong>飲食・歯科・不動産・ハウスメーカー。撮影負荷（静岡県内クライアント等）をAIGCで省ける可能性</li>
+      <li><span class="bullet">→</span>業界ごとに量産しやすいフォーマットの要件定義が必要（優先順位は未確定）</li>
+    </ul>
+  </div>
+
+  <!-- ネクストステップ -->
+  <h2 style="font-size:15px;font-weight:700;margin-bottom:12px;color:var(--text-muted);">ネクストステップ（5/21定例の手配）</h2>
+
+  <div class="next-step">
+    <div class="ns-who">次回定例</div>
+    <div class="ns-text">フジ医療器にAIGCテスト制作を打診。大型商材（マッサージチェア等）の撮影素材から「人物を老人化」などのAIGC変換でテスト制作を提案。現状はCanvaでランキング作成・SV利用中も課題が残る</div>
+  </div>
+  <div class="next-step">
+    <div class="ns-who">ルナさん × チーム</div>
+    <div class="ns-text">次回定例に参加予定。進め方の頭出しと役割分担を調整する</div>
+  </div>
+  <div class="next-step" style="opacity:0.7;">
+    <div class="ns-who">保留中</div>
+    <div class="ns-text">カンパニーズと進める場合：PDP・商品画像の提供依頼たたき台を作成し、デモ作成 → 1本2万のクリエイティブ要件を定義（現状は見送り方向のため保留）</div>
+  </div>
+
+  <!-- Slackスレッド参照 -->
+  <div class="card" style="margin-top:32px;">
+    <div class="card-title"><span class="icon">💬</span>元Slackスレッド <span class="tag">2026-05-20 15:20</span></div>
+    <div class="discussion-item">
+      <div class="discussion-who">みどりさん</div>
+      <div class="discussion-text">カンパニーズに話し出すのはいいと思います。1本3万だとちょっと難しい可能性はありますが、歯医者やアパレルなど業種はたくさんかつプレイリスト以外の商品欲しいと言っていたので。単価は下げられないですかね？（1本1万とかなら販売してくれそう）</div>
+    </div>
+    <div class="discussion-item">
+      <div class="discussion-who">Kazuki-san</div>
+      <div class="discussion-text">以下の2点で事前判断できるといいのでは。①効率性：カンパニーズの先にいる顧客ごとに毎回手間がかかることがないか ②拡大生：1本単価を低くしたTradeoffで本数を増やしたいとなったときに、合計でどれくらいの量を見込めるのか</div>
+    </div>
+    <div class="discussion-item">
+      <div class="discussion-who">みどりさん</div>
+      <div class="discussion-text">合計100本100万円をカンパニーズに事前に買ってもらい販売するが良いかと思いました。こちらが毎回受発注するコストももったいないので現状のプレイリストと同じように買った分は自分たちで売ってもらうが良いかと思います。ニーズがあるかは川淵さん相談なのでFWがOKであればまず聞いてみるが次のステップです！</div>
+    </div>
+    <div class="discussion-item">
+      <div class="discussion-who">Issy</div>
+      <div class="discussion-text">単価1万だとクオリティや制作フロー調整する必要があるので、先方がどんな動画つくれたらいいかも含めて1回ディスカッションしたいです！基本は「アパレルで1本1万で納品するならどんなクリエイティブいいのか」を決めたいです。（明日しかふたり空いているところなさそうなので、カレンダーおくりました！）</div>
+    </div>
+  </div>
+
+</div>
+
+<footer class="footer">
+  AIGC戦略プロジェクト — Firework Japan Team — Last Updated: 2026年5月21日 13:27
+</footer>
+
+</body>
+</html>

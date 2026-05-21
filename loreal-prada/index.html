@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <script src="./auth.js"></script>
+  <script>document.addEventListener('DOMContentLoaded',function(){FireworkSSO.protect();});</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="last-modified" content="2026-05-21T14:22:42+09:00">
+  <title>見積もり依頼メモ｜ロレアル・プラダ ライブ配信</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📋</text></svg>">
+  <meta name="description" content="ロレアル・プラダブランドのライブ配信制作見積もり依頼内容。代理店リプレイス狙い・現行再現／Jackery準拠／スタバ1カメの3パターン＋切り抜きオプション。GIFTVOX原価受領済み。">
+  <meta property="og:title" content="見積もり依頼メモ｜ロレアル・プラダ ライブ配信">
+  <meta property="og:description" content="ロレアル・プラダブランドのライブ配信制作見積もり依頼内容。代理店リプレイス狙い・現行再現／Jackery準拠／スタバ1カメの3パターン＋切り抜きオプション。GIFTVOX原価受領済み。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="#">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="見積もり依頼メモ｜ロレアル・プラダ ライブ配信">
+  <meta name="twitter:description" content="ロレアル・プラダブランドのライブ配信制作見積もり依頼内容。代理店リプレイス狙い・現行再現／Jackery準拠／スタバ1カメの3パターン＋切り抜きオプション。GIFTVOX原価受領済み。">
+  <style>
+    :root {
+      --bg: #F6F8FA;
+      --paper: #FFFFFF;
+      --ink: #1A1A2E;
+      --sub: #555566;
+      --line: #E2E4EA;
+      --accent: #FA006D;        /* Fireworkマゼンタ（メインアクセント・FW基調統一 2026-05-21） */
+      --accent-soft: #FFF0F6;
+      --teal: #1B998B;
+      --navy: #0F3460;
+      --gold: #D4AF37;
+      --silver: #8E8E9A;
+      --bronze: #CD7F32;
+      --alert: #C8102E;         /* プラダレッド（強調の差し色のみ・メイン不可） */
+      --soft: #F4F5F7;          /* 互換: 旧--soft参照を維持 */
+      --tag: #0F3460;           /* 互換: 旧--tag参照を維持（navyへマッピング） */
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 24px;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, 'Hiragino Kaku Gothic ProN', sans-serif;
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    .sheet {
+      max-width: 960px;
+      margin: 0 auto;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      padding: 28px 32px;
+      position: relative;
+    }
+    .sheet::before {
+      content: '';
+      position: absolute;
+      left: 32px;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: repeating-linear-gradient(to bottom, var(--line) 0 6px, transparent 6px 12px);
+      opacity: 0.5;
+    }
+    .head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 2px solid var(--ink);
+      padding-bottom: 12px;
+      margin-bottom: 16px;
+    }
+    .head-left h1 {
+      margin: 0 0 4px 0;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+    .head-left .sub {
+      font-size: 11px;
+      color: var(--sub);
+    }
+    .head-right {
+      text-align: right;
+      font-size: 11px;
+      color: var(--sub);
+      line-height: 1.5;
+    }
+    .head-right .label {
+      color: #888;
+      font-size: 10px;
+    }
+    .head-right .value {
+      color: var(--ink);
+      font-weight: 600;
+    }
+    .meta-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      background: var(--soft);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      margin-bottom: 18px;
+      font-size: 11px;
+    }
+    .meta-cell {
+      padding: 8px 12px;
+      border-right: 1px solid var(--line);
+    }
+    .meta-cell:last-child { border-right: 0; }
+    .meta-cell .k {
+      color: #888;
+      font-size: 10px;
+      display: block;
+      margin-bottom: 2px;
+    }
+    .meta-cell .v {
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .meta-cell .v.accent { color: var(--accent); }
+    .section {
+      margin-bottom: 18px;
+    }
+    .section h2 {
+      font-size: 13px;
+      font-weight: 700;
+      margin: 0 0 8px 0;
+      padding: 4px 10px;
+      background: var(--tag);
+      color: #fff;
+      border-radius: 3px;
+      display: inline-block;
+      letter-spacing: 0.04em;
+    }
+    .section h2 .num {
+      color: var(--accent);
+      margin-right: 6px;
+      font-weight: 700;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: 12px 14px;
+      background: #fff;
+    }
+    .card.accent-top {
+      border-top: 3px solid var(--accent);
+    }
+    .card.dim-top {
+      border-top: 3px solid #6B7280;
+    }
+    .card.plus-top {
+      border-top: 3px solid #1B998B;
+      background: #FBFEFD;
+    }
+    .card h3 {
+      margin: 0 0 6px 0;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+    .card .tag {
+      display: inline-block;
+      font-size: 10px;
+      padding: 1px 6px;
+      border-radius: 2px;
+      background: var(--soft);
+      color: var(--sub);
+      margin-bottom: 6px;
+    }
+    .card ul {
+      margin: 4px 0 0 0;
+      padding-left: 16px;
+      font-size: 11.5px;
+      color: var(--ink);
+    }
+    .card ul li {
+      margin-bottom: 2px;
+      line-height: 1.5;
+    }
+    .card .note {
+      margin-top: 6px;
+      padding: 6px 8px;
+      background: var(--soft);
+      border-left: 2px solid var(--accent);
+      font-size: 10.5px;
+      color: var(--sub);
+      line-height: 1.5;
+    }
+    .pre-conditions {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+    .cond {
+      padding: 10px 12px;
+      border: 1px dashed var(--line);
+      border-radius: 4px;
+      background: #FCFCFA;
+    }
+    .cond .k {
+      font-size: 10px;
+      color: var(--accent);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      margin-bottom: 3px;
+    }
+    .cond .v {
+      font-size: 11.5px;
+      color: var(--ink);
+    }
+    .internal {
+      margin-top: 18px;
+      padding: 12px 14px;
+      background: #FFF8E1;
+      border: 1px solid #F5D67B;
+      border-radius: 4px;
+    }
+    .internal h3 {
+      margin: 0 0 6px 0;
+      font-size: 12px;
+      font-weight: 700;
+      color: #6B4F00;
+    }
+    .internal ul {
+      margin: 0;
+      padding-left: 18px;
+      font-size: 11.5px;
+      color: #4D3A00;
+    }
+    .internal ul li { margin-bottom: 2px; }
+    .ref {
+      margin-top: 14px;
+      padding: 10px 14px;
+      background: #F4F6FA;
+      border-left: 3px solid var(--tag);
+      border-radius: 0 3px 3px 0;
+      font-size: 11.5px;
+    }
+    .ref .k {
+      font-weight: 700;
+      color: var(--tag);
+      margin-right: 6px;
+    }
+    .ref a {
+      color: #1A4FBC;
+      word-break: break-all;
+    }
+    .footer {
+      margin-top: 18px;
+      padding-top: 10px;
+      border-top: 1px solid var(--line);
+      font-size: 10px;
+      color: #999;
+      display: flex;
+      justify-content: space-between;
+    }
+    @media print {
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color-adjust: exact !important;
+      }
+      @page { size: A4; margin: 10mm; }
+      body { padding: 0; background: var(--paper); }
+      .sheet { box-shadow: none; border: 0; }
+      .section, .card { page-break-inside: avoid; break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <div class="sheet">
+
+    <div class="head">
+      <div class="head-left">
+        <h1>見積もり依頼メモ｜ロレアル・プラダ ライブ配信</h1>
+        <div class="sub">制作パートナー向け／原価ベースでの売値設定用</div>
+      </div>
+      <div class="head-right">
+        <div><span class="label">Prepared by</span> <span class="value">Firework</span></div>
+        <div><span class="label">Date</span> <span class="value">2026年5月13日</span></div>
+        <div><span class="label">Last Updated</span> <span class="value">2026年5月21日 14:22</span></div>
+        <div><span class="label">Status</span> <span class="value" style="color:#1B998B;">🟢 GIFTVOX原価受領済み（5/15）</span></div>
+      </div>
+    </div>
+
+    <div class="meta-bar">
+      <div class="meta-cell">
+        <span class="k">クライアント</span>
+        <span class="v">日本ロレアル（プラダブランド）</span>
+      </div>
+      <div class="meta-cell">
+        <span class="k">案件性質</span>
+        <span class="v accent">代理店リプレイス狙い</span>
+      </div>
+      <div class="meta-cell">
+        <span class="k">先方提案規模</span>
+        <span class="v">3〜6回（まず1回分単価）</span>
+      </div>
+      <div class="meta-cell">
+        <span class="k">原価受領</span>
+        <span class="v" style="color:#1B998B;">5/15 完了（3パターン）</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2><span class="num">01</span>案件背景</h2>
+      <div class="card">
+        プラダブランドは現在、代理店経由でライブ配信を実施中。<br>
+        Fireworkとして<strong>代理店リプレイス</strong>を狙い、現状再現＋コスト最適化の両軸で提案したい。<br>
+        本依頼は提案前段階の<strong>原価取得用</strong>。取得した原価に上乗せして先方交渉に使用する。
+      </div>
+    </div>
+
+    <div class="section">
+      <h2><span class="num">02</span>前提条件</h2>
+      <div class="pre-conditions">
+        <div class="cond">
+          <div class="k">CASTING</div>
+          <div class="v">モデル含むキャスティングは<br><strong>先方手配</strong>（見積もり外）</div>
+        </div>
+        <div class="cond">
+          <div class="k">VENUE</div>
+          <div class="v">撮影場所・スタジオは<br><strong>先方手配</strong>（見積もり外）</div>
+        </div>
+        <div class="cond">
+          <div class="k">SCALE</div>
+          <div class="v">回数は3〜6回想定／<br>まず<strong>1回分の単価</strong>を提示</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2><span class="num">03</span>見積もり依頼内容（3パターン＋オプション） <span style="font-size:10px;color:#1B998B;font-weight:600;margin-left:8px;">🟢 GIFTVOX原価受領済み</span></h2>
+      <div class="grid-3">
+
+        <div class="card accent-top">
+          <div class="tag">パターンA・現行再現</div>
+          <h3>先方ライブ準拠</h3>
+          <ul>
+            <li>先方ライブアーカイブの<strong>現行再現</strong>体制</li>
+            <li>3カメ・2有人カメラ・音声オペレーターあり</li>
+            <li>クリエイティブ制作あり（インサート画像／テロップ／事前撮影動画再生）</li>
+            <li>規模感はSamsung案件相当</li>
+          </ul>
+          <div class="note" style="background:#FFF7E6;border-left:3px solid #F59E0B;padding:6px 8px;margin-top:6px;font-size:10.5px;">
+            <strong>GIFTVOX原価: ¥764,500（税込）</strong><br>
+            内訳: 制作¥190K／撮影¥335K／音声¥65K／配信¥105K
+          </div>
+        </div>
+
+        <div class="card dim-top">
+          <div class="tag">パターンB・コスト最適化</div>
+          <h3>Jackery準拠</h3>
+          <ul>
+            <li><strong>Jackery体制相当</strong>の予算感に最適化</li>
+            <li>2カメ体制・音声オペは配信オペ兼任</li>
+            <li>クリエイティブ・台本・ディレクションは維持</li>
+            <li>現行アーカイブから音声専任とカメラ1台を削減</li>
+          </ul>
+          <div class="note" style="background:#FFF7E6;border-left:3px solid #F59E0B;padding:6px 8px;margin-top:6px;font-size:10.5px;">
+            <strong>GIFTVOX原価: ¥616,000（税込）</strong><br>
+            内訳: 制作¥190K／撮影¥250K／音声¥15K／配信¥105K
+          </div>
+        </div>
+
+        <div class="card dim-top">
+          <div class="tag">パターンC・ライト</div>
+          <h3>スタバ1カメ準拠（SBJ）</h3>
+          <ul>
+            <li>スタバレギュラー配信相当の<strong>1カメ・ライト配信</strong></li>
+            <li>カメラ1台・スイッチャーなし・音声=配信オペ兼任</li>
+            <li>制作・台本・配信管理は維持（ブランド毀損しない最小構成）</li>
+            <li>「回数を増やしたい」場合の予算最適化オプション</li>
+          </ul>
+          <div class="note" style="background:#FFF7E6;border-left:3px solid #F59E0B;padding:6px 8px;margin-top:6px;font-size:10.5px;">
+            <strong>GIFTVOX原価: ¥451,000（税込）</strong><br>
+            内訳: 制作¥190K／撮影¥100K／音声¥15K／配信¥105K
+          </div>
+        </div>
+
+      </div>
+
+      <div class="card plus-top" style="margin-top:10px;">
+        <div class="tag">オプション・アップセル</div>
+        <h3>＋α オプション：切り抜き動画 ＋ 分析レポート</h3>
+        <ul>
+          <li>ライブアーカイブからの<strong>切り抜き動画制作</strong>（縦型ショート）</li>
+          <li>本体A／B／Cどれにもアドオンとして提示可</li>
+          <li>1本単価をご提示ください（標準パッケージ／事前に切り抜き箇所を細かく提案するパッケージの2段階想定）</li>
+          <li><strong>分析レポート＋改善提案</strong>は本体マスト想定だったが、GIFTVOX見積もりでは別途扱い → 別途単価を取得して本体に組み込み売値設計</li>
+        </ul>
+        <div class="note" style="color:#B91C1C;">
+          ⚠️ 当初依頼: 「分析レポート＋改善提案は本体マスト」→ GIFTVOX見積もりでは「別途見積」扱い。<br>
+          単価取得 → Firework側で本体A/B/Cの売値に組み込んで提示する方針に切り替え。
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2><span class="num">04</span>受領状況・ネクストアクション</h2>
+      <div class="grid-2">
+        <div class="card">
+          <h3>✅ 受領済み（2026/5/15）</h3>
+          <ul>
+            <li>パターンA「先方ライブ準拠」<strong>¥764,500</strong></li>
+            <li>パターンB「Jackery準拠」<strong>¥616,000</strong></li>
+            <li>パターンC「スタバ1カメ準拠」<strong>¥451,000</strong></li>
+          </ul>
+          <div class="note" style="font-size:10.5px;">いずれも1回分の税込金額。出演者・モデル・スタジオは先方手配（見積もり外）。</div>
+        </div>
+        <div class="card">
+          <h3>🟡 追加で取得すべき単価</h3>
+          <ul>
+            <li><strong>切り抜き動画</strong>1本単価（標準／事前提案ありの2段階）</li>
+            <li><strong>分析レポート＋改善提案</strong>1回単価</li>
+            <li>同録データ納品費（¥10,000/回 税別は明記済み）</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>📋 Firework側のネクスト</h3>
+          <ul>
+            <li>原価に上乗せして<strong>クライアント提示用見積もりシート</strong>生成（GAS実行）</li>
+            <li>3回／6回パッケージのボリュームディスカウント設計</li>
+            <li>先方提案スライド骨子作成</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>📅 全体スケジュール</h3>
+          <ul>
+            <li>5/13: 見積もり依頼送付</li>
+            <li>5/15: ✅ 原価3パターン受領</li>
+            <li>5/18〜: 売値設計・提案資料作成</li>
+            <li>提案規模: 3回 or 6回パッケージで先方交渉</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="ref">
+      <span class="k">参考アーカイブ:</span>
+      <a href="https://drive.google.com/drive/u/0/folders/1boWPXEriTHUQHZzQAw774-ef3vzPIjnu" target="_blank" rel="noopener">https://drive.google.com/drive/u/0/folders/1boWPXEriTHUQHZzQAw774-ef3vzPIjnu</a>
+    </div>
+
+    <div class="internal">
+      <h3>🔒 社内メモ（パートナー共有時は削除）</h3>
+      <ul>
+        <li>取得原価に<strong>上乗せして先方交渉</strong>に使う前提。原価開示はしない。</li>
+        <li><strong>当初依頼との差分</strong>: 依頼時は「A=現状再現(Jackery体制相当)/B=スタバ1カメ」の2パターン想定だったが、GIFTVOXが「現状再現はJackeryよりリッチ」と判断して3パターン（A=現行再現／B=Jackery／C=スタバ1カメ）に展開してきた。提案でも3パターン軸で進める。</li>
+        <li>パターンA（¥764,500）= 本命の現状再現。先方が今支払っている水準と同等品質をFireworkで提供できる証明用。</li>
+        <li>パターンB（¥616,000）= 主力提案。Jackeryで実績のある体制と同等で、現状代理店よりコスト効率良いことを訴求。</li>
+        <li>パターンC（¥451,000）= 「回数を増やしたい」提案用。1回あたり予算を抑え、年間総回数を増やす方向の選択肢。</li>
+        <li><strong>分析レポート＋改善提案</strong>は当初「本体マスト」依頼だったがGIFTVOX見積では別途扱い → 別単価を取得し、Firework側で本体に組み込んで売値提示する。原価開示しないので問題なし。</li>
+        <li>オプションの切り抜き動画は標準¥50,000/本／事前提案あり¥75,000/本の2段階を念頭に売値設計。</li>
+        <li>提案フェーズで3回／6回パッケージのボリュームディスカウントも別途検討。</li>
+        <li><strong>原価ファイル</strong>: <code>06_パートナー見積もり/【御見積書】L'Oréal様ライブコマース案件_…(先方ライブ準拠/Jackery準拠/SBJ準拠).pdf</code></li>
+      </ul>
+    </div>
+
+    <div class="footer">
+      <div>ロレアル・プラダ案件 見積もり依頼メモ — 作成 2026/05/13 ／ 最終更新 2026年5月21日 14:22 JST</div>
+      <div>Firework内部資料</div>
+    </div>
+
+  </div>
+</body>
+</html>

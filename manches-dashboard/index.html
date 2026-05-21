@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <script src="./auth.js"></script>
+  <script>document.addEventListener('DOMContentLoaded',function(){FireworkSSO.protect();});</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>マンチェス AIGC提案 ダッシュボード</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
+  <meta name="description" content="マンチェス AIGC動画制作提案 タスク管理・タイムラインダッシュボード">
+  <meta property="og:title" content="マンチェス AIGC提案 ダッシュボード">
+  <meta property="og:description" content="マンチェス AIGC動画制作提案 タスク管理・タイムラインダッシュボード">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="#">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="マンチェス AIGC提案 ダッシュボード">
+  <meta name="twitter:description" content="マンチェス AIGC動画制作提案 タスク管理・タイムラインダッシュボード">
+  <style>
+    :root {
+      --bg: #0f1117;
+      --surface: #1a1d27;
+      --surface2: #222535;
+      --border: #2e3148;
+      --accent: #6c63ff;
+      --accent2: #00c2cb;
+      --warn: #f5a623;
+      --danger: #e74c3c;
+      --success: #2ecc71;
+      --text: #e8eaf6;
+      --muted: #8890b5;
+      --deadline: #ff6b6b;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', 'Hiragino Sans', 'Meiryo', sans-serif;
+      font-size: 14px;
+      min-height: 100vh;
+    }
+
+    /* ── Header ── */
+    .header {
+      background: linear-gradient(135deg, #1a1d27 0%, #0f1117 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 28px 16px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .header-left h1 {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: #fff;
+    }
+
+    .header-left .sub {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .deadline-badge {
+      background: rgba(255,107,107,0.15);
+      border: 1px solid var(--deadline);
+      color: var(--deadline);
+      border-radius: 8px;
+      padding: 8px 16px;
+      font-size: 13px;
+      font-weight: 700;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .deadline-badge .label {
+      font-size: 10px;
+      font-weight: 500;
+      opacity: 0.8;
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .meta {
+      font-size: 11px;
+      color: var(--muted);
+      text-align: right;
+    }
+
+    /* ── Layout ── */
+    .main {
+      padding: 20px 28px;
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 20px;
+      max-width: 1200px;
+    }
+
+    /* ── Cards ── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .card-header {
+      padding: 14px 18px 10px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card-header h2 {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+    }
+
+    .card-body {
+      padding: 16px 18px;
+    }
+
+    /* ── Progress bar ── */
+    .progress-wrap {
+      margin-bottom: 20px;
+    }
+
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .progress-bar-bg {
+      background: var(--surface2);
+      border-radius: 100px;
+      height: 8px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      border-radius: 100px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      transition: width 0.4s ease;
+    }
+
+    /* ── Gantt ── */
+    .gantt-container {
+      overflow-x: auto;
+    }
+
+    .gantt-grid {
+      min-width: 600px;
+    }
+
+    .gantt-header {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      font-size: 11px;
+      color: var(--muted);
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 8px;
+    }
+
+    .gantt-dates {
+      display: flex;
+      position: relative;
+    }
+
+    .gantt-date-label {
+      flex: 1;
+      text-align: center;
+      font-size: 10px;
+      color: var(--muted);
+    }
+
+    .gantt-date-label.today-label {
+      color: var(--accent2);
+      font-weight: 700;
+    }
+
+    .gantt-date-label.deadline-label {
+      color: var(--deadline);
+      font-weight: 700;
+    }
+
+    .gantt-row {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      align-items: center;
+      padding: 5px 0;
+      border-bottom: 1px solid rgba(46,49,72,0.5);
+      gap: 8px;
+    }
+
+    .gantt-row:last-child {
+      border-bottom: none;
+    }
+
+    .gantt-task-name {
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding-right: 8px;
+      overflow: hidden;
+    }
+
+    .gantt-task-name span {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .status-dot.done     { background: var(--success); }
+    .status-dot.active   { background: var(--warn); box-shadow: 0 0 6px var(--warn); }
+    .status-dot.pending  { background: var(--border); }
+    .status-dot.blocked  { background: var(--danger); }
+
+    .gantt-bar-area {
+      position: relative;
+      height: 24px;
+    }
+
+    .gantt-bar {
+      position: absolute;
+      height: 18px;
+      top: 3px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      padding: 0 6px;
+      font-size: 10px;
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .gantt-bar.done    { background: rgba(46,204,113,0.25); border: 1px solid var(--success); color: var(--success); }
+    .gantt-bar.active  { background: rgba(245,166,35,0.25); border: 1px solid var(--warn); color: var(--warn); }
+    .gantt-bar.pending { background: rgba(108,99,255,0.15); border: 1px solid rgba(108,99,255,0.4); color: var(--accent); }
+    .gantt-bar.blocked { background: rgba(231,76,60,0.15); border: 1px dashed var(--danger); color: var(--danger); }
+
+    /* Today line */
+    .today-line {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--accent2);
+      opacity: 0.7;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    /* Deadline line */
+    .deadline-line {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--deadline);
+      opacity: 0.7;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    /* ── Task List ── */
+    .task-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .task-item {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 14px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .task-item:hover {
+      border-color: var(--accent);
+      background: rgba(108,99,255,0.05);
+    }
+
+    .task-item.done {
+      opacity: 0.55;
+    }
+
+    .task-checkbox {
+      width: 18px;
+      height: 18px;
+      border-radius: 4px;
+      border: 2px solid var(--border);
+      flex-shrink: 0;
+      margin-top: 1px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      transition: all 0.2s;
+    }
+
+    .task-item.done .task-checkbox {
+      background: var(--success);
+      border-color: var(--success);
+      color: #fff;
+    }
+
+    .task-item.active .task-checkbox {
+      border-color: var(--warn);
+    }
+
+    .task-item.blocked .task-checkbox {
+      border-color: var(--danger);
+    }
+
+    .task-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .task-title {
+      font-size: 13px;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+    .task-meta {
+      display: flex;
+      gap: 8px;
+      margin-top: 4px;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      font-size: 10px;
+      padding: 2px 7px;
+      border-radius: 100px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .tag.global   { background: rgba(0,194,203,0.15); color: var(--accent2); }
+    .tag.issy     { background: rgba(108,99,255,0.2); color: var(--accent); }
+    .tag.asap     { background: rgba(245,166,35,0.2); color: var(--warn); }
+    .tag.due      { background: rgba(255,107,107,0.15); color: var(--deadline); }
+    .tag.sample   { background: rgba(46,204,113,0.15); color: var(--success); }
+
+    .task-note {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 3px;
+      line-height: 1.5;
+    }
+
+    /* ── Status summary ── */
+    .stat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .stat-card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 14px;
+      text-align: center;
+    }
+
+    .stat-num {
+      font-size: 28px;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    .stat-num.done    { color: var(--success); }
+    .stat-num.active  { color: var(--warn); }
+    .stat-num.pending { color: var(--accent); }
+    .stat-num.days    { color: var(--deadline); }
+
+    /* ── Notes ── */
+    .notes-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .note-item {
+      background: var(--surface2);
+      border-left: 3px solid var(--accent);
+      border-radius: 0 6px 6px 0;
+      padding: 8px 12px;
+      font-size: 12px;
+      line-height: 1.6;
+      color: var(--text);
+    }
+
+    .note-item.warn {
+      border-left-color: var(--warn);
+    }
+
+    .note-item.danger {
+      border-left-color: var(--danger);
+    }
+
+    /* ── Sidebar ── */
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    /* ── Scroll area for tasks ── */
+    .task-scroll {
+      max-height: 480px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding-right: 2px;
+    }
+
+    .task-scroll::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    .task-scroll::-webkit-scrollbar-thumb {
+      background: var(--border);
+      border-radius: 4px;
+    }
+
+    /* ── Group label ── */
+    .group-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      padding: 6px 0 2px;
+    }
+
+    /* ── Phase badge ── */
+    .phase-badge {
+      display: inline-block;
+      font-size: 9px;
+      font-weight: 700;
+      padding: 1px 5px;
+      border-radius: 3px;
+      background: rgba(108,99,255,0.2);
+      color: var(--accent);
+      margin-right: 2px;
+    }
+
+    /* ── View toggle ── */
+    .view-toggle {
+      display: flex;
+      gap: 4px;
+      margin-left: auto;
+    }
+
+    .toggle-btn {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      transition: all 0.15s;
+      letter-spacing: 0.03em;
+    }
+
+    .toggle-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .toggle-btn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #fff;
+    }
+
+    /* ── Calendar ── */
+    .calendar-wrap {
+      display: none;
+    }
+
+    .calendar-wrap.visible {
+      display: block;
+    }
+
+    .gantt-container.hidden,
+    .gantt-legend.hidden {
+      display: none;
+    }
+
+    .cal-month {
+      margin-bottom: 20px;
+    }
+
+    .cal-month-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 10px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .cal-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 3px;
+    }
+
+    .cal-dow {
+      font-size: 10px;
+      font-weight: 700;
+      text-align: center;
+      color: var(--muted);
+      padding: 4px 0;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .cal-dow.sat { color: #6ca0ff; }
+    .cal-dow.sun { color: var(--deadline); }
+
+    .cal-cell {
+      min-height: 72px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 5px 6px;
+      position: relative;
+      vertical-align: top;
+      transition: border-color 0.15s;
+    }
+
+    .cal-cell.empty {
+      background: transparent;
+      border-color: transparent;
+    }
+
+    .cal-cell.today {
+      border-color: var(--accent2);
+      box-shadow: 0 0 0 1px var(--accent2) inset;
+    }
+
+    .cal-cell.deadline-day {
+      border-color: var(--deadline);
+      box-shadow: 0 0 0 1px var(--deadline) inset;
+    }
+
+    .cal-cell.weekend {
+      background: rgba(255,255,255,0.02);
+    }
+
+    .cal-day-num {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--muted);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .cal-cell.today .cal-day-num {
+      color: var(--accent2);
+    }
+
+    .cal-cell.deadline-day .cal-day-num {
+      color: var(--deadline);
+    }
+
+    .cal-cell.weekend .cal-day-num {
+      color: #6ca0ff;
+    }
+
+    .cal-cell.weekend-sun .cal-day-num {
+      color: var(--deadline);
+    }
+
+    .cal-tasks {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .cal-task-chip {
+      font-size: 9px;
+      font-weight: 600;
+      padding: 2px 5px;
+      border-radius: 3px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      line-height: 1.4;
+      cursor: default;
+    }
+
+    .cal-task-chip.done    { background: rgba(46,204,113,0.2); color: var(--success); }
+    .cal-task-chip.active  { background: rgba(245,166,35,0.25); color: var(--warn); }
+    .cal-task-chip.pending { background: rgba(108,99,255,0.2); color: var(--accent); }
+    .cal-task-chip.blocked { background: rgba(231,76,60,0.2); color: var(--danger); }
+
+    .cal-task-chip.start::before {
+      content: '▶ ';
+      opacity: 0.7;
+    }
+
+    .cal-marker {
+      font-size: 9px;
+      font-weight: 700;
+      padding: 2px 5px;
+      border-radius: 3px;
+      background: rgba(255,107,107,0.2);
+      color: var(--deadline);
+      margin-top: 2px;
+    }
+
+    /* ── 祝日 ── */
+    .cal-cell.holiday {
+      background: rgba(255, 160, 80, 0.08);
+      border-color: rgba(255, 160, 80, 0.35);
+    }
+
+    .cal-cell.holiday .cal-day-num {
+      color: #ffaa50;
+    }
+
+    .cal-holiday-name {
+      font-size: 9px;
+      font-weight: 700;
+      color: #ffaa50;
+      background: rgba(255,160,80,0.15);
+      border-radius: 3px;
+      padding: 1px 4px;
+      margin-bottom: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* カレンダー凡例 */
+    .cal-legend {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+      font-size: 11px;
+      color: var(--muted);
+      align-items: center;
+    }
+
+    .cal-legend-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .cal-legend-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 3px;
+      flex-shrink: 0;
+    }
+
+    @media print {
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color-adjust: exact !important;
+      }
+      @page { size: A4 landscape; margin: 10mm; }
+      .main { grid-template-columns: 1fr 280px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-left">
+    <h1>マンチェス — AIGC動画制作 提案ダッシュボード</h1>
+    <div class="sub">bigsize.co.jp EC動画 AI制作提案 / 管理担当: Issy</div>
+  </div>
+  <div style="display:flex; flex-direction:column; align-items:flex-end; gap:6px;">
+    <div class="deadline-badge">
+      <span class="label">NEXT PROPOSAL</span>
+      5月14日（金）
+    </div>
+    <div class="meta">Last Updated: 2026年4月23日 15:28</div>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- ── LEFT COLUMN ── -->
+  <div style="display:flex; flex-direction:column; gap:16px;">
+
+    <!-- Progress -->
+    <div class="card">
+      <div class="card-header">
+        <h2>全体進捗</h2>
+      </div>
+      <div class="card-body">
+        <div class="progress-wrap">
+          <div class="progress-label">
+            <span>タスク完了率</span>
+            <span id="progress-pct">0%</span>
+          </div>
+          <div class="progress-bar-bg">
+            <div class="progress-bar-fill" id="progress-fill" style="width:0%"></div>
+          </div>
+        </div>
+        <div class="stat-grid">
+          <div class="stat-card">
+            <div class="stat-num done" id="stat-done">0</div>
+            <div class="stat-label">完了</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num active" id="stat-active">0</div>
+            <div class="stat-label">対応中</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num pending" id="stat-pending">0</div>
+            <div class="stat-label">未着手</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num days" id="stat-days">—</div>
+            <div class="stat-label">提案まで（営業日）</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Timeline / Calendar -->
+    <div class="card">
+      <div class="card-header">
+        <h2>タイムライン</h2>
+        <div class="view-toggle">
+          <button class="toggle-btn active" id="btn-gantt" onclick="switchView('gantt')">ガント</button>
+          <button class="toggle-btn" id="btn-cal" onclick="switchView('cal')">カレンダー</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <!-- ガントビュー -->
+        <div id="gantt-view">
+          <div style="display:flex; justify-content:flex-end; margin-bottom:8px; font-size:11px; color:var(--muted);" class="gantt-legend">
+            <span style="color:var(--accent2);">▌今日</span>
+            &nbsp;&nbsp;
+            <span style="color:var(--deadline);">▌提案日</span>
+          </div>
+          <div class="gantt-container">
+            <div class="gantt-grid" id="gantt-grid"></div>
+          </div>
+        </div>
+        <!-- カレンダービュー -->
+        <div id="cal-view" class="calendar-wrap">
+          <div id="cal-content"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Task List -->
+    <div class="card">
+      <div class="card-header">
+        <h2>タスク一覧</h2>
+        <span style="font-size:11px; color:var(--muted); margin-left:auto;">クリックで状態切替</span>
+      </div>
+      <div class="card-body">
+        <div class="task-scroll" id="task-list">
+          <!-- JS で生成 -->
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── SIDEBAR ── -->
+  <div class="sidebar">
+
+    <div class="card">
+      <div class="card-header"><h2>メモ・注意点</h2></div>
+      <div class="card-body">
+        <div class="notes-list">
+          <div class="note-item danger">提案資料は5/14（金）に持参予定。遅くとも5/12（水）までに完成させる。</div>
+          <div class="note-item warn">Globalチームへの制作可否確認・与件共有を最優先で実施する。</div>
+          <div class="note-item">原価確認後、売値・見積もりを作成する（税抜表記不要）。</div>
+          <div class="note-item">自チームサンプル動画は並行して制作し、提案の説得力を上げる。</div>
+          <div class="note-item">クライアントEC: bigsize.co.jp（動画掲載先はこちら）</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><h2>担当凡例</h2></div>
+      <div class="card-body">
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <div style="display:flex; align-items:center; gap:8px; font-size:12px;">
+            <span class="tag global">Global</span>
+            <span>GlobalチームへのAIGC制作依頼</span>
+          </div>
+          <div style="display:flex; align-items:center; gap:8px; font-size:12px;">
+            <span class="tag issy">Issy</span>
+            <span>Issyチームの対応</span>
+          </div>
+          <div style="display:flex; align-items:center; gap:8px; font-size:12px;">
+            <span class="tag sample">サンプル</span>
+            <span>自チームで制作するサンプル動画</span>
+          </div>
+          <div style="display:flex; align-items:center; gap:8px; font-size:12px;">
+            <span class="tag asap">急ぎ</span>
+            <span>優先対応が必要なタスク</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header"><h2>クライアント情報</h2></div>
+      <div class="card-body">
+        <div style="display:flex; flex-direction:column; gap:8px; font-size:12px;">
+          <div>
+            <div style="color:var(--muted); font-size:10px; text-transform:uppercase; letter-spacing:.06em; margin-bottom:2px;">クライアント</div>
+            <div style="font-weight:700;">マンチェス</div>
+          </div>
+          <div>
+            <div style="color:var(--muted); font-size:10px; text-transform:uppercase; letter-spacing:.06em; margin-bottom:2px;">サービス</div>
+            <div>大きいサイズ専門EC（bigsize）</div>
+          </div>
+          <div>
+            <div style="color:var(--muted); font-size:10px; text-transform:uppercase; letter-spacing:.06em; margin-bottom:2px;">EC（動画掲載先）</div>
+            <a href="https://www.bigsize.co.jp/" target="_blank" style="color:var(--accent2); text-decoration:none;">bigsize.co.jp</a>
+          </div>
+          <div>
+            <div style="color:var(--muted); font-size:10px; text-transform:uppercase; letter-spacing:.06em; margin-bottom:2px;">提案サービス</div>
+            <div>AIGC（AI動画制作）</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// ── データ定義 ──────────────────────────────────────
+const TODAY = new Date('2026-04-23');
+const DEADLINE = new Date('2026-05-14');
+
+const TASKS = [
+  // == 今週中（急ぎ）==
+  {
+    id: 1, group: 'A. 今週中（即対応）',
+    title: 'Globalチームへ制作可否確認・与件共有',
+    status: 'active',
+    owner: 'issy',
+    tags: ['Global', '急ぎ'],
+    note: '動画種別・本数・尺・素材有無など与件を整理して送る',
+    startDate: '2026-04-23', endDate: '2026-04-25',
+  },
+  {
+    id: 2, group: 'A. 今週中（即対応）',
+    title: 'AIGCサンプル動画の制作方針決定',
+    status: 'active',
+    owner: 'issy',
+    tags: ['Issy', 'サンプル', '急ぎ'],
+    note: '自チームでどのツール・スタイルで作るか決める',
+    startDate: '2026-04-23', endDate: '2026-04-26',
+  },
+  {
+    id: 3, group: 'A. 今週中（即対応）',
+    title: '提案資料の構成・目次作成',
+    status: 'active',
+    owner: 'issy',
+    tags: ['Issy', '急ぎ'],
+    note: 'サービス紹介・事例・費用・ネクストステップの流れを組む',
+    startDate: '2026-04-23', endDate: '2026-04-27',
+  },
+
+  // == 来週（4/28〜5/2）==
+  {
+    id: 4, group: 'B. 来週（4/28〜5/2）',
+    title: 'Globalチームから原価・制作条件の回答受領',
+    status: 'pending',
+    owner: 'global',
+    tags: ['Global'],
+    note: '回答がない場合はフォローアップを行う',
+    startDate: '2026-04-28', endDate: '2026-05-02',
+  },
+  {
+    id: 5, group: 'B. 来週（4/28〜5/2）',
+    title: 'サンプル動画 制作・初稿完成',
+    status: 'pending',
+    owner: 'issy',
+    tags: ['Issy', 'サンプル'],
+    note: '大きいサイズのファッション系1本を目標に制作',
+    startDate: '2026-04-28', endDate: '2026-05-02',
+  },
+  {
+    id: 6, group: 'B. 来週（4/28〜5/2）',
+    title: '見積もり作成（原価確認後）',
+    status: 'pending',
+    owner: 'issy',
+    tags: ['Issy'],
+    note: '原価をベースに売値・マージン設定。税抜/込区別は原価側のみ',
+    startDate: '2026-04-30', endDate: '2026-05-02',
+  },
+
+  // == 提案前週（5/7〜5/9）※GW明け ==
+  {
+    id: 7, group: 'C. 提案前週（5/7〜5/9）',
+    title: '提案資料 本文・スライド完成',
+    status: 'pending',
+    owner: 'issy',
+    tags: ['Issy'],
+    note: 'サンプル動画・見積もりを組み込んだ最終版',
+    startDate: '2026-05-07', endDate: '2026-05-09',
+  },
+  {
+    id: 8, group: 'C. 提案前週（5/7〜5/9）',
+    title: 'サンプル動画 最終確認・ブラッシュアップ',
+    status: 'pending',
+    owner: 'issy',
+    tags: ['Issy', 'サンプル'],
+    note: '',
+    startDate: '2026-05-07', endDate: '2026-05-09',
+  },
+
+  // == 提案直前（5/12〜5/14）==
+  {
+    id: 9, group: 'D. 提案直前（5/12〜5/14）',
+    title: '提案資料 最終チェック・印刷準備',
+    status: 'pending',
+    owner: 'issy',
+    tags: ['Issy'],
+    note: '誤字・金額・リンク確認。5/12（水）までに完成',
+    startDate: '2026-05-12', endDate: '2026-05-13',
+  },
+  {
+    id: 10, group: 'D. 提案直前（5/12〜5/14）',
+    title: '提案実施（マンチェス訪問）',
+    status: 'pending',
+    owner: 'issy',
+    tags: ['Issy'],
+    note: '5/14（金）',
+    startDate: '2026-05-14', endDate: '2026-05-14',
+  },
+];
+
+// ── ステータス管理 ──────────────────────────────────
+const statusCycle = { pending: 'active', active: 'done', done: 'pending' };
+const statusLabel = { done: '✓', active: '◆', pending: '', blocked: '✗' };
+
+function loadSavedState() {
+  try {
+    const saved = JSON.parse(localStorage.getItem('manches-tasks') || '{}');
+    TASKS.forEach(t => { if (saved[t.id]) t.status = saved[t.id]; });
+  } catch(e) {}
+}
+
+function saveState() {
+  const state = {};
+  TASKS.forEach(t => { state[t.id] = t.status; });
+  localStorage.setItem('manches-tasks', JSON.stringify(state));
+}
+
+// ── 営業日カウント（土日・祝日除く） ─────────────────
+function countBusinessDays(from, to) {
+  let count = 0;
+  const cur = new Date(from);
+  cur.setDate(cur.getDate() + 1); // 今日の翌日から数える
+  while (cur <= to) {
+    const dow = cur.getDay();
+    const dateStr = `${cur.getFullYear()}-${String(cur.getMonth()+1).padStart(2,'0')}-${String(cur.getDate()).padStart(2,'0')}`;
+    if (dow !== 0 && dow !== 6 && !HOLIDAYS[dateStr]) count++;
+    cur.setDate(cur.getDate() + 1);
+  }
+  return count;
+}
+
+// ── 進捗計算 ────────────────────────────────────────
+function calcStats() {
+  const done    = TASKS.filter(t => t.status === 'done').length;
+  const active  = TASKS.filter(t => t.status === 'active').length;
+  const pending = TASKS.filter(t => t.status === 'pending' || t.status === 'blocked').length;
+  const total   = TASKS.length;
+  const pct     = Math.round(done / total * 100);
+  const bizDays = countBusinessDays(TODAY, DEADLINE);
+
+  document.getElementById('stat-done').textContent    = done;
+  document.getElementById('stat-active').textContent  = active;
+  document.getElementById('stat-pending').textContent = pending;
+  document.getElementById('stat-days').textContent    = bizDays;
+  document.getElementById('progress-pct').textContent = pct + '%';
+  document.getElementById('progress-fill').style.width = pct + '%';
+}
+
+// ── Gantt ─────────────────────────────────────────
+function buildGantt() {
+  const START = new Date('2026-04-22');
+  const END   = new Date('2026-05-15');
+  const TOTAL_DAYS = Math.ceil((END - START) / 86400000);
+
+  // 週ラベル生成
+  const milestones = [];
+  let cur = new Date(START);
+  while (cur <= END) {
+    milestones.push(new Date(cur));
+    cur = new Date(cur);
+    cur.setDate(cur.getDate() + 7);
+  }
+
+  const todayPct    = Math.min(100, Math.max(0, (TODAY - START) / (END - START) * 100));
+  const deadlinePct = Math.min(100, Math.max(0, (DEADLINE - START) / (END - START) * 100));
+
+  let html = `
+    <div class="gantt-header">
+      <div>タスク</div>
+      <div class="gantt-dates">
+        ${milestones.map(d => {
+          const isT = d.toDateString() === TODAY.toDateString();
+          const isD = d.toDateString() === DEADLINE.toDateString();
+          const cls = isD ? 'deadline-label' : isT ? 'today-label' : '';
+          return `<div class="gantt-date-label ${cls}">${d.getMonth()+1}/${d.getDate()}</div>`;
+        }).join('')}
+      </div>
+    </div>
+    <div style="position:relative;">
+      <div class="today-line"    style="left:${todayPct}%; top:0; height:100%;"></div>
+      <div class="deadline-line" style="left:${deadlinePct}%; top:0; height:100%;"></div>
+  `;
+
+  TASKS.forEach(t => {
+    const s = new Date(t.startDate);
+    const e = new Date(t.endDate);
+    const left  = Math.max(0,   (s - START) / (END - START) * 100);
+    const right = Math.min(100, (e - START) / (END - START) * 100);
+    const width = Math.max(1, right - left);
+
+    html += `
+      <div class="gantt-row">
+        <div class="gantt-task-name">
+          <div class="status-dot ${t.status}"></div>
+          <span>${t.title}</span>
+        </div>
+        <div class="gantt-bar-area">
+          <div class="gantt-bar ${t.status}"
+               style="left:${left}%; width:${width}%;"
+               title="${t.title}">
+          </div>
+        </div>
+      </div>`;
+  });
+
+  html += '</div>';
+  document.getElementById('gantt-grid').innerHTML = html;
+}
+
+// ── タスクリスト ──────────────────────────────────
+function buildTaskList() {
+  const groups = [...new Set(TASKS.map(t => t.group))];
+  const el = document.getElementById('task-list');
+  let html = '';
+
+  groups.forEach(g => {
+    html += `<div class="group-label">${g}</div>`;
+    TASKS.filter(t => t.group === g).forEach(t => {
+      const tagHtml = t.tags.map(tag => {
+        const cls = tag === 'Global' ? 'global' : tag === 'サンプル' ? 'sample' : tag === '急ぎ' ? 'asap' : 'issy';
+        return `<span class="tag ${cls}">${tag}</span>`;
+      }).join('');
+
+      html += `
+        <div class="task-item ${t.status}" data-id="${t.id}" onclick="toggleTask(${t.id})">
+          <div class="task-checkbox">${t.status === 'done' ? '✓' : t.status === 'active' ? '◆' : ''}</div>
+          <div class="task-content">
+            <div class="task-title">${t.title}</div>
+            <div class="task-meta">${tagHtml}</div>
+            ${t.note ? `<div class="task-note">${t.note}</div>` : ''}
+          </div>
+        </div>`;
+    });
+  });
+
+  el.innerHTML = html;
+}
+
+function toggleTask(id) {
+  const task = TASKS.find(t => t.id === id);
+  if (!task) return;
+  task.status = statusCycle[task.status] || 'pending';
+  saveState();
+  render();
+}
+
+// ── View switch ──────────────────────────────────
+let currentView = 'gantt';
+
+function switchView(view) {
+  currentView = view;
+  document.getElementById('gantt-view').style.display = view === 'gantt' ? 'block' : 'none';
+  document.getElementById('cal-view').classList.toggle('visible', view === 'cal');
+  document.getElementById('btn-gantt').classList.toggle('active', view === 'gantt');
+  document.getElementById('btn-cal').classList.toggle('active', view === 'cal');
+  if (view === 'cal') buildCalendar();
+}
+
+// ── 祝日データ（2026年4〜5月） ───────────────────────
+const HOLIDAYS = {
+  '2026-04-29': '昭和の日',
+  '2026-05-03': '憲法記念日',
+  '2026-05-04': 'みどりの日',
+  '2026-05-05': 'こどもの日',
+  '2026-05-06': '振替休日',  // 5/5（火）→ 振替なし。5/4（月）みどりの日の振替
+};
+
+// ── Calendar ─────────────────────────────────────
+function buildCalendar() {
+  const months = [
+    { year: 2026, month: 3 },  // April (0-indexed)
+    { year: 2026, month: 4 },  // May
+  ];
+
+  const legendHtml = `
+    <div class="cal-legend">
+      <div class="cal-legend-item">
+        <div class="cal-legend-dot" style="background:rgba(255,160,80,0.4); border:1px solid #ffaa50;"></div>
+        <span style="color:#ffaa50;">祝日</span>
+      </div>
+      <div class="cal-legend-item">
+        <div class="cal-legend-dot" style="background:rgba(255,107,107,0.3); border:1px solid var(--deadline);"></div>
+        <span>日曜</span>
+      </div>
+      <div class="cal-legend-item">
+        <div class="cal-legend-dot" style="background:rgba(108,99,255,0.2); border:1px solid #6ca0ff;"></div>
+        <span>土曜</span>
+      </div>
+      <div class="cal-legend-item">
+        <div class="cal-legend-dot" style="border:2px solid var(--accent2);"></div>
+        <span>今日</span>
+      </div>
+      <div class="cal-legend-item">
+        <div class="cal-legend-dot" style="border:2px solid var(--deadline);"></div>
+        <span>提案日</span>
+      </div>
+    </div>`;
+
+  let html = legendHtml;
+
+  months.forEach(({ year, month }) => {
+    const monthName   = new Date(year, month, 1).toLocaleDateString('ja-JP', { year: 'numeric', month: 'long' });
+    const firstDay    = new Date(year, month, 1).getDay();
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+    html += `<div class="cal-month"><div class="cal-month-title">${monthName}</div><div class="cal-grid">`;
+
+    ['日','月','火','水','木','金','土'].forEach((d, i) => {
+      const cls = i === 0 ? 'sun' : i === 6 ? 'sat' : '';
+      html += `<div class="cal-dow ${cls}">${d}</div>`;
+    });
+
+    for (let i = 0; i < firstDay; i++) {
+      html += `<div class="cal-cell empty"></div>`;
+    }
+
+    for (let day = 1; day <= daysInMonth; day++) {
+      const date       = new Date(year, month, day);
+      const dateStr    = `${year}-${String(month+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;
+      const dow        = date.getDay();
+      const isToday    = date.toDateString() === TODAY.toDateString();
+      const isDeadline = date.toDateString() === DEADLINE.toDateString();
+      const isSun      = dow === 0;
+      const isSat      = dow === 6;
+      const holidayName = HOLIDAYS[dateStr] || null;
+      const isHoliday  = !!holidayName;
+
+      let cellCls = 'cal-cell';
+      if (isToday)    cellCls += ' today';
+      if (isDeadline) cellCls += ' deadline-day';
+      if (isHoliday && !isToday && !isDeadline) cellCls += ' holiday';
+      else if (isSun && !isToday && !isDeadline && !isHoliday) cellCls += ' weekend-sun';
+      else if (isSat && !isToday && !isDeadline && !isHoliday) cellCls += ' weekend';
+
+      // 日付番号の色クラスはCSSで制御、isSun/isSat向けにdata属性で渡す
+      let dayNumStyle = '';
+      if (!isToday && !isDeadline && !isHoliday) {
+        if (isSun) dayNumStyle = 'color:var(--deadline);';
+        else if (isSat) dayNumStyle = 'color:#6ca0ff;';
+      }
+
+      // 祝日・土日はタスクチップを表示しない（稼働日のみ表示）
+      const isOffDay = isHoliday || isSun || isSat;
+      const startTasks = isOffDay ? [] : TASKS.filter(t => t.startDate === dateStr);
+      const spanTasks  = isOffDay ? [] : TASKS.filter(t => t.startDate < dateStr && t.endDate >= dateStr);
+
+      let chipsHtml = '';
+      if (isHoliday) {
+        chipsHtml += `<div class="cal-holiday-name">${holidayName}</div>`;
+      }
+      startTasks.forEach(t => {
+        chipsHtml += `<div class="cal-task-chip start ${t.status}" title="${t.title}">${t.title}</div>`;
+      });
+      spanTasks.forEach(t => {
+        chipsHtml += `<div class="cal-task-chip ${t.status}" title="${t.title}">…${t.title.slice(0,8)}</div>`;
+      });
+      if (isDeadline) {
+        chipsHtml += `<div class="cal-marker">提案日</div>`;
+      }
+
+      html += `
+        <div class="${cellCls}">
+          <div class="cal-day-num" style="${dayNumStyle}">${day}</div>
+          <div class="cal-tasks">${chipsHtml}</div>
+        </div>`;
+    }
+
+    html += `</div></div>`;
+  });
+
+  document.getElementById('cal-content').innerHTML = html;
+}
+
+function render() {
+  calcStats();
+  buildGantt();
+  buildTaskList();
+  if (currentView === 'cal') buildCalendar();
+}
+
+// ── Init ────────────────────────────────────────
+loadSavedState();
+render();
+</script>
+</body>
+</html>

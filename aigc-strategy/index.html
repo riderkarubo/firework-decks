@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <script src="./auth.js"></script>
+  <script>document.addEventListener('DOMContentLoaded',function(){FireworkSSO.protect();});</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AIGC戦略プロジェクト</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎬</text></svg>">
+  <meta name="description" content="AIGC動画戦略プロジェクト — 1社に1000本のAIGC動画を導入するための戦略・進捗管理">
+  <meta property="og:title" content="AIGC戦略プロジェクト">
+  <meta property="og:description" content="AIGC動画戦略プロジェクト — 1社に1000本のAIGC動画を導入するための戦略・進捗管理">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://riderkarubo.github.io/pages/aigc-strategy/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="AIGC戦略プロジェクト">
+  <meta name="twitter:description" content="AIGC動画戦略プロジェクト — 1社に1000本のAIGC動画を導入するための戦略・進捗管理">
+  <style>
+    :root {
+      --bg: #0d0d0d;
+      --surface: #1a1a1a;
+      --surface2: #242424;
+      --border: #2e2e2e;
+      --accent: #00d4aa;
+      --accent2: #7c4dff;
+      --warn: #ff6b35;
+      --text: #f0f0f0;
+      --text-muted: #888;
+      --text-sub: #bbb;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Hiragino Sans', 'Noto Sans JP', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ========= HEADER ========= */
+    .header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-left { display: flex; align-items: center; gap: 14px; }
+    .header-logo {
+      width: 36px; height: 36px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px;
+    }
+    .header-title { font-size: 17px; font-weight: 700; }
+    .header-sub { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+    .header-meta { font-size: 11px; color: var(--text-muted); text-align: right; }
+
+    /* ========= LAYOUT ========= */
+    .container { max-width: 1100px; margin: 0 auto; padding: 32px 24px; }
+
+    /* ========= HERO ========= */
+    .hero {
+      background: linear-gradient(135deg, #0a1628 0%, #1a0a28 100%);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 36px 40px;
+      margin-bottom: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(0,212,170,0.15) 0%, transparent 70%);
+    }
+    .hero-tag {
+      display: inline-block;
+      background: rgba(0,212,170,0.15);
+      color: var(--accent);
+      border: 1px solid rgba(0,212,170,0.3);
+      border-radius: 20px;
+      padding: 4px 14px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      margin-bottom: 16px;
+    }
+    .hero h1 { font-size: 28px; font-weight: 800; line-height: 1.3; margin-bottom: 10px; }
+    .hero h1 span { color: var(--accent); }
+    .hero-desc { font-size: 14px; color: var(--text-sub); line-height: 1.7; max-width: 600px; }
+    .hero-kpi {
+      display: flex; gap: 24px; margin-top: 28px; flex-wrap: wrap;
+    }
+    .kpi-box {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 20px;
+    }
+    .kpi-num { font-size: 26px; font-weight: 800; color: var(--accent); }
+    .kpi-label { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+
+    /* ========= TOC ========= */
+    .toc-section { margin-bottom: 32px; }
+    .section-title {
+      font-size: 13px; font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 14px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .section-title::after {
+      content: ''; flex: 1;
+      height: 1px; background: var(--border);
+    }
+    .toc {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 10px;
+    }
+    .toc-item a {
+      display: flex; align-items: center; gap: 10px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 16px;
+      text-decoration: none;
+      color: var(--text);
+      transition: all 0.15s;
+    }
+    .toc-item a:hover {
+      border-color: var(--accent);
+      background: rgba(0,212,170,0.05);
+    }
+    .toc-num {
+      width: 24px; height: 24px;
+      background: var(--surface2);
+      border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 700; color: var(--accent);
+      flex-shrink: 0;
+    }
+    .toc-text { font-size: 13px; }
+
+    /* ========= SECTIONS ========= */
+    .section { margin-bottom: 40px; }
+    .section h2 {
+      font-size: 18px; font-weight: 700;
+      margin-bottom: 20px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .section h2 .ch {
+      font-size: 10px; font-weight: 600;
+      background: var(--accent);
+      color: #000;
+      border-radius: 4px;
+      padding: 2px 8px;
+    }
+
+    /* ========= CARD ========= */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 12px;
+    }
+    .card-title { font-size: 14px; font-weight: 700; margin-bottom: 8px; }
+    .card-body { font-size: 13px; color: var(--text-sub); line-height: 1.7; }
+
+    /* ========= PERSONA TABLE ========= */
+    .persona-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 12px;
+    }
+    .persona-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px;
+    }
+    .persona-icon { font-size: 22px; margin-bottom: 10px; }
+    .persona-title { font-size: 13px; font-weight: 700; margin-bottom: 6px; }
+    .persona-desc { font-size: 12px; color: var(--text-sub); line-height: 1.6; }
+
+    /* ========= CATEGORY RANKING ========= */
+    .rank-list { display: flex; flex-direction: column; gap: 8px; }
+    .rank-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 18px;
+      display: flex; align-items: flex-start; gap: 14px;
+    }
+    .rank-item.rank-top { border-color: rgba(0,212,170,0.4); }
+    .rank-badge {
+      width: 28px; height: 28px; border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 800; flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .rank-1 .rank-badge { background: #ffd700; color: #000; }
+    .rank-2 .rank-badge { background: #c0c0c0; color: #000; }
+    .rank-3 .rank-badge { background: #cd7f32; color: #fff; }
+    .rank-other .rank-badge { background: var(--surface2); color: var(--text-muted); }
+    .rank-name { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+    .rank-desc { font-size: 12px; color: var(--text-sub); line-height: 1.5; }
+    .rank-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 6px; }
+    .tag {
+      font-size: 10px; padding: 2px 8px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+    }
+    .tag.green { border-color: rgba(0,212,170,0.4); color: var(--accent); }
+    .tag.purple { border-color: rgba(124,77,255,0.4); color: #a78bfa; }
+
+    /* ========= NEXT ACTIONS ========= */
+    .action-list { display: flex; flex-direction: column; gap: 8px; }
+    .action-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 18px;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .action-status {
+      width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
+    }
+    .status-pending { background: var(--warn); }
+    .status-done { background: var(--accent); }
+    .action-who {
+      font-size: 11px; font-weight: 700;
+      background: var(--surface2); border-radius: 6px;
+      padding: 2px 8px; white-space: nowrap; color: var(--text-sub);
+    }
+    .action-text { font-size: 13px; flex: 1; }
+    .action-link {
+      display: inline-block; margin-left: 10px;
+      color: var(--accent); font-size: 12px; font-weight: 600;
+      text-decoration: none; border: 1px solid var(--accent);
+      border-radius: 4px; padding: 1px 8px;
+      transition: background 0.15s;
+    }
+    .action-link:hover { background: var(--accent); color: #000; }
+
+    /* ========= APPROACH ========= */
+    .flow {
+      display: flex; gap: 12px; align-items: center; flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .flow-step {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 12px 16px;
+      font-size: 13px; text-align: center; min-width: 130px;
+    }
+    .flow-step-num { font-size: 10px; color: var(--accent); font-weight: 700; margin-bottom: 4px; }
+    .flow-step-label { font-weight: 700; }
+    .flow-step-sub { font-size: 11px; color: var(--text-muted); margin-top: 3px; }
+    .flow-arrow { color: var(--accent); font-size: 18px; }
+
+    /* ========= QUOTE ========= */
+    .quote {
+      border-left: 3px solid var(--accent);
+      padding: 14px 20px;
+      background: rgba(0,212,170,0.05);
+      border-radius: 0 10px 10px 0;
+      font-size: 14px; line-height: 1.7;
+      color: var(--text-sub);
+      margin-bottom: 20px;
+    }
+    .quote strong { color: var(--text); }
+
+    /* ========= FOOTER ========= */
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 20px 32px;
+      text-align: center;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    @media print {
+      * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+      @page { size: A4; margin: 10mm; }
+      .header { position: static; }
+    }
+    @media (max-width: 600px) {
+      .hero { padding: 24px 20px; }
+      .hero h1 { font-size: 20px; }
+      .container { padding: 20px 16px; }
+      .flow { flex-direction: column; align-items: stretch; }
+      .flow-arrow { transform: rotate(90deg); text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-left">
+    <div class="header-logo">🎬</div>
+    <div>
+      <div class="header-title">AIGC戦略プロジェクト</div>
+      <div class="header-sub">1社に1000本のAIGCを導入する</div>
+    </div>
+  </div>
+  <div class="header-meta">
+    Last Updated<br>2026年5月20日 18:19
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- HERO -->
+  <section class="hero" id="sec-top">
+    <div class="hero-tag">🚀 PROJECT KICKOFF</div>
+    <h1>1社のPDPに<span>1000本</span>の<br>AIGC動画を導入する</h1>
+    <p class="hero-desc">
+      USはすでに1PDPあたり5〜10本の動画実装を実現。<br>
+      日本でもロールモデル1社を作り、横展開する戦略を推進する。
+    </p>
+    <div class="hero-kpi">
+      <div class="kpi-box">
+        <div class="kpi-num">1,000<span style="font-size:14px">本</span></div>
+        <div class="kpi-label">目標：1社あたりの動画導入数</div>
+      </div>
+      <div class="kpi-box">
+        <div class="kpi-num">70<span style="font-size:14px">%</span></div>
+        <div class="kpi-label">見込：撮影コスト削減率</div>
+      </div>
+      <div class="kpi-box">
+        <div class="kpi-num">5〜10<span style="font-size:14px">本/PDP</span></div>
+        <div class="kpi-label">US実績：1PDPあたりの動画数</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOC -->
+  <div class="toc-section">
+    <div class="section-title">目次</div>
+    <div class="toc">
+      <div class="toc-item"><a href="#sec-strategy"><div class="toc-num">1</div><div class="toc-text">戦略コンセプト</div></a></div>
+      <div class="toc-item"><a href="#sec-persona"><div class="toc-num">2</div><div class="toc-text">ターゲットペルソナ</div></a></div>
+      <div class="toc-item"><a href="#sec-approach"><div class="toc-num">3</div><div class="toc-text">制作アプローチ</div></a></div>
+      <div class="toc-item"><a href="#sec-fit"><div class="toc-num">4</div><div class="toc-text">AIGC適性マトリクス</div></a></div>
+      <div class="toc-item"><a href="#sec-category"><div class="toc-num">5</div><div class="toc-text">カテゴリ優先順位</div></a></div>
+      <div class="toc-item"><a href="#sec-actions"><div class="toc-num">6</div><div class="toc-text">ネクストアクション</div></a></div>
+    </div>
+  </div>
+
+  <!-- 1. 戦略コンセプト -->
+  <section class="section" id="sec-strategy">
+    <h2><span class="ch">Ch.1</span>戦略コンセプト</h2>
+    <div class="quote">
+      <strong>「お宝の箱を探す」</strong><br>
+      細かいPL調整に終始せず、導入したら売上がバコンと上がるクライアントを1社見つける。<br>
+      まず無償でも成功事例を作り、それを横展開するのが最速ルート。
+    </div>
+    <div class="persona-grid">
+      <div class="persona-card">
+        <div class="persona-icon">🔁</div>
+        <div class="persona-title">Fireworkの継続利用促進</div>
+        <div class="persona-desc">使い倒してもらうことでリプレイスされにくい永続的な関係を構築</div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-icon">📈</div>
+        <div class="persona-title">売上・LTV向上</div>
+        <div class="persona-desc">PDPにAIGCを入れることでCVRが上がり、クライアントの売上・LTVが向上する</div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-icon">🏆</div>
+        <div class="persona-title">ロールモデル1社を作る</div>
+        <div class="persona-desc">成功事例1社ができれば横展開が格段にしやすくなる</div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-icon">⚡</div>
+        <div class="persona-title">Fireworkの差別化</div>
+        <div class="persona-desc">PDPにおける配信×CVR改善の「正解」を保有。ただの制作会社とは違う価値を提供</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. ターゲットペルソナ -->
+  <section class="section" id="sec-persona">
+    <h2><span class="ch">Ch.2</span>ターゲットペルソナ条件</h2>
+    <div class="action-list">
+      <div class="action-item">
+        <div class="action-who">条件①</div>
+        <div class="action-text">AIFAQが実装されていなくても<strong>すぐに導入できる</strong>状態のクライアント</div>
+      </div>
+      <div class="action-item">
+        <div class="action-who">条件②</div>
+        <div class="action-text">AIGCのクオリティを一定許容してくれる（<strong>質より量を理解</strong>してくれる）</div>
+      </div>
+      <div class="action-item">
+        <div class="action-who">条件③</div>
+        <div class="action-text">1つの商材カテゴリのSKUが多い（<strong>トップスだけで500本</strong>量産できるような環境）</div>
+      </div>
+      <div class="action-item">
+        <div class="action-who">条件④</div>
+        <div class="action-text">1社あたりのデジマ・クリエイティブ<strong>予算規模が大きい</strong>（数千万〜数億円規模）</div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:16px; border-color: rgba(0,212,170,0.4);">
+      <div class="card-title">✅ 現時点の最有力カテゴリ：アパレル</div>
+      <div class="card-body">
+        SKU数が多い（トップス・ボトムス・インナーで数百点規模）／モデル着用画像の量産ニーズが高い一方で撮影コストが重い／コスメのような「ブランドディレクターNO」問題が起きにくい
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. 制作アプローチ -->
+  <section class="section" id="sec-approach">
+    <h2><span class="ch">Ch.3</span>制作アプローチ</h2>
+    <div class="flow">
+      <div class="flow-step">
+        <div class="flow-step-num">STEP 1</div>
+        <div class="flow-step-label">商品画像（素材）</div>
+        <div class="flow-step-sub">実写撮影済みの商品画像を入稿</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="flow-step-num">STEP 2</div>
+        <div class="flow-step-label">AIモデル着用画像</div>
+        <div class="flow-step-sub">スタジオ不要・AIで着用静止画を生成</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="flow-step-num">STEP 3</div>
+        <div class="flow-step-label">AIGC動画を生成</div>
+        <div class="flow-step-sub">コーデ感・使用イメージの動画を量産</div>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <div class="flow-step-num">STEP 4</div>
+        <div class="flow-step-label">PDPに実装</div>
+        <div class="flow-step-sub">Firework経由でCVR改善・PDCAへ</div>
+      </div>
+    </div>
+    <div class="persona-grid">
+      <div class="persona-card">
+        <div class="persona-icon">🔀</div>
+        <div class="persona-title">ハイブリッド制作</div>
+        <div class="persona-desc">実写（素材撮影）＋AI生成の組み合わせ</div>
+      </div>
+      <div class="persona-card">
+        <div class="persona-icon">🖼️</div>
+        <div class="persona-title">静止画もセット提案</div>
+        <div class="persona-desc">動画と同時に静止画を生成。ユナイテッドアローズ試算：年間〜1億円の制作費を70%削減可能</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. AIGC適性マトリクス -->
+  <section class="section" id="sec-fit">
+    <h2><span class="ch">Ch.4</span>AIGC適性マトリクス</h2>
+    <p style="font-size:12px; color:var(--text-muted); margin-bottom:16px;">「どんな商材・状況がAIGCに向いているか」の切り口整理</p>
+    <div class="persona-grid" style="grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); margin-bottom:20px;">
+
+      <div class="persona-card" style="border-color: rgba(0,212,170,0.3);">
+        <div class="persona-icon">👶🐾👴</div>
+        <div class="persona-title">撮影対象ハードル — 人物・動物</div>
+        <div class="persona-desc">
+          子ども・シニア・ペットなど撮影調整が困難な対象。<br>
+          キャスティング費が1本5万円超になるケースもあり、AIGCで費用対効果が飛躍的に改善。
+        </div>
+        <div class="rank-tags" style="margin-top:10px;">
+          <span class="tag green">費用削減◎</span><span class="tag green">調整コスト◎</span>
+        </div>
+      </div>
+
+      <div class="persona-card" style="border-color: rgba(0,212,170,0.3);">
+        <div class="persona-icon">🏔️🌊⛷️</div>
+        <div class="persona-title">撮影場所ハードル — 自然・極地</div>
+        <div class="persona-desc">
+          山・海・雪山など実際に行かないと撮れない場所が必要な商材（アウトドア・キャンプ・スキー等）。<br>
+          ロケ費・季節制約をAIGCで解決。
+        </div>
+        <div class="rank-tags" style="margin-top:10px;">
+          <span class="tag green">季節制約解消</span><span class="tag green">ロケ費ゼロ</span>
+        </div>
+      </div>
+
+      <div class="persona-card" style="border-color: rgba(0,212,170,0.3);">
+        <div class="persona-icon">👗👒👟</div>
+        <div class="persona-title">SKU量産ニーズ — アパレル・ファッション</div>
+        <div class="persona-desc">
+          トップス・ボトムス・インナーなど1カテゴリでSKU数百点規模。<br>
+          モデル着用画像を色・サイズ違いで大量生成でき、量産型のロールモデルを作りやすい。
+        </div>
+        <div class="rank-tags" style="margin-top:10px;">
+          <span class="tag green">量産◎</span><span class="tag green">現在最有力</span>
+        </div>
+      </div>
+
+      <div class="persona-card" style="border-color: rgba(124,77,255,0.3);">
+        <div class="persona-icon">💰📦</div>
+        <div class="persona-title">既存コスト代替 — 実写撮影が高額</div>
+        <div class="persona-desc">
+          ユナイテッドアローズ試算：年間撮影費〜1億円 → AIGCで70%削減可能。<br>
+          「コンバージョン向上」より「コスト削減」訴求の方が刺さるクライアントに有効。
+        </div>
+        <div class="rank-tags" style="margin-top:10px;">
+          <span class="tag purple">コスト代替</span><span class="tag">ROI訴求</span>
+        </div>
+      </div>
+
+      <div class="persona-card" style="border-color: rgba(124,77,255,0.3);">
+        <div class="persona-icon">🏭🔩🌾</div>
+        <div class="persona-title">リテラシー層 — 職人・一次産業</div>
+        <div class="persona-desc">
+          農家・漁業・製造業など動画制作リテラシーが高くない職種。<br>
+          「とにかく作ってほしい」ニーズが強く、クオリティのこだわりが少ないためAIGCが通りやすい。
+        </div>
+        <div class="rank-tags" style="margin-top:10px;">
+          <span class="tag purple">クオリティ許容度◎</span>
+        </div>
+      </div>
+
+      <div class="persona-card" style="border-color: rgba(255,107,53,0.3);">
+        <div class="persona-icon">💎✨</div>
+        <div class="persona-title">⚠️ NG — ハイブランド・高単価</div>
+        <div class="persona-desc">
+          1点3万円以上のセレクトショップ・ラグジュアリーブランドはAIGCへのアレルギーが強い。<br>
+          ブランドディレクターが「NO」を出すケースが多く、現時点では避けるべき。
+        </div>
+        <div class="rank-tags" style="margin-top:10px;">
+          <span class="tag" style="border-color:rgba(255,107,53,0.4); color:var(--warn);">現時点は非推奨</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 5. カテゴリ優先順位 -->
+  <section class="section" id="sec-category">
+    <h2><span class="ch">Ch.5</span>次に狙うカテゴリ優先順位 TOP10</h2>
+    <p style="font-size:12px; color:var(--text-muted); margin-bottom:16px;">「1社あたりの予算規模が大きい」を重視して評価・ソート済み（2026年5月20日時点）</p>
+    <div class="rank-list">
+
+      <div class="rank-item rank-top rank-1">
+        <div class="rank-badge">1</div>
+        <div>
+          <div class="rank-name">🔌 家電・PC周辺機器</div>
+          <div class="rank-desc">ソニー・パナソニック等のナショナルクライアントが中心。CG制作コストのリプレイスとして刺さる。予算規模が最大クラス</div>
+          <div class="rank-tags"><span class="tag green">予算◎</span><span class="tag green">SKU多</span><span class="tag">CG代替</span></div>
+        </div>
+      </div>
+
+      <div class="rank-item rank-top rank-2">
+        <div class="rank-badge">2</div>
+        <div>
+          <div class="rank-name">🛋️ 家具・インテリア・生活雑貨</div>
+          <div class="rank-desc">ニトリ・IKEA等の大手SPA。ルームセット撮影の高額コストをAIGCにリプレイスするだけで数千本規模の発注が見込める</div>
+          <div class="rank-tags"><span class="tag green">予算◎</span><span class="tag">コスト代替</span><span class="tag purple">ニトリFDA締結済</span></div>
+        </div>
+      </div>
+
+      <div class="rank-item rank-top rank-3">
+        <div class="rank-badge">3</div>
+        <div>
+          <div class="rank-name">🧸 ベビー・キッズ用品・玩具</div>
+          <div class="rank-desc">バンダイ・タカラトミー・ピジョン等。子ども撮影ハードル（スケジュール・費用）をAIGCで解決。豊富なSKUで大型予算を引き出しやすい</div>
+          <div class="rank-tags"><span class="tag green">撮影ハードル◎</span><span class="tag green">SKU多</span><span class="tag">赤ちゃん本舗あり</span></div>
+        </div>
+      </div>
+
+      <div class="rank-item rank-other">
+        <div class="rank-badge">4</div>
+        <div>
+          <div class="rank-name">🐾 ペット用品・ペットフード</div>
+          <div class="rank-desc">ユニ・チャーム・花王等が参入。動物撮影ハードルが明確で課題感が強い。FMCGとして予算は安定</div>
+          <div class="rank-tags"><span class="tag green">撮影ハードル◎</span><span class="tag">FMCG予算安定</span></div>
+        </div>
+      </div>
+
+      <div class="rank-item rank-other">
+        <div class="rank-badge">5</div>
+        <div>
+          <div class="rank-name">⛺ アウトドア・キャンプ用品</div>
+          <div class="rank-desc">スノーピーク・コールマン等。山・自然という撮影ハードルとSKUの多さが強い課題感。トップ企業に絞れば大型受注可能</div>
+          <div class="rank-tags"><span class="tag green">撮影ハードル◎</span><span class="tag purple">キャンプイベント連携</span></div>
+        </div>
+      </div>
+
+      <div class="rank-item rank-other">
+        <div class="rank-badge">6</div>
+        <div>
+          <div class="rank-name">👴 シニア向け商材・介護用品</div>
+          <div class="rank-desc">大手ヘルスケア・製薬メーカーが主力。ブランドがゆるく「量と分かりやすさ」優先で通りやすい。成長市場</div>
+          <div class="rank-tags"><span class="tag green">撮影ハードル◎</span><span class="tag">成長市場</span></div>
+        </div>
+      </div>
+
+      <div class="rank-item rank-other">
+        <div class="rank-badge">7</div>
+        <div>
+          <div class="rank-name">🎣 マリンスポーツ・釣り具用品</div>
+          <div class="rank-desc">シマノ・ダイワ等の世界的大手企業が存在。海・船という撮影ハードルが明確。大手に絞れば大型予算獲得可能</div>
+          <div class="rank-tags"><span class="tag green">撮影ハードル◎</span><span class="tag">絞り込みが必要</span></div>
+        </div>
+      </div>
+
+      <div class="rank-item rank-other">
+        <div class="rank-badge">8</div>
+        <div>
+          <div class="rank-name">🍱 ふるさと納税の返礼品</div>
+          <div class="rank-desc">プラットフォームは巨大だが1社（1自治体）あたりの予算は小さく分散。1000本提案には決裁と予算の天井がネック</div>
+          <div class="rank-tags"><span class="tag">市場大・1社予算小</span></div>
+        </div>
+      </div>
+
+      <div class="rank-item rank-other">
+        <div class="rank-badge">9</div>
+        <div>
+          <div class="rank-name">🌾 農業・漁業・一次産業向け機材</div>
+          <div class="rank-desc">クボタ・ヤンマー等の超大手除くと中小企業が多い。デジマ予算自体が限定的</div>
+          <div class="rank-tags"><span class="tag">大手のみ狙い目</span></div>
+        </div>
+      </div>
+
+      <div class="rank-item rank-other">
+        <div class="rank-badge">10</div>
+        <div>
+          <div class="rank-name">🍜 飲食店・グルメ（ポータル掲載店舗）</div>
+          <div class="rank-desc">食べログ等のプラットフォームは大きいが、お金を払うのは個店・中小チェーン。1社あたりの予算が極小で1000本提案には最も不向き</div>
+          <div class="rank-tags"><span class="tag">1社予算×</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 6. ネクストアクション -->
+  <section class="section" id="sec-actions">
+    <h2><span class="ch">Ch.6</span>ネクストアクション</h2>
+    <div class="action-list">
+      <div class="action-item">
+        <div class="action-status status-pending"></div>
+        <div class="action-who">Kazuki-san</div>
+        <div class="action-text">長尾さんにアドバイザー就任を打診（アパレル業界の人脈・知見を活用）</div>
+      </div>
+      <div class="action-item">
+        <div class="action-status status-pending"></div>
+        <div class="action-who">JPTeam</div>
+        <div class="action-text">長尾さん向け報酬プログラム設計（紹介成約時のリファラルプログラム）</div>
+      </div>
+      <div class="action-item">
+        <div class="action-status status-pending"></div>
+        <div class="action-who">JPTeam</div>
+        <div class="action-text">推奨カテゴリを3つ選定して提示</div>
+      </div>
+      <div class="action-item">
+        <div class="action-status status-pending"></div>
+        <div class="action-who">グループ</div>
+        <div class="action-text">Slackアンケートで次のターゲットカテゴリを2〜3個に絞る（TOP10から投票）</div>
+      </div>
+      <div class="action-item">
+        <div class="action-status status-pending"></div>
+        <div class="action-who">みどりさん</div>
+        <div class="action-text">カンパニーズへAIGCをプレイリスト販売モデルで提案（100本100万円まとめ売り）<a href="./companies.html" class="action-link">詳細 →</a></div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer class="footer">
+  AIGC戦略プロジェクト — Firework Japan Team — Last Updated: 2026年5月20日 18:46
+</footer>
+
+</body>
+</html>

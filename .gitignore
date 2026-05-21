@@ -1,0 +1,27 @@
+# macOS
+.DS_Store
+**/.DS_Store
+
+# 業務データ(バイナリ・公開リポに載せない)
+**/*.pptx
+**/*.xlsx
+**/*.docx
+**/*.pdf
+**/*.key
+**/*.numbers
+**/*.pages
+
+# OMC / Claude 作業状態
+.omc/
+.omc/state/
+.claude/
+.playwright-mcp/
+.backup_*/
+_削除候補_*/
+_要確認_*/
+
+# 依存・ビルド成果物
+node_modules/
+.next/
+dist/
+build/
