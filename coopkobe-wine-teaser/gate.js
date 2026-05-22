@@ -1,15 +1,12 @@
 /**
  * Simple password gate for client-facing static pages.
  * パスワードは SHA-256 ハッシュで照合（平文はコードに含めない）。
- * 認証成功後は localStorage に保持し、ブラウザを閉じても再入力不要にする。
- *
- * 注意: クライアントサイドのみの簡易保護。検索エンジン除外・URL漏れ対策レベル。
- *       機密度が高い場合はサーバーサイド認証を検討すること。
+ * 「パスワードを記憶する」チェック ON → localStorage（永続）
+ *                         チェック OFF → sessionStorage（タブを閉じると消える）
  */
 (function () {
   'use strict';
 
-  // 許可パスワードの SHA-256 ハッシュ（平文は埋め込まない）
   var PASSWORD_HASH = '449a084fe8efb2e03c72d781b2813c1bbdc0a85465e45d4d598975772cdc50d4';
   var STORAGE_KEY = 'coopkobe_wine_auth';
   var TITLE = 'めーむLIVE | 企画プラン';
@@ -44,6 +41,10 @@
       '  <p>' + SUBTITLE + '</p>',
       '  <form id="fw-gate-form" autocomplete="off">',
       '    <input id="fw-gate-input" type="password" placeholder="パスワードを入力" autofocus>',
+      '    <label class="fw-gate-remember">',
+      '      <input type="checkbox" id="fw-gate-remember" checked>',
+      '      <span>パスワードを記憶する</span>',
+      '    </label>',
       '    <button type="submit">閲覧する</button>',
       '  </form>',
       '  <div id="fw-gate-err" class="fw-gate-err"></div>',
@@ -61,6 +62,8 @@
       '#fw-gate-form{display:flex;flex-direction:column;gap:10px;}',
       '#fw-gate-input{padding:12px 14px;border:1px solid #ccc;border-radius:8px;font-size:14px;outline:none;}',
       '#fw-gate-input:focus{border-color:#FA006D;}',
+      '.fw-gate-remember{display:flex;align-items:center;justify-content:center;gap:6px;font-size:12px;color:#555;cursor:pointer;user-select:none;}',
+      '.fw-gate-remember input[type=checkbox]{width:14px;height:14px;accent-color:#FA006D;cursor:pointer;}',
       '#fw-gate-form button{padding:12px;border:none;border-radius:8px;background:#FA006D;color:#fff;font-size:14px;font-weight:700;cursor:pointer;}',
       '#fw-gate-form button:hover{opacity:.9;}',
       '.fw-gate-err{color:#FA006D;font-size:12px;margin-top:12px;min-height:16px;}'
@@ -70,9 +73,16 @@
     document.getElementById('fw-gate-form').addEventListener('submit', function (e) {
       e.preventDefault();
       var val = document.getElementById('fw-gate-input').value;
+      var remember = document.getElementById('fw-gate-remember').checked;
       sha256Hex(val).then(function (hex) {
         if (hex === PASSWORD_HASH) {
-          try { localStorage.setItem(STORAGE_KEY, '1'); } catch (_) {}
+          try {
+            if (remember) {
+              localStorage.setItem(STORAGE_KEY, '1');
+            } else {
+              sessionStorage.setItem(STORAGE_KEY, '1');
+            }
+          } catch (_) {}
           reveal();
         } else {
           document.getElementById('fw-gate-err').textContent = 'パスワードが正しくありません。';
@@ -84,7 +94,10 @@
 
   function init() {
     var ok = false;
-    try { ok = localStorage.getItem(STORAGE_KEY) === '1'; } catch (_) {}
+    try {
+      ok = localStorage.getItem(STORAGE_KEY) === '1' ||
+           sessionStorage.getItem(STORAGE_KEY) === '1';
+    } catch (_) {}
     if (!ok) buildGate();
   }
 
