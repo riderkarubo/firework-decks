@@ -3,188 +3,96 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>企画案HTML作成フロー</title>
+  <title>企画案HTML作成フロー — Cowork版</title>
   <meta name="robots" content="noindex, nofollow">
   <script src="./gate.js"></script>
-  <meta name="last-modified" content="2026-05-22T16:36:48+09:00">
-  <meta name="description" content="クライアント向け企画案HTMLの作成・公開フロー">
+  <meta name="last-modified" content="2026-05-22T16:48:20+09:00">
+  <meta name="description" content="Coworkを使ってクライアント向け企画案HTMLを作り、パスワード付きで公開するまでの完全手順">
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap');
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Noto Sans JP', 'Hiragino Sans', sans-serif;
-      background: #faf8f5;
-      color: #1a1a1a;
-      font-size: 13px;
-      line-height: 1.8;
-    }
-    .page { max-width: 860px; margin: 0 auto; padding: 40px 20px 80px; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Noto Sans JP','Hiragino Sans',sans-serif; background:#faf8f5; color:#1a1a1a; font-size:13px; line-height:1.8; }
+    .page { max-width:860px; margin:0 auto; padding:40px 20px 80px; }
 
     /* COVER */
-    .cover {
-      background: #1a1a2e;
-      border-radius: 20px;
-      padding: 52px 56px 44px;
-      margin-bottom: 40px;
-      position: relative;
-      overflow: hidden;
-    }
-    .cover::after {
-      content: '📋';
-      position: absolute; right: 48px; bottom: 28px;
-      font-size: 100px; opacity: 0.1; line-height: 1;
-    }
-    .cover-eyebrow {
-      display: inline-block;
-      background: #fa006d; color: white;
-      font-size: 10px; font-weight: 700; letter-spacing: 3px;
-      padding: 4px 14px; border-radius: 20px; margin-bottom: 18px;
-    }
-    .cover h1 { font-size: 28px; font-weight: 900; color: white; line-height: 1.4; margin-bottom: 12px; }
-    .cover h1 em { font-style: normal; color: #fa006d; }
-    .cover-sub { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; }
-    .cover-meta {
-      margin-top: 28px;
-      display: flex; gap: 0;
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 10px; overflow: hidden; max-width: 480px;
-    }
-    .cover-meta-item {
-      flex: 1; padding: 12px 16px;
-      border-right: 1px solid rgba(255,255,255,0.15);
-    }
-    .cover-meta-item:last-child { border-right: none; }
-    .cover-meta-label { font-size: 9px; color: rgba(255,255,255,0.4); letter-spacing: 2px; margin-bottom: 3px; }
-    .cover-meta-value { font-size: 12px; font-weight: 700; color: white; }
+    .cover { background:#1a1a2e; border-radius:20px; padding:52px 56px 44px; margin-bottom:40px; position:relative; overflow:hidden; }
+    .cover::after { content:"📋"; position:absolute; right:48px; bottom:28px; font-size:100px; opacity:0.1; line-height:1; }
+    .cover-eyebrow { display:inline-block; background:#fa006d; color:white; font-size:10px; font-weight:700; letter-spacing:3px; padding:4px 14px; border-radius:20px; margin-bottom:18px; }
+    .cover h1 { font-size:28px; font-weight:900; color:white; line-height:1.4; margin-bottom:12px; }
+    .cover h1 em { font-style:normal; color:#fa006d; }
+    .cover-sub { font-size:13px; color:rgba(255,255,255,0.55); line-height:1.7; margin-bottom:28px; }
+    .cover-dl { display:inline-flex; align-items:center; gap:8px; background:#fa006d; color:white; font-size:13px; font-weight:700; padding:12px 24px; border-radius:8px; text-decoration:none; margin-top:4px; }
+    .cover-dl:hover { opacity:0.9; }
+    .cover-meta { margin-top:24px; display:flex; gap:0; border:1px solid rgba(255,255,255,0.15); border-radius:10px; overflow:hidden; max-width:520px; }
+    .cover-meta-item { flex:1; padding:12px 16px; border-right:1px solid rgba(255,255,255,0.15); }
+    .cover-meta-item:last-child { border-right:none; }
+    .cover-meta-label { font-size:9px; color:rgba(255,255,255,0.4); letter-spacing:2px; margin-bottom:3px; }
+    .cover-meta-value { font-size:11px; font-weight:700; color:white; }
 
     /* SECTION */
-    .section-wrap { margin-bottom: 48px; }
-    .sec-heading {
-      display: flex; align-items: baseline; gap: 14px;
-      margin-bottom: 20px; padding-bottom: 10px;
-      border-bottom: 2px solid #1a1a2e;
-    }
-    .sec-num { font-size: 11px; font-weight: 700; color: #fa006d; letter-spacing: 2px; }
-    .sec-heading h2 { font-size: 18px; font-weight: 900; color: #1a1a2e; }
+    .section-wrap { margin-bottom:48px; }
+    .sec-heading { display:flex; align-items:baseline; gap:14px; margin-bottom:20px; padding-bottom:10px; border-bottom:2px solid #1a1a2e; }
+    .sec-num { font-size:11px; font-weight:700; color:#fa006d; letter-spacing:2px; }
+    .sec-heading h2 { font-size:18px; font-weight:900; color:#1a1a2e; }
 
     /* STEP CARD */
-    .step-card {
-      background: white; border-radius: 12px;
-      padding: 24px 28px; margin-bottom: 12px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-      display: flex; gap: 20px; align-items: flex-start;
-    }
-    .step-num {
-      width: 36px; height: 36px; flex-shrink: 0;
-      background: #1a1a2e; color: white;
-      border-radius: 50%; display: flex; align-items: center; justify-content: center;
-      font-size: 14px; font-weight: 900;
-    }
-    .step-card.accent .step-num { background: #fa006d; }
-    .step-body { flex: 1; }
-    .step-title { font-size: 15px; font-weight: 700; color: #1a1a2e; margin-bottom: 6px; }
-    .step-text { font-size: 13px; color: #444; line-height: 1.8; }
-    .step-text ul { margin: 8px 0 0 0; padding-left: 18px; }
-    .step-text li { margin-bottom: 4px; }
+    .step-card { background:white; border-radius:12px; padding:24px 28px; margin-bottom:12px; box-shadow:0 2px 10px rgba(0,0,0,0.05); display:flex; gap:20px; align-items:flex-start; }
+    .step-num { width:36px; height:36px; flex-shrink:0; background:#1a1a2e; color:white; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:900; }
+    .step-card.accent .step-num { background:#fa006d; }
+    .step-body { flex:1; }
+    .step-title { font-size:15px; font-weight:700; color:#1a1a2e; margin-bottom:6px; }
+    .step-text { font-size:13px; color:#444; line-height:1.8; }
+    .step-text ul { margin:8px 0 0 0; padding-left:18px; }
+    .step-text li { margin-bottom:4px; }
+
+    /* FILE BADGE */
+    .file-name { display:inline-block; background:#f0f0f0; color:#1a1a2e; font-family:"Courier New",monospace; font-size:11px; font-weight:700; padding:2px 8px; border-radius:4px; }
+
+    /* Q BOX */
+    .q-list { margin:12px 0; }
+    .q-item { display:flex; gap:12px; padding:10px 0; border-bottom:1px solid #f0f0f0; font-size:13px; }
+    .q-item:last-child { border-bottom:none; }
+    .q-num { width:24px; height:24px; flex-shrink:0; background:#4a6cf7; color:white; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700; margin-top:1px; }
+    .q-text { flex:1; color:#333; line-height:1.7; }
+    .q-example { font-size:11px; color:#888; margin-top:2px; }
 
     /* CODE BLOCK */
-    .code-block {
-      background: #1a1a2e; color: #e8e8e8;
-      border-radius: 10px; padding: 18px 22px;
-      font-family: 'Courier New', monospace; font-size: 12px;
-      line-height: 1.7; margin: 12px 0;
-      overflow-x: auto;
-    }
-    .code-block .comment { color: #888; }
-    .code-block .key { color: #fa006d; font-weight: 700; }
-    .code-block .val { color: #1b998b; }
+    .code-block { background:#1a1a2e; color:#e8e8e8; border-radius:10px; padding:18px 22px; font-family:"Courier New",monospace; font-size:12px; line-height:1.7; margin:12px 0; overflow-x:auto; }
+    .code-block .comment { color:#888; }
+    .code-block .key { color:#fa006d; font-weight:700; }
+    .code-block .val { color:#1b998b; }
 
     /* PROMPT BLOCK */
-    .prompt-block {
-      background: #f0f4ff;
-      border: 1px solid #c5d0f5;
-      border-left: 4px solid #4a6cf7;
-      border-radius: 0 10px 10px 0;
-      padding: 18px 22px; margin: 12px 0;
-      font-size: 13px; line-height: 1.8; color: #2a3a6e;
-    }
-    .prompt-label {
-      font-size: 10px; font-weight: 700; letter-spacing: 2px;
-      color: #4a6cf7; margin-bottom: 8px;
-    }
+    .prompt-block { background:#f0f4ff; border:1px solid #c5d0f5; border-left:4px solid #4a6cf7; border-radius:0 10px 10px 0; padding:18px 22px; margin:12px 0; font-size:13px; line-height:1.8; color:#2a3a6e; }
+    .prompt-label { font-size:10px; font-weight:700; letter-spacing:2px; color:#4a6cf7; margin-bottom:8px; }
 
-    /* CALLOUT */
-    .info-callout {
-      background: #f0faf8; border: 1px solid #b2dfdb;
-      border-radius: 10px; padding: 16px 20px;
-      margin: 12px 0; font-size: 13px; line-height: 1.8;
-    }
-    .info-callout strong { color: #1b998b; }
-    .warn-callout {
-      background: #fff9f0; border: 1px solid #f5c518;
-      border-radius: 10px; padding: 14px 18px;
-      margin: 12px 0; font-size: 13px; color: #7a5a00;
-    }
-    .tip-callout {
-      background: #fef0f5; border: 1px solid #fbb6d2;
-      border-radius: 10px; padding: 14px 18px;
-      margin: 12px 0; font-size: 13px; color: #8b1a4a;
-    }
+    /* CALLOUTS */
+    .info-callout { background:#f0faf8; border:1px solid #b2dfdb; border-radius:10px; padding:16px 20px; margin:12px 0; font-size:13px; line-height:1.8; }
+    .info-callout strong { color:#1b998b; }
+    .warn-callout { background:#fff9f0; border:1px solid #f5c518; border-radius:10px; padding:14px 18px; margin:12px 0; font-size:13px; color:#7a5a00; }
+    .tip-callout { background:#fef0f5; border:1px solid #fbb6d2; border-radius:10px; padding:14px 18px; margin:12px 0; font-size:13px; color:#8b1a4a; }
 
     /* CHECKLIST */
-    .checklist { margin: 12px 0; }
-    .check-item {
-      display: flex; align-items: flex-start; gap: 10px;
-      padding: 8px 0; border-bottom: 1px solid #f0f0f0;
-      font-size: 13px; color: #333;
-    }
-    .check-item:last-child { border-bottom: none; }
-    .check-box {
-      width: 18px; height: 18px; flex-shrink: 0;
-      border: 2px solid #ccc; border-radius: 4px;
-      margin-top: 1px;
-    }
+    .checklist { margin:12px 0; }
+    .check-item { display:flex; align-items:flex-start; gap:10px; padding:8px 0; border-bottom:1px solid #f0f0f0; font-size:13px; color:#333; }
+    .check-item:last-child { border-bottom:none; }
+    .check-box { width:18px; height:18px; flex-shrink:0; border:2px solid #ccc; border-radius:4px; margin-top:1px; }
 
     /* DIVIDER */
-    .divider {
-      height: 1px;
-      background: linear-gradient(to right, #fa006d, rgba(250,0,109,0.1) 60%, transparent);
-      margin: 40px 0;
-    }
+    .divider { height:1px; background:linear-gradient(to right, #fa006d, rgba(250,0,109,0.1) 60%, transparent); margin:40px 0; }
 
-    /* TOOL BADGE */
-    .tool-badge {
-      display: inline-block;
-      background: #1a1a2e; color: white;
-      font-size: 10px; font-weight: 700;
-      padding: 2px 10px; border-radius: 4px;
-      margin-right: 4px; vertical-align: middle;
-    }
-    .tool-badge.cowork { background: #4a6cf7; }
-    .tool-badge.ok { background: #1b998b; }
-
-    /* FLOW ARROW */
-    .flow-wrap {
-      display: flex; flex-direction: column; gap: 4px;
-      margin: 16px 0;
-    }
-    .flow-item {
-      background: white; border-radius: 8px;
-      padding: 12px 20px; font-size: 13px; font-weight: 600;
-      color: #1a1a2e; box-shadow: 0 1px 6px rgba(0,0,0,0.06);
-      display: flex; align-items: center; gap: 10px;
-    }
-    .flow-item .flow-icon { font-size: 18px; }
-    .flow-arrow { text-align: center; color: #fa006d; font-size: 18px; font-weight: 700; }
+    /* FLOW */
+    .flow-wrap { display:flex; flex-direction:column; gap:4px; margin:16px 0; }
+    .flow-item { background:white; border-radius:8px; padding:12px 20px; font-size:13px; font-weight:600; color:#1a1a2e; box-shadow:0 1px 6px rgba(0,0,0,0.06); display:flex; align-items:center; gap:10px; }
+    .flow-icon { font-size:18px; }
+    .flow-arrow { text-align:center; color:#fa006d; font-size:18px; font-weight:700; }
 
     /* FOOTER */
-    .footer { text-align: center; color: #bbb; font-size: 11px; margin-top: 32px; padding-top: 16px; border-top: 1px solid #e8e8e8; }
+    .footer { text-align:center; color:#bbb; font-size:11px; margin-top:32px; padding-top:16px; border-top:1px solid #e8e8e8; }
 
-    /* PRINT */
     @media print {
-      * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
-      @page { size: A4; margin: 10mm; }
+      * { -webkit-print-color-adjust:exact !important; print-color-adjust:exact !important; }
+      @page { size:A4; margin:10mm; }
     }
   </style>
 </head>
@@ -196,9 +104,10 @@
     <div class="cover-eyebrow">FIREWORK | 制作ガイド</div>
     <h1>クライアント向け<br>企画案HTML<br><em>作成・公開フロー</em></h1>
     <div class="cover-sub">
-      AIを使って企画案をHTMLにまとめ、パスワード付きで公開するまでの手順です。<br>
-      Claude Code / Cowork どちらからでも同じアウトプットが作れます。
+      Coworkを使って企画案をHTMLにまとめ、パスワード付きで公開するまでの完全手順です。<br>
+      キットをダウンロードして、AIに渡すだけで始められます。
     </div>
+    <a class="cover-dl" href="./fw-proposal-kit.zip" download>⬇ キットをダウンロード（ZIP）</a>
     <div class="cover-meta">
       <div class="cover-meta-item">
         <div class="cover-meta-label">所要時間</div>
@@ -206,33 +115,62 @@
       </div>
       <div class="cover-meta-item">
         <div class="cover-meta-label">必要なもの</div>
-        <div class="cover-meta-value">AI / GitHub / テキストエディタ</div>
+        <div class="cover-meta-value">Cowork / GitHub / テキストエディタ</div>
       </div>
       <div class="cover-meta-item">
         <div class="cover-meta-label">最終更新</div>
-        <div class="cover-meta-value">2026年5月22日 16:36</div>
+        <div class="cover-meta-value">2026年5月22日 16:48</div>
       </div>
     </div>
   </div>
 
-  <!-- 全体フロー -->
+  <!-- OVERVIEW -->
   <div class="section-wrap">
     <div class="sec-heading">
       <span class="sec-num">OVERVIEW</span>
       <h2>全体の流れ</h2>
     </div>
     <div class="flow-wrap">
-      <div class="flow-item"><span class="flow-icon">📝</span> STEP 1：素材を整理する（企画の背景・出演者・データ）</div>
+      <div class="flow-item"><span class="flow-icon">📦</span> キットをダウンロードして解凍する</div>
       <div class="flow-arrow">↓</div>
-      <div class="flow-item"><span class="flow-icon">🤖</span> STEP 2：AIに企画案を出してもらう</div>
+      <div class="flow-item"><span class="flow-icon">🤖</span> STEP 1：AIセットアップ指示書をCoworkに貼る → 質疑応答で企画案が完成する</div>
       <div class="flow-arrow">↓</div>
-      <div class="flow-item"><span class="flow-icon">🎨</span> STEP 3：HTMLに仕上げる</div>
+      <div class="flow-item"><span class="flow-icon">🎨</span> STEP 2：HTML化プロンプトを貼る → HTMLが出力される</div>
       <div class="flow-arrow">↓</div>
-      <div class="flow-item"><span class="flow-icon">✏️</span> STEP 4：内容を編集・ブラッシュアップする</div>
+      <div class="flow-item"><span class="flow-icon">✏️</span> STEP 3：内容を編集・ブラッシュアップする</div>
       <div class="flow-arrow">↓</div>
-      <div class="flow-item"><span class="flow-icon">🔒</span> STEP 5：パスワードをかけてGitHub Pagesで公開する</div>
+      <div class="flow-item"><span class="flow-icon">🔒</span> STEP 4：gate.js でパスワードをかけてGitHub Pagesで公開する</div>
       <div class="flow-arrow">↓</div>
-      <div class="flow-item"><span class="flow-icon">📤</span> STEP 6：URLとパスワードをクライアントに送る</div>
+      <div class="flow-item"><span class="flow-icon">📤</span> STEP 5：URLとパスワードをクライアントに別経路で送る</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- KIT -->
+  <div class="section-wrap">
+    <div class="sec-heading">
+      <span class="sec-num">KIT</span>
+      <h2>キットの中身</h2>
+    </div>
+    <div class="step-card">
+      <div class="step-num">📦</div>
+      <div class="step-body">
+        <div class="step-title">ZIPを解凍するとこのファイルが入っています</div>
+        <div class="step-text">
+          <ul>
+            <li><span class="file-name">prompts/00_AIセットアップ指示書.md</span> — まずこれをCoworkに貼る。AIが質問しながら企画案を作ってくれる</li>
+            <li><span class="file-name">prompts/02_HTML化.md</span> — 企画案が固まったらこれを貼る。HTMLが出力される</li>
+            <li><span class="file-name">prompts/03_編集指示例.md</span> — カード削除・統合・並び替えのコピペ集</li>
+            <li><span class="file-name">prompts/04_Slackメッセージ.md</span> — クライアントへの送付Slackを作るプロンプト</li>
+            <li><span class="file-name">template/gate.js</span> — パスワードゲート本体。PASSWORD_HASHを書き換えるだけで使える</li>
+            <li><span class="file-name">template/index.html</span> — 完成版デザインのHTMLテンプレート（参考用）</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="info-callout">
+      <strong>01_企画案生成.md について：</strong>00_AIセットアップ指示書.md を使えば、この手順書なしで企画案まで作れます。01は「素材が揃っていてまとめて渡したい」ときの別手段として残してあります。
     </div>
   </div>
 
@@ -242,28 +180,117 @@
   <div class="section-wrap">
     <div class="sec-heading">
       <span class="sec-num">STEP 01</span>
-      <h2>素材を整理する</h2>
+      <h2>AIとの質疑応答で企画案を作る</h2>
     </div>
 
-    <div class="step-card">
+    <div class="step-card accent">
       <div class="step-num">1</div>
       <div class="step-body">
-        <div class="step-title">AIに渡す素材をテキストでまとめる</div>
+        <div class="step-title">Coworkで新規チャットを開く</div>
         <div class="step-text">
-          以下の情報を箇条書きで用意してください。完璧でなくても大丈夫です。
-          <ul>
-            <li>配信・イベントの目的（例：ワイン試飲イベントへの申込を増やしたい）</li>
-            <li>ターゲット（例：30〜40代、夜19時視聴）</li>
-            <li>出演者と各自の役割・特徴</li>
-            <li>過去のデータや実績（例：昨年の視聴分数、盛り上がったコーナー）</li>
-            <li>制約・NGなこと（例：商品購入はゴールにしない）</li>
-          </ul>
+          Coworkを開き、新規チャットを作成します。既存のチャットではなく必ず新規で始めてください。
+        </div>
+      </div>
+    </div>
+
+    <div class="step-card accent">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <div class="step-title">00_AIセットアップ指示書.md の全文をコピーしてチャットに貼り付ける</div>
+        <div class="step-text">
+          <span class="file-name">prompts/00_AIセットアップ指示書.md</span> をテキストエディタで開き、全文を選択してCoworkのチャット入力欄に貼り付けて送信します。<br><br>
+          過去の配信データや文字起こしのテキストファイルがあれば、一緒に添付して送ると精度が上がります。
         </div>
       </div>
     </div>
 
     <div class="info-callout">
-      <strong>ポイント：</strong>過去の配信データや文字起こしがあれば、そのまま貼り付けて渡してください。AIが自分で読み解いて使えるデータを拾ってくれます。
+      <strong>添付できるもの：</strong>過去配信の文字起こしテキスト、視聴データのCSV、企画メモのテキスト。PDFは内容をテキストでコピーして貼るか、テキストファイルに変換してから添付してください。
+    </div>
+
+    <div class="step-card accent">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <div class="step-title">「はじめて」と送る</div>
+        <div class="step-text">
+          AIが「準備ができたら『はじめて』と送ってください」と言うので、そのとおり「はじめて」と送ります。
+        </div>
+      </div>
+    </div>
+
+    <div class="step-card accent">
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <div class="step-title">AIの質問に答えていく（Q1〜Q6）</div>
+        <div class="step-text">AIが1問ずつ質問してきます。順番に答えてください。</div>
+      </div>
+    </div>
+
+    <div class="q-list">
+      <div class="q-item">
+        <div class="q-num">Q1</div>
+        <div class="q-text">
+          クライアント名と案件名を教えてください
+          <div class="q-example">例：コープこうべ ／ ワイン試飲イベント予告編配信</div>
+        </div>
+      </div>
+      <div class="q-item">
+        <div class="q-num">Q2</div>
+        <div class="q-text">
+          この配信・イベントの最終目的（KGI）は何ですか？
+          <div class="q-example">例：イベント申込を増やしたい ／ 商品購入につなげたい</div>
+        </div>
+      </div>
+      <div class="q-item">
+        <div class="q-num">Q3</div>
+        <div class="q-text">
+          ターゲット視聴者はどんな人ですか？
+          <div class="q-example">例：30〜40代、平日夜19時、ワイン初心者〜中級者</div>
+        </div>
+      </div>
+      <div class="q-item">
+        <div class="q-num">Q4</div>
+        <div class="q-text">
+          出演者と各自の役割・特徴を教えてください
+          <div class="q-example">例：ソムリエ（専門解説）、〇〇さん（視聴者代弁役）</div>
+        </div>
+      </div>
+      <div class="q-item">
+        <div class="q-num">Q5</div>
+        <div class="q-text">
+          過去の配信データや実績はありますか？
+          <div class="q-example">なければ「なし」でOK</div>
+        </div>
+      </div>
+      <div class="q-item">
+        <div class="q-num">Q6</div>
+        <div class="q-text">
+          絶対にやりたいこと・やってはいけないことはありますか？
+          <div class="q-example">例：価格の断言はNG ／ 特定の出演者の個性を活かしたい</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-num">5</div>
+      <div class="step-body">
+        <div class="step-title">AIが情報を整理して確認してくるので「OK」を出す</div>
+        <div class="step-text">
+          全質問が終わると、AIが「以下の内容で進めます」と整理した内容を見せてきます。<br>
+          内容が合っていれば「OK」と返してください。修正があれば伝えます。
+        </div>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-num">6</div>
+      <div class="step-body">
+        <div class="step-title">企画案が8〜12案出てくる → ブラッシュアップする</div>
+        <div class="step-text">
+          確認OKを出すと、3〜4セクションに分かれた企画案が出てきます。<br>
+          気に入らない案は削除・統合・修正をAIに指示できます（<span class="file-name">03_編集指示例.md</span> 参照）。
+        </div>
+      </div>
     </div>
   </div>
 
@@ -273,60 +300,34 @@
   <div class="section-wrap">
     <div class="sec-heading">
       <span class="sec-num">STEP 02</span>
-      <h2>AIに企画案を出してもらう</h2>
+      <h2>HTML化する</h2>
     </div>
 
-    <div class="step-card">
-      <div class="step-num">2</div>
+    <div class="step-card accent">
+      <div class="step-num">7</div>
       <div class="step-body">
-        <div class="step-title">プロンプトのテンプレート</div>
-        <div class="step-text">以下をコピーして、【】の部分を書き換えてAIに送ってください。</div>
+        <div class="step-title">企画案が固まったら、02_HTML化.md を同じチャットに貼る</div>
+        <div class="step-text">
+          企画案の内容にOKが出たら、<span class="file-name">prompts/02_HTML化.md</span> を開いて全文を同じチャットに貼り付けて送信します。<br>
+          AIがマガジン風デザインのHTMLを出力します。
+        </div>
       </div>
     </div>
 
-    <div class="prompt-block">
-      <div class="prompt-label">AIへのプロンプト（コピーして使う）</div>
-      【クライアント名】向けの【配信・イベント名】について、企画案をHTMLにまとめてほしいです。<br><br>
-
-      ■ 目的<br>
-      【例：ワイン試飲イベントの申込者を増やすための予告編配信】<br><br>
-
-      ■ ターゲット<br>
-      【例：30〜40代女性、夜19時視聴層】<br><br>
-
-      ■ 出演者<br>
-      【例：ソムリエ（専門家）、羽田さん（視聴者代弁役）、平林さん（飲めない担当）】<br><br>
-
-      ■ 過去データ・参考情報<br>
-      【例：昨年の視聴分数は11分52秒で歴代上位だったが購入ゼロ。300名応募の実績あり】<br><br>
-
-      ■ デザインのイメージ<br>
-      マガジン風のHTMLで、セクションごとに企画カードを並べてください。<br>
-      カラーは #fa006d（赤ピンク）をアクセントに使ってください。<br>
-      各カードには通し番号（No.1, No.2...）をつけてください。<br><br>
-
-      ■ 構成イメージ<br>
-      ・カバー（タイトル・ターゲット・出演者）<br>
-      ・設計思想（なぜこの企画か）<br>
-      ・出演者の役割メモ<br>
-      ・セクション別の企画カード（3〜4セクション）<br>
-      ・フッター
-    </div>
-
     <div class="tip-callout">
-      <strong>Coworkを使う場合：</strong>新規チャットを開き、上のプロンプトをそのまま貼り付けてください。添付ファイルがあれば一緒に渡すとより精度が上がります。
+      デザイン仕様（カラー #fa006d・Noto Sans JP・カード形式・通し番号 No.1〜）は 02_HTML化.md に記載してあります。変えたいことがあれば「アクセントカラーを青にして」のように追記して送ってください。
     </div>
 
     <div class="step-card">
-      <div class="step-num">3</div>
+      <div class="step-num">8</div>
       <div class="step-body">
-        <div class="step-title">出力されたHTMLをファイルに保存する</div>
+        <div class="step-title">出力されたHTMLを index.html として保存する</div>
         <div class="step-text">
-          AIが出力したHTMLを、テキストエディタ（VSCode など）にコピーして <code>index.html</code> として保存してください。<br>
-          ブラウザで開いて表示を確認します。
+          AIが出力したHTMLのコードを、テキストエディタ（VSCode など）にコピーして <code>index.html</code> として保存します。<br>
+          ブラウザでファイルをダブルクリックして開き、表示を確認します。
           <ul>
-            <li>Mac：ファイルをダブルクリック → Chromeなどで開く</li>
-            <li>表示が崩れていたらAIに「レイアウトが崩れています」と伝えると直してもらえます</li>
+            <li>表示が崩れていたら「レイアウトが崩れています。スクリーンショットを確認してください」とAIに伝えると直してもらえます</li>
+            <li><span class="file-name">template/index.html</span>（キット内）と似たデザインになっていればOKです</li>
           </ul>
         </div>
       </div>
@@ -343,37 +344,37 @@
     </div>
 
     <div class="step-card">
-      <div class="step-num">4</div>
+      <div class="step-num">9</div>
       <div class="step-body">
-        <div class="step-title">AIとの対話で内容を磨く</div>
+        <div class="step-title">同じチャットで続けて修正指示を出す</div>
         <div class="step-text">
-          同じチャットで続けて指示を出すと、AIがHTMLを修正してくれます。以下のような指示が使えます。
+          HTMLはAIに指示するだけで修正できます。<span class="file-name">03_編集指示例.md</span> から指示をコピーして使ってください。
         </div>
       </div>
     </div>
 
     <div class="prompt-block">
-      <div class="prompt-label">編集指示の例</div>
-      「No.3は単体では機能しないのでNo.5に統合してください」<br>
-      「セクション2を丸ごと削除してください」<br>
-      「No.1の文章を修正してください。〇〇さんはワインを飲まないので、おつまみ担当として書いてください」<br>
-      「各カードの通し番号を上から順に振り直してください」<br>
-      「セクション3と4の順番を入れ替えてください」
+      <div class="prompt-label">よく使う指示（コピペ）</div>
+      「No.3を削除して、通し番号を上からNo.1〜に振り直してください」<br>
+      「No.2とNo.5を統合して、No.2の内容をNo.5に加えてください。通し番号を振り直してください」<br>
+      「セクション2を丸ごと削除してください。通し番号を振り直してください」<br>
+      「セクション3と4の順番を入れ替えてください。通し番号を振り直してください」<br>
+      「No.1の文章を修正してください：〇〇さんはワインを飲まないので、おつまみ担当として書いてください」
     </div>
 
     <div class="warn-callout">
-      カードを削除・並び替えたあとは「通し番号を上から No.1, No.2... に振り直してください」と必ず伝えてください。番号がずれたままだとクライアントが混乱します。
+      カードを削除・並び替えるたびに「通し番号を上から No.1, No.2... に振り直してください」を必ずセットで指示してください。番号がずれたままクライアントに渡すと「No.3の案ですが…」という会話で混乱します。
     </div>
 
     <div class="step-card">
-      <div class="step-num">5</div>
+      <div class="step-num">10</div>
       <div class="step-body">
-        <div class="step-title">完成したら最終チェック</div>
+        <div class="step-title">最終チェックをしてから次のステップへ</div>
         <div class="step-text">
           <ul>
-            <li>プレースホルダー（〇〇、TBD、XXX）が残っていないか</li>
-            <li>カードの通し番号が上から順になっているか</li>
-            <li>クライアント名の表記が統一されているか</li>
+            <li>プレースホルダー（〇〇・【】・TBD）が残っていないか</li>
+            <li>カードの通し番号が No.1 から連番になっているか</li>
+            <li>クライアント名・出演者名の表記が統一されているか</li>
             <li>読んで違和感のある文章がないか</li>
           </ul>
         </div>
@@ -383,89 +384,57 @@
 
   <div class="divider"></div>
 
-  <!-- STEP 4: パスワードゲート -->
+  <!-- STEP 4 -->
   <div class="section-wrap">
     <div class="sec-heading">
       <span class="sec-num">STEP 04</span>
-      <h2>パスワードをかけて公開する</h2>
+      <h2>パスワードをかけてGitHub Pagesで公開する</h2>
     </div>
 
     <div class="step-card accent">
-      <div class="step-num">6</div>
+      <div class="step-num">11</div>
       <div class="step-body">
         <div class="step-title">パスワードを決めてハッシュ値を生成する</div>
         <div class="step-text">
-          パスワードは平文のままファイルに書かず、SHA-256ハッシュを使います。<br>
-          Macのターミナルで以下を実行してください（パスワードの部分は変えてOK）。
+          <span class="file-name">template/gate.js</span> のコメント（冒頭の「使い方」）を読んでセットアップします。<br>
+          Macのターミナルで以下を実行してください。
         </div>
       </div>
     </div>
 
     <div class="code-block">
-      <span class="comment"># パスワードを決める（英数字推奨）</span><br>
-      PW=<span class="val">"Coop-AbCd1234"</span><br>
-      echo <span class="val">"パスワード: $PW"</span><br>
-      printf <span class="val">'%s'</span> <span class="val">"$PW"</span> | shasum -a 256 | cut -d<span class="val">' '</span> -f1
+<span class="comment"># 好きなパスワードを設定（英数字推奨）</span><br>
+PW=<span class="val">"Client-AbCd1234"</span><br>
+echo <span class="val">"パスワード: $PW"</span><br>
+printf <span class="val">'%s'</span> <span class="val">"$PW"</span> | shasum -a 256 | cut -d<span class="val">' '</span> -f1<br>
+<span class="comment"># → 出力された長い文字列をコピーしてPASSWORD_HASHに貼る</span>
     </div>
 
     <div class="info-callout">
-      <strong>ターミナルが使えない場合：</strong>AIに「パスワード "Coop-AbCd1234" のSHA-256ハッシュ値を教えてください」と聞けば計算してもらえます。
+      <strong>ターミナルが使えない場合：</strong>Coworkに「パスワード "Client-AbCd1234" のSHA-256ハッシュ値を教えてください」と送れば計算してもらえます。
     </div>
 
     <div class="step-card accent">
-      <div class="step-num">7</div>
+      <div class="step-num">12</div>
       <div class="step-body">
-        <div class="step-title">gate.js をフォルダに追加する</div>
+        <div class="step-title">gate.js の3箇所を書き換える</div>
         <div class="step-text">
-          以下の内容で <code>gate.js</code> を作成し、<code>index.html</code> と同じフォルダに置いてください。<br>
-          <code>PASSWORD_HASH</code> の部分を、STEP 6で生成したハッシュ値に書き換えます。
+          <span class="file-name">template/gate.js</span> をテキストエディタで開いて以下を書き換えます。
+          <ul>
+            <li><code>PASSWORD_HASH</code> → 生成したハッシュ値（長い英数字の文字列）</li>
+            <li><code>STORAGE_KEY</code> → 案件名に変える（例: <code>'coopkobe_wine_auth'</code>）</li>
+            <li><code>TITLE</code> → 資料のタイトルに変える（例: <code>'めーむLIVE | 企画プラン'</code>）</li>
+          </ul>
         </div>
       </div>
     </div>
 
-    <div class="code-block">
-(function () {<br>
-&nbsp;&nbsp;<span class="key">var</span> PASSWORD_HASH = <span class="val">'ここにSHA-256ハッシュ値を貼る'</span>;<br>
-&nbsp;&nbsp;<span class="key">var</span> STORAGE_KEY = <span class="val">'案件名_auth'</span>; <span class="comment">// 案件ごとに変える</span><br>
-&nbsp;&nbsp;<span class="key">var</span> TITLE = <span class="val">'企画資料タイトル'</span>;<br>
-&nbsp;&nbsp;<span class="key">var</span> SUBTITLE = <span class="val">'この資料はパスワードで保護されています'</span>;<br><br>
-&nbsp;&nbsp;<span class="comment">// ↓以下はそのままコピー。変更不要</span><br>
-&nbsp;&nbsp;function sha256Hex(text) {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">var</span> enc = <span class="key">new</span> TextEncoder();<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">return</span> crypto.subtle.digest(<span class="val">'SHA-256'</span>, enc.encode(text)).then(function (buf) {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">var</span> bytes = <span class="key">new</span> Uint8Array(buf), hex = <span class="val">''</span>;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">for</span> (<span class="key">var</span> i = 0; i &lt; bytes.length; i++) hex += bytes[i].toString(16).padStart(2, <span class="val">'0'</span>);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">return</span> hex;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;});<br>
-&nbsp;&nbsp;}<br>
-&nbsp;&nbsp;function reveal() { <span class="key">var</span> g = document.getElementById(<span class="val">'fw-gate'</span>); <span class="key">if</span> (g) g.remove(); document.body.style.overflow = <span class="val">''</span>; }<br>
-&nbsp;&nbsp;function buildGate() {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;document.body.style.overflow = <span class="val">'hidden'</span>;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">var</span> w = document.createElement(<span class="val">'div'</span>); w.id = <span class="val">'fw-gate'</span>;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;w.innerHTML = <span class="val">'&lt;div class="fw-gate-card"&gt;&lt;div class="fw-gate-icon"&gt;🔒&lt;/div&gt;&lt;h1&gt;'</span>+TITLE+<span class="val">'&lt;/h1&gt;&lt;p&gt;'</span>+SUBTITLE+<span class="val">'&lt;/p&gt;&lt;form id="fw-gate-form" autocomplete="off"&gt;&lt;input id="fw-gate-input" type="password" placeholder="パスワードを入力" autofocus&gt;&lt;button type="submit"&gt;閲覧する&lt;/button&gt;&lt;/form&gt;&lt;div id="fw-gate-err" class="fw-gate-err"&gt;&lt;/div&gt;&lt;/div&gt;'</span>;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;document.body.appendChild(w);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">var</span> s = document.createElement(<span class="val">'style'</span>);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;s.textContent = <span class="val">'#fw-gate{position:fixed;inset:0;z-index:99999;background:#1A1A2E;display:flex;align-items:center;justify-content:center;font-family:"Noto Sans JP",sans-serif;padding:24px;}.fw-gate-card{background:#fff;border-radius:14px;padding:40px 36px;max-width:380px;width:100%;text-align:center;box-shadow:0 10px 40px rgba(0,0,0,.4);}.fw-gate-icon{font-size:40px;margin-bottom:14px;}.fw-gate-card h1{font-size:17px;font-weight:700;color:#1A1A2E;margin:0 0 6px;}.fw-gate-card p{font-size:12px;color:#888;margin:0 0 22px;}#fw-gate-form{display:flex;flex-direction:column;gap:10px;}#fw-gate-input{padding:12px 14px;border:1px solid #ccc;border-radius:8px;font-size:14px;outline:none;}#fw-gate-input:focus{border-color:#FA006D;}#fw-gate-form button{padding:12px;border:none;border-radius:8px;background:#FA006D;color:#fff;font-size:14px;font-weight:700;cursor:pointer;}.fw-gate-err{color:#FA006D;font-size:12px;margin-top:12px;min-height:16px;}'</span>;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;document.head.appendChild(s);<br>
-&nbsp;&nbsp;&nbsp;&nbsp;document.getElementById(<span class="val">'fw-gate-form'</span>).addEventListener(<span class="val">'submit'</span>, function (e) {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;e.preventDefault();<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sha256Hex(document.getElementById(<span class="val">'fw-gate-input'</span>).value).then(function (hex) {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">if</span> (hex === PASSWORD_HASH) { <span class="key">try</span> { localStorage.setItem(STORAGE_KEY, <span class="val">'1'</span>); } <span class="key">catch</span> (_) {} reveal(); }<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="key">else</span> { document.getElementById(<span class="val">'fw-gate-err'</span>).textContent = <span class="val">'パスワードが正しくありません。'</span>; document.getElementById(<span class="val">'fw-gate-input'</span>).value = <span class="val">''</span>; }<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});<br>
-&nbsp;&nbsp;&nbsp;&nbsp;});<br>
-&nbsp;&nbsp;}<br>
-&nbsp;&nbsp;function init() { <span class="key">var</span> ok = false; <span class="key">try</span> { ok = localStorage.getItem(STORAGE_KEY) === <span class="val">'1'</span>; } <span class="key">catch</span> (_) {} <span class="key">if</span> (!ok) buildGate(); }<br>
-&nbsp;&nbsp;<span class="key">if</span> (document.readyState === <span class="val">'loading'</span>) document.addEventListener(<span class="val">'DOMContentLoaded'</span>, init); <span class="key">else</span> init();<br>
-})();
-    </div>
-
     <div class="step-card accent">
-      <div class="step-num">8</div>
+      <div class="step-num">13</div>
       <div class="step-body">
-        <div class="step-title">index.html に gate.js を読み込む2行を追加する</div>
+        <div class="step-title">index.html に gate.js の読み込みを追加する</div>
         <div class="step-text">
-          <code>index.html</code> の &lt;head&gt; の最初の方（&lt;meta charset&gt; の直後）に以下を追加してください。
+          AIが出力した <code>index.html</code> を開き、<code>&lt;head&gt;</code> の上部（<code>&lt;meta charset&gt;</code> の直後あたり）に以下の2行を追加します。
         </div>
       </div>
     </div>
@@ -475,42 +444,14 @@
 &lt;<span class="key">script</span> src=<span class="val">"./gate.js"</span>&gt;&lt;/<span class="key">script</span>&gt;
     </div>
 
-    <div class="warn-callout">
-      <code>../auth.js</code> のような別の認証ファイルが元から書かれている場合は、それを削除してから上の2行を追加してください。
-    </div>
-  </div>
-
-  <div class="divider"></div>
-
-  <!-- STEP 5: GitHub Pages -->
-  <div class="section-wrap">
-    <div class="sec-heading">
-      <span class="sec-num">STEP 05</span>
-      <h2>GitHub Pagesで公開する</h2>
-    </div>
-
     <div class="step-card">
-      <div class="step-num">9</div>
+      <div class="step-num">14</div>
       <div class="step-body">
-        <div class="step-title">フォルダ構成を確認する</div>
-        <div class="step-text">
-          公開するフォルダに以下の2ファイルが入っていればOKです。
-          <ul>
-            <li><code>index.html</code> — 企画案本体</li>
-            <li><code>gate.js</code> — パスワードゲート</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <div class="step-card">
-      <div class="step-num">10</div>
-      <div class="step-body">
-        <div class="step-title">GitHubリポジトリにアップロードする</div>
+        <div class="step-title">GitHub Pages にアップロードして公開する</div>
         <div class="step-text">
           <ul>
-            <li>GitHub.com でリポジトリを作成（Public に設定）</li>
-            <li>2ファイルをアップロード（「Add file → Upload files」）</li>
+            <li>GitHub.com でリポジトリを新規作成（Public に設定）</li>
+            <li>「Add file → Upload files」で <code>index.html</code> と <code>gate.js</code> の2ファイルをアップロード</li>
             <li>Settings → Pages → Branch: main / folder: / (root) → Save</li>
             <li>数分後に公開URL（https://ユーザー名.github.io/リポジトリ名/）が発行される</li>
           </ul>
@@ -518,21 +459,15 @@
       </div>
     </div>
 
-    <div class="info-callout">
-      <strong>gh CLIが使える場合：</strong>以下のコマンドで一気に完了します。<br>
-      <code>git init -b main &amp;&amp; git add . &amp;&amp; git commit -m "初版" &amp;&amp; gh repo create リポジトリ名 --public --source=. --remote=origin --push</code><br>
-      その後 <code>gh api -X POST repos/ユーザー名/リポジトリ名/pages -F "source[branch]=main" -F "source[path]=/"</code>
-    </div>
-
     <div class="step-card">
-      <div class="step-num">11</div>
+      <div class="step-num">15</div>
       <div class="step-body">
-        <div class="step-title">公開後の動作確認</div>
+        <div class="step-title">動作確認</div>
         <div class="step-text">
-          URLにアクセスしてパスワード画面が表示されることを確認します。
           <ul>
-            <li>パスワードを入れて企画案が表示されることを確認</li>
-            <li>ブラウザを閉じて再アクセスしてもパスワード不要になっていることを確認</li>
+            <li>URLにアクセスしてパスワード入力画面が表示されるか確認</li>
+            <li>パスワードを入力してコンテンツが見えるか確認</li>
+            <li>ブラウザを閉じて再アクセスしたとき、パスワード不要になっているか確認</li>
             <li>別のブラウザ・スマホからはパスワードが必要なことを確認</li>
           </ul>
         </div>
@@ -542,73 +477,66 @@
 
   <div class="divider"></div>
 
-  <!-- STEP 6: 送付 -->
+  <!-- STEP 5 -->
   <div class="section-wrap">
     <div class="sec-heading">
-      <span class="sec-num">STEP 06</span>
+      <span class="sec-num">STEP 05</span>
       <h2>クライアントに送る</h2>
     </div>
 
     <div class="step-card accent">
-      <div class="step-num">12</div>
+      <div class="step-num">16</div>
       <div class="step-body">
-        <div class="step-title">URLとパスワードは別経路で送る</div>
+        <div class="step-title">URLとパスワードは必ず別経路で送る</div>
         <div class="step-text">
-          URLとパスワードを同じメッセージに書くとパスワードの意味が薄れます。
+          URLとパスワードを同じメッセージに書くと保護の意味が薄れます。
           <ul>
-            <li>URL → Slack や メール本文</li>
-            <li>パスワード → 別のメッセージ、または口頭で伝える</li>
+            <li>URL → Slackメッセージ本文</li>
+            <li>パスワード → 別のメッセージ、または口頭・電話で伝える</li>
           </ul>
         </div>
       </div>
     </div>
 
     <div class="step-card">
-      <div class="step-num">13</div>
+      <div class="step-num">17</div>
       <div class="step-body">
-        <div class="step-title">Slackメッセージの文面（参考）</div>
+        <div class="step-title">Slackメッセージの文面はAIに作ってもらう</div>
         <div class="step-text">
-          AIに「クライアント向けのSlackメッセージを作ってほしい」と頼むと、適切なトーンで書いてくれます。以下のように伝えると精度が上がります。
+          <span class="file-name">04_Slackメッセージ.md</span> のプロンプトをCoworkに貼り、必要情報を埋めて送ると文面が出てきます。
         </div>
       </div>
     </div>
 
-    <div class="prompt-block">
-      <div class="prompt-label">AIへの指示例</div>
-      ○○さん（クライアント）に企画資料を共有するSlackメッセージを作ってください。<br>
-      URL：https://...<br>
-      パスワードは別送します。<br>
-      企画を考えたポイント（3点）も添えてください。フォーマルなトーンで。
-    </div>
-
     <div class="warn-callout">
-      メッセージ内でAIが使いがちな「〇〇の「」」形式の太字（アスタリスク2個で囲む表現）は削除してください。読み手にとって不自然に見えます。
+      AIが出力したSlackメッセージの文中にアスタリスク2個で囲んだ太字（例：この「〇〇」という表現）が入っていたら削除してください。読み手に不自然に見えます。
     </div>
   </div>
 
   <div class="divider"></div>
 
-  <!-- チェックリスト -->
+  <!-- CHECKLIST -->
   <div class="section-wrap">
     <div class="sec-heading">
       <span class="sec-num">CHECKLIST</span>
       <h2>送付前チェックリスト</h2>
     </div>
-
     <div class="checklist">
-      <div class="check-item"><div class="check-box"></div>プレースホルダー（〇〇・TBD・XXX）が残っていない</div>
-      <div class="check-item"><div class="check-box"></div>カードの通し番号が上から順になっている</div>
+      <div class="check-item"><div class="check-box"></div>00_AIセットアップ指示書.md のQ1〜Q6を全部答えた</div>
+      <div class="check-item"><div class="check-box"></div>企画案の通し番号がNo.1から連番になっている</div>
+      <div class="check-item"><div class="check-box"></div>プレースホルダー（〇〇・【】・TBD）が残っていない</div>
       <div class="check-item"><div class="check-box"></div>クライアント名・出演者名の表記が統一されている</div>
-      <div class="check-item"><div class="check-box"></div>パスワードゲートが表示される（URLにアクセスして確認）</div>
-      <div class="check-item"><div class="check-box"></div>パスワードを入力するとコンテンツが見える</div>
+      <div class="check-item"><div class="check-box"></div>gate.js の PASSWORD_HASH・STORAGE_KEY・TITLE を書き換えた</div>
+      <div class="check-item"><div class="check-box"></div>index.html に gate.js の2行を追加した</div>
+      <div class="check-item"><div class="check-box"></div>URLにアクセスしてパスワード入力画面が表示された</div>
       <div class="check-item"><div class="check-box"></div>URLとパスワードを別経路で送る準備ができている</div>
-      <div class="check-item"><div class="check-box"></div>Slackメッセージにアスタリスク太字（**〇〇**）が入っていない</div>
+      <div class="check-item"><div class="check-box"></div>Slackメッセージにアスタリスク太字が入っていない</div>
     </div>
   </div>
 
   <div class="footer">
     Firework 社内ガイド<br>
-    Last Updated: 2026年5月22日 16:36 JST
+    Last Updated: 2026年5月22日 16:48 JST
   </div>
 
 </div>
