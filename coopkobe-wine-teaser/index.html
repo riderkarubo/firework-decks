@@ -1,553 +1,403 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <script src="./auth.js"></script>
-  <script>document.addEventListener('DOMContentLoaded',function(){FireworkSSO.protect();});</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ワイン試飲イベント予告編 企画アイデア</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍷</text></svg>">
-  <meta name="last-modified" content="2026-05-21T14:44:58+09:00">
-  <meta name="description" content="ワイン試飲イベント予告編配信の企画アイデア。初心者をイベント集客につなげる掛け合い・試飲シーンの魅せ方を複数提案。">
-  <meta property="og:title" content="ワイン試飲イベント予告編 企画アイデア">
-  <meta property="og:description" content="ワイン試飲イベント予告編配信の企画アイデア。初心者をイベント集客につなげる掛け合い・試飲シーンの魅せ方を複数提案。">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://riderkarubo.github.io/pages/coopkobe-wine-teaser/">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="ワイン試飲イベント予告編 企画アイデア">
-  <meta name="twitter:description" content="ワイン試飲イベント予告編配信の企画アイデア。初心者をイベント集客につなげる掛け合い・試飲シーンの魅せ方を複数提案。">
+  <script src="../auth.js"></script>
+  <script>document.addEventListener('DOMContentLoaded',function(){FireworkSSO.protect();});</script>
+  <meta name="last-modified" content="2026-05-22T14:38:14+09:00">
+  <meta name="description" content="ワイン試飲イベント予告編配信の掛け合い・演出アイデア集">
   <style>
-    :root {
-      --bordeaux: #6b1f2a;
-      --bordeaux-light: #8e3344;
-      --gold: #c9a24b;
-      --cream: #faf6f0;
-      --ink: #2a2024;
-      --gray: #6b6168;
-      --line: #e6dcd2;
-    }
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
-      font-family: "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Hiragino Sans", sans-serif;
-      color: var(--ink);
-      background: var(--cream);
-      line-height: 1.8;
-      font-size: 15px;
+      font-family: 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+      font-size: 13px; color: #1a1a2e; background: #f8f9fa; line-height: 1.7;
     }
-    .wrap { max-width: 920px; margin: 0 auto; padding: 0 20px 80px; }
+    .page { max-width: 960px; margin: 0 auto; padding: 20px; }
 
-    /* === Cover === */
+    /* === COVER === */
     .cover {
-      background: linear-gradient(135deg, var(--bordeaux) 0%, var(--bordeaux-light) 100%);
-      color: #fff;
-      padding: 56px 40px 48px;
-      border-radius: 0 0 24px 24px;
-      margin-bottom: 32px;
-      position: relative;
-      overflow: hidden;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      color: white; padding: 64px 56px; border-radius: 16px; margin-bottom: 28px;
+      position: relative; overflow: hidden;
     }
-    .cover::after {
-      content: "🍷";
-      position: absolute;
-      right: -10px; bottom: -30px;
-      font-size: 180px;
-      opacity: 0.08;
-    }
-    .cover .eyebrow {
-      display: inline-block;
-      font-size: 12px;
-      letter-spacing: 2px;
-      background: rgba(201,162,75,0.25);
-      border: 1px solid var(--gold);
-      color: var(--gold);
-      padding: 4px 14px;
-      border-radius: 20px;
-      margin-bottom: 18px;
-    }
-    .cover h1 { font-size: 30px; font-weight: 700; line-height: 1.4; margin-bottom: 10px; }
-    .cover .sub { font-size: 15px; opacity: 0.9; font-weight: 400; }
-    .cover-meta {
-      display: flex; flex-wrap: wrap; gap: 28px;
-      margin-top: 28px; padding-top: 22px;
-      border-top: 1px solid rgba(255,255,255,0.2);
-    }
-    .cover-meta-item .label { font-size: 11px; opacity: 0.7; letter-spacing: 1px; }
-    .cover-meta-item .value { font-size: 14px; font-weight: 500; }
+    .cover::before { content: ''; position: absolute; top: -50px; right: -50px; width: 300px; height: 300px; background: rgba(255,255,255,0.03); border-radius: 50%; }
+    .cover-label { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: #fa006d; font-weight: 600; margin-bottom: 20px; }
+    .cover h1 { font-size: 28px; font-weight: 700; line-height: 1.4; margin-bottom: 12px; }
+    .cover-sub { font-size: 14px; color: rgba(255,255,255,0.7); margin-bottom: 36px; }
+    .cover-meta { display: flex; gap: 36px; flex-wrap: wrap; }
+    .cover-meta-item { border-left: 2px solid #fa006d; padding-left: 14px; }
+    .cover-meta-item .label { font-size: 10px; color: rgba(255,255,255,0.5); letter-spacing: 1px; }
+    .cover-meta-item .value { font-size: 13px; color: white; font-weight: 600; }
 
-    /* === TOC === */
-    .toc-section { margin: 0 0 36px; }
-    .toc-section-title {
-      font-size: 1.3em; font-weight: 700; color: var(--bordeaux);
-      margin-bottom: 16px; padding-bottom: 10px;
-      border-bottom: 2px solid var(--gold);
-    }
-    .toc { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 16px 22px; }
-    .toc-item { padding: 4px 0; font-size: 14px; }
-    .toc-item a {
-      display: flex; align-items: center; gap: 12px; width: 100%;
-      text-decoration: none; color: inherit; border-radius: 6px;
-      padding: 6px 8px; transition: background 0.15s;
-    }
-    .toc-item a:hover { background: var(--cream); }
-    .toc-num {
-      width: 26px; height: 26px; background: var(--bordeaux); color: #fff;
-      border-radius: 50%; display: flex; align-items: center; justify-content: center;
-      font-size: 12px; font-weight: 700; flex-shrink: 0;
-    }
-    .toc-meta { margin-left: auto; font-size: 11px; color: var(--gray); }
+    /* === SECTION === */
+    .section { background: white; border-radius: 12px; padding: 36px; margin-bottom: 20px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    .section-header { display: flex; align-items: center; gap: 14px; margin-bottom: 28px; padding-bottom: 18px; border-bottom: 2px solid #f0f0f0; }
+    .section-badge { background: #1a1a2e; color: white; font-size: 11px; font-weight: 700; padding: 4px 12px; border-radius: 20px; letter-spacing: 1px; white-space: nowrap; }
+    .section-badge.accent { background: #fa006d; }
+    .section-badge.green { background: #1b998b; }
+    .section-title { font-size: 18px; font-weight: 700; color: #1a1a2e; }
+    .section-lead { font-size: 13px; color: #666; margin-top: 4px; }
 
-    /* === Section === */
-    section { margin-bottom: 44px; }
-    h2 {
-      font-size: 22px; font-weight: 700; color: var(--bordeaux);
-      display: flex; align-items: center; gap: 12px;
-      margin-bottom: 8px; scroll-margin-top: 20px;
-    }
-    h2 .chapter-num {
-      font-size: 13px; background: var(--bordeaux); color: #fff;
-      padding: 3px 12px; border-radius: 6px; font-weight: 700;
-    }
-    .lead { color: var(--gray); margin-bottom: 20px; font-size: 14px; }
-
-    /* === 設計思想ボックス === */
-    .concept {
-      background: #fff; border-left: 4px solid var(--gold);
-      border-radius: 8px; padding: 20px 24px; margin-bottom: 24px;
-    }
-    .concept p { margin-bottom: 8px; }
-    .concept strong { color: var(--bordeaux); }
-    .flow {
-      background: var(--bordeaux); color: #fff; border-radius: 8px;
-      padding: 16px 20px; font-size: 13px; line-height: 2; margin: 16px 0;
-      font-family: "SF Mono", Menlo, monospace;
-    }
-
-    /* === アイデアカード === */
+    /* === IDEA CARDS === */
+    .cards { display: grid; gap: 14px; }
     .card {
-      background: #fff; border: 1px solid var(--line); border-radius: 12px;
-      padding: 20px 24px; margin-bottom: 16px;
+      border: 1px solid #f0f0f0; border-radius: 10px; padding: 20px 22px;
       transition: box-shadow 0.15s;
     }
-    .card:hover { box-shadow: 0 4px 16px rgba(107,31,42,0.08); }
-    .card.pick { border: 2px solid var(--gold); background: linear-gradient(0deg, #fffdf7, #fff); }
+    .card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+    .card.pick { border-left: 4px solid #fa006d; background: #fff9fa; }
+    .card.data { border-left: 4px solid #1b998b; background: #f5fffe; }
     .card-head { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; flex-wrap: wrap; }
     .card-id {
-      font-size: 12px; font-weight: 700; color: #fff; background: var(--bordeaux-light);
-      padding: 2px 10px; border-radius: 5px; flex-shrink: 0;
+      font-size: 11px; font-weight: 700; color: white; background: #1a1a2e;
+      padding: 2px 10px; border-radius: 4px; flex-shrink: 0;
     }
-    .card.pick .card-id { background: var(--gold); }
-    .badge-pick {
-      font-size: 11px; font-weight: 700; color: var(--bordeaux);
-      background: rgba(201,162,75,0.2); border: 1px solid var(--gold);
-      padding: 2px 9px; border-radius: 12px;
-    }
-    .card-title { font-size: 16px; font-weight: 700; }
-    .card-body { font-size: 14px; color: #3a3036; margin-bottom: 10px; }
+    .card.pick .card-id { background: #fa006d; }
+    .card.data .card-id { background: #1b998b; }
+    .badge { font-size: 11px; font-weight: 700; color: #fa006d; background: #fff0f3; border: 1px solid #fa006d; padding: 1px 8px; border-radius: 10px; }
+    .badge.data { color: #1b998b; background: #f0faf8; border-color: #1b998b; }
+    .card-title { font-size: 14px; font-weight: 700; color: #1a1a2e; }
+    .card-body { font-size: 13px; color: #444; margin-bottom: 10px; line-height: 1.7; }
     .hook {
-      background: var(--cream); border-radius: 7px; padding: 9px 14px;
-      font-size: 13px; display: flex; gap: 8px; align-items: flex-start;
+      background: #f8f9fa; border-radius: 6px; padding: 8px 12px;
+      font-size: 12px; color: #333; display: flex; gap: 8px;
     }
-    .hook .tag { color: var(--bordeaux); font-weight: 700; flex-shrink: 0; }
-    .note { font-size: 12px; color: var(--gray); margin-top: 8px; padding-left: 2px; }
+    .hook-label { color: #fa006d; font-weight: 700; flex-shrink: 0; }
+    .evidence { background: #f0faf8; border-radius: 6px; padding: 8px 12px; font-size: 12px; color: #1b998b; display: flex; gap: 8px; margin-top: 6px; }
+    .evidence-label { font-weight: 700; flex-shrink: 0; }
 
-    /* === 構成案 === */
-    .timeline {
-      background: #fff; border: 1px solid var(--line); border-radius: 12px;
-      padding: 22px 26px; margin-bottom: 18px;
-    }
-    .timeline h3 { font-size: 16px; color: var(--bordeaux); margin-bottom: 14px; }
-    .tl-row { display: flex; gap: 14px; padding: 8px 0; border-bottom: 1px dashed var(--line); }
+    /* === 2COL GRID === */
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media (max-width: 640px) { .grid2 { grid-template-columns: 1fr; } }
+
+    /* === TIMELINE === */
+    .timeline-card { background: #f8f9fa; border-radius: 10px; padding: 22px 24px; }
+    .timeline-card h3 { font-size: 14px; font-weight: 700; color: #1a1a2e; margin-bottom: 16px; }
+    .tl-row { display: flex; gap: 14px; padding: 9px 0; border-bottom: 1px dashed #e8e8e8; font-size: 13px; }
     .tl-row:last-child { border-bottom: none; }
-    .tl-time {
-      flex-shrink: 0; width: 96px; font-size: 12px; font-weight: 700;
-      color: var(--bordeaux); background: var(--cream); border-radius: 6px;
-      padding: 4px 8px; text-align: center; height: fit-content;
-    }
-    .tl-body { font-size: 14px; }
-    .tl-body .step { font-weight: 700; }
-    .tl-body .refs { font-size: 12px; color: var(--gray); }
+    .tl-time { flex-shrink: 0; width: 70px; font-size: 11px; font-weight: 700; color: #fa006d; padding-top: 2px; }
+    .tl-step { font-weight: 700; color: #1a1a2e; }
+    .tl-ref { font-size: 11px; color: #888; }
 
-    /* === プレースホルダ（リサーチ反映待ち）=== */
-    .placeholder {
-      border: 2px dashed var(--gold); border-radius: 12px;
-      padding: 22px 26px; background: #fffdf6; color: var(--gray);
+    /* === CONCEPT BOX === */
+    .concept {
+      background: #1a1a2e; color: white; border-radius: 10px; padding: 22px 26px;
+      margin-bottom: 28px; font-size: 13px; line-height: 1.9;
     }
-    .placeholder .ph-title { color: var(--bordeaux); font-weight: 700; margin-bottom: 8px; }
-    .method-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 14px; }
-    .method-card {
-      background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px;
-    }
-    .method-card h4 { font-size: 14px; color: var(--bordeaux); margin-bottom: 4px; }
-    .method-card p { font-size: 12.5px; color: #4a4046; }
+    .concept .flow { color: rgba(255,255,255,0.6); font-size: 12px; margin-top: 10px; }
+    .concept strong { color: #fa006d; }
 
-    /* === footer === */
-    .footer {
-      text-align: center; color: var(--gray); font-size: 12px;
-      margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--line);
+    /* === DATA CALLOUT === */
+    .callout {
+      background: #f0faf8; border: 1px solid #b2dfdb; border-radius: 10px;
+      padding: 16px 20px; margin-bottom: 20px; font-size: 13px;
     }
+    .callout strong { color: #1b998b; }
 
-    @media (max-width: 640px) {
-      .cover h1 { font-size: 23px; }
-      .method-grid { grid-template-columns: 1fr; }
-      .tl-row { flex-direction: column; gap: 4px; }
-      .tl-time { width: auto; }
-    }
+    /* === FOOTER === */
+    .footer { text-align: center; color: #aaa; font-size: 11px; margin-top: 32px; padding-top: 16px; border-top: 1px solid #e8e8e8; }
+
     @media print {
-      * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; color-adjust: exact !important; }
+      * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
       @page { size: A4; margin: 10mm; }
-      body { background: var(--cream); }
-      .card, .timeline, section, .concept { page-break-inside: avoid; break-inside: avoid; }
-      .card:hover { box-shadow: none; }
+      .card, .timeline-card, .section { page-break-inside: avoid; }
     }
   </style>
 </head>
 <body>
+<div class="page">
+
+  <!-- COVER -->
   <div class="cover">
-    <span class="eyebrow">COOP KOBE × Firework ｜ 企画アイデア（たたき）</span>
-    <h1>ワイン試飲イベント予告編 配信<br>掛け合い・試飲シーンの魅せ方アイデア</h1>
-    <p class="sub">初心者の「ワインってこんな感じなんだ！」を、<br>「この人たちのイベントなら行ってみたい！」へつなげる。</p>
+    <div class="cover-label">COOP KOBE × Firework | 企画アイデア</div>
+    <h1>ワイン試飲イベント 予告編配信<br>掛け合い・演出アイデア</h1>
+    <p class="cover-sub">「ワインって難しそう」を「行ってみたい！」に変えるための企画集</p>
     <div class="cover-meta">
       <div class="cover-meta-item"><div class="label">TARGET</div><div class="value">30〜40代・夜19時配信</div></div>
-      <div class="cover-meta-item"><div class="label">GOAL</div><div class="value">イベント申込の集客増</div></div>
-      <div class="cover-meta-item"><div class="label">Last Updated</div><div class="value">2026年5月21日 14:44</div></div>
-      <div class="cover-meta-item"><div class="label">Prepared by</div><div class="value">Firework</div></div>
+      <div class="cover-meta-item"><div class="label">GOAL</div><div class="value">ワイン試飲イベント 申込増</div></div>
+      <div class="cover-meta-item"><div class="label">出演</div><div class="value">メルシャン様ソムリエ・平林・羽田・バイヤー2名</div></div>
+      <div class="cover-meta-item"><div class="label">最終更新</div><div class="value">2026年5月22日</div></div>
     </div>
   </div>
 
-  <div class="wrap">
-    <!-- TOC -->
-    <div class="toc-section">
-      <div class="toc-section-title">目次</div>
-      <div class="toc">
-        <div class="toc-item"><a href="#sec-0"><div class="toc-num">0</div><span>設計思想 ― この予告編で狙うこと</span></a></div>
-        <div class="toc-item"><a href="#sec-1"><div class="toc-num">1</div><span>掛け合いのアイデア（全6案）</span><div class="toc-meta">A-1〜A-6</div></a></div>
-        <div class="toc-item"><a href="#sec-2"><div class="toc-num">2</div><span>試飲シーンの魅せ方（全8案）</span><div class="toc-meta">B-1〜B-8</div></a></div>
-        <div class="toc-item"><a href="#sec-3"><div class="toc-num">3</div><span>データ起点の新規案（過去配信の実績から）</span><div class="toc-meta">C-1〜C-8</div></a></div>
-        <div class="toc-item"><a href="#sec-4"><div class="toc-num">4</div><span>昨年配信アーカイブからの転用</span><div class="toc-meta">D-1〜D-5</div></a></div>
-        <div class="toc-item"><a href="#sec-5"><div class="toc-num">5</div><span>構成案（15分版／25分版）</span></a></div>
-        <div class="toc-item"><a href="#sec-6"><div class="toc-num">6</div><span>企画アイデアの出し方（手法の引き出し）</span></a></div>
+  <!-- CONCEPT -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-badge">設計思想</span>
+      <div>
+        <div class="section-title">この予告編で狙うこと</div>
       </div>
     </div>
-
-    <!-- 0. 設計思想 -->
-    <section id="sec-0">
-      <h2><span class="chapter-num">0</span>設計思想</h2>
-      <p class="lead">この予告編のゴールは「ワインを学ばせること」ではなく、「行ったら楽しそう」と予感させること。</p>
-      <div class="concept">
-        <p>予告編配信のゴールは、知識の網羅ではなく <strong>「この人たちのイベント、行ったら楽しそう」と予感させること</strong>。2つの軸で設計します。</p>
-        <p>● <strong>掛け合い軸</strong>… 「初心者の壁」をソムリエ・バイヤーが楽しく崩す。飲めない平林さんは<strong>視聴者の代弁者</strong>として最強の配置。</p>
-        <p>● <strong>試飲演出軸</strong>… 配信で最も伝わりづらい「味」を、<strong>表情・擬音・例え・リアクション</strong>で"追体験"させる。</p>
-        <div class="flow">視聴 → ①壁を下げる → ②追体験 → ③楽しさの予感 → イベント申込（KGI＝集客増）</div>
-        <p style="font-size:13px;"><strong>集客フックの原則：</strong>全案の最後に「→ だから当日のイベントに行きたくなる」の橋を1本通す。配信内で完結させず、"続きは当日会場で"へ動機を逃がさない。</p>
-        <p style="font-size:13px; margin-top:6px;"><strong>飲み手の座組（確定）：</strong>試飲リアクションの主担当＝<strong>羽田さん</strong>。平林さんは「香り・見た目・おつまみ試食」担当に固定。ソムリエ・バイヤーが味の解説。Issy出演は保険。</p>
+    <div class="concept">
+      ゴールは「ワインを教える配信」ではなく、<strong>「この人たちのイベント、行ったら楽しそう」と予感させること</strong>。<br>
+      知識の網羅より、<strong>イベントの楽しさのダイジェスト</strong>として設計する。
+      <div class="flow">視聴 → ①「難しそう」の壁を下げる → ②試飲を追体験する → ③「行きたい」という予感 → イベント申込（KGI）</div>
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-head"><div class="card-title">飲み手の座組（確定）</div></div>
+        <div class="card-body">
+          <strong>羽田さん</strong> ＝ 試飲リアクション主担当<br>
+          <strong>平林さん</strong> ＝ 香り・見た目・おつまみ試食担当（飲めないことを強みに）<br>
+          ソムリエ・バイヤー ＝ 解説・商品愛の語り部<br>
+          Issy出演 ＝ 保険（必要時のみ）
+        </div>
       </div>
-    </section>
+      <div class="card">
+        <div class="card-head"><div class="card-title">集客フックの原則（全案共通）</div></div>
+        <div class="card-body">
+          各アイデアの最後に必ず<br>
+          <strong>「→ だから当日のイベントに行きたくなる」</strong><br>
+          の橋を1本通す。配信内で完結させず、<br>
+          <em>"続きは当日会場で"</em>へ動機を逃がさない。
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <!-- 1. 掛け合い -->
-    <section id="sec-1">
-      <h2><span class="chapter-num">1</span>掛け合いのアイデア</h2>
-      <p class="lead">初心者の「分からない不安」を、その場で楽しく解消する6案。★はイチオシ。</p>
+  <!-- A. 掛け合い -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-badge accent">掛け合い</span>
+      <div>
+        <div class="section-title">初心者の「分からない不安」を、その場で楽しく解消する</div>
+        <div class="section-lead">全6案 / ★はイチオシ</div>
+      </div>
+    </div>
+    <div class="cards">
 
       <div class="card pick">
-        <div class="card-head"><span class="card-id">A-2</span><span class="badge-pick">★ イチオシ</span><span class="card-title">飲めない平林さんの「香りだけソムリエ」</span></div>
-        <div class="card-body">平林さんは飲まずに香りと見た目だけでワインを表現。「雨上がりの土みたいな香り」など素人の比喩を、ソムリエが「実はそれ、プロも使う表現なんです」と拾って肯定する。初心者の言葉が"正解"になる体験。</div>
-        <div class="hook"><span class="tag">集客フック</span><span>ソムリエが「当日は実際に飲みながら、ご自身の言葉で表現してみてください」と誘う。"自分の表現をプロに答え合わせしに行く"を申込動機に変換。</span></div>
-        <div class="note">飲めないことを弱みでなく企画の主役にする座組。</div>
+        <div class="card-head">
+          <span class="card-id">A-2</span>
+          <span class="badge">★ イチオシ</span>
+          <span class="card-title">飲めない平林さんの「香りだけソムリエ」</span>
+        </div>
+        <div class="card-body">平林さんが<strong>香りと見た目だけ</strong>でワインを表現。「雨上がりの土みたいな香り」など素人の比喩をソムリエが「実はプロも使う表現です」と肯定。<strong>初心者の言葉が"正解"になる体験。</strong></div>
+        <div class="hook"><span class="hook-label">集客フック</span>「当日は飲みながら、ご自身の言葉で表現してみてください」→ "答え合わせしに行く"動機に変換。</div>
       </div>
 
-      <div class="card">
-        <div class="card-head"><span class="card-id">A-1</span><span class="card-title">「ソムリエ vs 初心者」翻訳掛け合い</span></div>
-        <div class="card-body">ソムリエが専門用語（タンニン・ボディ・果実味）を言った瞬間、平林さんが「で、それって結局おいしいってこと？」と初心者代弁ツッコミ。日常語への"翻訳"往復で不安を解消。</div>
-        <div class="hook"><span class="tag">集客フック</span><span>「当日はこの"翻訳"を、隣で何度でも聞けます」とイベントの安心感を予告。</span></div>
-      </div>
-
-      <div class="card">
-        <div class="card-head"><span class="card-id">A-3</span><span class="card-title">バイヤー2名の「推しワイン対決」</span></div>
-        <div class="card-body">バイヤー2名が"イベントで一番推したいワイン"を1本ずつ持ち寄り30秒プレゼン。視聴者がコメントで投票。仕入れの裏話が商品愛として刺さる。</div>
-        <div class="hook"><span class="tag">集客フック</span><span>「勝った方も負けた方も、当日は両方飲み比べられます」と当日の物量メリットへ接続。</span></div>
-        <div class="note">対決フォーマットは他案件でもコメント反応が良い傾向（※社内データで補強推奨）。</div>
-      </div>
-
-      <div class="card">
-        <div class="card-head"><span class="card-id">A-4</span><span class="card-title">「初心者の質問、ぜんぶ聞いていいよ」コーナー</span></div>
-        <div class="card-body">平林・羽田が"今さら聞けない疑問"をソムリエにぶつける（赤白どう選ぶ？／開けたら何日もつ？／安いワインと高いワインの違いは？）。視聴者コメントもリアルタイムで拾う。</div>
-        <div class="hook"><span class="tag">集客フック</span><span>当日も「気軽に質問できる場」だと予感させ、参加ハードルを下げる。</span></div>
-      </div>
-
-      <div class="card">
-        <div class="card-head"><span class="card-id">A-5</span><span class="card-title">「ペアリングお見合い」掛け合い</span></div>
-        <div class="card-body">ワインに合うコープ商品（おつまみ・惣菜）を"お見合い"形式で紹介。「このワインの相手は…この子です」と商品を登場させる。</div>
-        <div class="hook"><span class="tag">集客フック</span><span>「当日はこの組み合わせを体験できます」＋家での再現＝コープ商品購入（ファン化）。</span></div>
-        <div class="note">ワイン単体でなく「家での楽しみ方」まで見せ、重点目標②（コープ商品ファン化）と接続。</div>
+      <div class="grid2">
+        <div class="card">
+          <div class="card-head"><span class="card-id">A-1</span><span class="card-title">「ソムリエ vs 初心者」翻訳掛け合い</span></div>
+          <div class="card-body">専門用語が出た瞬間、平林さんが「で、結局おいしいってこと？」とツッコミ。日常語への翻訳往復で不安を解消。</div>
+          <div class="hook"><span class="hook-label">集客フック</span>「この翻訳を、当日は隣で何度でも聞けます」</div>
+        </div>
+        <div class="card">
+          <div class="card-head"><span class="card-id">A-4</span><span class="card-title">「初心者の質問、ぜんぶ聞いていいよ」コーナー</span></div>
+          <div class="card-body">今さら聞けない疑問（赤白どう選ぶ？／開けたら何日もつ？）をソムリエへ。視聴者コメントもリアルタイムで拾う。</div>
+          <div class="hook"><span class="hook-label">集客フック</span>「当日も気軽に質問できる場」と参加ハードルを下げる。</div>
+        </div>
+        <div class="card">
+          <div class="card-head"><span class="card-id">A-3</span><span class="card-title">バイヤー2名の「推しワイン対決」</span></div>
+          <div class="card-body">バイヤー2名が推しワインを1本ずつ持ち寄り30秒プレゼン。視聴者がコメントで投票。仕入れの裏話が商品愛として刺さる。</div>
+          <div class="hook"><span class="hook-label">集客フック</span>「勝敗どちらも当日は両方飲み比べられます」</div>
+        </div>
+        <div class="card">
+          <div class="card-head"><span class="card-id">A-5</span><span class="card-title">「ペアリングお見合い」掛け合い</span></div>
+          <div class="card-body">ワインに合うコープ商品を"お見合い"形式で紹介。「このワインの相手は…この子です」と商品を登場させる。</div>
+          <div class="hook"><span class="hook-label">集客フック</span>「当日この組み合わせを体験できます」＋コープ商品ファン化。</div>
+        </div>
       </div>
 
       <div class="card">
         <div class="card-head"><span class="card-id">A-6</span><span class="card-title">ソムリエの「意外な一面」開示</span></div>
-        <div class="card-body">ソムリエが「実は私も最初は渋いだけで苦手だった」など、プロになる前の素朴な原体験を語る。専門家の意外な一面が親近感を生み、"この人なら怖くない"と感じさせる。</div>
-        <div class="hook"><span class="tag">集客フック</span><span>「こんな話を当日もっと聞けます」と、人柄目当ての来場動機をつくる。</span></div>
-        <div class="note">権威を否定するのでなく「親しみやすさを足す」枠組み。メルシャン様の魅力を引き出す方向。</div>
+        <div class="card-body">「実は私も最初は渋いだけで苦手だった」など原体験を語る。専門家の親近感が「この人なら怖くない」を生む。</div>
+        <div class="hook"><span class="hook-label">集客フック</span>「こんな話を当日もっと聞けます」— 人柄目当ての来場動機。</div>
       </div>
-    </section>
 
-    <!-- 2. 試飲演出 -->
-    <section id="sec-2">
-      <h2><span class="chapter-num">2</span>試飲シーンの魅せ方</h2>
-      <p class="lead">配信で最も伝わりづらい「味」を追体験させる8案。★はイチオシ。</p>
+    </div>
+  </div>
+
+  <!-- B. 試飲演出 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-badge accent">試飲演出</span>
+      <div>
+        <div class="section-title">「味」という配信で最も伝わりづらいものを追体験させる</div>
+        <div class="section-lead">全8案 / ★はイチオシ</div>
+      </div>
+    </div>
+    <div class="cards">
 
       <div class="card pick">
-        <div class="card-head"><span class="card-id">B-5</span><span class="badge-pick">★ イチオシ</span><span class="card-title">ペアリング"瞬間"の同時試食</span></div>
-        <div class="card-body">ワイン単体→おつまみ単体→両方を同時に口へ、の3ステップ実演。「合わせると変わる」瞬間のリアクションを抜く。平林さんが"食べる"担当として試食コメントの真価を発揮。</div>
-        <div class="hook"><span class="tag">集客フック</span><span>「この"合わせた瞬間の変化"は、その場で飲まないと分からない」＝当日体験の核に。</span></div>
-        <div class="note">飲めない平林さんの強み（試食コメント）を試飲企画に組み込む解。</div>
+        <div class="card-head">
+          <span class="card-id">B-5</span>
+          <span class="badge">★ イチオシ</span>
+          <span class="card-title">ペアリング"瞬間"の同時試食</span>
+        </div>
+        <div class="card-body">ワイン単体 → おつまみ単体 → <strong>両方を同時に口へ</strong>、の3ステップを実演。「合わせると変わる」瞬間のリアクションを抜く。平林さんが試食担当として真価を発揮。</div>
+        <div class="hook"><span class="hook-label">集客フック</span>「この"合わせた瞬間の変化"は、その場で飲まないと分からない」＝当日体験の核に。</div>
       </div>
 
-      <div class="card">
-        <div class="card-head"><span class="card-id">B-1</span><span class="card-title">「リアクション主役」のカメラ寄り</span></div>
-        <div class="card-body">試飲の瞬間、解説より先に飲んだ人（羽田さん）の表情をアップで抜く。「ん〜！」の一拍→言葉、の順で見せると"おいしさの追体験"が伝わる。</div>
-        <div class="hook"><span class="tag">集客フック</span><span>「この表情を、自分でも当日体験しに来てください」と好奇心を会場へ。</span></div>
-        <div class="note">味は伝わらないが表情は伝わる。配信の構造的弱点を逆手に取る。</div>
-      </div>
-
-      <div class="card">
-        <div class="card-head"><span class="card-id">B-2</span><span class="card-title">擬音と例えの「初心者ワード」実況</span></div>
-        <div class="card-body">平林さんが香り・見た目を「とろっと」「ベリーのジャムっぽい」など専門用語ゼロの擬音・例えで実況。ソムリエが横で軽く補足。</div>
-        <div class="hook"><span class="tag">集客フック</span><span>「正解はないので、当日はご自身の言葉で楽しんで」とハードルを下げて誘う。</span></div>
-      </div>
-
-      <div class="card">
-        <div class="card-head"><span class="card-id">B-3</span><span class="card-title">「色グラデーション」見せ</span></div>
-        <div class="card-body">複数のワインをグラスで横並びにし、色の濃淡をライティングで見せる。「同じ赤でもこんなに違う」を視覚で。初心者にとって最初の"分かる楽しさ"。</div>
-        <div class="hook"><span class="tag">集客フック</span><span>「当日は◯種類を並べて飲み比べられます」と本数で当日の物量メリットを提示。</span></div>
-        <div class="note">味より先に「見て分かる違い」を入口にすると挫折しない。</div>
+      <div class="grid2">
+        <div class="card">
+          <div class="card-head"><span class="card-id">B-1</span><span class="card-title">「リアクション主役」のカメラ寄り</span></div>
+          <div class="card-body">試飲の瞬間、解説より先に<strong>羽田さんの表情をアップ</strong>で抜く。「ん〜！」の一拍→言葉、の順で"おいしさの追体験"。</div>
+          <div class="hook"><span class="hook-label">集客フック</span>「この表情を自分でも当日体験しに来て」</div>
+        </div>
+        <div class="card">
+          <div class="card-head"><span class="card-id">B-2</span><span class="card-title">擬音と例えの「初心者ワード」実況</span></div>
+          <div class="card-body">平林さんが「とろっと」「ベリーのジャムっぽい」など専門用語ゼロで実況。ソムリエが横で軽く補足。</div>
+          <div class="hook"><span class="hook-label">集客フック</span>「正解はないので、当日はご自身の言葉で楽しんで」</div>
+        </div>
+        <div class="card">
+          <div class="card-head"><span class="card-id">B-3</span><span class="card-title">「色グラデーション」見せ</span></div>
+          <div class="card-body">複数ワインをグラスで横並びにし、色の濃淡をライティングで見せる。「同じ赤でもこんなに違う」を視覚から。</div>
+          <div class="hook"><span class="hook-label">集客フック</span>「当日は◯種類を並べて飲み比べられます」</div>
+        </div>
+        <div class="card">
+          <div class="card-head"><span class="card-id">B-6</span><span class="card-title">「初心者の一杯目」演出</span></div>
+          <div class="card-body">イベントで最初に出す予定の一杯を予告試飲。「当日はこの一杯からスタート」と体験の入口を先見せ。</div>
+          <div class="hook"><span class="hook-label">集客フック</span>前半・後半の2回見せて申込導線と連動。</div>
+        </div>
+        <div class="card">
+          <div class="card-head"><span class="card-id">B-7</span><span class="card-title">視聴者投票「飲んでみたいのどれ？」</span></div>
+          <div class="card-body">紹介した数本からコメントで1本投票。「では当日これを多めに用意します」と返す。</div>
+          <div class="hook"><span class="hook-label">集客フック</span>視聴者の意見が当日に反映＝参加動機（自分ごと化）。</div>
+        </div>
+        <div class="card">
+          <div class="card-head"><span class="card-id">B-8</span><span class="card-title">30-40代「自分時間の一杯」文脈</span></div>
+          <div class="card-body">「子どもを寝かせた後」「平日の家事終わり」など生活シーンに紐づけて1本紹介。頑張った日のごほうびに。</div>
+          <div class="hook"><span class="hook-label">集客フック</span>「普段は一人だけど、当日は仲間と分かち合えます」</div>
+        </div>
       </div>
 
       <div class="card">
         <div class="card-head"><span class="card-id">B-4</span><span class="card-title">香りの「キーワードテロップ」見せ</span></div>
-        <div class="card-body">香りを言葉にしたら、その場でテロップ／手書きボードでキーワード化（「ベリー系」「スパイシー」）。見えない情報を画面で補完。</div>
-        <div class="hook"><span class="tag">集客フック</span><span>「このキーワードを手がかりに、当日は自分の好みを探せます」と来場の目的化。</span></div>
-        <div class="note">事前にソムリエと主要3本の香りキーワードを擦り合わせ、テロップは即時表示で運用（フリップ事前用意はアドリブと矛盾するため避ける）。</div>
+        <div class="card-body">香りを言葉にしたらその場でテロップ／手書きボードでキーワード化（「ベリー系」「スパイシー」）。見えない情報を画面で補完。</div>
+        <div class="hook"><span class="hook-label">集客フック</span>「このキーワードを手がかりに、当日は自分の好みを探せます」</div>
       </div>
 
-      <div class="card">
-        <div class="card-head"><span class="card-id">B-6</span><span class="card-title">「初心者の一杯目」演出</span></div>
-        <div class="card-body">イベントで実際に最初に出す予定の"初心者向け一杯"を予告として試飲。「当日はこの一杯からスタートします」と体験の入口を先見せ。</div>
-        <div class="hook"><span class="tag">集客フック</span><span>予告編として最も直接的に集客に効く"当日のダイジェスト"。前半と後半の2回見せる。</span></div>
-        <div class="note">離脱前提の視聴者にも届くよう、申込導線は前半にも1回置く。</div>
+    </div>
+  </div>
+
+  <!-- C. データ起点案 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-badge green">データ起点</span>
+      <div>
+        <div class="section-title">過去配信の実績から逆算した案</div>
+        <div class="section-lead">めーむLIVE全14回・コメント5,562件・購買データを分析</div>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>最重要発見：</strong>昨年ワイン回（第14回）は視聴分数が歴代上位（11分52秒）だが<strong>購入実績ゼロ</strong>。<br>
+      →「ワインはじっくり観られるが、その場で買われにくい」。予告編のゴールを<strong>「イベント申込」</strong>に置くのはデータ的に正しい。
+    </div>
+
+    <div class="cards">
+      <div class="card data">
+        <div class="card-head">
+          <span class="card-id">C-1</span>
+          <span class="badge data">◎ 最重要</span>
+          <span class="card-title">「ワイン部、はじめます」宣言エンディング</span>
+        </div>
+        <div class="card-body">ラストで「これ、月1の"ワイン部"にしませんか？」と宣言。固定出演者の"部活感"を打ち出す。</div>
+        <div class="hook"><span class="hook-label">集客フック</span>「第1回参加者は"部員番号"進呈」。単発でなく継続接点に。</div>
+        <div class="evidence"><span class="evidence-label">根拠</span>シリーズ型「てまえのおみそ」は単発企画の約10倍動員（vol.9=1,143名 vs 単発89名）。</div>
       </div>
 
-      <div class="card">
-        <div class="card-head"><span class="card-id">B-7</span><span class="card-title">視聴者投票「飲んでみたいのどれ？」</span></div>
-        <div class="card-body">紹介した数本から、コメントで「イベントで飲みたい1本」を投票。その場で集計し「では当日、これを多めに用意します」と返す。</div>
-        <div class="hook"><span class="tag">集客フック</span><span>視聴者の意見が当日に反映される＝参加動機（自分ごと化）。</span></div>
-      </div>
-
-      <div class="card">
-        <div class="card-head"><span class="card-id">B-8</span><span class="card-title">30-40代「自分時間の一杯」文脈（ターゲット直撃）</span></div>
-        <div class="card-body">「子どもを寝かせた後」「平日の家事終わり」など30-40代の生活シーンに紐づけて1本紹介。"頑張った日のごほうび"として罪悪感のない軽めの一杯を提案。</div>
-        <div class="hook"><span class="tag">集客フック</span><span>「普段は一人だけど、当日はこの楽しさを仲間と分かち合えます」と来場価値を提示。</span></div>
-        <div class="note">議事録の「30代新規→40歳前後で離脱」課題に応答。離脱しがちな層に"自分ごと"で刺す。</div>
-      </div>
-    </section>
-
-    <!-- 3. データ起点の新規案 -->
-    <section id="sec-3">
-      <h2><span class="chapter-num">3</span>データ起点の新規案</h2>
-      <p class="lead">過去のめーむLIVE全14回（コメント5,562件・購買データ・振り返り資料）を分析して導いた<strong>実証ベース</strong>の案。</p>
-      <div class="concept">
-        <p>🔍 <strong>最重要発見</strong>：昨年のワイン回（第14回・藤次先生）の実データが手元にあった。視聴分数は歴代上位（平均11分52秒 ＞ 全回平均10分29秒）だが<strong>購入実績ゼロ</strong>。</p>
-        <p>→「ワインはじっくり観られるが、その場で買われにくい」。予告編のゴールを「購入」でなく<strong>「イベント申込」</strong>に置くのは<strong>データ的に正しい</strong>。</p>
-      </div>
-
-      <div class="card pick">
-        <div class="card-head"><span class="card-id">C-1</span><span class="badge-pick">◎ 最重要</span><span class="card-title">「ワイン部、はじめます」宣言エンディング</span></div>
-        <div class="card-body">予告編ラストで「これ、月1の"ワイン部"にしませんか？」と宣言。固定出演者の"部活感"を打ち出す。</div>
-        <div class="hook"><span class="tag">集客フック</span><span>「第1回イベント参加者は"部員番号"進呈」。単発でなく継続接点に。</span></div>
-        <div class="note">根拠：シリーズ型「てまえのおみそ」は単発企画の約10倍動員（vol.9=1,143名 vs 単発89名）。シリーズ化が最大の勝ち筋。</div>
-      </div>
-
-      <div class="card">
-        <div class="card-head"><span class="card-id">C-2</span><span class="card-title">「保存」「言い回し」お悩み即答コーナー（予告版）</span></div>
-        <div class="card-body">昨年実際に同接が上がった「ボトルの保存方法」「感想の言い回し」を予告編でダイジェスト先出し。</div>
-        <div class="hook"><span class="tag">集客フック</span><span>「開けた後どうする？イベントで全部解決します」。</span></div>
-        <div class="note">根拠：昨年振り返り「質問タイム『保存方法』『言い回し』で同接上昇＝生活に寄り添うコンテンツが効く」。</div>
-      </div>
-
-      <div class="card">
-        <div class="card-head"><span class="card-id">C-3</span><span class="card-title">「ワイン知らない人ほどいいね！」逆張りクイズ</span></div>
-        <div class="card-body">「"フルボディ"って重さ？甘さ？」など初心者がつまずく3択クイズを冒頭に。</div>
-        <div class="hook"><span class="tag">集客フック</span><span>「全問外した人こそイベント向き！初心者歓迎を数字で証明」。</span></div>
-        <div class="note">根拠：ネット安心教室で「クイズ＋いいね促し＝参加ハードルを下げる」実証（いいね参加率33%）。</div>
-      </div>
-
-      <div class="card">
-        <div class="card-head"><span class="card-id">C-4</span><span class="card-title">「飲めない人代表」平林さんの中継リアクション投票</span></div>
-        <div class="card-body">視聴者が「平林さん、これは"いける香り"？"ムリ"？」をリアルタイム投票し、結果で平林さんが香りだけ判定。</div>
-        <div class="hook"><span class="tag">集客フック</span><span>「あなたの投票で平林さんの運命が決まる」。難しいワインをゲーム化。</span></div>
-        <div class="note">根拠：投票型「あなたの1票で決まる」が最高動員1,166名。A-2を投票で能動参加化。</div>
-      </div>
-
-      <div class="card">
-        <div class="card-head"><span class="card-id">C-5</span><span class="card-title">「金曜21時の自分」シミュレーション試飲</span></div>
-        <div class="card-body">「仕事終わり・子ども寝かせた後・一人時間」の30-40代の夜を再現し、合う1本を提案。実コメント「晩酌進みそう」「どっしり座って飲めるね」を画面引用。</div>
-        <div class="hook"><span class="tag">集客フック</span><span>「"ご褒美の一杯"、イベントで探しませんか」。B-8を具体シーン化。</span></div>
-        <div class="note">根拠：他回でも「晩酌・一杯・くつろぎ」文脈は組合員コメントを誘発する強トリガー。</div>
-      </div>
-
-      <div class="card">
-        <div class="card-head"><span class="card-id">C-6</span><span class="card-title">「コープの晩酌おつまみ」同時クリック企画</span></div>
-        <div class="card-body">ワイン単体は購入実績ゼロ。合うコープの惣菜・チーズ・生ハムを同時提案し、クリックは"おつまみ"側で取る。</div>
-        <div class="hook"><span class="tag">集客フック</span><span>「イベントは"ワイン×コープのつまみ"体験。今日試せる組合せも紹介」。</span></div>
-        <div class="note">根拠：ワインの低コンバージョンを既存の食品ヒット商品で補完（ワイン=集客／おつまみ=即購買）。</div>
-      </div>
-
-      <div class="card">
-        <div class="card-head"><span class="card-id">C-7</span><span class="card-title">「天の声が口コミ代弁」予告ナレーション</span></div>
-        <div class="card-body">「"ワインって賞味期限あるの？"って思いますよね」と天の声が初心者の本音を代弁し、ソムリエが即答。</div>
-        <div class="hook"><span class="tag">集客フック</span><span>「あなたの"今さら聞けない"を、イベントで全部代弁します」。</span></div>
-        <div class="note">根拠：昨年も「天の声」運用あり。振り返りで口コミ活用の天の声質問パートが提案済み。</div>
-      </div>
-
-      <div class="card">
-        <div class="card-head"><span class="card-id">C-8</span><span class="card-title">「完成イメージ＝乾杯シーン」を冒頭に置く</span></div>
-        <div class="card-body">料理番組の「最初に完成形を見せる」鉄則をワインに。冒頭3秒で「当日の乾杯シーン」を先出し。</div>
-        <div class="hook"><span class="tag">集客フック</span><span>「この1分後、あなたも参加したくなる」。離脱が早い夜19時向けのつかみ最適化。</span></div>
-        <div class="note">根拠：振り返りで「最初に完成形を見せる」効果を明記。</div>
-      </div>
-    </section>
-
-    <!-- 4. アーカイブ転用 -->
-    <section id="sec-4">
-      <h2><span class="chapter-num">4</span>昨年配信アーカイブからの転用</h2>
-      <p class="lead">昨年のワイン回（2025/9/20・ソムリエ藤次先生）の文字起こし・シナリオを分析。<strong>藤次先生のトークに"そのまま予告編の目玉になる金脈"があった。</strong></p>
-
-      <div class="card">
-        <div class="card-head"><span class="card-id">D-1</span><span class="card-title">「お米とワインの違い」入門トーク（名トーク転用）</span></div>
-        <div class="card-body">昨年バズった例え：「巨峰とマスカットの味の差は分かるけど、あきたこまちとササニシキの差は分からないですよね？ ワインは品種・産地・気候で味が大きく変わるお酒」。</div>
-        <div class="hook"><span class="tag">集客フック</span><span>「この"分かる楽しさ"の続きは当日に」。初心者の知的好奇心に火をつける。</span></div>
-        <div class="note">今年のソムリエにも「初心者が膝を打つ例え」を1つ用意してもらう。</div>
-      </div>
-
-      <div class="card">
-        <div class="card-head"><span class="card-id">D-2</span><span class="card-title">「開けた後、飲み切らなきゃ問題」神回答（実証済み）</span></div>
-        <div class="card-body">昨年同接が上がった鉄板ネタ：「家で開けたら飲み切らなきゃ…は誤解。半分残して数日後でも大丈夫。ワインは紀元前から雑に扱われても生きてきたお酒」。</div>
-        <div class="hook"><span class="tag">集客フック</span><span>「保存のコツ、当日もっと深く聞けます」。C-2と連動。</span></div>
-        <div class="note">30-40代の「一人で1本は飲めない」不安を解消＝参加の心理的ハードルを下げる。</div>
-      </div>
-
-      <div class="card">
-        <div class="card-head"><span class="card-id">D-3</span><span class="card-title">「コルクの開け方」実演コーナー</span></div>
-        <div class="card-body">昨年、先生がソムリエナイフでのコルク開けを"てこの原理"で実演し、視聴者の関心を集めた。</div>
-        <div class="hook"><span class="tag">集客フック</span><span>「当日は自分の手で開けるところまで体験できます」。</span></div>
-        <div class="note">予告編では"チラ見せ"に留め、完全マスターは当日へ。手を動かす体験は来場価値の核。</div>
-      </div>
-
-      <div class="card">
-        <div class="card-head"><span class="card-id">D-4</span><span class="card-title">「おいしい、でいい」初心者宣言</span></div>
-        <div class="card-body">昨年の先生の名言：「専門用語は伝達ツール。"せんべいみたいな香り"でもいい。マイナスをマイナスに聞こえないように（"弱い"→"控えめ"）」。</div>
-        <div class="hook"><span class="tag">集客フック</span><span>「ここでは正解も間違いもない。だから初めてでも楽しめる」とイベントの空気を予告。</span></div>
-        <div class="note">今年の初心者枠（平林・羽田）のキャラと最も相性がよい。A-2/B-2と統合可。</div>
-      </div>
-
-      <div class="card">
-        <div class="card-head"><span class="card-id">D-5</span><span class="card-title">昨年の「バタバタ感」を逆手に取る安心演出</span></div>
-        <div class="card-body">昨年は「初めての生中継でお見苦しい」と何度も謝罪＝逆に手作り感・親しみが出ていた。</div>
-        <div class="hook"><span class="tag">集客フック</span><span>「カッコつけない、等身大の試飲会。だから初心者も気楽に来られる」。</span></div>
-        <div class="note">完璧な進行より"親しみ"が初心者の参加障壁を下げる。昨年の課題を強みに転換。</div>
-      </div>
-
-      <div class="concept" style="margin-top:8px;">
-        <p style="font-size:13px;">注：昨年は応募<strong>300名</strong>と好評（25組50名の枠に対し大幅超過）。「中継」から「予告編」への路線変更は、"観て終わり"でなく"申し込んで参加"へ動機を一段引き上げる狙い。<strong>昨年の人気を申込数に変換するのが今年のゴール。</strong></p>
-      </div>
-    </section>
-
-    <!-- 5. 構成案 -->
-    <section id="sec-5">
-      <h2><span class="chapter-num">5</span>構成案</h2>
-      <p class="lead">夜19時・30-40代は離脱が早いため、集客導線（B-6/B-7）を前半にも配置。尺は2パターン。</p>
-
-      <div class="timeline">
-        <h3>◆ 15分版（離脱対策・申込直行型）</h3>
-        <div class="tl-row"><div class="tl-time">0-1分</div><div class="tl-body"><span class="step">オープニング</span>：平林さんの「実は飲めない」自己開示で掴む</div></div>
-        <div class="tl-row"><div class="tl-time">1-4分</div><div class="tl-body"><span class="step">壁を下げる</span>：A-1/A-4（初心者の疑問を翻訳）＋ <span class="refs">B-6前半（当日の一杯チラ見せ）</span></div></div>
-        <div class="tl-row"><div class="tl-time">4-10分</div><div class="tl-body"><span class="step">追体験</span>：★B-5 同時試食 ＋ B-1 リアクション ＋ B-3 色グラデ</div></div>
-        <div class="tl-row"><div class="tl-time">10-13分</div><div class="tl-body"><span class="step">当日への接続</span>：★A-2 香りソムリエ ＋ B-7 投票</div></div>
-        <div class="tl-row"><div class="tl-time">13-15分</div><div class="tl-body"><span class="step">エンディング</span>：申込方法・日程・「当日会いましょう」</div></div>
-      </div>
-
-      <div class="timeline">
-        <h3>◆ 25分版（じっくり巻き込み型）</h3>
-        <div class="tl-row"><div class="tl-time">0-3分</div><div class="tl-body"><span class="step">オープニング</span>：出演者紹介・平林さん自己開示</div></div>
-        <div class="tl-row"><div class="tl-time">3-8分</div><div class="tl-body"><span class="step">① 壁を下げる</span>：A-1/A-4 ＋ B-6前半</div></div>
-        <div class="tl-row"><div class="tl-time">8-15分</div><div class="tl-body"><span class="step">② 追体験</span>：★B-5/B-1/B-2/B-3</div></div>
-        <div class="tl-row"><div class="tl-time">15-20分</div><div class="tl-body"><span class="step">③ 楽しさの予感</span>：A-3 推し対決／A-5 ペアリング／A-6 意外な一面</div></div>
-        <div class="tl-row"><div class="tl-time">20-23分</div><div class="tl-body"><span class="step">④ 当日への接続</span>：★A-2／B-6後半／B-7 投票／B-8 自分時間</div></div>
-        <div class="tl-row"><div class="tl-time">23-25分</div><div class="tl-body"><span class="step">エンディング</span>：申込導線</div></div>
-      </div>
-    </section>
-
-    <!-- 6. 企画の出し方 -->
-    <section id="sec-6">
-      <h2><span class="chapter-num">6</span>企画アイデアの出し方（手法の引き出し）</h2>
-      <p class="lead">「アイデアが出てこない」のは着想の入口が少ないから。<strong>着想源（どこから引っ張るか）</strong>と<strong>変換フレーム（どう形にするか）</strong>の2層で整理。</p>
-
-      <div class="concept">
-        <p>★＝貴社（Issyさん）が既に持っている3系統。これを起点に<strong>着想源を10系統に拡張</strong>しました。</p>
-        <div class="flow">着想源（タネ：第1章 A〜J）→ 変換フレーム（量産の型：第2章）→ アイデア</div>
-      </div>
-
-      <h3 style="font-size:16px; color:var(--bordeaux); margin:24px 0 12px;">4-1. 着想源 10系統</h3>
-      <div class="method-grid">
-        <div class="method-card"><h4>★A 分析レポート起点</h4><p>自社の振り返り資料から課題を逆算。「30代新規→40歳前後で離脱」課題に刺すB-8は既にこの展開。</p></div>
-        <div class="method-card"><h4>★B ディープリサーチ起点</h4><p>ワイン初心者の「つまずき・誤解」を検索し、A-4質問コーナーのネタ元に。</p></div>
-        <div class="method-card"><h4>★C 過去アーカイブ転用</h4><p>04_アーカイブ/250920ワイン試飲回を見て、伸びた瞬間・コメントが付いた掛け合いを再利用。</p></div>
-        <div class="method-card"><h4>D 競合ベンチマーク</h4><p>QVC/ジャパネット・酒類EC（カクヤス/エノテカ）・同業生協（パルシステム等）の型を移植。</p></div>
-        <div class="method-card" style="border-color:var(--gold); background:#fffdf6;"><h4>E 視聴者データ逆算 ◎</h4><p>コメント抽出.xlsx・購買データ・年代別アクセス時間から「効いた瞬間」を特定。手元に揃う最強の武器。</p></div>
-        <div class="method-card"><h4>F SNSトレンド起点</h4><p>TikTok/Instagramの型（Before/After・クイックカット・#家飲み）を試飲演出に転用。</p></div>
-        <div class="method-card"><h4>G 季節・歳時記起点</h4><p>夜19時×「平日の家事終わりごほうび」、ボーナス期・年末ギフト等を集客フックに。</p></div>
-        <div class="method-card"><h4>H 商品特性ドリブン</h4><p>ワインを「味/価格/産地ストーリー/保存性/ペアリング/作り手」に分解、各軸を1企画に。</p></div>
-        <div class="method-card"><h4>I ペルソナ×ジャーニー</h4><p>「30代・ワイン怖い人」の購買前の不安を時系列で1つずつ潰す構成。</p></div>
-        <div class="method-card"><h4>J 専門家コラボ起点</h4><p>ソムリエの権威×初心者枠の親近感の掛け算（既に座組済み）。</p></div>
-      </div>
-
-      <h3 style="font-size:16px; color:var(--bordeaux); margin:24px 0 12px;">4-2. 変換フレーム（手が止まったら回す道具）</h3>
-      <div class="method-grid">
-        <div class="method-card"><h4>フォーマット転用</h4><p>対決／クイズ／ASMR（抜栓音・注ぐ音）／Before/After／ランキング／ライフハック／密着 の鉄板型に題材を流し込む。最速で量産。</p></div>
-        <div class="method-card"><h4>SCAMPER</h4><p>1企画を7つの問い（代用/結合/応用/修正/転用/削除/逆転）で変形。A-2＝Substitute、A-5＝Combine、B-2＝Eliminate。</p></div>
-        <div class="method-card"><h4>ペルソナ×ジャーニー</h4><p>認知→不安→興味→欲求→行動 の各段階の不安を1コーナーで解消。抜け漏れがなくなる。</p></div>
-        <div class="method-card"><h4>視聴者の声逆算</h4><p>コメントが跳ねた時刻×その時の演出を突合し、勝ちパターンを定量化。</p></div>
-      </div>
-
-      <h3 style="font-size:16px; color:var(--bordeaux); margin:24px 0 12px;">4-3. ワイン試飲を「初心者に魅せる」鉄則（Web調査）</h3>
-      <div class="card">
-        <div class="card-body" style="margin-bottom:0;">
-          ● <strong>情報を盛りすぎない</strong> — 事実を絞るほど engagement が上がる。「教育」でなく「教育＋娯楽」。<br>
-          ● <strong>物語で感情を動かす</strong> — テイスティングノートより「作り手の旅・産地のエピソード」。比喩が効く。<br>
-          ● <strong>ブラインド要素で双方向に</strong> — 当てっこは初心者でも参加でき、engagement 機会が増える。<br>
-          ● <strong>まず聴衆を知る</strong> — 視聴者の生活・興味を聞いてから話す素材を選ぶ。コメント投票と好相性。<br>
-          ● <strong>食は擬音・湯気・音</strong> — 抜栓音、注ぐ音、ペアリングの咀嚼音で食欲と臨場感を喚起。
+      <div class="grid2">
+        <div class="card data">
+          <div class="card-head"><span class="card-id">C-3</span><span class="card-title">「ワイン知らない人ほどいいね！」逆張りクイズ</span></div>
+          <div class="card-body">「"フルボディ"って重さ？甘さ？」など初心者がつまずく3択クイズを冒頭に。</div>
+          <div class="hook"><span class="hook-label">集客フック</span>「全問外した人こそイベント向き！」</div>
+          <div class="evidence"><span class="evidence-label">根拠</span>クイズ+いいね促し＝参加ハードル低下（いいね参加率33%実証）。</div>
+        </div>
+        <div class="card data">
+          <div class="card-head"><span class="card-id">C-4</span><span class="card-title">平林さんの中継リアクション投票</span></div>
+          <div class="card-body">「平林さん、これは"いける香り"？"ムリ"？」をリアルタイム投票。結果で平林さんが香りだけ判定。</div>
+          <div class="hook"><span class="hook-label">集客フック</span>「あなたの投票で平林さんの運命が決まる」。A-2の能動参加化。</div>
+          <div class="evidence"><span class="evidence-label">根拠</span>投票型「あなたの1票で決まる」が最高動員1,166名。</div>
+        </div>
+        <div class="card data">
+          <div class="card-head"><span class="card-id">C-2</span><span class="card-title">「保存・言い回し」お悩み即答コーナー</span></div>
+          <div class="card-body">昨年同接が上がった「ボトルの保存方法」「感想の言い回し」をダイジェスト先出し。</div>
+          <div class="hook"><span class="hook-label">集客フック</span>「開けた後どうする？イベントで全部解決します」</div>
+          <div class="evidence"><span class="evidence-label">根拠</span>昨年振り返り「保存・言い回しで同接上昇」。</div>
+        </div>
+        <div class="card data">
+          <div class="card-head"><span class="card-id">C-8</span><span class="card-title">「乾杯シーン」を冒頭3秒に置く</span></div>
+          <div class="card-body">料理番組の「完成形を先見せ」鉄則をワインに。冒頭3秒で「当日の乾杯シーン」を先出し。</div>
+          <div class="hook"><span class="hook-label">集客フック</span>「この1分後、あなたも参加したくなる」。夜19時の離脱対策。</div>
+          <div class="evidence"><span class="evidence-label">根拠</span>振り返りで「完成形を先見せ」の効果を明記。</div>
         </div>
       </div>
 
-      <h3 style="font-size:16px; color:var(--bordeaux); margin:24px 0 12px;">4-4. 今回の予告編で特に有効な手法トップ3</h3>
-      <div class="card pick">
-        <div class="card-head"><span class="card-id">1位</span><span class="card-title">E. 視聴者データ逆算（過去コメント・購買データの活用）</span></div>
-        <div class="card-body" style="margin-bottom:0;">コメント抽出.xlsx・購買データ・年代別アクセス時間が<strong>既に揃っている</strong>。「対決の反応が良い」等の直感を定量で裏付けられ、「分析より企画に工数を」という先方意向とも矛盾しない（分析を企画の燃料として使う）。最も低コストで説得力が出る。</div>
-      </div>
-      <div class="card">
-        <div class="card-head"><span class="card-id">2位</span><span class="card-title">I. ペルソナ×カスタマージャーニー</span></div>
-        <div class="card-body" style="margin-bottom:0;">今回のKGIは「初心者を申込に転換」＝感情の移動そのもの。既存の感情導線（壁を下げる→追体験→予感→申込）は本質的にジャーニー設計。各コーナーの存在理由が明確になり、抜け漏れが消える。</div>
-      </div>
-      <div class="card">
-        <div class="card-head"><span class="card-id">3位</span><span class="card-title">フォーマット転用 ＋ F. SNSトレンド</span></div>
-        <div class="card-body" style="margin-bottom:0;">今週中納期で短時間に量を出すには、対決・クイズ・ASMR・Before/Afterの型に題材を流し込むのが最速。TikTok由来の擬音・「家飲み」文脈は夜19時の自分時間と相性が良く、ターゲット直撃の演出に化ける。</div>
-      </div>
-      <p class="note" style="margin-top:14px;">補足：D（競合ベンチマーク）とH（商品特性ドリブン）は"次回以降のストック"向き。今回は納期が短いため、まず1〜3位で速く出し切り、時間が余れば競合観察で味付けする順序を推奨。</p>
-    </section>
-
-    <div class="footer">
-      コープこうべ × Firework ｜ ワイン試飲イベント予告編 企画アイデア（たたき）<br>
-      Last Updated: 2026年5月21日 14:44 JST
     </div>
   </div>
+
+  <!-- D. 昨年アーカイブ転用 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-badge">昨年転用</span>
+      <div>
+        <div class="section-title">昨年配信（2025/9/20・藤次先生）の"金脈"を今年に活かす</div>
+        <div class="section-lead">昨年応募300名（25組50名の枠に大幅超過）。人気を申込数に変換するのが今年のゴール。</div>
+      </div>
+    </div>
+    <div class="grid2">
+      <div class="card">
+        <div class="card-head"><span class="card-id">D-1</span><span class="card-title">「お米とワインの違い」入門トーク</span></div>
+        <div class="card-body">「巨峰とマスカットの差は分かるけど、あきたこまちとササニシキの差は分からない。ワインもそれと同じ」— 昨年バズった例え。</div>
+        <div class="hook"><span class="hook-label">集客フック</span>「この"分かる楽しさ"の続きは当日に」</div>
+      </div>
+      <div class="card">
+        <div class="card-head"><span class="card-id">D-2</span><span class="card-title">「飲み切らなきゃ問題」神回答</span></div>
+        <div class="card-body">「半分残して数日後でも大丈夫。ワインは紀元前から雑に扱われても生きてきたお酒」— 昨年同接が上がった鉄板ネタ。</div>
+        <div class="hook"><span class="hook-label">集客フック</span>「保存のコツ、当日もっと深く聞けます」</div>
+      </div>
+      <div class="card">
+        <div class="card-head"><span class="card-id">D-3</span><span class="card-title">「コルクの開け方」実演コーナー</span></div>
+        <div class="card-body">ソムリエナイフでのコルク開けを"てこの原理"で実演。昨年も視聴者の関心を集めた。</div>
+        <div class="hook"><span class="hook-label">集客フック</span>「当日は自分の手で開けるところまで体験できます」</div>
+      </div>
+      <div class="card">
+        <div class="card-head"><span class="card-id">D-4</span><span class="card-title">「おいしい、でいい」初心者宣言</span></div>
+        <div class="card-body">「"せんべいみたいな香り"でもいい。専門用語は伝達ツール」— 昨年の先生の名言。今年の初心者枠と最も相性がよい。</div>
+        <div class="hook"><span class="hook-label">集客フック</span>「ここでは正解も間違いもない。だから初めてでも楽しめる」</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 構成案 -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-badge">構成案</span>
+      <div>
+        <div class="section-title">尺に合わせた2パターン</div>
+        <div class="section-lead">夜19時・30-40代は離脱が早いため、集客導線を前半にも配置する</div>
+      </div>
+    </div>
+    <div class="grid2">
+      <div class="timeline-card">
+        <h3>15分版（申込直行型）</h3>
+        <div class="tl-row"><div class="tl-time">0-1分</div><div><div class="tl-step">オープニング</div><div class="tl-ref">平林さんの「実は飲めない」自己開示で掴む</div></div></div>
+        <div class="tl-row"><div class="tl-time">1-4分</div><div><div class="tl-step">壁を下げる</div><div class="tl-ref">A-1/A-4 + B-6前半（一杯目チラ見せ）</div></div></div>
+        <div class="tl-row"><div class="tl-time">4-10分</div><div><div class="tl-step">追体験</div><div class="tl-ref">★B-5同時試食 + B-1リアクション + B-3色グラデ</div></div></div>
+        <div class="tl-row"><div class="tl-time">10-13分</div><div><div class="tl-step">当日への接続</div><div class="tl-ref">★A-2香りソムリエ + B-7投票</div></div></div>
+        <div class="tl-row"><div class="tl-time">13-15分</div><div><div class="tl-step">エンディング</div><div class="tl-ref">申込方法・日程・「当日会いましょう」</div></div></div>
+      </div>
+      <div class="timeline-card">
+        <h3>25分版（じっくり巻き込み型）</h3>
+        <div class="tl-row"><div class="tl-time">0-3分</div><div><div class="tl-step">オープニング</div><div class="tl-ref">出演者紹介・平林さん自己開示</div></div></div>
+        <div class="tl-row"><div class="tl-time">3-8分</div><div><div class="tl-step">① 壁を下げる</div><div class="tl-ref">A-1/A-4 + B-6前半</div></div></div>
+        <div class="tl-row"><div class="tl-time">8-15分</div><div><div class="tl-step">② 追体験</div><div class="tl-ref">★B-5/B-1/B-2/B-3</div></div></div>
+        <div class="tl-row"><div class="tl-time">15-20分</div><div><div class="tl-step">③ 楽しさの予感</div><div class="tl-ref">A-3推し対決 / A-5ペアリング / A-6意外な一面</div></div></div>
+        <div class="tl-row"><div class="tl-time">20-23分</div><div><div class="tl-step">④ 当日への接続</div><div class="tl-ref">★A-2 / B-6後半 / B-7投票 / B-8自分時間</div></div></div>
+        <div class="tl-row"><div class="tl-time">23-25分</div><div><div class="tl-step">エンディング</div><div class="tl-ref">申込導線</div></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    コープこうべ × Firework | ワイン試飲イベント予告編 企画アイデア<br>
+    Last Updated: 2026年5月22日 14:38 JST
+  </div>
+
+</div>
 </body>
 </html>
