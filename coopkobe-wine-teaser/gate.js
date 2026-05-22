@@ -1,7 +1,7 @@
 /**
  * Simple password gate for client-facing static pages.
  * パスワードは SHA-256 ハッシュで照合（平文はコードに含めない）。
- * 認証成功後は sessionStorage に保持し、リロード時の再入力を不要にする。
+ * 認証成功後は localStorage に保持し、ブラウザを閉じても再入力不要にする。
  *
  * 注意: クライアントサイドのみの簡易保護。検索エンジン除外・URL漏れ対策レベル。
  *       機密度が高い場合はサーバーサイド認証を検討すること。
@@ -72,7 +72,7 @@
       var val = document.getElementById('fw-gate-input').value;
       sha256Hex(val).then(function (hex) {
         if (hex === PASSWORD_HASH) {
-          try { sessionStorage.setItem(STORAGE_KEY, '1'); } catch (_) {}
+          try { localStorage.setItem(STORAGE_KEY, '1'); } catch (_) {}
           reveal();
         } else {
           document.getElementById('fw-gate-err').textContent = 'パスワードが正しくありません。';
@@ -84,7 +84,7 @@
 
   function init() {
     var ok = false;
-    try { ok = sessionStorage.getItem(STORAGE_KEY) === '1'; } catch (_) {}
+    try { ok = localStorage.getItem(STORAGE_KEY) === '1'; } catch (_) {}
     if (!ok) buildGate();
   }
 
