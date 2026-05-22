@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>【サンプル】マガジン風デザイン比較</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Noto Sans JP', 'Hiragino Sans', sans-serif;
+      background: #faf8f5;
+      color: #1a1a1a;
+      line-height: 1.8;
+    }
+    .page { max-width: 900px; margin: 0 auto; padding: 40px 20px 80px; }
+
+    /* ===== NOTICE BAR ===== */
+    .notice {
+      background: #1a1a2e; color: white;
+      text-align: center; padding: 12px;
+      font-size: 12px; letter-spacing: 1px;
+      margin-bottom: 40px; border-radius: 8px;
+    }
+    .notice strong { color: #fa006d; }
+
+    /* ===== COVER — マガジン風 ===== */
+    .cover-mag {
+      position: relative;
+      background: #1a1a2e;
+      border-radius: 20px;
+      overflow: hidden;
+      padding: 60px 56px 50px;
+      margin-bottom: 60px;
+    }
+    /* ワイングラスの装飾SVG的背景 */
+    .cover-mag::before {
+      content: '';
+      position: absolute; top: 0; right: 0;
+      width: 50%; height: 100%;
+      background: linear-gradient(135deg, transparent 0%, rgba(250,0,109,0.08) 50%, rgba(27,153,139,0.12) 100%);
+    }
+    .cover-mag::after {
+      content: '🍷';
+      position: absolute;
+      right: 56px; bottom: 40px;
+      font-size: 120px;
+      opacity: 0.15;
+      line-height: 1;
+    }
+    .cover-eyebrow {
+      display: inline-block;
+      background: #fa006d;
+      color: white;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+    }
+    .cover-mag h1 {
+      font-size: 36px;
+      font-weight: 900;
+      color: white;
+      line-height: 1.3;
+      margin-bottom: 8px;
+    }
+    .cover-mag h1 em {
+      font-style: normal;
+      color: #fa006d;
+    }
+    .cover-date-line {
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 36px;
+    }
+    .cover-stats {
+      display: flex; gap: 0;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 12px;
+      overflow: hidden;
+      max-width: 480px;
+    }
+    .cover-stat {
+      flex: 1;
+      padding: 14px 18px;
+      border-right: 1px solid rgba(255,255,255,0.15);
+    }
+    .cover-stat:last-child { border-right: none; }
+    .cover-stat-label {
+      font-size: 9px;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .cover-stat-value {
+      font-size: 13px;
+      font-weight: 700;
+      color: white;
+    }
+
+    /* ===== BIG LEAD ===== */
+    .lead-block {
+      background: white;
+      border-radius: 16px;
+      padding: 36px 40px;
+      margin-bottom: 48px;
+      border-left: 5px solid #fa006d;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+    }
+    .lead-block blockquote {
+      font-size: 20px;
+      font-weight: 700;
+      color: #1a1a2e;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    .lead-block blockquote em {
+      font-style: normal;
+      color: #fa006d;
+    }
+    .lead-flow {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      font-size: 12px;
+      color: #888;
+    }
+    .lead-flow-step {
+      background: #f0f0f0;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-weight: 600;
+      color: #444;
+    }
+    .lead-flow-arrow { color: #fa006d; font-weight: 700; }
+    .lead-flow-step.goal { background: #fa006d; color: white; }
+
+    /* ===== SECTION HEADING ===== */
+    .sec-heading {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      margin-bottom: 28px;
+      padding-bottom: 14px;
+      border-bottom: 2px solid #1a1a2e;
+    }
+    .sec-heading-num {
+      font-size: 11px;
+      font-weight: 700;
+      color: #fa006d;
+      letter-spacing: 2px;
+    }
+    .sec-heading h2 {
+      font-size: 20px;
+      font-weight: 900;
+      color: #1a1a2e;
+    }
+    .sec-heading-sub {
+      font-size: 12px;
+      color: #888;
+      margin-left: auto;
+    }
+
+    /* ===== IDEA STRIP（横帯スタイル） ===== */
+    .idea-strip {
+      background: white;
+      border-radius: 14px;
+      margin-bottom: 16px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+      display: flex;
+    }
+    .idea-strip-accent {
+      width: 6px;
+      background: #e8e8e8;
+      flex-shrink: 0;
+    }
+    .idea-strip.pick .idea-strip-accent { background: #fa006d; }
+    .idea-strip.data .idea-strip-accent { background: #1b998b; }
+    .idea-strip-body {
+      flex: 1;
+      padding: 22px 24px;
+    }
+    .idea-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .idea-id {
+      font-size: 10px;
+      font-weight: 700;
+      background: #1a1a2e;
+      color: white;
+      padding: 2px 10px;
+      border-radius: 4px;
+    }
+    .idea-strip.pick .idea-id { background: #fa006d; }
+    .idea-strip.data .idea-id { background: #1b998b; }
+    .idea-badge {
+      font-size: 11px;
+      color: #fa006d;
+      border: 1px solid #fa006d;
+      padding: 1px 8px;
+      border-radius: 10px;
+      font-weight: 700;
+    }
+    .idea-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: #1a1a2e;
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+    .idea-body {
+      font-size: 13px;
+      color: #444;
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+    .idea-hook {
+      display: flex;
+      gap: 8px;
+      background: #faf8f5;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 12px;
+      color: #555;
+    }
+    .idea-hook-label {
+      color: #fa006d;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .idea-evidence {
+      display: flex;
+      gap: 8px;
+      background: #f0faf8;
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 12px;
+      color: #1b998b;
+      margin-top: 8px;
+    }
+    .idea-evidence-label { font-weight: 700; flex-shrink: 0; }
+
+    /* ===== NUMBER CALLOUT ===== */
+    .num-callout {
+      background: #1a1a2e;
+      color: white;
+      border-radius: 14px;
+      padding: 28px 32px;
+      margin-bottom: 40px;
+      display: flex;
+      gap: 28px;
+      align-items: center;
+    }
+    .num-callout-icon {
+      font-size: 48px;
+      flex-shrink: 0;
+    }
+    .num-callout-text { flex: 1; }
+    .num-callout-title {
+      font-size: 11px;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 2px;
+      margin-bottom: 6px;
+    }
+    .num-callout-body {
+      font-size: 15px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.9);
+    }
+    .num-callout-body strong { color: #fa006d; }
+
+    /* ===== TIMELINE ===== */
+    .timeline {
+      position: relative;
+      padding-left: 32px;
+      margin-bottom: 48px;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 8px; top: 0; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, #fa006d, #1b998b);
+    }
+    .tl-item {
+      position: relative;
+      margin-bottom: 24px;
+    }
+    .tl-item::before {
+      content: '';
+      position: absolute;
+      left: -28px; top: 6px;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: #fa006d;
+      border: 2px solid white;
+      box-shadow: 0 0 0 2px #fa006d;
+    }
+    .tl-time {
+      font-size: 10px;
+      font-weight: 700;
+      color: #fa006d;
+      letter-spacing: 1px;
+      margin-bottom: 2px;
+    }
+    .tl-step {
+      font-size: 15px;
+      font-weight: 700;
+      color: #1a1a2e;
+    }
+    .tl-desc {
+      font-size: 12px;
+      color: #888;
+      margin-top: 2px;
+    }
+
+    /* ===== SECTION WRAPPER ===== */
+    .section-wrap {
+      margin-bottom: 56px;
+    }
+
+    .divider {
+      height: 1px;
+      background: linear-gradient(to right, #fa006d, transparent);
+      margin: 48px 0;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <div class="notice">これは<strong>マガジン風デザインのサンプル</strong>です（掛け合いセクションのみ抜粋）</div>
+
+  <!-- COVER -->
+  <div class="cover-mag">
+    <div class="cover-eyebrow">COOP KOBE × FIREWORK | 企画プラン</div>
+    <h1>ワイン試飲イベント<br>予告編配信<br><em>企画アイデア集</em></h1>
+    <div class="cover-date-line">2026年5月22日 / 配信日未定 / 担当：Firework</div>
+    <div class="cover-stats">
+      <div class="cover-stat">
+        <div class="cover-stat-label">Target</div>
+        <div class="cover-stat-value">30〜40代 夜19時</div>
+      </div>
+      <div class="cover-stat">
+        <div class="cover-stat-label">Goal</div>
+        <div class="cover-stat-value">イベント申込増</div>
+      </div>
+      <div class="cover-stat">
+        <div class="cover-stat-label">出演</div>
+        <div class="cover-stat-value">ソムリエ・平林・羽田</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LEAD -->
+  <div class="lead-block">
+    <blockquote>ゴールは「ワインを教える配信」ではなく、<br><em>「この人たちのイベント、行ったら楽しそう」と予感させること。</em></blockquote>
+    <div class="lead-flow">
+      <div class="lead-flow-step">視聴</div>
+      <div class="lead-flow-arrow">→</div>
+      <div class="lead-flow-step">壁を下げる</div>
+      <div class="lead-flow-arrow">→</div>
+      <div class="lead-flow-step">試飲を追体験</div>
+      <div class="lead-flow-arrow">→</div>
+      <div class="lead-flow-step">「行きたい」予感</div>
+      <div class="lead-flow-arrow">→</div>
+      <div class="lead-flow-step goal">イベント申込</div>
+    </div>
+  </div>
+
+  <!-- 掛け合いセクション -->
+  <div class="section-wrap">
+    <div class="sec-heading">
+      <span class="sec-heading-num">SECTION 01</span>
+      <h2>掛け合い企画</h2>
+      <span class="sec-heading-sub">初心者の「分からない不安」をその場で楽しく解消する</span>
+    </div>
+
+    <div class="idea-strip pick">
+      <div class="idea-strip-accent"></div>
+      <div class="idea-strip-body">
+        <div class="idea-meta">
+          <span class="idea-id">A-2</span>
+          <span class="idea-badge">★ イチオシ</span>
+        </div>
+        <div class="idea-title">平林さんの「見た目だけ判定」<br>色・透明度・粘度だけでソムリエと答え合わせ</div>
+        <div class="idea-body">平林さんがラベルを見ずに<strong>色・透明度・グラスを揺らしたときの粘度だけ</strong>でワインを表現し、ソムリエが「実はその見立て、プロも参考にする指標です」と肯定。香りに頼らず"目で楽しむ"入口として、ワインが苦手な人でも参加できる設計。</div>
+        <div class="idea-hook"><span class="idea-hook-label">集客フック</span>「当日は実際に手に取って、自分の言葉で言い当ててみてください」→ 答え合わせしに行く動機。</div>
+      </div>
+    </div>
+
+    <div class="idea-strip">
+      <div class="idea-strip-accent"></div>
+      <div class="idea-strip-body">
+        <div class="idea-meta"><span class="idea-id">A-3</span></div>
+        <div class="idea-title">ソムリエ vs コープこうべバイヤー「推しワイン対決」</div>
+        <div class="idea-body">ソムリエが「本当に美味しいワイン」を、コープこうべバイヤーが「コープこうべが自信をもって売るワイン」を1本ずつ持ち寄り30秒プレゼン対決。視聴者コメントで投票し勝敗を決める。</div>
+        <div class="idea-hook"><span class="idea-hook-label">集客フック</span>「勝敗どちらも当日は両方飲み比べられます」</div>
+      </div>
+    </div>
+
+    <div class="idea-strip">
+      <div class="idea-strip-accent"></div>
+      <div class="idea-strip-body">
+        <div class="idea-meta"><span class="idea-id">A-4</span></div>
+        <div class="idea-title">「ソムリエに何でも聞いていいよ」Tips・トリビアコーナー</div>
+        <div class="idea-body">「美味しいワインの見分け方」「ラベルで分かること」「保存は縦？横？」など初心者が気になる豆知識をソムリエがテンポよく回答。知識ゼロでも「分かった！」が積み重なる構成。</div>
+        <div class="idea-hook"><span class="idea-hook-label">集客フック</span>「当日も直接ソムリエに何でも聞ける場です」と参加ハードルを下げる。</div>
+        <div class="idea-evidence"><span class="idea-evidence-label">根拠</span>10月振り返り：Q&Aを前半20分以内に配置するとクリック3ピーク（8分・22分・48分）が活きる。</div>
+      </div>
+    </div>
+
+    <div class="idea-strip pick">
+      <div class="idea-strip-accent"></div>
+      <div class="idea-strip-body">
+        <div class="idea-meta">
+          <span class="idea-id">A-5</span>
+          <span class="idea-badge">★ イチオシ</span>
+        </div>
+        <div class="idea-title">「このワインに合うおつまみはどれ？」ペアリングクイズ</div>
+        <div class="idea-body">3本のワインと3種のコープこうべおつまみを並べ、「それぞれ何が合う？」をクイズ形式で視聴者に出題。ヒントは<strong>「香り（果実系・スパイシー）」「辛口・甘口」だけ</strong>。正解発表後、平林さんがおつまみを実際に食べ合わせてリアクション。エンディングで「このセット、コープこうべで一緒に買えます」と商品導線を添える。</div>
+        <div class="idea-hook"><span class="idea-hook-label">集客フック</span>「クイズの答えは当日自分の舌で確かめてください」→ 申込動機に変換。</div>
+        <div class="idea-evidence"><span class="idea-evidence-label">根拠</span>昨年ワイン回：購入ゼロの原因は商品紹介が後半のみ。おつまみ×ワインセットを前半2分以内に入れることで購入導線が早まる。</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- データ callout -->
+  <div class="num-callout">
+    <div class="num-callout-icon">📊</div>
+    <div class="num-callout-text">
+      <div class="num-callout-title">最重要発見 — データ起点</div>
+      <div class="num-callout-body">昨年ワイン回（第14回）は視聴分数が歴代上位（11分52秒）だが<strong>購入実績ゼロ</strong>。「ワインはじっくり観られるが、その場で買われにくい」。予告編のゴールを<strong>「イベント申込」</strong>に置くのはデータ的に正しい。</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 構成タイムライン -->
+  <div class="section-wrap">
+    <div class="sec-heading">
+      <span class="sec-heading-num">SECTION 05</span>
+      <h2>推奨構成（15分版）</h2>
+      <span class="sec-heading-sub">申込直行型</span>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-time">0-1分</div>
+        <div class="tl-step">オープニング</div>
+        <div class="tl-desc">平林さんの「実は飲めない」自己開示で掴む</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">1-4分</div>
+        <div class="tl-step">壁を下げる</div>
+        <div class="tl-desc">A-4 Tips + B-6前半（一杯目チラ見せ）</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">4-10分</div>
+        <div class="tl-step">追体験</div>
+        <div class="tl-desc">★B-5同時試食 + B-1リアクション + B-3色グラデ</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">10-13分</div>
+        <div class="tl-step">当日への接続</div>
+        <div class="tl-desc">★A-2見た目判定 + B-7投票</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">13-15分</div>
+        <div class="tl-step">エンディング</div>
+        <div class="tl-desc">申込方法・日程・「当日会いましょう」</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
