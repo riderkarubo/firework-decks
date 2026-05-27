@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="last-modified" content="2026-05-27T11:36:00+09:00">
+  <meta name="description" content="New Era AIGCサンプル制作 指示書">
+  <title>New Era AIGC サンプル制作 指示書</title>
+
+  <script src="../auth.js"></script>
+  <script>document.addEventListener('DOMContentLoaded', function(){ FireworkSSO.protect(); });</script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #1a1a2e;
+      --accent: #FA006D;
+      --accent2: #1B998B;
+      --bg: #f5f5f7;
+      --card: #ffffff;
+      --border: #e0e0e0;
+      --text: #1a1a1a;
+      --text-sub: #666;
+    }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    .header {
+      background: var(--black);
+      color: white;
+      padding: 32px 40px;
+    }
+    .header-inner { max-width: 820px; margin: 0 auto; }
+    .header-label {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      color: #aaa;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .header h1 { font-size: 24px; font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
+    .header h1 span { color: var(--accent); }
+    .header-meta { font-size: 12px; color: #888; margin-top: 10px; }
+    .header-meta span + span::before { content: ' / '; }
+
+    .container {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+
+    .section-title {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-sub);
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 8px;
+      margin-bottom: 20px;
+      margin-top: 44px;
+    }
+    .section-title:first-of-type { margin-top: 0; }
+
+    /* Overview */
+    .overview-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+    .overview-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px 18px;
+    }
+    .overview-card .label { font-size: 11px; color: var(--text-sub); margin-bottom: 4px; }
+    .overview-card .value { font-size: 14px; font-weight: 700; }
+
+    /* Task card */
+    .task-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px 30px;
+      margin-bottom: 16px;
+    }
+    .task-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+    .task-num {
+      width: 34px; height: 34px;
+      background: var(--black);
+      color: white;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 14px; font-weight: 700;
+      flex-shrink: 0;
+    }
+    .task-title { font-size: 18px; font-weight: 700; line-height: 1.3; margin-bottom: 3px; }
+    .task-subtitle { font-size: 13px; color: var(--text-sub); }
+
+    .field-label {
+      font-size: 11px; font-weight: 700;
+      color: var(--text-sub);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      margin-top: 20px;
+    }
+    .field-label:first-child { margin-top: 0; }
+
+    .ref-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--black);
+      color: white;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 8px 14px;
+      border-radius: 6px;
+      transition: opacity 0.15s;
+    }
+    .ref-link:hover { opacity: 0.75; }
+
+    .instruction-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+    .instruction-list li {
+      display: flex;
+      gap: 10px;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+    .instruction-list li::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 10px;
+    }
+
+    .prompt-box {
+      background: #f8f9fa;
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: 0 8px 8px 0;
+      padding: 16px 18px;
+      font-size: 13.5px;
+      line-height: 1.85;
+      color: #333;
+      font-style: italic;
+    }
+
+    .asset-box {
+      background: #f8f9fa;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 18px;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+    .asset-box strong { font-weight: 700; color: var(--black); }
+    .asset-box .filename {
+      font-family: monospace;
+      font-size: 12.5px;
+      background: #e8e8e8;
+      padding: 1px 6px;
+      border-radius: 3px;
+      color: #444;
+    }
+
+    /* Bonus */
+    .bonus-card {
+      background: #fffbf0;
+      border: 1px solid #ffe49a;
+      border-radius: 12px;
+      padding: 24px 28px;
+    }
+    .bonus-header { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+    .bonus-badge {
+      background: #f59e0b; color: white;
+      font-size: 10px; font-weight: 700;
+      padding: 3px 8px; border-radius: 4px;
+    }
+    .bonus-title { font-size: 15px; font-weight: 700; }
+
+    /* Delivery */
+    .delivery-box {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px 24px;
+    }
+    .delivery-box p {
+      font-size: 14px;
+      color: var(--text-sub);
+      line-height: 1.9;
+      margin-bottom: 2px;
+    }
+    .delivery-box code {
+      font-family: monospace;
+      font-size: 12.5px;
+      background: #f0f0f0;
+      padding: 1px 5px;
+      border-radius: 3px;
+      color: #444;
+    }
+
+    footer {
+      background: var(--black);
+      color: #888;
+      text-align: center;
+      padding: 20px;
+      font-size: 12px;
+    }
+
+    @media (max-width: 640px) {
+      .overview-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media print {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-inner">
+    <div class="header-label">AIGC Sample Production Brief</div>
+    <h1>New Era <span>AIGC</span> サンプル制作 指示書</h1>
+    <div class="header-meta">
+      <span>担当: Natsu</span>
+      <span>作成: Issy</span>
+      <span>最終更新: 2026年5月27日 11:36</span>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="section-title">概要</div>
+  <div class="overview-grid">
+    <div class="overview-card">
+      <div class="label">クライアント</div>
+      <div class="value">New Era Japan</div>
+    </div>
+    <div class="overview-card">
+      <div class="label">制作本数</div>
+      <div class="value">2本（+余力1本）</div>
+    </div>
+    <div class="overview-card">
+      <div class="label">目的</div>
+      <div class="value">AIGCサンプル提示</div>
+    </div>
+    <div class="overview-card">
+      <div class="label">素材</div>
+      <div class="value">先方提供画像</div>
+    </div>
+  </div>
+
+  <div class="section-title">使用素材</div>
+  <div class="asset-box">
+    <p><strong>★ メイン素材（両タスク共通）</strong></p>
+    <p>モデル着用コーデ写真（スタジオ撮影・グレー背景）<br>
+    ファイル: <span class="filename">2511203_NEWERA_0911.jpg</span></p>
+    <br>
+    <p><strong>コーデ内訳（単品カットも同梱）</strong></p>
+    <p>・LAキャップ（スタッズ付きブラック） <span class="filename">15131451_01.jpg〜</span><br>
+    ・クロップTシャツ（ブラック） <span class="filename">15124840_01.jpg〜</span><br>
+    ・ワイドショーツ（グレー） <span class="filename">15124837_01.jpg〜</span></p>
+    <br>
+    <p style="font-size:13px; color:var(--text-sub);">※ 素材はGoogle Drive「New Era &gt; 【New Era】AIGCサンプル用商品画像」フォルダに格納済み</p>
+  </div>
+
+  <div class="section-title">制作タスク</div>
+
+  <!-- Task 1 -->
+  <div class="task-card">
+    <div class="task-header">
+      <div class="task-num">1</div>
+      <div>
+        <div class="task-title">モデル着用イメージ＠スタジオ</div>
+        <div class="task-subtitle">スタジオ背景・静的なモデル動画。商品の質感・シルエットを正確に伝える。</div>
+      </div>
+    </div>
+
+    <div class="field-label">参考動画</div>
+    <a href="https://business.firework.com/business/vZBLwv/channel/qXBwQZW/video/gp4ZkG/" class="ref-link" target="_blank">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+      リファレンス動画を見る
+    </a>
+    <p style="font-size:13px; color:var(--text-sub); margin-top:8px;">Fireworkのスタジオ系アパレル動画サンプル。シンプルな背景・全身が見えるカット・衣装が主役の構成を参照。</p>
+
+    <div class="field-label">ディレクション</div>
+    <ul class="instruction-list">
+      <li>素材のモデル着用画像（<code style="font-size:12px; background:#f0f0f0; padding:1px 5px; border-radius:3px;">2511203_NEWERA_0911.jpg</code>）をAIGCで動画化する</li>
+      <li>スタジオ背景（グレー〜ホワイト系）を維持しつつ、モデルに自然な動きをつける</li>
+      <li>服の形状・色・テクスチャをできるだけ忠実に保持する</li>
+      <li>動き：ゆったりとしたポージング変化、髪の揺れ、体重移動など。激しい動きは不要</li>
+      <li>縦型（9:16）、尺は10〜15秒程度</li>
+    </ul>
+
+    <div class="field-label">プロンプト案（Veo3 / Kling 等）</div>
+    <div class="prompt-box">
+      A fashion model in a minimalist studio setting with light gray background. She's wearing a black cropped tee, gray wide-leg shorts, and a black LA cap with rhinestone studs. Slow, elegant movement — shifting weight, hair gently moving, subtle hand gesture. Sharp focus on clothing texture and silhouette. Vertical 9:16 format, high-end fashion film mood.
+    </div>
+  </div>
+
+  <!-- Task 2 -->
+  <div class="task-card">
+    <div class="task-header">
+      <div class="task-num">2</div>
+      <div>
+        <div class="task-title">ストリートでのシーン提案</div>
+        <div class="task-subtitle">屋外・都市的な背景に置き換えて、スタイリングのシーン感を演出する。</div>
+      </div>
+    </div>
+
+    <div class="field-label">参考動画</div>
+    <a href="https://business.firework.com/business/vZBLwv/channel/qXBwQZW/video/5mqEnz/" class="ref-link" target="_blank">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+      リファレンス動画を見る
+    </a>
+    <p style="font-size:13px; color:var(--text-sub); margin-top:8px;">ストリート・アウトドア系のシーン演出。背景の街並みや自然光がスタイリングに動的なコンテクストを与えている。</p>
+
+    <div class="field-label">ディレクション</div>
+    <ul class="instruction-list">
+      <li>Task 1と同じ素材を使い、背景をストリートシーンに変換する</li>
+      <li>背景イメージ：都市の路地、コンクリート壁、階段など。渋谷・原宿・NYスタイルが馴染みやすい</li>
+      <li>自然光（日中の斜光）で、モデルが歩く・立ち止まるなど軽い動きをつける</li>
+      <li>「このコーデをこの場所で着たら」というシーン提案感を重視、服の再現度も保つ</li>
+      <li>縦型（9:16）、尺は10〜15秒程度</li>
+    </ul>
+
+    <div class="field-label">プロンプト案（Veo3 / Kling 等）</div>
+    <div class="prompt-box">
+      A fashion model wearing a black cropped tee, gray wide-leg shorts, and a rhinestone-studded black LA cap. She's walking on a street in Tokyo or NYC — concrete walls, natural daylight with soft shadows. Cinematic handheld camera, slow motion. Vertical 9:16 format. Streetwear editorial mood, urban cool.
+    </div>
+  </div>
+
+  <!-- Bonus -->
+  <div class="bonus-card">
+    <div class="bonus-header">
+      <div class="bonus-badge">余力があれば</div>
+      <div class="bonus-title">商品単品カット＋モデル画像の組み合わせ生成</div>
+    </div>
+    <ul class="instruction-list" style="margin-bottom:14px;">
+      <li>Task 1 or 2 のプロンプトに<strong>商品の単品カット（白背景）も合わせて入力</strong>してみる</li>
+      <li>仮説：単品カットも添付すると服の形状・テクスチャの再現度が上がる可能性がある</li>
+      <li>対象：各商品の <code style="font-size:12px; background:#f0e8b0; padding:1px 5px; border-radius:3px;">_01.jpg</code> を1枚ずつ（キャップ・T・ショーツ）</li>
+      <li>Task 1 or 2 の結果と比較して、再現度の差をメモしておいてほしい</li>
+    </ul>
+    <div style="margin-top:14px;">
+      <div class="field-label" style="margin-top:0;">参考：日本チーム制作のアパレルAIGCサンプル（Mu-san、P7・P9）</div>
+      <a href="https://docs.google.com/presentation/d/1HWagGAlAj3dbuKSpAyFRIKbvpNbs2WEKdV0CsXWSP9I/edit?slide=id.g3e17290ad5e_0_0" class="ref-link" target="_blank">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        Google Slides を見る（P7, P9）
+      </a>
+    </div>
+  </div>
+
+  <div class="section-title">納品フォーマット</div>
+  <div class="delivery-box">
+    <p>・縦型（9:16）MP4、各10〜15秒程度</p>
+    <p>・Task 1 / Task 2 それぞれ1本</p>
+    <p>・余力タスク実施の場合：「単品カットあり」「なし」2バリエーション＋比較メモ</p>
+    <p>・ファイル名例：<code>newera_studio_v1.mp4</code>、<code>newera_street_v1.mp4</code></p>
+    <p>・完成後 Slack or Google Drive で Issy に共有</p>
+  </div>
+
+</div>
+
+<footer>
+  New Era AIGC サンプル制作 指示書 ／ 最終更新: 2026年5月27日 11:36 JST ／ Firework Japan
+</footer>
+
+</body>
+</html>
