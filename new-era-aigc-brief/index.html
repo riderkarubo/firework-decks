@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="last-modified" content="2026-05-27T11:36:00+09:00">
+  <meta name="last-modified" content="2026-05-27T11:41:00+09:00">
   <meta name="description" content="New Era AIGCサンプル制作 指示書">
   <title>New Era AIGC サンプル制作 指示書</title>
 
@@ -233,8 +233,58 @@
       font-size: 12px;
     }
 
+    /* Tips section */
+    .tips-intro {
+      font-size: 14px;
+      line-height: 1.8;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent2);
+      border-radius: 0 8px 8px 0;
+      padding: 14px 18px;
+      margin-bottom: 20px;
+    }
+    .tips-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .tip-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px 22px;
+    }
+    .tip-num {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent2);
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+    }
+    .tip-title {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+    .tip-body {
+      font-size: 13px;
+      line-height: 1.8;
+      color: #333;
+    }
+    .tip-body code {
+      font-family: monospace;
+      font-size: 12px;
+      background: #f0f0f0;
+      padding: 1px 5px;
+      border-radius: 3px;
+      color: #444;
+    }
+
     @media (max-width: 640px) {
       .overview-grid { grid-template-columns: 1fr 1fr; }
+      .tips-grid { grid-template-columns: 1fr; }
     }
     @media print {
       -webkit-print-color-adjust: exact;
@@ -251,7 +301,7 @@
     <div class="header-meta">
       <span>担当: Natsu</span>
       <span>作成: Issy</span>
-      <span>最終更新: 2026年5月27日 11:36</span>
+      <span>最終更新: 2026年5月27日 11:41</span>
     </div>
   </div>
 </div>
@@ -320,10 +370,6 @@
       <li>縦型（9:16）、尺は10〜15秒程度</li>
     </ul>
 
-    <div class="field-label">プロンプト案（Veo3 / Kling 等）</div>
-    <div class="prompt-box">
-      A fashion model in a minimalist studio setting with light gray background. She's wearing a black cropped tee, gray wide-leg shorts, and a black LA cap with rhinestone studs. Slow, elegant movement — shifting weight, hair gently moving, subtle hand gesture. Sharp focus on clothing texture and silhouette. Vertical 9:16 format, high-end fashion film mood.
-    </div>
   </div>
 
   <!-- Task 2 -->
@@ -352,10 +398,6 @@
       <li>縦型（9:16）、尺は10〜15秒程度</li>
     </ul>
 
-    <div class="field-label">プロンプト案（Veo3 / Kling 等）</div>
-    <div class="prompt-box">
-      A fashion model wearing a black cropped tee, gray wide-leg shorts, and a rhinestone-studded black LA cap. She's walking on a street in Tokyo or NYC — concrete walls, natural daylight with soft shadows. Cinematic handheld camera, slow motion. Vertical 9:16 format. Streetwear editorial mood, urban cool.
-    </div>
   </div>
 
   <!-- Bonus -->
@@ -370,7 +412,20 @@
       <li>対象：各商品の <code style="font-size:12px; background:#f0e8b0; padding:1px 5px; border-radius:3px;">_01.jpg</code> を1枚ずつ（キャップ・T・ショーツ）</li>
       <li>Task 1 or 2 の結果と比較して、再現度の差をメモしておいてほしい</li>
     </ul>
-    <div style="margin-top:14px;">
+
+    <div style="margin-top: 20px; padding-top: 16px; border-top: 1px solid #ffe49a;">
+      <div class="field-label" style="margin-top:0; color:#b45309;">Gemini Omni で会話形式で動画生成するフロー</div>
+      <ul class="instruction-list" style="margin-bottom:10px;">
+        <li>Google AI Studio（<a href="https://aistudio.google.com/" target="_blank" style="color:var(--accent2);">aistudio.google.com</a>）を開き、モデルを <strong>Gemini 2.0 Flash</strong> にする</li>
+        <li>「ファイルをアップロード」からモデル着用画像（<code style="font-size:12px;background:#f0e8b0;padding:1px 5px;border-radius:3px;">2511203_NEWERA_0911.jpg</code>）を添付</li>
+        <li>チャット欄に指示を日本語で入力する。例：「この画像の人物にストリートを歩くような自然な動きをつけた縦型動画を生成して。服の質感はそのまま保持して」</li>
+        <li>生成結果を見て、気になった点を会話で追加指示。例：「もう少しゆっくりした動きに」「背景をもう少し都市的に」など、ターン形式で調整できる</li>
+        <li>Gemini Omniで生成した場合、Seedance2.0と結果を比較してメモしておいてほしい（どちらが服の再現度・自然な動きに優れているか）</li>
+      </ul>
+      <p style="font-size:12.5px;color:#92400e;">※ 2026年5月時点でGemini Omniの動画生成は一部ユーザーに限定公開中。使えない場合はスキップOK。</p>
+    </div>
+
+    <div style="margin-top:16px;">
       <div class="field-label" style="margin-top:0;">参考：日本チーム制作のアパレルAIGCサンプル（Mu-san、P7・P9）</div>
       <a href="https://docs.google.com/presentation/d/1HWagGAlAj3dbuKSpAyFRIKbvpNbs2WEKdV0CsXWSP9I/edit?slide=id.g3e17290ad5e_0_0" class="ref-link" target="_blank">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
@@ -390,8 +445,101 @@
 
 </div>
 
+  <!-- Seedance Tips -->
+  <div class="section-title" style="margin-top:48px;">Seedance 2.0 制作 Tips</div>
+  <div class="tips-section">
+
+    <div class="tips-intro">
+      今回の制作ツールとして <strong>Seedance 2.0（PiAPI経由）</strong> を推奨。<br>
+      以下は「アパレル商品の着用感を正確に伝えるAIGC動画」を作るための工夫をまとめたもの。
+    </div>
+
+    <div class="tips-grid">
+
+      <div class="tip-card">
+        <div class="tip-num">01</div>
+        <div class="tip-title">Subject Reference（主体参照）を必ず使う</div>
+        <div class="tip-body">
+          Seedance 2.0 では <strong>画像をそのまま入力</strong>することでモデル・服・構図を最大限参照する。<br>
+          プロンプトだけで指示せず、必ず <code>subject_reference_images</code> にモデル着用画像を設定すること。<br>
+          単品カットも同時に入れると服の形状保持率が上がる可能性があるので、Task補足で検証してほしい。
+        </div>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-num">02</div>
+        <div class="tip-title">動きの指定は「動詞＋副詞」で具体的に</div>
+        <div class="tip-body">
+          「動く」だけでは過剰にアクションが付きやすい。以下のように具体化する：<br>
+          <ul class="instruction-list" style="margin-top:8px;">
+            <li><code>slowly shifting weight from one foot to the other</code>（体重移動・静的）</li>
+            <li><code>gentle hair movement, subtle breathing</code>（最小限の動き）</li>
+            <li><code>walking slowly, minimal arm swing</code>（ストリート向け歩行）</li>
+          </ul>
+          「激しく動かさない」指定として <code>no sudden movements, no jumping</code> を末尾に添えると安定する。
+        </div>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-num">03</div>
+        <div class="tip-title">服のテクスチャ保持を明示的に指定する</div>
+        <div class="tip-body">
+          服の素材感が変わりやすいのがAIGCの課題。以下の表現を必ずプロンプトに含める：<br>
+          <ul class="instruction-list" style="margin-top:8px;">
+            <li><code>preserve fabric texture and clothing details</code></li>
+            <li><code>maintain exact clothing appearance from reference image</code></li>
+            <li><code>sharp focus on garment texture, no AI artifacts on clothing</code></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-num">04</div>
+        <div class="tip-title">縦型・尺・フレームレートの指定</div>
+        <div class="tip-body">
+          Seedance 2.0 の基本パラメータ：<br>
+          <ul class="instruction-list" style="margin-top:8px;">
+            <li><strong>アスペクト比：</strong> <code>9:16</code>（縦型必須）</li>
+            <li><strong>尺：</strong> 10〜15秒（<code>duration: 10</code> or <code>15</code>）</li>
+            <li><strong>解像度：</strong> <code>720p</code> or <code>1080p</code>（サンプルなら720pで十分）</li>
+            <li><strong>シード値：</strong> 気に入った結果が出たらシードを固定して微調整</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-num">05</div>
+        <div class="tip-title">背景変換（ストリートシーン）のコツ</div>
+        <div class="tip-body">
+          スタジオ背景をストリートに変える際は、<strong>背景描写を詳細に・人物描写は参照画像に委ねる</strong>のがポイント：<br>
+          <ul class="instruction-list" style="margin-top:8px;">
+            <li>背景：<code>urban Tokyo street, concrete wall, soft natural daylight, shallow depth of field</code></li>
+            <li>人物：<code>same model and outfit as reference image</code>（参照画像と同じ、とだけ書く）</li>
+            <li>背景と人物の指定が混在すると人物の外見が変わりやすいので注意</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tip-card">
+        <div class="tip-num">06</div>
+        <div class="tip-title">うまくいったプロンプトは必ず記録する</div>
+        <div class="tip-body">
+          Seedance は同じプロンプトでも毎回結果が変わる。良い結果が出たら：<br>
+          <ul class="instruction-list" style="margin-top:8px;">
+            <li>使ったプロンプト全文・シード値・パラメータをSlackかGoogleドキュメントに残す</li>
+            <li>「何が効いたか」の一言コメントも添えておくと次回の再現性が上がる</li>
+            <li>New Era以外の案件でも転用できるテンプレになる</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
 <footer>
-  New Era AIGC サンプル制作 指示書 ／ 最終更新: 2026年5月27日 11:36 JST ／ Firework Japan
+  New Era AIGC サンプル制作 指示書 ／ 最終更新: 2026年5月27日 11:41 JST ／ Firework Japan
 </footer>
 
 </body>
