@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claude Code ワークショップ 2026</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+  <meta name="last-modified" content="2026-05-28T17:38:00+09:00">
+  <meta name="description" content="Claude Code 初心者向けワークショップ教材。2時間で Chat・Cowork・Codeの使い分けから制作業務活用術まで学べます。">
+  <meta property="og:title" content="Claude Code ワークショップ 2026">
+  <meta property="og:description" content="Claude Code 初心者向けワークショップ教材。2時間で Chat・Cowork・Codeの使い分けから制作業務活用術まで学べます。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://riderkarubo.github.io/firework-decks/claude-code-workshop/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Claude Code ワークショップ 2026">
+  <meta name="twitter:description" content="Claude Code 初心者向けワークショップ教材。2時間で Chat・Cowork・Codeの使い分けから制作業務活用術まで学べます。">
+
+  <style>
+    :root {
+      --primary: #1a1a2e;
+      --accent: #FA006D;
+      --accent2: #ff6b9d;
+      --gold: #f5a623;
+      --green: #2ecc71;
+      --blue: #3498db;
+      --purple: #9b59b6;
+      --bg: #f4f5f8;
+      --card: #ffffff;
+      --ink: #1a1a2e;
+      --gray: #6b7280;
+      --line: #e5e7eb;
+      --code-bg: #0f172a;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: "Noto Sans JP", -apple-system, BlinkMacSystemFont, "Hiragino Sans", sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.8;
+      font-size: 15px;
+    }
+
+    /* ===== LAYOUT ===== */
+    .wrap { max-width: 960px; margin: 0 auto; padding: 0 20px 80px; }
+
+    /* ===== HEADER / NAV ===== */
+    .site-header {
+      background: var(--primary);
+      color: #fff;
+      padding: 12px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .site-header .logo {
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #fff;
+      flex-shrink: 0;
+    }
+    .site-header .logo span { color: var(--accent); }
+    .nav-links {
+      display: flex;
+      gap: 4px;
+      flex-wrap: wrap;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 12px;
+      color: rgba(255,255,255,0.7);
+      text-decoration: none;
+      padding: 4px 10px;
+      border-radius: 20px;
+      transition: all 0.15s;
+      white-space: nowrap;
+    }
+    .nav-links a:hover { background: rgba(255,255,255,0.1); color: #fff; }
+
+    /* ===== COVER ===== */
+    .cover {
+      background: linear-gradient(135deg, var(--primary) 0%, #16213e 60%, #0f3460 100%);
+      color: #fff;
+      padding: 64px 40px 56px;
+      border-radius: 0 0 28px 28px;
+      margin-bottom: 36px;
+      position: relative;
+      overflow: hidden;
+    }
+    .cover::before {
+      content: "";
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(250,0,109,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cover::after {
+      content: "🤖";
+      position: absolute;
+      right: 30px; bottom: 20px;
+      font-size: 120px;
+      opacity: 0.07;
+    }
+    .cover .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      letter-spacing: 2px;
+      background: rgba(250,0,109,0.2);
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      padding: 5px 16px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+    }
+    .cover h1 {
+      font-size: 36px;
+      font-weight: 800;
+      line-height: 1.3;
+      margin-bottom: 12px;
+    }
+    .cover h1 .highlight { color: var(--accent); }
+    .cover .sub {
+      font-size: 16px;
+      opacity: 0.85;
+      max-width: 560px;
+      line-height: 1.7;
+    }
+    .cover-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.15);
+    }
+    .cover-meta-item .label {
+      font-size: 10px;
+      opacity: 0.6;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+    .cover-meta-item .value {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    /* ===== GOAL CHIPS ===== */
+    .goal-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 28px 0 0;
+    }
+    .goal-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 20px;
+      padding: 6px 14px;
+      font-size: 13px;
+      color: #fff;
+    }
+    .goal-chip .icon { font-size: 14px; }
+
+    /* ===== TOC ===== */
+    .toc-section { margin: 0 0 40px; }
+    .toc-section-title {
+      font-size: 1.2em;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .toc { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 8px 8px; }
+    .toc-item { }
+    .toc-item a {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+      text-decoration: none;
+      color: inherit;
+      border-radius: 8px;
+      padding: 10px 14px;
+      transition: background 0.15s;
+    }
+    .toc-item a:hover { background: var(--bg); }
+    .toc-num {
+      width: 28px; height: 28px;
+      background: var(--primary); color: #fff;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 700;
+      flex-shrink: 0;
+    }
+    .toc-info { flex: 1; }
+    .toc-title { font-size: 14px; font-weight: 600; }
+    .toc-desc { font-size: 12px; color: var(--gray); }
+    .toc-right { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+    .toc-time {
+      font-size: 11px; color: var(--gray);
+      background: var(--bg); padding: 2px 8px; border-radius: 10px;
+    }
+    .toc-badge {
+      font-size: 10px; font-weight: 700;
+      padding: 2px 8px; border-radius: 10px;
+    }
+    .badge-hands { background: rgba(250,0,109,0.1); color: var(--accent); }
+    .badge-demo { background: rgba(52,152,219,0.1); color: var(--blue); }
+    .badge-case { background: rgba(245,166,35,0.1); color: var(--gold); }
+
+    /* ===== SECTION ===== */
+    section { margin-bottom: 48px; }
+    h2 {
+      font-size: 22px; font-weight: 800; color: var(--primary);
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 6px;
+      scroll-margin-top: 60px;
+    }
+    h2 .ch-badge {
+      font-size: 11px; background: var(--accent); color: #fff;
+      padding: 3px 12px; border-radius: 6px; font-weight: 700; flex-shrink: 0;
+    }
+    .section-meta {
+      display: flex; align-items: center; gap: 10px;
+      margin-bottom: 20px;
+    }
+    .time-tag {
+      font-size: 12px; color: var(--gray);
+      background: var(--bg);
+      padding: 3px 10px; border-radius: 10px;
+    }
+    .type-tag {
+      font-size: 11px; font-weight: 700;
+      padding: 3px 10px; border-radius: 10px;
+    }
+    .type-hands { background: rgba(250,0,109,0.1); color: var(--accent); }
+    .type-demo { background: rgba(52,152,219,0.1); color: var(--blue); }
+    .type-lecture { background: rgba(107,114,128,0.1); color: var(--gray); }
+    .type-case { background: rgba(245,166,35,0.1); color: var(--gold); }
+
+    /* ===== DIVIDER ===== */
+    .divider { border: none; border-top: 1px solid var(--line); margin: 0 0 20px; }
+
+    /* ===== CARDS ===== */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 14px;
+    }
+    .card.accent { border-left: 4px solid var(--accent); }
+    .card.gold { border-left: 4px solid var(--gold); }
+    .card.green { border-left: 4px solid var(--green); }
+    .card.blue { border-left: 4px solid var(--blue); }
+    .card-title {
+      font-size: 15px; font-weight: 700;
+      display: flex; align-items: center; gap: 8px;
+      margin-bottom: 8px;
+    }
+    .card-body { font-size: 14px; color: #374151; line-height: 1.8; }
+
+    /* ===== ROLE CARDS (3 column) ===== */
+    .role-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+    .role-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 20px 18px;
+    }
+    .role-card .role-icon { font-size: 28px; margin-bottom: 10px; }
+    .role-card .role-name {
+      font-size: 16px; font-weight: 800;
+      margin-bottom: 6px;
+    }
+    .role-card .role-tag {
+      display: inline-block;
+      font-size: 11px; font-weight: 700;
+      padding: 2px 8px; border-radius: 5px;
+      margin-bottom: 10px;
+    }
+    .role-card .role-desc { font-size: 13px; color: #374151; line-height: 1.7; }
+    .role-card .role-example {
+      margin-top: 10px;
+      background: var(--bg);
+      border-radius: 8px;
+      padding: 10px 12px;
+      font-size: 12px;
+      color: var(--gray);
+    }
+    .role-card.chat .role-name { color: var(--blue); }
+    .role-card.chat .role-tag { background: rgba(52,152,219,0.12); color: var(--blue); }
+    .role-card.cowork .role-name { color: var(--green); }
+    .role-card.cowork .role-tag { background: rgba(46,204,113,0.12); color: #1a9651; }
+    .role-card.code .role-name { color: var(--accent); }
+    .role-card.code .role-tag { background: rgba(250,0,109,0.1); color: var(--accent); }
+
+    /* ===== MODEL CARDS ===== */
+    .model-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .model-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 16px 20px;
+    }
+    .model-name { font-size: 16px; font-weight: 800; margin-bottom: 4px; }
+    .model-speed { font-size: 11px; margin-bottom: 8px; }
+    .model-desc { font-size: 13px; color: #374151; line-height: 1.7; }
+    .model-use { margin-top: 8px; font-size: 12px; color: var(--gray); }
+    .model-use strong { color: var(--ink); }
+
+    /* ===== STEP LIST ===== */
+    .step-list { list-style: none; }
+    .step-item {
+      display: flex;
+      gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .step-item:last-child { border-bottom: none; }
+    .step-num {
+      width: 32px; height: 32px;
+      background: var(--primary); color: #fff;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 700;
+      flex-shrink: 0; margin-top: 2px;
+    }
+    .step-content .step-title { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+    .step-content .step-body { font-size: 13px; color: #374151; line-height: 1.7; }
+
+    /* ===== CODE BLOCK ===== */
+    .code-block {
+      background: var(--code-bg);
+      border-radius: 10px;
+      padding: 18px 20px;
+      margin: 12px 0;
+      font-family: "SF Mono", Consolas, "Courier New", monospace;
+      font-size: 13px;
+      color: #e2e8f0;
+      overflow-x: auto;
+      line-height: 1.7;
+    }
+    .code-block .cmt { color: #6b7280; }
+    .code-block .cmd { color: #10b981; }
+    .code-block .str { color: #f59e0b; }
+    .code-block .kw { color: var(--accent2); }
+
+    /* ===== CALLOUT ===== */
+    .callout {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin: 14px 0;
+    }
+    .callout.tip { border-left: 4px solid var(--green); }
+    .callout.warn { border-left: 4px solid var(--gold); }
+    .callout.info { border-left: 4px solid var(--blue); }
+    .callout-icon { font-size: 20px; flex-shrink: 0; }
+    .callout-body { font-size: 14px; line-height: 1.7; }
+    .callout-body strong { display: block; margin-bottom: 4px; font-size: 15px; }
+
+    /* ===== FOLDER TREE ===== */
+    .folder-tree {
+      background: var(--code-bg);
+      border-radius: 10px;
+      padding: 18px 20px;
+      font-family: "SF Mono", Consolas, "Courier New", monospace;
+      font-size: 13px;
+      color: #e2e8f0;
+      line-height: 2.0;
+    }
+    .folder-tree .dir { color: #60a5fa; }
+    .folder-tree .file { color: #a3e635; }
+    .folder-tree .note { color: #6b7280; }
+    .folder-tree .highlight { color: #fbbf24; font-weight: 700; }
+
+    /* ===== CASE STUDY ===== */
+    .case-header {
+      background: linear-gradient(135deg, var(--primary) 0%, #16213e 100%);
+      color: #fff;
+      border-radius: 12px;
+      padding: 22px 24px;
+      margin-bottom: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+    .case-header::after {
+      content: attr(data-emoji);
+      position: absolute;
+      right: 20px; bottom: -10px;
+      font-size: 80px; opacity: 0.1;
+    }
+    .case-header .case-label {
+      font-size: 11px; letter-spacing: 1.5px;
+      color: var(--gold);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+    .case-header h3 { font-size: 20px; font-weight: 800; }
+    .case-header .case-sub { font-size: 13px; opacity: 0.8; margin-top: 6px; }
+
+    .result-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .result-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 16px;
+      text-align: center;
+    }
+    .result-num {
+      font-size: 28px; font-weight: 800;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .result-label { font-size: 12px; color: var(--gray); }
+
+    /* ===== DECISION FLOW ===== */
+    .decision-flow {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 14px;
+    }
+    .flow-title { font-size: 14px; font-weight: 700; margin-bottom: 14px; color: var(--gray); }
+    .flow-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+    .flow-q {
+      font-size: 13px;
+      background: var(--bg);
+      border-radius: 8px;
+      padding: 8px 14px;
+      flex: 1;
+      min-width: 200px;
+    }
+    .flow-arrow { font-size: 16px; color: var(--gray); flex-shrink: 0; }
+    .flow-ans {
+      font-size: 13px; font-weight: 700;
+      padding: 6px 16px; border-radius: 20px;
+      flex-shrink: 0;
+    }
+    .ans-chat { background: rgba(52,152,219,0.12); color: var(--blue); }
+    .ans-cowork { background: rgba(46,204,113,0.12); color: #1a9651; }
+    .ans-code { background: rgba(250,0,109,0.1); color: var(--accent); }
+
+    /* ===== HANDS-ON CHECKLIST ===== */
+    .checklist {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 20px 24px;
+    }
+    .checklist-title { font-size: 15px; font-weight: 700; margin-bottom: 14px; }
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--line);
+      cursor: pointer;
+    }
+    .check-item:last-child { border-bottom: none; }
+    .check-box {
+      width: 20px; height: 20px;
+      border: 2px solid var(--line);
+      border-radius: 5px;
+      flex-shrink: 0;
+      margin-top: 2px;
+      transition: all 0.15s;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .check-item.checked .check-box {
+      background: var(--green);
+      border-color: var(--green);
+    }
+    .check-item.checked .check-box::after {
+      content: "✓";
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .check-item.checked .check-text { text-decoration: line-through; color: var(--gray); }
+    .check-text { font-size: 14px; line-height: 1.6; }
+    .check-hint { font-size: 12px; color: var(--gray); margin-top: 2px; }
+
+    /* ===== PROGRESS BAR ===== */
+    .progress-section {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-bottom: 24px;
+    }
+    .progress-label {
+      display: flex; justify-content: space-between;
+      font-size: 13px; font-weight: 600; margin-bottom: 8px;
+    }
+    .progress-bar {
+      height: 6px; background: var(--bg);
+      border-radius: 3px; overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%; background: var(--accent);
+      border-radius: 3px; transition: width 0.5s;
+    }
+
+    /* ===== TIPS GRID ===== */
+    .tips-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .tip-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 16px 18px;
+    }
+    .tip-card .tip-icon { font-size: 22px; margin-bottom: 8px; }
+    .tip-card .tip-title { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+    .tip-card .tip-body { font-size: 13px; color: #374151; line-height: 1.7; }
+
+    /* ===== FOOTER ===== */
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 13px;
+      color: var(--gray);
+      border-top: 1px solid var(--line);
+    }
+
+    /* ===== PRINT ===== */
+    @media print {
+      * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; color-adjust: exact !important; }
+      @page { size: A4; margin: 10mm; }
+      section, .card, .role-card { page-break-inside: avoid; break-inside: avoid; }
+      .site-header { display: none; }
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 680px) {
+      .cover { padding: 36px 20px 32px; }
+      .cover h1 { font-size: 26px; }
+      .role-grid { grid-template-columns: 1fr; }
+      .model-grid { grid-template-columns: 1fr; }
+      .result-grid { grid-template-columns: repeat(2, 1fr); }
+      .tips-grid { grid-template-columns: 1fr; }
+      h2 { font-size: 18px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="site-header">
+  <div class="logo">FIREWORK × <span>Claude Code</span></div>
+  <nav>
+    <ul class="nav-links">
+      <li><a href="#sec-setup">初期設定</a></li>
+      <li><a href="#sec-computer-use">Computer Use</a></li>
+      <li><a href="#sec-folder">フォルダ</a></li>
+      <li><a href="#sec-modes">3つの役割</a></li>
+      <li><a href="#sec-models">モデル</a></li>
+      <li><a href="#sec-case">活用事例</a></li>
+      <li><a href="#sec-handson">ハンズオン</a></li>
+    </ul>
+  </nav>
+</header>
+
+<div class="wrap">
+
+  <!-- ===== COVER ===== -->
+  <div class="cover">
+    <div class="eyebrow">Workshop 2026</div>
+    <h1>はじめての<br><span class="highlight">Claude Code</span></h1>
+    <p class="sub">制作業務をAIと一緒に動かす。Chat・Cowork・Code の使い分けから、実案件への応用まで2時間で体験します。</p>
+
+    <div class="goal-chips">
+      <div class="goal-chip"><span class="icon">🚀</span> 初期設定を完了させる</div>
+      <div class="goal-chip"><span class="icon">💡</span> 3つのモードを使い分ける</div>
+      <div class="goal-chip"><span class="icon">🎬</span> 制作業務に適用する</div>
+      <div class="goal-chip"><span class="icon">🖥️</span> 実際に手を動かす</div>
+    </div>
+
+    <div class="cover-meta">
+      <div class="cover-meta-item">
+        <div class="label">対象</div>
+        <div class="value">GIFTVOX チーム</div>
+      </div>
+      <div class="cover-meta-item">
+        <div class="label">時間</div>
+        <div class="value">2時間</div>
+      </div>
+      <div class="cover-meta-item">
+        <div class="label">形式</div>
+        <div class="value">講義 + ハンズオン</div>
+      </div>
+      <div class="cover-meta-item">
+        <div class="label">Last Updated</div>
+        <div class="value">2026年5月28日 17:38</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== TOC ===== -->
+  <div class="toc-section">
+    <div class="toc-section-title">📋 目次</div>
+    <div class="toc">
+      <div class="toc-item">
+        <a href="#sec-setup">
+          <div class="toc-num">1</div>
+          <div class="toc-info">
+            <div class="toc-title">初期設定・最初にやること</div>
+            <div class="toc-desc">アカウント作成・拡張機能・推奨設定</div>
+          </div>
+          <div class="toc-right">
+            <span class="toc-time">20分</span>
+            <span class="toc-badge badge-hands">ハンズオン</span>
+          </div>
+        </a>
+      </div>
+      <div class="toc-item">
+        <a href="#sec-computer-use">
+          <div class="toc-num">2</div>
+          <div class="toc-info">
+            <div class="toc-title">Computer Use とは？</div>
+            <div class="toc-desc">AIがPCを操作するとはどういうことか</div>
+          </div>
+          <div class="toc-right">
+            <span class="toc-time">15分</span>
+            <span class="toc-badge badge-demo">デモ</span>
+          </div>
+        </a>
+      </div>
+      <div class="toc-item">
+        <a href="#sec-folder">
+          <div class="toc-num">3</div>
+          <div class="toc-info">
+            <div class="toc-title">フォルダ構造を見る</div>
+            <div class="toc-desc">Coworkに読み込ませると何が変わるか</div>
+          </div>
+          <div class="toc-right">
+            <span class="toc-time">15分</span>
+            <span class="toc-badge badge-demo">デモ</span>
+          </div>
+        </a>
+      </div>
+      <div class="toc-item">
+        <a href="#sec-modes">
+          <div class="toc-num">4</div>
+          <div class="toc-info">
+            <div class="toc-title">Chat / Cowork / Code の使い分け</div>
+            <div class="toc-desc">3つのモードのそれぞれの役割と用途</div>
+          </div>
+          <div class="toc-right">
+            <span class="toc-time">15分</span>
+            <span class="toc-badge badge-hands">ハンズオン</span>
+          </div>
+        </a>
+      </div>
+      <div class="toc-item">
+        <a href="#sec-models">
+          <div class="toc-num">5</div>
+          <div class="toc-info">
+            <div class="toc-title">モデルの使い分け</div>
+            <div class="toc-desc">Haiku・Sonnet・Opus・Effort の選び方</div>
+          </div>
+          <div class="toc-right">
+            <span class="toc-time">10分</span>
+          </div>
+        </a>
+      </div>
+      <div class="toc-item">
+        <a href="#sec-case">
+          <div class="toc-num">6</div>
+          <div class="toc-info">
+            <div class="toc-title">制作業務 活用事例</div>
+            <div class="toc-desc">コープこうべの実例・分析・スライド作成フロー</div>
+          </div>
+          <div class="toc-right">
+            <span class="toc-time">25分</span>
+            <span class="toc-badge badge-case">事例</span>
+          </div>
+        </a>
+      </div>
+      <div class="toc-item">
+        <a href="#sec-handson">
+          <div class="toc-num">7</div>
+          <div class="toc-info">
+            <div class="toc-title">ハンズオン</div>
+            <div class="toc-desc">自分の業務タスクをCoworkに投げてみる</div>
+          </div>
+          <div class="toc-right">
+            <span class="toc-time">10分</span>
+            <span class="toc-badge badge-hands">ハンズオン</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SECTION 1: 初期設定 ===== -->
+  <section id="sec-setup">
+    <h2><span class="ch-badge">Ch.1</span> 初期設定・最初にやること</h2>
+    <div class="section-meta">
+      <span class="time-tag">⏱ 20分</span>
+      <span class="type-tag type-hands">ハンズオン</span>
+    </div>
+    <hr class="divider">
+
+    <div class="card blue">
+      <div class="card-title">🎯 このセクションのゴール</div>
+      <div class="card-body">全員が Claude.ai にログインし、Cowork が動作していることを確認する。</div>
+    </div>
+
+    <ul class="step-list">
+      <li class="step-item">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <div class="step-title">アカウント作成</div>
+          <div class="step-body">
+            <strong>claude.ai</strong> にアクセスしてサインアップ。Googleアカウントでの登録が最速。<br>
+            プランは <strong>Free</strong> で今日のワークショップはOK。制作業務で本格的に使うなら <strong>Pro（$20/月）</strong> を推奨。
+          </div>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <div class="step-title">Claude.ai にログイン → Cowork を開く</div>
+          <div class="step-body">
+            ログイン後、左サイドバーの「<strong>Projects（Cowork）</strong>」を探す。<br>
+            プロジェクト作成ボタンから新しいプロジェクトを作る。
+          </div>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <div class="step-title">デスクトップアプリをインストール（推奨）</div>
+          <div class="step-body">
+            mac なら <strong>claude.ai/download</strong> からアプリをダウンロード。<br>
+            ブラウザより快適・ファイル操作がしやすくなる。
+          </div>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <div class="step-title">最初の動作確認</div>
+          <div class="step-body">
+            Chat で「自己紹介してください」と入力して返答を確認。<br>
+            次に Cowork を開いて同じ質問を送る。<strong>違い</strong>を体感してみよう。
+          </div>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <div class="step-title">推奨設定（Claude.ai の設定画面から）</div>
+          <div class="step-body">
+            Settings → 「Custom instructions」に自分のことを教えておく。<br>
+            例：「私はライブ配信の制作ディレクターです。動画・配信業務の文脈で質問します。」
+          </div>
+        </div>
+      </li>
+    </ul>
+
+    <div class="callout tip">
+      <div class="callout-icon">💡</div>
+      <div class="callout-body">
+        <strong>参考リソース</strong>
+        初期設定の詳細は配布テキスト（@starriver0513 記事 / YouTube解説）を参照。設定で詰まったら隣の人か Issy に聞いて OK。
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 2: Computer Use ===== -->
+  <section id="sec-computer-use">
+    <h2><span class="ch-badge">Ch.2</span> Computer Use とは？</h2>
+    <div class="section-meta">
+      <span class="time-tag">⏱ 15分</span>
+      <span class="type-tag type-demo">デモ</span>
+    </div>
+    <hr class="divider">
+
+    <div class="card accent">
+      <div class="card-title">🖥️ AIが「目で見て手を動かす」</div>
+      <div class="card-body">
+        Computer Use は、Claude がスクリーンショットを見ながらマウス・キーボードを操作できる機能。<br>
+        「人間がやっていたPC作業をそのまま自動化」できる。
+      </div>
+    </div>
+
+    <div class="tips-grid">
+      <div class="tip-card">
+        <div class="tip-icon">🔍</div>
+        <div class="tip-title">できること</div>
+        <div class="tip-body">
+          ブラウザでフォームに入力・スプレッドシートを操作・アプリ間でコピペ・リサーチして情報収集
+        </div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">🚫</div>
+        <div class="tip-title">注意点</div>
+        <div class="tip-body">
+          まだ精度は発展中。「確認しながらやる」使い方が現実的。完全自律よりはパートナー感覚で。
+        </div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">🎬</div>
+        <div class="tip-title">制作業務での活用場面</div>
+        <div class="tip-body">
+          複数ツール間のデータ転記・SNS投稿チェック・競合アカウントのリサーチ自動化
+        </div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">🔒</div>
+        <div class="tip-title">セキュリティ</div>
+        <div class="tip-body">
+          パスワード入力・個人情報が含まれる操作は慎重に。業務用PCで使う場合は会社ルールを確認。
+        </div>
+      </div>
+    </div>
+
+    <div class="callout info">
+      <div class="callout-icon">🎥</div>
+      <div class="callout-body">
+        <strong>デモ：Claude がブラウザを操作する様子を見てみよう</strong>
+        ここで実演デモを行います。「このURLのページのタイトルと要約を集めて」と指示する例を見せます。
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 3: フォルダ構造 ===== -->
+  <section id="sec-folder">
+    <h2><span class="ch-badge">Ch.3</span> フォルダ構造を見る</h2>
+    <div class="section-meta">
+      <span class="time-tag">⏱ 15分</span>
+      <span class="type-tag type-demo">デモ</span>
+    </div>
+    <hr class="divider">
+
+    <div class="card green">
+      <div class="card-title">📁 Cowork はプロジェクト単位でファイルを「覚えて」くれる</div>
+      <div class="card-body">
+        フォルダ・ドキュメント・台本を読み込ませると、Claudeがその文脈を持った状態で会話してくれる。<br>
+        「毎回説明しなくていい」パートナーになる。
+      </div>
+    </div>
+
+    <p style="font-size: 14px; color: var(--gray); margin-bottom: 12px;">制作プロジェクトのフォルダ例（GIFTVOX 向けライブ配信案件）</p>
+
+    <div class="folder-tree">
+<span class="dir">📁 PROJECT_クライアント名/</span>
+├── <span class="highlight">CLAUDE.md</span>           <span class="note">← AIへの指示書（ここが超重要）</span>
+├── <span class="dir">📁 01_企画・台本/</span>
+│   ├── <span class="file">企画書_v1.md</span>
+│   └── <span class="file">台本_配信用_260528.md</span>
+├── <span class="dir">📁 02_素材/</span>
+│   ├── <span class="file">商品スペック.xlsx</span>
+│   └── <span class="file">過去配信メモ.txt</span>
+├── <span class="dir">📁 03_成果物/</span>
+│   └── <span class="file">配信報告書.html</span>
+└── <span class="dir">📁 04_メモ/</span>
+    └── <span class="file">クライアント打ち合わせメモ.md</span>
+    </div>
+
+    <div class="card gold">
+      <div class="card-title">⭐ CLAUDE.md が最強の武器</div>
+      <div class="card-body">
+        プロジェクト直下に <code style="background:var(--bg);padding:1px 6px;border-radius:4px;">CLAUDE.md</code> というファイルを置くと、Claudeがそこを最初に読んでくれる。<br>
+        <br>
+        書くべき内容：<br>
+        ・クライアント名・案件概要<br>
+        ・よく使う言葉・表記ルール<br>
+        ・「これをやるときはこうして」という行動ルール<br>
+        ・禁止事項（「弊社」じゃなくて「Firework」と書いて、など）
+      </div>
+    </div>
+
+    <div class="callout tip">
+      <div class="callout-icon">💡</div>
+      <div class="callout-body">
+        <strong>コツ：最初にプロジェクトを説明させる</strong>
+        Coworkに「このプロジェクトフォルダを見て、何の仕事か説明して」と聞いてみると、ちゃんと読み込んでいるか確認できる。
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 4: 3つの役割 ===== -->
+  <section id="sec-modes">
+    <h2><span class="ch-badge">Ch.4</span> Chat / Cowork / Code の使い分け</h2>
+    <div class="section-meta">
+      <span class="time-tag">⏱ 15分</span>
+      <span class="type-tag type-hands">ハンズオン</span>
+    </div>
+    <hr class="divider">
+
+    <div class="role-grid">
+      <div class="role-card chat">
+        <div class="role-icon">💬</div>
+        <div class="role-name">Chat</div>
+        <div class="role-tag">ひとこと相談</div>
+        <div class="role-desc">
+          単発の質問・アイデア出し・文章校正。過去の会話は引き継がれない。
+        </div>
+        <div class="role-example">
+          例：「この件名どう思う？」「3つアイデア出して」「誤字チェックして」
+        </div>
+      </div>
+      <div class="role-card cowork">
+        <div class="role-icon">🗂️</div>
+        <div class="role-name">Cowork</div>
+        <div class="role-tag">プロジェクト管理</div>
+        <div class="role-desc">
+          ファイルを読み込み・記憶を持ったまま長期間の仕事をする。制作業務の主役。
+        </div>
+        <div class="role-example">
+          例：「この企画書を読んで台本を書いて」「前回のFBを踏まえて修正して」
+        </div>
+      </div>
+      <div class="role-card code">
+        <div class="role-icon">⚡</div>
+        <div class="role-name">Code</div>
+        <div class="role-tag">自律実行</div>
+        <div class="role-desc">
+          ファイルの作成・編集・削除・コマンド実行を自動でやってくれる開発者モード。
+        </div>
+        <div class="role-example">
+          例：「この100件のCSVを整理して」「レポートHTMLを自動生成して」
+        </div>
+      </div>
+    </div>
+
+    <div class="decision-flow">
+      <div class="flow-title">🤔 どれを使うか迷ったとき の判断フロー</div>
+      <div class="flow-row">
+        <div class="flow-q">ちょっと聞きたいだけ・単発の質問</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-ans ans-chat">Chat</div>
+      </div>
+      <div class="flow-row">
+        <div class="flow-q">案件のファイルを読んで長期間作業してほしい</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-ans ans-cowork">Cowork</div>
+      </div>
+      <div class="flow-row">
+        <div class="flow-q">大量データ処理・自動生成・コード書いてほしい</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-ans ans-code">Code</div>
+      </div>
+      <div class="flow-row">
+        <div class="flow-q">迷ったら</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-ans ans-cowork">Cowork を選ぶ</div>
+      </div>
+    </div>
+
+    <div class="callout tip">
+      <div class="callout-icon">✨</div>
+      <div class="callout-body">
+        <strong>GIFTVOX チームへのおすすめ</strong>
+        ライブ配信・動画制作の仕事は <strong>Cowork</strong> が主役になる。台本・企画書・過去メモをプロジェクトに入れておけば、「前回どんな演出だったっけ？」も即答してくれる。
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 5: モデル ===== -->
+  <section id="sec-models">
+    <h2><span class="ch-badge">Ch.5</span> モデルの使い分け</h2>
+    <div class="section-meta">
+      <span class="time-tag">⏱ 10分</span>
+      <span class="type-tag type-lecture">講義</span>
+    </div>
+    <hr class="divider">
+
+    <p style="font-size: 14px; color: var(--gray); margin-bottom: 16px;">Claude には複数のモデルがある。「速さ・コスト・賢さ」のバランスで選ぶ。</p>
+
+    <div class="model-grid">
+      <div class="model-card" style="border-top: 3px solid var(--green);">
+        <div class="model-name">Haiku</div>
+        <div class="model-speed" style="color: var(--green);">⚡⚡⚡ 最速・最安</div>
+        <div class="model-desc">シンプルなQ&A・翻訳・要約・短い文章整理に最適。</div>
+        <div class="model-use"><strong>使う場面：</strong>毎日使うルーティン作業・返答を急ぐ場面</div>
+      </div>
+      <div class="model-card" style="border-top: 3px solid var(--blue);">
+        <div class="model-name">Sonnet</div>
+        <div class="model-speed" style="color: var(--blue);">⚡⚡ バランス型（デフォルト）</div>
+        <div class="model-desc">企画書・台本・提案書・分析レポートなど業務のメイン。</div>
+        <div class="model-use"><strong>使う場面：</strong>通常の制作・文章作成のほぼすべて</div>
+      </div>
+      <div class="model-card" style="border-top: 3px solid var(--accent);">
+        <div class="model-name">Opus</div>
+        <div class="model-speed" style="color: var(--accent);">⚡ 深い思考・高精度</div>
+        <div class="model-desc">複雑な戦略策定・精緻なロジック・難しい分析に使う。</div>
+        <div class="model-use"><strong>使う場面：</strong>重要提案書の仕上げ・複雑な問題解決</div>
+      </div>
+      <div class="model-card" style="border-top: 3px solid var(--gold);">
+        <div class="model-name">Effort（Extended Thinking）</div>
+        <div class="model-speed" style="color: var(--gold);">🧠 じっくり考えるモード</div>
+        <div class="model-desc">モデルが「考える時間」をかけて精度を上げる。答えが出るまで少し待つ。</div>
+        <div class="model-use"><strong>使う場面：</strong>「答えがすぐ出なくていいから正確に」という場面</div>
+      </div>
+    </div>
+
+    <div class="callout warn">
+      <div class="callout-icon">⚠️</div>
+      <div class="callout-body">
+        <strong>最初はSonnetだけ使えばOK</strong>
+        迷ったらデフォルトの Sonnet で十分。慣れてきたら「これはHaikuで十分だな」「ここはOpusで念入りに」と使い分けるようになる。
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECTION 6: 活用事例 ===== -->
+  <section id="sec-case">
+    <h2><span class="ch-badge">Ch.6</span> 制作業務 活用事例</h2>
+    <div class="section-meta">
+      <span class="time-tag">⏱ 25分</span>
+      <span class="type-tag type-case">事例</span>
+    </div>
+    <hr class="divider">
+
+    <!-- コープこうべ事例 -->
+    <div class="case-header" data-emoji="🛒">
+      <div class="case-label">Case Study 01 — コープこうべ</div>
+      <h3>ワイン試飲イベント 予告編企画</h3>
+      <div class="case-sub">ライブ配信の企画アイデアを Claude Cowork で生成・ブラッシュアップ</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📌 やったこと</div>
+      <div class="card-body">
+        コープこうべのワイン試飲イベントの <strong>予告編配信企画案</strong> を Cowork で作成。<br>
+        クライアントのブランドトーン・過去配信メモ・対象視聴者情報をプロジェクトに読み込ませ、
+        複数の企画アイデアを生成 → Firework 内でブラッシュアップ → クライアントに HTML 形式で提出。
+      </div>
+    </div>
+
+    <div class="tips-grid">
+      <div class="tip-card">
+        <div class="tip-icon">1️⃣</div>
+        <div class="tip-title">プロジェクト準備</div>
+        <div class="tip-body">
+          Cowork にクライアント情報・過去メモ・ターゲット像を入力。CLAUDE.md に「コープこうべのトーンは親しみやすく」と指定。
+        </div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">2️⃣</div>
+        <div class="tip-title">企画アイデア生成</div>
+        <div class="tip-body">
+          「ワイン初心者が見たくなる予告編企画を5案出して」→ 複数の切り口から提案が出てくる。
+        </div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">3️⃣</div>
+        <div class="tip-title">フィードバックで絞り込み</div>
+        <div class="tip-body">
+          「3案目の方向性が好き。もっと集客フックを強くして」→ Cowork が文脈を持ったまま修正。
+        </div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">4️⃣</div>
+        <div class="tip-title">HTML提案書として出力</div>
+        <div class="tip-body">
+          「これを見やすいHTML提案書にして」→ そのままクライアントに共有できるドキュメントが完成。
+        </div>
+      </div>
+    </div>
+
+    <div class="callout tip">
+      <div class="callout-icon">⭐</div>
+      <div class="callout-body">
+        <strong>ポイント：「文脈を持ったまま修正できる」が最大の武器</strong>
+        Chat だと毎回ゼロから説明しなければならないが、Cowork はプロジェクトの文脈を持ち続けるので「さっきの3案目をもっと〇〇にして」が通じる。
+      </div>
+    </div>
+
+    <!-- 分析・スライド事例 -->
+    <div class="case-header" data-emoji="📊" style="margin-top: 32px;">
+      <div class="case-label">Case Study 02 — データ分析・スライド作成</div>
+      <h3>配信数値を分析してレポートを自動生成</h3>
+      <div class="case-sub">CSVデータ → インサイト → スライド資料 を Claude で一気通貫</div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">📌 やったこと</div>
+      <div class="card-body">
+        配信後の数値データ（視聴数・CTR・コメント率 etc.）を CSV で Cowork に渡し、<br>
+        分析インサイトを抽出 → クライアント向けレポートHTMLを自動生成。<br>
+        これまで数時間かかっていた作業を大幅に短縮。
+      </div>
+    </div>
+
+    <div class="code-block">
+<span class="cmt"># Cowork に投げたプロンプト例</span>
+
+<span class="str">「添付のCSVは先月の配信実績です。
+以下を分析してレポートにまとめてください：
+
+1. 視聴者数・視聴分数の前月比
+2. CTR（クリック率）のハイライト配信3本
+3. コメント率が低かった配信の共通点
+4. 来月への改善提案を3つ
+
+最後に、クライアントに見せられるHTML形式のレポートを作成してください。」</span>
+    </div>
+
+    <div class="result-grid">
+      <div class="result-card">
+        <div class="result-num">1/5</div>
+        <div class="result-label">作業時間（比較）<br>従来3時間 → 約35分</div>
+      </div>
+      <div class="result-card">
+        <div class="result-num">0</div>
+        <div class="result-label">コピペミス<br>（自動生成なので）</div>
+      </div>
+      <div class="result-card">
+        <div class="result-num">+</div>
+        <div class="result-label">改善提案まで<br>セットで出てくる</div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ===== SECTION 7: ハンズオン ===== -->
+  <section id="sec-handson">
+    <h2><span class="ch-badge">Ch.7</span> ハンズオン：実際にやってみよう</h2>
+    <div class="section-meta">
+      <span class="time-tag">⏱ 10分</span>
+      <span class="type-tag type-hands">ハンズオン</span>
+    </div>
+    <hr class="divider">
+
+    <div class="card accent">
+      <div class="card-title">🎯 お題</div>
+      <div class="card-body">
+        自分が担当している（または担当したことがある）案件や業務を1つ選んで、<br>
+        <strong>Cowork に投げてみましょう</strong>。
+      </div>
+    </div>
+
+    <div class="checklist">
+      <div class="checklist-title">📋 ハンズオン チェックリスト</div>
+
+      <div class="check-item" onclick="this.classList.toggle('checked')">
+        <div class="check-box"></div>
+        <div>
+          <div class="check-text">Claude.ai にログインして Cowork（Projects）を開く</div>
+          <div class="check-hint">アカウントがない人は Chat でもOK</div>
+        </div>
+      </div>
+
+      <div class="check-item" onclick="this.classList.toggle('checked')">
+        <div class="check-box"></div>
+        <div>
+          <div class="check-text">新しいプロジェクトを作成する</div>
+          <div class="check-hint">名前は「ハンズオン_自分の名前」でOK</div>
+        </div>
+      </div>
+
+      <div class="check-item" onclick="this.classList.toggle('checked')">
+        <div class="check-box"></div>
+        <div>
+          <div class="check-text">案件の背景を Cowork に説明する</div>
+          <div class="check-hint">「私は○○の会社でライブ配信の制作をしています。今月は〇〇というクライアントの〇〇という企画を担当しています」など</div>
+        </div>
+      </div>
+
+      <div class="check-item" onclick="this.classList.toggle('checked')">
+        <div class="check-box"></div>
+        <div>
+          <div class="check-text">業務の中で時間がかかっている作業を1つ投げてみる</div>
+          <div class="check-hint">例：台本の構成・クライアントへのメール文・企画書のたたき台・報告書フォーマット</div>
+        </div>
+      </div>
+
+      <div class="check-item" onclick="this.classList.toggle('checked')">
+        <div class="check-box"></div>
+        <div>
+          <div class="check-text">返ってきた答えにフィードバックして修正させる</div>
+          <div class="check-hint">「もっとカジュアルなトーンで」「この部分をもう少し具体的に」など</div>
+        </div>
+      </div>
+
+      <div class="check-item" onclick="this.classList.toggle('checked')">
+        <div class="check-box"></div>
+        <div>
+          <div class="check-text">隣の人と結果をシェアする</div>
+          <div class="check-hint">どんなプロンプトを入れたか・どんな返答が来たかを話してみよう</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout info" style="margin-top: 20px;">
+      <div class="callout-icon">🗣️</div>
+      <div class="callout-body">
+        <strong>プロンプトのコツ：3要素を入れると精度が上がる</strong>
+        ①自分は誰か（役割） ②相手は誰か（読み手） ③何をしてほしいか（動詞で具体的に）<br>
+        <br>
+        例：「私はライブ配信ディレクターです。クライアントに送る配信後の報告メール（200字程度）を書いてください。今月の配信は視聴者3,000人・CTR1.8%でした。」
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== OPTIONAL: 台本効率化 ===== -->
+  <section id="sec-script" style="opacity: 0.8;">
+    <h2><span class="ch-badge" style="background: var(--gray);">+α</span> 台本作成の業務効率化（時間があれば）</h2>
+    <div class="section-meta">
+      <span class="time-tag">⏱ 5分</span>
+      <span class="type-tag type-case">事例</span>
+    </div>
+    <hr class="divider">
+
+    <div class="card">
+      <div class="card-title">🎬 ライブ配信台本を Cowork で半自動化</div>
+      <div class="card-body">
+        商品スペック・過去配信メモ・ターゲット像をプロジェクトに入れておくと、<br>
+        「〇〇の台本を作って」と一言で叩き台が出来上がる。<br>
+        <br>
+        <strong>GIFTVOXで使える例：</strong><br>
+        ・商品紹介ライブの台本（オープニング〜クロージングまで）<br>
+        ・動画ナレーション原稿<br>
+        ・YouTube概要欄・ハッシュタグ生成
+      </div>
+    </div>
+
+    <div class="code-block">
+<span class="cmt"># 台本生成プロンプトの例</span>
+
+<span class="str">「以下の情報をもとに、60分のライブ配信台本を作ってください。
+
+商品：〇〇（価格・スペック・ターゲット層）
+配信スタイル：2人掛け合い、テンポよく
+見どころ：実演デモ・限定価格の告知
+クロージング：視聴者への感謝＋次回予告
+
+構成：オープニング(5分)→商品紹介(20分)→実演(25分)→Q&A(7分)→クロージング(3分)」</span>
+    </div>
+  </section>
+
+</div><!-- /wrap -->
+
+<footer>
+  <p>FIREWORK × GIFTVOX — Claude Code Workshop 2026</p>
+  <p style="margin-top: 6px;">Prepared by Firework &nbsp;|&nbsp; Last Updated: 2026年5月28日 17:38</p>
+</footer>
+
+<script>
+  // チェックリストはclickイベントで動作（toggle処理はonclickで実装済み）
+  // 進捗バーは不要のためシンプルな実装
+</script>
+
+</body>
+</html>
