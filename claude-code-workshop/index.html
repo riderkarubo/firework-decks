@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Claude Code ワークショップ 2026</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
-  <meta name="last-modified" content="2026-05-28T18:24:00+09:00">
+  <meta name="last-modified" content="2026-05-28T18:32:00+09:00">
   <meta name="description" content="Claude Code 初心者向けワークショップ教材。2時間で Chat・Cowork・Codeの使い分けから制作業務活用術まで学べます。">
   <meta property="og:title" content="Claude Code ワークショップ 2026">
   <meta property="og:description" content="Claude Code 初心者向けワークショップ教材。2時間で Chat・Cowork・Codeの使い分けから制作業務活用術まで学べます。">
@@ -602,11 +602,11 @@
   <nav>
     <ul class="nav-links">
       <li><a href="#sec-setup">初期設定</a></li>
-      <li><a href="#sec-computer-use">Computer Use</a></li>
       <li><a href="#sec-folder">フォルダ</a></li>
       <li><a href="#sec-modes">3つの役割</a></li>
       <li><a href="#sec-models">モデル</a></li>
       <li><a href="#sec-case">活用事例</a></li>
+      <li><a href="#sec-computer-use">Computer Use</a></li>
       <li><a href="#sec-handson">ハンズオン</a></li>
     </ul>
   </nav>
@@ -630,7 +630,7 @@
     <div class="cover-meta">
       <div class="cover-meta-item">
         <div class="label">対象</div>
-        <div class="value">GIFTVOX チーム</div>
+        <div class="value">GIFTVOX・ATSURAELU チーム</div>
       </div>
       <div class="cover-meta-item">
         <div class="label">時間</div>
@@ -665,21 +665,8 @@
         </a>
       </div>
       <div class="toc-item">
-        <a href="#sec-computer-use">
-          <div class="toc-num">2</div>
-          <div class="toc-info">
-            <div class="toc-title">Computer Use とは？</div>
-            <div class="toc-desc">AIがPCを操作するとはどういうことか</div>
-          </div>
-          <div class="toc-right">
-            <span class="toc-time">15分</span>
-            <span class="toc-badge badge-demo">デモ</span>
-          </div>
-        </a>
-      </div>
-      <div class="toc-item">
         <a href="#sec-folder">
-          <div class="toc-num">3</div>
+          <div class="toc-num">2</div>
           <div class="toc-info">
             <div class="toc-title">フォルダ構造を見る</div>
             <div class="toc-desc">Coworkに読み込ませると何が変わるか</div>
@@ -692,7 +679,7 @@
       </div>
       <div class="toc-item">
         <a href="#sec-modes">
-          <div class="toc-num">4</div>
+          <div class="toc-num">3</div>
           <div class="toc-info">
             <div class="toc-title">Chat / Cowork / Code の使い分け</div>
             <div class="toc-desc">3つのモードのそれぞれの役割と用途</div>
@@ -705,7 +692,7 @@
       </div>
       <div class="toc-item">
         <a href="#sec-models">
-          <div class="toc-num">5</div>
+          <div class="toc-num">4</div>
           <div class="toc-info">
             <div class="toc-title">モデルの使い分け</div>
             <div class="toc-desc">Haiku・Sonnet・Opus・Effort の選び方</div>
@@ -717,7 +704,7 @@
       </div>
       <div class="toc-item">
         <a href="#sec-case">
-          <div class="toc-num">6</div>
+          <div class="toc-num">5</div>
           <div class="toc-info">
             <div class="toc-title">制作業務 活用事例</div>
             <div class="toc-desc">コープこうべの実例・分析・スライド作成フロー</div>
@@ -725,6 +712,19 @@
           <div class="toc-right">
             <span class="toc-time">25分</span>
             <span class="toc-badge badge-case">事例</span>
+          </div>
+        </a>
+      </div>
+      <div class="toc-item">
+        <a href="#sec-computer-use">
+          <div class="toc-num">6</div>
+          <div class="toc-info">
+            <div class="toc-title">Computer Use とは？</div>
+            <div class="toc-desc">AIがPCを操作するとはどういうことか（ステップアップ）</div>
+          </div>
+          <div class="toc-right">
+            <span class="toc-time">10分</span>
+            <span class="toc-badge badge-demo">デモ</span>
           </div>
         </a>
       </div>
@@ -876,65 +876,9 @@
   </section>
 
   <!-- ===== SECTION 2: Computer Use ===== -->
-  <section id="sec-computer-use">
-    <h2><span class="ch-badge">Ch.2</span> Computer Use とは？</h2>
-    <div class="section-meta">
-      <span class="time-tag">⏱ 15分</span>
-      <span class="type-tag type-demo">デモ</span>
-    </div>
-    <hr class="divider">
-
-    <div class="card accent">
-      <div class="card-title">🖥️ AIが「目で見て手を動かす」</div>
-      <div class="card-body">
-        Computer Use は、Claude がスクリーンショットを見ながらマウス・キーボードを操作できる機能。<br>
-        「人間がやっていたPC作業をそのまま自動化」できる。
-      </div>
-    </div>
-
-    <div class="tips-grid">
-      <div class="tip-card">
-        <div class="tip-icon">🔍</div>
-        <div class="tip-title">できること</div>
-        <div class="tip-body">
-          ブラウザでフォームに入力・スプレッドシートを操作・アプリ間でコピペ・リサーチして情報収集
-        </div>
-      </div>
-      <div class="tip-card">
-        <div class="tip-icon">🚫</div>
-        <div class="tip-title">注意点</div>
-        <div class="tip-body">
-          まだ精度は発展中。「確認しながらやる」使い方が現実的。完全自律よりはパートナー感覚で。
-        </div>
-      </div>
-      <div class="tip-card">
-        <div class="tip-icon">🎬</div>
-        <div class="tip-title">制作業務での活用場面</div>
-        <div class="tip-body">
-          複数ツール間のデータ転記・SNS投稿チェック・競合アカウントのリサーチ自動化
-        </div>
-      </div>
-      <div class="tip-card">
-        <div class="tip-icon">🔒</div>
-        <div class="tip-title">セキュリティ</div>
-        <div class="tip-body">
-          パスワード入力・個人情報が含まれる操作は慎重に。業務用PCで使う場合は会社ルールを確認。
-        </div>
-      </div>
-    </div>
-
-    <div class="callout info">
-      <div class="callout-icon">🎥</div>
-      <div class="callout-body">
-        <strong>デモ：Claude がブラウザを操作する様子を見てみよう</strong>
-        ここで実演デモを行います。「このURLのページのタイトルと要約を集めて」と指示する例を見せます。
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== SECTION 3: フォルダ構造 ===== -->
+  <!-- ===== SECTION 2: フォルダ構造 ===== -->
   <section id="sec-folder">
-    <h2><span class="ch-badge">Ch.3</span> フォルダ構造を見る</h2>
+    <h2><span class="ch-badge">Ch.2</span> フォルダ構造を見る</h2>
     <div class="section-meta">
       <span class="time-tag">⏱ 15分</span>
       <span class="type-tag type-demo">デモ</span>
@@ -999,7 +943,7 @@
 
   <!-- ===== SECTION 4: 3つの役割 ===== -->
   <section id="sec-modes">
-    <h2><span class="ch-badge">Ch.4</span> Chat / Cowork / Code の使い分け</h2>
+    <h2><span class="ch-badge">Ch.3</span> Chat / Cowork / Code の使い分け</h2>
     <div class="section-meta">
       <span class="time-tag">⏱ 15分</span>
       <span class="type-tag type-hands">ハンズオン</span>
@@ -1086,7 +1030,7 @@
 
   <!-- ===== SECTION 5: モデル ===== -->
   <section id="sec-models">
-    <h2><span class="ch-badge">Ch.5</span> モデルの使い分け</h2>
+    <h2><span class="ch-badge">Ch.4</span> モデルの使い分け</h2>
     <div class="section-meta">
       <span class="time-tag">⏱ 10分</span>
       <span class="type-tag type-lecture">講義</span>
@@ -1133,7 +1077,7 @@
 
   <!-- ===== SECTION 6: 活用事例 ===== -->
   <section id="sec-case">
-    <h2><span class="ch-badge">Ch.6</span> 制作業務 活用事例</h2>
+    <h2><span class="ch-badge">Ch.5</span> 制作業務 活用事例</h2>
     <div class="section-meta">
       <span class="time-tag">⏱ 25分</span>
       <span class="type-tag type-case">事例</span>
@@ -1296,6 +1240,63 @@
 
   </section>
 
+  <!-- ===== SECTION 6: Computer Use ===== -->
+  <section id="sec-computer-use">
+    <h2><span class="ch-badge">Ch.6</span> Computer Use とは？</h2>
+    <div class="section-meta">
+      <span class="time-tag">⏱ 10分</span>
+      <span class="type-tag type-demo">デモ</span>
+    </div>
+    <hr class="divider">
+
+    <div class="card accent">
+      <div class="card-title">🖥️ AIが「目で見て手を動かす」</div>
+      <div class="card-body">
+        Computer Use は、Claude がスクリーンショットを見ながらマウス・キーボードを操作できる機能。<br>
+        「人間がやっていたPC作業をそのまま自動化」できる。
+      </div>
+    </div>
+
+    <div class="tips-grid">
+      <div class="tip-card">
+        <div class="tip-icon">🔍</div>
+        <div class="tip-title">できること</div>
+        <div class="tip-body">
+          ブラウザでフォームに入力・スプレッドシートを操作・アプリ間でコピペ・リサーチして情報収集
+        </div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">🚫</div>
+        <div class="tip-title">注意点</div>
+        <div class="tip-body">
+          まだ精度は発展中。「確認しながらやる」使い方が現実的。完全自律よりはパートナー感覚で。
+        </div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">🎬</div>
+        <div class="tip-title">制作業務での活用場面</div>
+        <div class="tip-body">
+          複数ツール間のデータ転記・SNS投稿チェック・競合アカウントのリサーチ自動化
+        </div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">🔒</div>
+        <div class="tip-title">セキュリティ</div>
+        <div class="tip-body">
+          パスワード入力・個人情報が含まれる操作は慎重に。業務用PCで使う場合は会社ルールを確認。
+        </div>
+      </div>
+    </div>
+
+    <div class="callout info">
+      <div class="callout-icon">🎥</div>
+      <div class="callout-body">
+        <strong>デモ：Claude がブラウザを操作する様子を見てみよう</strong>
+        ここで実演デモを行います。「このURLのページのタイトルと要約を集めて」と指示する例を見せます。
+      </div>
+    </div>
+  </section>
+
   <!-- ===== SECTION 7: ハンズオン ===== -->
   <section id="sec-handson">
     <h2><span class="ch-badge">Ch.7</span> ハンズオン：実際にやってみよう</h2>
@@ -1415,7 +1416,7 @@
 </div><!-- /wrap -->
 
 <footer>
-  <p>FIREWORK × GIFTVOX — Claude Code Workshop 2026</p>
+  <p>FIREWORK × GIFTVOX・ATSURAELU — Claude Code Workshop 2026</p>
   <p style="margin-top: 6px;">Prepared by Firework &nbsp;|&nbsp; Last Updated: 2026年5月28日 18:16</p>
 </footer>
 
