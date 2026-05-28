@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Claude Code ワークショップ 2026</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
-  <meta name="last-modified" content="2026-05-28T18:32:00+09:00">
+  <meta name="last-modified" content="2026-05-28T18:51:00+09:00">
   <meta name="description" content="Claude Code 初心者向けワークショップ教材。2時間で Chat・Cowork・Codeの使い分けから制作業務活用術まで学べます。">
   <meta property="og:title" content="Claude Code ワークショップ 2026">
   <meta property="og:description" content="Claude Code 初心者向けワークショップ教材。2時間で Chat・Cowork・Codeの使い分けから制作業務活用術まで学べます。">
@@ -755,122 +755,97 @@
 
     <div class="card blue">
       <div class="card-title">🎯 このセクションのゴール</div>
-      <div class="card-body">全員が Claude.ai にログインし、Cowork が動作していることを確認する。</div>
+      <div class="card-body">
+        全員が Claude.ai にログインし、<strong>/setup-cowork</strong> のガイドに沿って自分のロールに合った環境を整える。
+      </div>
     </div>
 
     <ul class="step-list">
       <li class="step-item">
         <div class="step-num">1</div>
         <div class="step-content">
-          <div class="step-title">デスクトップアプリをインストール</div>
+          <div class="step-title">claude.ai にログインして Cowork を開く</div>
           <div class="step-body">
-            <strong>claude.com/download</strong> にアクセス。Mac なら macOS ボタン、Windows なら Windows ボタンを押す。<br>
-            .dmg ファイルをダブルクリック → アプリケーションフォルダへドラッグ＆ドロップ。<br>
-            既存の <strong>claude.ai アカウントでそのままログイン</strong>（新しいアカウント不要）。
+            ブラウザで <strong>claude.ai</strong> にアクセスしてログイン。左メニューの「<strong>Cowork</strong>」をクリック。<br>
+            <span style="color: var(--accent); font-size: 12px; font-weight: 600;">※ Cowork は Pro プラン（月$20）以上が必要</span>
           </div>
         </div>
       </li>
       <li class="step-item">
         <div class="step-num">2</div>
         <div class="step-content">
-          <div class="step-title">Cowork モードに切り替える</div>
+          <div class="step-title">/setup-cowork を実行する</div>
           <div class="step-body">
-            アプリ左メニューの「<strong>Cowork</strong>」をクリック。<br>
-            「フォルダを選択」ボタンが出たら、<strong>専用フォルダを新しく作って指定する</strong>。<br>
-            デスクトップ全体や Documents フォルダを丸ごと指定しないこと（AI の行動範囲が広くなりすぎる）。<br>
-            <span style="color: var(--accent); font-size: 12px; font-weight: 600;">※ Cowork は Pro プラン（月$20）以上が必要</span>
+            チャット入力欄に <code style="background:var(--bg);padding:2px 6px;border-radius:4px;">/setup-cowork</code> と入力して送信。<br>
+            Anthropic 公式のガイド付きセットアップが始まる。以下の5ステップを画面に沿って進める。
+            <div class="tips-grid" style="margin-top: 14px;">
+              <div class="tip-card">
+                <div class="tip-icon">1️⃣</div>
+                <div class="tip-title">ロール確認</div>
+                <div class="tip-body">職種（マーケター・クリエイティブ・営業など）を選ぶ。ロールに合った設定を自動提案してくれる。</div>
+              </div>
+              <div class="tip-card">
+                <div class="tip-icon">2️⃣</div>
+                <div class="tip-title">プラグインの提案</div>
+                <div class="tip-body">ロールに合ったプラグイン（スキル＋コネクターのセット）をマーケットプレイスから検索・提示。インストールするだけで <code>/キャンペーン企画</code> のようなワークフローが使えるようになる。</div>
+              </div>
+              <div class="tip-card">
+                <div class="tip-icon">3️⃣</div>
+                <div class="tip-title">コネクターの確認・追加</div>
+                <div class="tip-body">接続済みのツール（Slack・Gmail・Google Calendar など）を確認。プラグインが必要とする未接続ツール（Canva など）をConnect画面付きで提案してくれる。</div>
+              </div>
+              <div class="tip-card">
+                <div class="tip-icon">4️⃣</div>
+                <div class="tip-title">スキルをひとつ試す</div>
+                <div class="tip-body">インストールしたプラグインのスキルを一覧表示。その場で実行して「こう使うのか」を体験できる。</div>
+              </div>
+            </div>
           </div>
         </div>
       </li>
       <li class="step-item">
         <div class="step-num">3</div>
         <div class="step-content">
-          <div class="step-title">専用フォルダを作る</div>
-          <div class="step-body">
-            デスクトップに以下の構造でフォルダを作成する：
-            <div class="folder-tree" style="margin-top: 10px; font-size: 12px; line-height: 1.9;">
-<span class="dir">📁 AI秘書フォルダ/</span>
-├── <span class="dir">📁 01_設定ファイル</span>  <span class="note">← AIへの自己紹介・文体・今週タスク</span>
-├── <span class="dir">📁 02_ナレッジ</span>      <span class="note">← AIに覚えさせたい知識</span>
-├── <span class="dir">📁 03_出力</span>          <span class="note">← AIが作ったファイルの保存場所</span>
-└── <span class="highlight">CLAUDE.md</span>            <span class="note">← AI への全体指示書（起動時に自動読み込み）</span>
-            </div>
-          </div>
-        </div>
-      </li>
-      <li class="step-item">
-        <div class="step-num">4</div>
-        <div class="step-content">
-          <div class="step-title">3つの設定ファイルを作る</div>
-          <div class="step-body">
-            <code style="background:var(--bg);padding:2px 6px;border-radius:4px;">01_設定ファイル/</code> フォルダの中に3つのテキストファイルを作る：
-            <div style="margin-top: 10px; display: grid; gap: 8px;">
-              <div style="background: var(--bg); border-radius: 8px; padding: 10px 14px; font-size: 13px;">
-                <strong>about-me.md</strong> — 自己紹介書<br>
-                <span style="color: var(--gray); font-size: 12px;">名前・仕事内容・主要プロジェクト・連絡ルールなど。毎回説明しなくていいように一回書いてしまう。</span>
-              </div>
-              <div style="background: var(--bg); border-radius: 8px; padding: 10px 14px; font-size: 13px;">
-                <strong>brand-voice.md</strong> — 文体・口調ルール<br>
-                <span style="color: var(--gray); font-size: 12px;">「です・ます調で」「箇条書き中心で」など。<strong>過去に自分が書いた文章のサンプルをコピペするのが最重要</strong>。これで AI の出力クオリティが8割決まる。</span>
-              </div>
-              <div style="background: var(--bg); border-radius: 8px; padding: 10px 14px; font-size: 13px;">
-                <strong>weekly-tasks.md</strong> — 今週のタスク<br>
-                <span style="color: var(--gray); font-size: 12px;">今週の優先事項・デッドライン・進行中のプロジェクト状況。毎週月曜に5分で更新するだけ。</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </li>
-      <li class="step-item">
-        <div class="step-num">5</div>
-        <div class="step-content">
           <div class="step-title">CLAUDE.md（全体指示書）を設定する</div>
           <div class="step-body">
-            専用フォルダの直下に <code style="background:var(--bg);padding:2px 6px;border-radius:4px;">CLAUDE.md</code> を作る。<strong>Cowork 起動時に自動で読み込まれる特別なファイル</strong>。<br>
+            Cowork のプロジェクトフォルダ直下に <code style="background:var(--bg);padding:2px 6px;border-radius:4px;">CLAUDE.md</code> を作る。<strong>起動時に自動で読み込まれる特別なファイル</strong>。<br>
             最低限これだけ書けば動く：
             <div class="code-block" style="margin-top: 10px; font-size: 12px;">
 <span class="cmt"># Cowork 全体指示書</span>
 
-<span class="str">## 作業開始前の必須確認</span>
-タスクを開始する前に以下を必ず読むこと：
-1. 01_設定ファイル/about-me.md（プロフィール）
-2. 01_設定ファイル/brand-voice.md（文体）
-3. 01_設定ファイル/weekly-tasks.md（今週の状況）
+<span class="str">## 自己紹介</span>
+私は◯◯（職種）です。主な業務は◯◯。
+よく使うツールは Slack・Google Drive・◯◯。
 
-<span class="str">## 安全ルール（これだけは守ること）</span>
+<span class="str">## 出力スタイル</span>
+- です・ます調で簡潔に
+- 箇条書き中心
+- 結論を先に書く
+
+<span class="str">## 安全ルール</span>
 - ファイルの削除禁止 → 代わりに「要確認」フォルダへ移動
 - 取り消せない操作の前は必ず確認を取る
-- 何をやっているかリアルタイムで実況する
             </div>
-          </div>
-        </div>
-      </li>
-      <li class="step-item">
-        <div class="step-num">6</div>
-        <div class="step-content">
-          <div class="step-title">プラグインを1つ入れる（任意）</div>
-          <div class="step-body">
-            チャット欄で <code style="background:var(--bg);padding:2px 6px;border-radius:4px;">/plugin</code> と打つとプラグイン一覧が表示される。<br>
-            最初に入れるなら：<strong>Google Drive</strong>（Driveのファイルを直接読み書き）か <strong>Gmail</strong>（未読メール対応案を一発生成）。
           </div>
         </div>
       </li>
     </ul>
 
-    <div class="callout warn">
-      <div class="callout-icon">⚠️</div>
-      <div class="callout-body">
-        <strong>大事な作業を任せる前に必ず送る「保険プロンプト」</strong>
-        「今から作業する。ファイルの削除は禁止・上書き保存は別名で保存・取り消せない操作は承認を取ること。これを守ってから始めて。」<br>
-        Cowork はフォルダへの読み書き権限を持つので、大きな作業を任せる前に毎回確認させる。
-      </div>
-    </div>
-
     <div class="callout tip">
       <div class="callout-icon">💡</div>
       <div class="callout-body">
-        <strong>設定完了後の最初の指示</strong>
-        セットアップが終わったら <code style="background:var(--bg);padding:2px 6px;border-radius:4px;">「いつも通りでよろしく」</code> と送るだけ。CLAUDE.md を読んで設定通りに動いてくれる。毎回長い説明が不要になる。
+        <strong>設定完了後の最初の指示</strong><br>
+        セットアップが終わったら <code style="background:rgba(255,255,255,0.2);padding:2px 6px;border-radius:4px;">「いつも通りでよろしく」</code> と送るだけ。
+        CLAUDE.md を読んで設定通りに動いてくれる。毎回長い説明が不要になる。
+      </div>
+    </div>
+
+    <div class="callout warn">
+      <div class="callout-icon">⚠️</div>
+      <div class="callout-body">
+        <strong>大事な作業を任せる前に必ず送る「保険プロンプト」</strong><br>
+        「ファイルの削除は禁止・取り消せない操作は承認を取ること。これを守ってから始めて。」<br>
+        Cowork はフォルダへの読み書き権限を持つので、大きな作業の前に毎回確認させる。
       </div>
     </div>
   </section>
