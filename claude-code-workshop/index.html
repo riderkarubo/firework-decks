@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Claude Code ワークショップ 2026</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
-  <meta name="last-modified" content="2026-05-28T17:38:00+09:00">
+  <meta name="last-modified" content="2026-05-28T18:16:00+09:00">
   <meta name="description" content="Claude Code 初心者向けワークショップ教材。2時間で Chat・Cowork・Codeの使い分けから制作業務活用術まで学べます。">
   <meta property="og:title" content="Claude Code ワークショップ 2026">
   <meta property="og:description" content="Claude Code 初心者向けワークショップ教材。2時間で Chat・Cowork・Codeの使い分けから制作業務活用術まで学べます。">
@@ -642,7 +642,7 @@
       </div>
       <div class="cover-meta-item">
         <div class="label">Last Updated</div>
-        <div class="value">2026年5月28日 17:38</div>
+        <div class="value">2026年5月28日 18:16</div>
       </div>
     </div>
   </div>
@@ -762,60 +762,115 @@
       <li class="step-item">
         <div class="step-num">1</div>
         <div class="step-content">
-          <div class="step-title">アカウント作成</div>
+          <div class="step-title">デスクトップアプリをインストール</div>
           <div class="step-body">
-            <strong>claude.ai</strong> にアクセスしてサインアップ。Googleアカウントでの登録が最速。<br>
-            プランは <strong>Free</strong> で今日のワークショップはOK。制作業務で本格的に使うなら <strong>Pro（$20/月）</strong> を推奨。
+            <strong>claude.com/download</strong> にアクセス。Mac なら macOS ボタン、Windows なら Windows ボタンを押す。<br>
+            .dmg ファイルをダブルクリック → アプリケーションフォルダへドラッグ＆ドロップ。<br>
+            既存の <strong>claude.ai アカウントでそのままログイン</strong>（新しいアカウント不要）。
           </div>
         </div>
       </li>
       <li class="step-item">
         <div class="step-num">2</div>
         <div class="step-content">
-          <div class="step-title">Claude.ai にログイン → Cowork を開く</div>
+          <div class="step-title">Cowork モードに切り替える</div>
           <div class="step-body">
-            ログイン後、左サイドバーの「<strong>Projects（Cowork）</strong>」を探す。<br>
-            プロジェクト作成ボタンから新しいプロジェクトを作る。
+            アプリ左メニューの「<strong>Cowork</strong>」をクリック。<br>
+            「フォルダを選択」ボタンが出たら、<strong>専用フォルダを新しく作って指定する</strong>。<br>
+            デスクトップ全体や Documents フォルダを丸ごと指定しないこと（AI の行動範囲が広くなりすぎる）。<br>
+            <span style="color: var(--accent); font-size: 12px; font-weight: 600;">※ Cowork は Pro プラン（月$20）以上が必要</span>
           </div>
         </div>
       </li>
       <li class="step-item">
         <div class="step-num">3</div>
         <div class="step-content">
-          <div class="step-title">デスクトップアプリをインストール（推奨）</div>
+          <div class="step-title">専用フォルダを作る</div>
           <div class="step-body">
-            mac なら <strong>claude.ai/download</strong> からアプリをダウンロード。<br>
-            ブラウザより快適・ファイル操作がしやすくなる。
+            デスクトップに以下の構造でフォルダを作成する：
+            <div class="folder-tree" style="margin-top: 10px; font-size: 12px; line-height: 1.9;">
+<span class="dir">📁 AI秘書フォルダ/</span>
+├── <span class="dir">📁 01_設定ファイル</span>  <span class="note">← AIへの自己紹介・文体・今週タスク</span>
+├── <span class="dir">📁 02_ナレッジ</span>      <span class="note">← AIに覚えさせたい知識</span>
+├── <span class="dir">📁 03_出力</span>          <span class="note">← AIが作ったファイルの保存場所</span>
+└── <span class="highlight">CLAUDE.md</span>            <span class="note">← AI への全体指示書（起動時に自動読み込み）</span>
+            </div>
           </div>
         </div>
       </li>
       <li class="step-item">
         <div class="step-num">4</div>
         <div class="step-content">
-          <div class="step-title">最初の動作確認</div>
+          <div class="step-title">3つの設定ファイルを作る</div>
           <div class="step-body">
-            Chat で「自己紹介してください」と入力して返答を確認。<br>
-            次に Cowork を開いて同じ質問を送る。<strong>違い</strong>を体感してみよう。
+            <code style="background:var(--bg);padding:2px 6px;border-radius:4px;">01_設定ファイル/</code> フォルダの中に3つのテキストファイルを作る：
+            <div style="margin-top: 10px; display: grid; gap: 8px;">
+              <div style="background: var(--bg); border-radius: 8px; padding: 10px 14px; font-size: 13px;">
+                <strong>about-me.md</strong> — 自己紹介書<br>
+                <span style="color: var(--gray); font-size: 12px;">名前・仕事内容・主要プロジェクト・連絡ルールなど。毎回説明しなくていいように一回書いてしまう。</span>
+              </div>
+              <div style="background: var(--bg); border-radius: 8px; padding: 10px 14px; font-size: 13px;">
+                <strong>brand-voice.md</strong> — 文体・口調ルール<br>
+                <span style="color: var(--gray); font-size: 12px;">「です・ます調で」「箇条書き中心で」など。<strong>過去に自分が書いた文章のサンプルをコピペするのが最重要</strong>。これで AI の出力クオリティが8割決まる。</span>
+              </div>
+              <div style="background: var(--bg); border-radius: 8px; padding: 10px 14px; font-size: 13px;">
+                <strong>weekly-tasks.md</strong> — 今週のタスク<br>
+                <span style="color: var(--gray); font-size: 12px;">今週の優先事項・デッドライン・進行中のプロジェクト状況。毎週月曜に5分で更新するだけ。</span>
+              </div>
+            </div>
           </div>
         </div>
       </li>
       <li class="step-item">
         <div class="step-num">5</div>
         <div class="step-content">
-          <div class="step-title">推奨設定（Claude.ai の設定画面から）</div>
+          <div class="step-title">CLAUDE.md（全体指示書）を設定する</div>
           <div class="step-body">
-            Settings → 「Custom instructions」に自分のことを教えておく。<br>
-            例：「私はライブ配信の制作ディレクターです。動画・配信業務の文脈で質問します。」
+            専用フォルダの直下に <code style="background:var(--bg);padding:2px 6px;border-radius:4px;">CLAUDE.md</code> を作る。<strong>Cowork 起動時に自動で読み込まれる特別なファイル</strong>。<br>
+            最低限これだけ書けば動く：
+            <div class="code-block" style="margin-top: 10px; font-size: 12px;">
+<span class="cmt"># Cowork 全体指示書</span>
+
+<span class="str">## 作業開始前の必須確認</span>
+タスクを開始する前に以下を必ず読むこと：
+1. 01_設定ファイル/about-me.md（プロフィール）
+2. 01_設定ファイル/brand-voice.md（文体）
+3. 01_設定ファイル/weekly-tasks.md（今週の状況）
+
+<span class="str">## 安全ルール（これだけは守ること）</span>
+- ファイルの削除禁止 → 代わりに「要確認」フォルダへ移動
+- 取り消せない操作の前は必ず確認を取る
+- 何をやっているかリアルタイムで実況する
+            </div>
+          </div>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-num">6</div>
+        <div class="step-content">
+          <div class="step-title">プラグインを1つ入れる（任意）</div>
+          <div class="step-body">
+            チャット欄で <code style="background:var(--bg);padding:2px 6px;border-radius:4px;">/plugin</code> と打つとプラグイン一覧が表示される。<br>
+            最初に入れるなら：<strong>Google Drive</strong>（Driveのファイルを直接読み書き）か <strong>Gmail</strong>（未読メール対応案を一発生成）。
           </div>
         </div>
       </li>
     </ul>
 
+    <div class="callout warn">
+      <div class="callout-icon">⚠️</div>
+      <div class="callout-body">
+        <strong>大事な作業を任せる前に必ず送る「保険プロンプト」</strong>
+        「今から作業する。ファイルの削除は禁止・上書き保存は別名で保存・取り消せない操作は承認を取ること。これを守ってから始めて。」<br>
+        Cowork はフォルダへの読み書き権限を持つので、大きな作業を任せる前に毎回確認させる。
+      </div>
+    </div>
+
     <div class="callout tip">
       <div class="callout-icon">💡</div>
       <div class="callout-body">
-        <strong>参考リソース</strong>
-        初期設定の詳細は配布テキスト（@starriver0513 記事 / YouTube解説）を参照。設定で詰まったら隣の人か Issy に聞いて OK。
+        <strong>設定完了後の最初の指示</strong>
+        セットアップが終わったら <code style="background:var(--bg);padding:2px 6px;border-radius:4px;">「いつも通りでよろしく」</code> と送るだけ。CLAUDE.md を読んで設定通りに動いてくれる。毎回長い説明が不要になる。
       </div>
     </div>
   </section>
@@ -931,6 +986,15 @@
         Coworkに「このプロジェクトフォルダを見て、何の仕事か説明して」と聞いてみると、ちゃんと読み込んでいるか確認できる。
       </div>
     </div>
+
+    <div class="callout warn">
+      <div class="callout-icon">⭐</div>
+      <div class="callout-body">
+        <strong>作業を任せる前に「要件を先に伝える」が鉄則</strong>
+        いきなり「やって」と言わず、先に「こういう成果物を作りたい」と説明して、Cowork に「どんな方針で進めるか」を確認させてから実行させる。<br>
+        <span style="font-size: 13px; margin-top: 4px; display: block;">例：「5つのExcelデータから提案資料を作りたい。どんな構成で作ればいいか聞いてから進めて」→ アウトラインの確認 → OKを出してから実行</span>
+      </div>
+    </div>
   </section>
 
   <!-- ===== SECTION 4: 3つの役割 ===== -->
@@ -1007,6 +1071,15 @@
       <div class="callout-body">
         <strong>GIFTVOX チームへのおすすめ</strong>
         ライブ配信・動画制作の仕事は <strong>Cowork</strong> が主役になる。台本・企画書・過去メモをプロジェクトに入れておけば、「前回どんな演出だったっけ？」も即答してくれる。
+      </div>
+    </div>
+
+    <div class="callout info">
+      <div class="callout-icon">💰</div>
+      <div class="callout-body">
+        <strong>トークン消費量の違い：シンプルな作業は Chat で十分</strong>
+        Cowork はエージェントとして動くためトークン消費が多め。単純な質問・文章校正・アイデア出しなど「ファイル操作が不要な作業」は Chat で済ませるとコスト節約になる。<br>
+        <span style="font-size: 13px; margin-top: 4px; display: block; color: var(--gray);">目安：Chat＝通常会話、Cowork＝ファイルを読み書きする仕事、Code＝ターミナル操作が必要な開発作業</span>
       </div>
     </div>
   </section>
@@ -1167,6 +1240,41 @@
       </div>
     </div>
 
+    <!-- Cowork 応用機能 -->
+    <div style="margin-top: 32px;">
+      <h3 style="font-size: 17px; font-weight: 700; margin-bottom: 14px; padding-left: 4px;">🚀 使いこなすと便利な Cowork の応用機能</h3>
+      <div class="tips-grid">
+        <div class="tip-card">
+          <div class="tip-icon">⏰</div>
+          <div class="tip-title">スケジューリング</div>
+          <div class="tip-body">
+            「毎朝9時に今日のタスク整理をして」と言えば自動実行してくれる。週次レポートの自動生成にも使える。
+          </div>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">🔗</div>
+          <div class="tip-title">コネクター（外部連携）</div>
+          <div class="tip-body">
+            Google Drive・Gmail・Google Calendar・Notion・Slack と連携できる。「Driveのファイルを読んで」「未読メールを整理して」が一発でできる。
+          </div>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">📱</div>
+          <div class="tip-title">Dispatch（スマホから操作）</div>
+          <div class="tip-body">
+            スマホから Cowork に仕事を投げられる機能。Max プランのみ。まだ安定期ではないが、外出先からの指示出しに使える。
+          </div>
+        </div>
+        <div class="tip-card">
+          <div class="tip-icon">📋</div>
+          <div class="tip-title">朝の一括ブリーフィング</div>
+          <div class="tip-body">
+            weekly-tasks.md を読んで「今日の優先タスク・デッドライン・懸念事項」をまとめてもらう。毎朝これを走らせるだけで頭の整理が5分で終わる。
+          </div>
+        </div>
+      </div>
+    </div>
+
   </section>
 
   <!-- ===== SECTION 7: ハンズオン ===== -->
@@ -1289,7 +1397,7 @@
 
 <footer>
   <p>FIREWORK × GIFTVOX — Claude Code Workshop 2026</p>
-  <p style="margin-top: 6px;">Prepared by Firework &nbsp;|&nbsp; Last Updated: 2026年5月28日 17:38</p>
+  <p style="margin-top: 6px;">Prepared by Firework &nbsp;|&nbsp; Last Updated: 2026年5月28日 18:16</p>
 </footer>
 
 <script>
