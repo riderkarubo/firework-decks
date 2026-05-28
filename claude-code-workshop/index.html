@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Claude Code ワークショップ 2026</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
-  <meta name="last-modified" content="2026-05-28T18:51:00+09:00">
+  <meta name="last-modified" content="2026-05-28T19:07:43+09:00">
   <meta name="description" content="Claude Code 初心者向けワークショップ教材。2時間で Chat・Cowork・Codeの使い分けから制作業務活用術まで学べます。">
   <meta property="og:title" content="Claude Code ワークショップ 2026">
   <meta property="og:description" content="Claude Code 初心者向けワークショップ教材。2時間で Chat・Cowork・Codeの使い分けから制作業務活用術まで学べます。">
@@ -642,7 +642,7 @@
       </div>
       <div class="cover-meta-item">
         <div class="label">Last Updated</div>
-        <div class="value">2026年5月28日 18:16</div>
+        <div class="value">2026年5月28日 19:07</div>
       </div>
     </div>
   </div>
@@ -806,25 +806,28 @@
       <li class="step-item">
         <div class="step-num">3</div>
         <div class="step-content">
-          <div class="step-title">CLAUDE.md（全体指示書）を設定する</div>
+          <div class="step-title">Claude の設定を一緒に確認する</div>
           <div class="step-body">
-            Cowork のプロジェクトフォルダ直下に <code style="background:var(--bg);padding:2px 6px;border-radius:4px;">CLAUDE.md</code> を作る。<strong>起動時に自動で読み込まれる特別なファイル</strong>。<br>
-            最低限これだけ書けば動く：
-            <div class="code-block" style="margin-top: 10px; font-size: 12px;">
-<span class="cmt"># Cowork 全体指示書</span>
-
-<span class="str">## 自己紹介</span>
-私は◯◯（職種）です。主な業務は◯◯。
-よく使うツールは Slack・Google Drive・◯◯。
-
-<span class="str">## 出力スタイル</span>
-- です・ます調で簡潔に
-- 箇条書き中心
-- 結論を先に書く
-
-<span class="str">## 安全ルール</span>
-- ファイルの削除禁止 → 代わりに「要確認」フォルダへ移動
-- 取り消せない操作の前は必ず確認を取る
+            右上のアイコン →「<strong>Settings</strong>」を開く。2つのタブを順番に見ていく。
+            <div class="tips-grid" style="margin-top: 14px;">
+              <div class="tip-card">
+                <div class="tip-icon">⚙️</div>
+                <div class="tip-title">Claude の設定（AI 挙動）</div>
+                <div class="tip-body">
+                  <strong>Default model</strong>：タスクに合わせて変えられる（重い作業は Opus、速さ重視は Haiku）。<br>
+                  <strong>Enable Artifacts</strong>：コードや HTML を別パネルで表示する機能。ON 推奨。<br>
+                  <strong>Extended thinking</strong>：複雑な問題を深く考えさせるモード。重い分じっくり使いたい時だけ ON。
+                </div>
+              </div>
+              <div class="tip-card">
+                <div class="tip-icon">🔌</div>
+                <div class="tip-title">Integrations（連携ツール）</div>
+                <div class="tip-body">
+                  Slack・Gmail・Google Drive・Calendar など、すでに繋がっているツールを確認。<br>
+                  <strong>「+ Connect」</strong> から追加できる。繋いでおくと Claude がツールをまたいで動ける。<br>
+                  <span style="color: var(--accent); font-size: 12px; font-weight: 600;">まず自分のアカウントで何が繋がっているか見てみよう。</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -834,9 +837,9 @@
     <div class="callout tip">
       <div class="callout-icon">💡</div>
       <div class="callout-body">
-        <strong>設定完了後の最初の指示</strong><br>
-        セットアップが終わったら <code style="background:rgba(255,255,255,0.2);padding:2px 6px;border-radius:4px;">「いつも通りでよろしく」</code> と送るだけ。
-        CLAUDE.md を読んで設定通りに動いてくれる。毎回長い説明が不要になる。
+        <strong>Integrations を繋ぐと何が変わる？</strong><br>
+        たとえば Google Drive を繋ぐと、「先月の企画書を要約して」と言うだけで Claude がドライブを検索して答えてくれる。
+        ツールをまたいだ作業が「指示1回」で完結するようになる。
       </div>
     </div>
 
@@ -845,7 +848,7 @@
       <div class="callout-body">
         <strong>大事な作業を任せる前に必ず送る「保険プロンプト」</strong><br>
         「ファイルの削除は禁止・取り消せない操作は承認を取ること。これを守ってから始めて。」<br>
-        Cowork はフォルダへの読み書き権限を持つので、大きな作業の前に毎回確認させる。
+        Integrations を有効にした Claude はツールをまたいで動けるので、大きな作業の前に毎回確認させる癖をつけよう。
       </div>
     </div>
   </section>
@@ -1392,7 +1395,7 @@
 
 <footer>
   <p>FIREWORK × GIFTVOX・ATSURAELU — Claude Code Workshop 2026</p>
-  <p style="margin-top: 6px;">Prepared by Firework &nbsp;|&nbsp; Last Updated: 2026年5月28日 18:16</p>
+  <p style="margin-top: 6px;">Prepared by Firework &nbsp;|&nbsp; Last Updated: 2026年5月28日 19:07</p>
 </footer>
 
 <script>
