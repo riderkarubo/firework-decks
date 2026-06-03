@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>ライブ配信制作 ご依頼資料 ｜ MTG（SIXPAD）案件</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎥</text></svg>">
+  <meta name="last-modified" content="2026-06-03T23:40:00+09:00">
+  <meta name="description" content="MTG（SIXPAD）ライブ配信制作のご依頼資料。与件・サポート内容・スマホ配信/一眼1カメの2プラン・オプション・参考座組をまとめた、寺田さん向けの発注依頼書です。">
+  <meta property="og:title" content="ライブ配信制作 ご依頼資料 ｜ MTG（SIXPAD）案件">
+  <meta property="og:description" content="MTG（SIXPAD）ライブ配信制作のご依頼資料。与件・サポート内容・2プラン・参考座組をまとめた発注依頼書です。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://riderkarubo.github.io/firework-decks/mtg-terada-order/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="ライブ配信制作 ご依頼資料 ｜ MTG（SIXPAD）案件">
+  <meta name="twitter:description" content="MTG（SIXPAD）ライブ配信制作のご依頼資料。与件・サポート内容・2プラン・参考座組をまとめた発注依頼書です。">
+  <script src="./gate.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --accent: #FA006D;
+      --accent-soft: #FFF0F6;
+      --dark: #1A1A2E;
+      --navy: #0F3460;
+      --green: #1B998B;
+      --line: #E2E4EA;
+      --card-bg: #F8F9FC;
+      --text: #1d1d28;
+      --muted: #6b6b78;
+      --bg-page: #E5E7EB;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Noto Sans JP', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text);
+      background: var(--bg-page);
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrap { max-width: 880px; margin: 0 auto; background: #fff; }
+
+    /* ===== Cover ===== */
+    .cover {
+      background: linear-gradient(135deg, #1A1A2E 0%, #0F3460 100%);
+      color: #fff;
+      padding: 56px 48px 48px;
+    }
+    .cover-label {
+      display: inline-block;
+      font-size: 12px;
+      letter-spacing: 0.22em;
+      font-weight: 700;
+      color: var(--accent);
+      border: 1px solid rgba(250,0,109,.5);
+      border-radius: 4px;
+      padding: 4px 12px;
+      margin-bottom: 22px;
+    }
+    .cover h1 { font-size: 30px; font-weight: 900; line-height: 1.4; margin-bottom: 12px; }
+    .cover-sub { font-size: 15px; color: #c8cdd8; font-weight: 500; }
+    .cover-meta {
+      margin-top: 30px;
+      border-left: 2px solid var(--accent);
+      padding-left: 18px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 4px 22px;
+      font-size: 13px;
+    }
+    .cover-meta .label { color: #8b92a3; }
+    .cover-meta .value { color: #fff; font-weight: 500; }
+
+    /* ===== TOC ===== */
+    .toc-section { padding: 32px 48px 8px; }
+    .toc-section-title {
+      font-size: 17px; font-weight: 700; color: var(--dark);
+      margin-bottom: 16px; padding-bottom: 10px;
+      border-bottom: 2px solid var(--accent);
+    }
+    .toc { background: var(--card-bg); border-radius: 10px; padding: 14px 20px; }
+    .toc-item { font-size: 14px; }
+    .toc-item a {
+      display: flex; align-items: center; gap: 12px; width: 100%;
+      text-decoration: none; color: inherit; border-radius: 6px;
+      padding: 7px 6px; transition: background .15s;
+    }
+    .toc-item a:hover { background: #eceef4; }
+    .toc-num {
+      width: 26px; height: 26px; background: var(--dark); color: #fff;
+      border-radius: 50%; display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 700; flex-shrink: 0;
+    }
+
+    /* ===== Section ===== */
+    section { padding: 30px 48px; }
+    .sec-head { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+    .sec-num {
+      font-size: 12px; font-weight: 700; color: #fff; background: var(--accent);
+      border-radius: 5px; padding: 3px 9px; letter-spacing: .05em;
+    }
+    .sec-head h2 { font-size: 20px; font-weight: 700; color: var(--dark); }
+    .lead { font-size: 14.5px; color: var(--text); margin-bottom: 18px; }
+
+    /* ===== Cards / grids ===== */
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .card {
+      background: var(--card-bg); border-radius: 12px; padding: 20px 22px;
+      box-shadow: 0 2px 12px rgba(0,0,0,.05);
+    }
+    .card.accent-top { border-top: 3px solid var(--accent); }
+    .card h3 { font-size: 15.5px; font-weight: 700; color: var(--dark); margin-bottom: 10px; }
+    .card ul { list-style: none; }
+    .card ul li { font-size: 13.5px; padding: 4px 0 4px 18px; position: relative; color: var(--text); }
+    .card ul li::before { content: '●'; color: var(--accent); font-size: 9px; position: absolute; left: 0; top: 7px; }
+
+    .badge {
+      display: inline-block; font-size: 11px; font-weight: 700; border-radius: 20px;
+      padding: 3px 12px; margin-bottom: 8px;
+    }
+    .badge.smartphone { background: #E3F2FD; color: #0D47A1; }
+    .badge.dslr { background: #E8F5E9; color: #1B5E20; }
+    .badge.option { background: #FFF3E0; color: #E65100; }
+
+    /* ===== Table ===== */
+    table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 6px; }
+    table th, table td { padding: 9px 12px; text-align: left; border-bottom: 1px solid var(--line); }
+    table th { background: var(--dark); color: #fff; font-weight: 700; font-size: 12px; }
+    table td.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+    table tr:last-child td { border-bottom: none; }
+    .row-total td { background: var(--accent-soft); font-weight: 700; color: var(--dark); }
+    .row-total td.num { color: var(--accent); }
+    .tbl-note { font-size: 11px; color: var(--muted); margin-top: 8px; }
+    .plan-cap {
+      display: inline-block; font-size: 13px; font-weight: 700; color: var(--dark);
+      margin: 4px 0 8px;
+    }
+    .ref-pill {
+      display: inline-block; font-size: 11.5px; background: #fff; border: 1px solid var(--line);
+      border-radius: 6px; padding: 4px 10px; color: var(--muted); margin-top: 8px;
+    }
+    .ref-pill strong { color: var(--accent); }
+
+    /* ===== Reference links ===== */
+    .ref-card {
+      background: var(--card-bg); border-radius: 12px; padding: 18px 22px;
+      border-left: 4px solid var(--navy); margin-bottom: 14px;
+    }
+    .ref-card h3 { font-size: 14.5px; color: var(--dark); margin-bottom: 6px; }
+    .ref-card p { font-size: 13px; color: var(--text); }
+    .ref-card a { color: var(--accent); font-weight: 700; text-decoration: none; word-break: break-all; }
+    .ref-card a:hover { text-decoration: underline; }
+
+    /* ===== Steps / notes ===== */
+    .steps { display: grid; gap: 10px; }
+    .step {
+      display: flex; gap: 14px; background: var(--card-bg); border-radius: 10px;
+      padding: 14px 18px; align-items: flex-start;
+    }
+    .step-no {
+      flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%;
+      background: var(--navy); color: #fff; font-size: 13px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .step-body { font-size: 13.5px; }
+    .step-body strong { color: var(--dark); }
+
+    .confirm-list { list-style: none; }
+    .confirm-list li {
+      font-size: 13.5px; padding: 9px 0 9px 28px; position: relative;
+      border-bottom: 1px dashed var(--line);
+    }
+    .confirm-list li:last-child { border-bottom: none; }
+    .confirm-list li::before {
+      content: '✔'; color: var(--accent); position: absolute; left: 4px; top: 9px; font-size: 13px;
+    }
+
+    .callout {
+      background: var(--accent-soft); border-radius: 10px; padding: 14px 18px;
+      font-size: 13px; color: var(--dark); margin-top: 14px;
+      border: 1px solid rgba(250,0,109,.18);
+    }
+    .callout strong { color: var(--accent); }
+
+    /* ===== Footer ===== */
+    footer {
+      background: var(--dark); color: #aeb4c2; padding: 26px 48px; font-size: 12px;
+      text-align: center; line-height: 1.9;
+    }
+    footer .fw-mark { color: var(--accent); font-weight: 700; letter-spacing: .1em; }
+
+    @media (max-width: 720px) {
+      .cover, .toc-section, section, footer { padding-left: 24px; padding-right: 24px; }
+      .cover h1 { font-size: 24px; }
+      .grid2 { grid-template-columns: 1fr; }
+      table { font-size: 12px; }
+      table th, table td { padding: 7px 8px; }
+    }
+
+    @media print {
+      * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; color-adjust: exact !important; }
+      @page { size: A4; margin: 10mm; }
+      body { background: #fff; }
+      .wrap { max-width: 100%; }
+      section, .card, .ref-card, .step { page-break-inside: avoid; break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <!-- ===== Cover ===== -->
+    <div class="cover">
+      <span class="cover-label">PRODUCTION ORDER ｜ 制作ご依頼</span>
+      <h1>MTG（SIXPAD）<br>ライブ配信制作 ご依頼資料</h1>
+      <p class="cover-sub">寺田さんへの配信サポート・制作ご依頼の内容と座組をまとめております</p>
+      <div class="cover-meta">
+        <div class="label">ご依頼先</div><div class="value">寺田さん</div>
+        <div class="label">案件</div><div class="value">MTG Co., Ltd.（SIXPAD）ライブ配信</div>
+        <div class="label">Date</div><div class="value">2026年6月4日</div>
+        <div class="label">Last Updated</div><div class="value">2026年6月3日 23:40</div>
+        <div class="label">Prepared by</div><div class="value">Firework Japan（石島）</div>
+      </div>
+    </div>
+
+    <!-- ===== TOC ===== -->
+    <div class="toc-section">
+      <div class="toc-section-title">目次</div>
+      <div class="toc">
+        <div class="toc-item"><a href="#sec-1"><div class="toc-num">1</div><span>与件・案件概要</span></a></div>
+        <div class="toc-item"><a href="#sec-2"><div class="toc-num">2</div><span>ご依頼するサポート内容</span></a></div>
+        <div class="toc-item"><a href="#sec-3"><div class="toc-num">3</div><span>プラン1：スマホ配信（高崎ヤマダ スマホ配信時代の座組）</span></a></div>
+        <div class="toc-item"><a href="#sec-4"><div class="toc-num">4</div><span>プラン2：一眼1カメ（スタバ配信の座組）</span></a></div>
+        <div class="toc-item"><a href="#sec-5"><div class="toc-num">5</div><span>オプション（アドオン）</span></a></div>
+        <div class="toc-item"><a href="#sec-6"><div class="toc-num">6</div><span>リファレンス（参考配信）</span></a></div>
+        <div class="toc-item"><a href="#sec-7"><div class="toc-num">7</div><span>進行・スケジュールの考え方</span></a></div>
+        <div class="toc-item"><a href="#sec-8"><div class="toc-num">8</div><span>確認・調整させていただきたい点</span></a></div>
+      </div>
+    </div>
+
+    <!-- ===== 1. 与件 ===== -->
+    <section id="sec-1">
+      <div class="sec-head"><span class="sec-num">01</span><h2>与件・案件概要</h2></div>
+      <p class="lead">MTG Co., Ltd.（SIXPAD／ナイキストレングス商材）のライブコマース配信について、配信の制作・運営サポートを寺田さんにお願いしたく、内容をまとめました。まずは単発1回での実施を想定し、配信スタイルに応じて2つのプランをご用意しています。</p>
+      <div class="grid2">
+        <div class="card accent-top">
+          <h3>案件の前提</h3>
+          <ul>
+            <li>商材：SIXPAD（ナイキストレングス系トレーニング商材）</li>
+            <li>撮影場所：東京都内（MTG側手配・ジムまたはオフィス）</li>
+            <li>出演者：MTG側手配（トレーナー・著名人候補）</li>
+            <li>配信形式：単発（まずは1回）／継続化は別途相談</li>
+          </ul>
+        </div>
+        <div class="card accent-top">
+          <h3>ネットワーク・配信環境</h3>
+          <ul>
+            <li>有線LAN：確保できる前提で調整中</li>
+            <li>有線が難しい場合のみ、TVUルーター等の手配を別途検討</li>
+            <li>配信先：Firework（ライブコマース）</li>
+            <li>当日リハーサルからの稼働を想定</li>
+          </ul>
+        </div>
+      </div>
+      <div class="callout">
+        <strong>このご依頼の趣旨：</strong>配信本体（制作進行・台本・現場ディレクション・機材・配信オペレーション）を寺田さんチームに一括でお願いしたいと考えています。下記の金額は<strong>寺田さんへのお支払い（発注原価）</strong>として整理したものです。
+      </div>
+    </section>
+
+    <!-- ===== 2. サポート内容 ===== -->
+    <section id="sec-2">
+      <div class="sec-head"><span class="sec-num">02</span><h2>ご依頼するサポート内容</h2></div>
+      <p class="lead">配信1回あたりに必要な制作・運営を、以下の役割で想定しています。プランによって機材・オペレーション体制が変わります（詳細は各プランの明細をご参照ください）。</p>
+      <div class="grid2">
+        <div class="card">
+          <h3>制作・進行</h3>
+          <ul>
+            <li>制作進行（メインD・台本兼フロアD）</li>
+            <li>台本作成（お打ち合わせ1回含む）</li>
+            <li>現場ディレクション</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>機材・配信オペレーション</h3>
+          <ul>
+            <li>機材コーディネート・持ち込み</li>
+            <li>配信管理オペレーター</li>
+            <li>（一眼プランのみ）OBS配信オペレーション・機材運搬</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 3. プラン1 ===== -->
+    <section id="sec-3">
+      <div class="sec-head"><span class="sec-num">03</span><h2>プラン1：スマホ配信（ミニマム構成）</h2></div>
+      <span class="badge smartphone">SMARTPHONE LIVE</span>
+      <p class="lead">iPhone1台＋ポケットWi-Fiで自立運用できるミニマム構成です。<strong>高崎ヤマダのスマホ配信時代とほぼ同じ座組</strong>をイメージしています。スイッチャーなし・機材持ち込みで身軽に動けるパターンです。</p>
+      <span class="plan-cap">▶ 寺田さんへの発注内訳（単発1回あたり）</span>
+      <table>
+        <thead>
+          <tr><th>項目</th><th>内容</th><th style="text-align:right">原価（税込）</th><th style="text-align:right">原価（税抜）</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>制作進行</td><td>メインD・台本兼フロアD</td><td class="num">¥112,200</td><td class="num">¥102,000</td></tr>
+          <tr><td>台本作成</td><td>お打ち合わせ1回含む</td><td class="num">¥55,000</td><td class="num">¥50,000</td></tr>
+          <tr><td>現場ディレクション</td><td>現場フロアD</td><td class="num">¥44,000</td><td class="num">¥40,000</td></tr>
+          <tr><td>機材コーディネート・持ち込み費</td><td>リングライト・NEEWER照明2灯・ワイヤレスマイク2波・配信用iPhone1台・ポケットWi-Fi</td><td class="num">¥55,000</td><td class="num">¥50,000</td></tr>
+          <tr><td>配信管理オペレーター</td><td>配信中の運営サポート</td><td class="num">¥44,000</td><td class="num">¥40,000</td></tr>
+          <tr class="row-total"><td colspan="2">プラン1 合計（単発1回あたり）</td><td class="num">¥310,200</td><td class="num">¥282,000</td></tr>
+        </tbody>
+      </table>
+      <p class="tbl-note">※ 機材コーディネート費・配信管理オペレーターの原価は現時点の目安です。実体制が固まり次第、調整させてください。</p>
+      <div class="ref-pill">参考座組 → <strong>高崎ヤマダ（スマホ配信時代）</strong>：メインD＋現場サポートの2名体制／機材持ち込み・自立運用</div>
+    </section>
+
+    <!-- ===== 4. プラン2 ===== -->
+    <section id="sec-4">
+      <div class="sec-head"><span class="sec-num">04</span><h2>プラン2：一眼1カメ（OBS・有線LAN前提）</h2></div>
+      <span class="badge dslr">DSLR + OBS LIVE</span>
+      <p class="lead">一眼カメラ＋OBSオペレーションで画質・演出を一段引き上げる構成です。<strong>スタバ配信の座組</strong>に近く、有線LAN確保を前提とします（スイッチャーは入れず、OBSオペレーターが運用）。アーカイブは下記リファレンスをご参照ください。</p>
+      <span class="plan-cap">▶ 寺田さんへの発注内訳（単発1回あたり）</span>
+      <table>
+        <thead>
+          <tr><th>項目</th><th>内容</th><th style="text-align:right">原価（税込）</th><th style="text-align:right">原価（税抜）</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>制作進行</td><td>メインD・台本兼フロアD</td><td class="num">¥112,200</td><td class="num">¥102,000</td></tr>
+          <tr><td>台本作成</td><td>お打ち合わせ1回含む</td><td class="num">¥55,000</td><td class="num">¥50,000</td></tr>
+          <tr><td>現場ディレクション</td><td>現場フロアD</td><td class="num">¥44,000</td><td class="num">¥40,000</td></tr>
+          <tr><td>機材コーディネート・持ち込み費</td><td>一眼カメラ・NEEWER照明・ワイヤレスマイク・OBS機材一式</td><td class="num">¥112,200</td><td class="num">¥102,000</td></tr>
+          <tr><td>OBS配信オペレーター</td><td>スイッチャーなし</td><td class="num">¥88,000</td><td class="num">¥80,000</td></tr>
+          <tr><td>配信管理</td><td>配信中の運営サポート</td><td class="num">¥44,000</td><td class="num">¥40,000</td></tr>
+          <tr><td>機材運搬費</td><td>現場までの運搬</td><td class="num">¥22,000</td><td class="num">¥20,000</td></tr>
+          <tr class="row-total"><td colspan="2">プラン2 合計（単発1回あたり）</td><td class="num">¥477,400</td><td class="num">¥434,000</td></tr>
+        </tbody>
+      </table>
+      <p class="tbl-note">※ 機材運搬費・OBSオペレーション周りの原価は実体制に合わせて調整させてください。</p>
+      <div class="ref-pill">参考座組 → <strong>スターバックス配信</strong>：一眼＋OBS運用（アーカイブは下記セクション6に掲載）</div>
+    </section>
+
+    <!-- ===== 5. オプション ===== -->
+    <section id="sec-5">
+      <div class="sec-head"><span class="sec-num">05</span><h2>オプション（アドオン）</h2></div>
+      <span class="badge option">ADD-ON</span>
+      <p class="lead">配信規模や演出に応じて、以下を追加でお願いする可能性があります。必要な回のみ都度ご相談させてください。</p>
+      <table>
+        <thead>
+          <tr><th>項目</th><th>内容</th><th style="text-align:right">原価（税込）</th><th style="text-align:right">原価（税抜）</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>2カメスイッチング追加</td><td>カメラ・スイッチャー増設</td><td class="num">¥110,000</td><td class="num">¥100,000</td></tr>
+          <tr><td>音声機材増設</td><td>ピンマイク3名分</td><td class="num">¥44,000</td><td class="num">¥40,000</td></tr>
+          <tr><td>テロップ制作</td><td>1配信あたり</td><td class="num">¥55,000</td><td class="num">¥50,000</td></tr>
+          <tr><td>切り抜き動画制作</td><td>1本あたりの単価（本数は配信ごとに都度相談・3本前後を想定）</td><td class="num">¥22,000 /本</td><td class="num">¥20,000 /本</td></tr>
+          <tr><td>練習（編集）動画制作</td><td>事前練習・編集用</td><td class="num">¥55,000</td><td class="num">¥50,000</td></tr>
+        </tbody>
+      </table>
+      <div class="callout">
+        <strong>TVUルーターについて：</strong>今回は有線LAN確保を前提とするため、TVUルーターレンタルは依頼内容から除外しています。ネットワークの確保が難しいことが判明した場合のみ、別途ご相談させてください。
+      </div>
+    </section>
+
+    <!-- ===== 6. リファレンス ===== -->
+    <section id="sec-6">
+      <div class="sec-head"><span class="sec-num">06</span><h2>リファレンス（参考配信）</h2></div>
+      <p class="lead">座組・配信スタイルのイメージ共有として、過去の配信を参考に挙げます。</p>
+      <div class="ref-card">
+        <h3>プラン1（スマホ配信）の参考 → 高崎ヤマダ（スマホ配信時代）</h3>
+        <p>現在の高崎ヤマダ配信とはスタイルが異なりますが、<strong>スマホ配信で運用していた当時の座組</strong>がプラン1のイメージに最も近いです。メインD＋現場サポートの2名体制・機材持ち込みでの自立運用がベースになります。</p>
+      </div>
+      <div class="ref-card">
+        <h3>プラン2（一眼1カメ）の参考 → スターバックス配信アーカイブ</h3>
+        <p>一眼＋OBS運用の画づくり・進行の参考として、スターバックスのライブ配信アーカイブをご確認ください。<br>
+        <a href="https://www.starbucks.co.jp/onlinestore/live/" target="_blank" rel="noopener">https://www.starbucks.co.jp/onlinestore/live/</a></p>
+      </div>
+    </section>
+
+    <!-- ===== 7. スケジュール ===== -->
+    <section id="sec-7">
+      <div class="sec-head"><span class="sec-num">07</span><h2>進行・スケジュールの考え方</h2></div>
+      <p class="lead">配信日が確定し次第、以下の流れで詰めていければと考えています。</p>
+      <div class="steps">
+        <div class="step"><div class="step-no">1</div><div class="step-body"><strong>プラン確定・お見積り調整</strong>：スマホ／一眼どちらで進めるか、本資料をもとにご相談</div></div>
+        <div class="step"><div class="step-no">2</div><div class="step-body"><strong>台本・お打ち合わせ</strong>：MTG側の出演者・商材内容を踏まえて台本のたたきを作成（打ち合わせ1回想定）</div></div>
+        <div class="step"><div class="step-no">3</div><div class="step-body"><strong>機材・体制の最終確認</strong>：撮影場所・ネットワーク環境・スタッフアサインを確定</div></div>
+        <div class="step"><div class="step-no">4</div><div class="step-body"><strong>当日リハ → 本番配信</strong>：当日リハーサルからの稼働を想定</div></div>
+        <div class="step"><div class="step-no">5</div><div class="step-body"><strong>（必要に応じて）切り抜き・編集</strong>：オプションの切り抜き動画等を都度ご依頼</div></div>
+      </div>
+    </section>
+
+    <!-- ===== 8. 確認事項 ===== -->
+    <section id="sec-8">
+      <div class="sec-head"><span class="sec-num">08</span><h2>確認・調整させていただきたい点</h2></div>
+      <p class="lead">発注を確定する前に、以下について寺田さんのご認識・ご都合を伺えればと思います。</p>
+      <ul class="confirm-list">
+        <li>上記の原価（プラン1：税込¥310,200／プラン2：税込¥477,400）で対応可能か</li>
+        <li>機材コーディネート費・配信管理・機材運搬費の金額感に齟齬がないか</li>
+        <li>撮影場所（東京都内）への移動・交通費の扱い（上記原価への含み／別途精算）</li>
+        <li>有線LANが確保できなかった場合のTVUルーター手配の可否・追加費用</li>
+        <li>切り抜き動画をお願いする場合の本数・納期・修正回数の目安</li>
+        <li>継続化（複数回／月次）になった場合のボリュームディスカウントの可能性</li>
+      </ul>
+      <div class="callout">
+        <strong>ご確認のお願い：</strong>先方（MTG側）への提示を控えているため、まずはプランの方向性と金額感だけでも <strong>6月5日（金）13:00まで</strong> に一度すり合わせできれば助かります。気になる点・調整したい点があれば、遠慮なくお知らせください。
+      </div>
+    </section>
+
+    <footer>
+      <div class="fw-mark">FIREWORK JAPAN</div>
+      MTG（SIXPAD）ライブ配信制作 ご依頼資料 ／ 寺田さん宛<br>
+      Last Updated: 2026年6月3日 23:40 JST<br>
+      本資料は関係者限定です。取り扱いにご注意ください。
+    </footer>
+
+  </div>
+</body>
+</html>
