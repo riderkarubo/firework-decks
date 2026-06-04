@@ -6,17 +6,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
-  <meta name="last-modified" content="2026-06-04T13:01:00+09:00">
-  <title>SIXPAD ライブ配信 プロフェッショナルサービス ご提案 | Firework</title>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💪</text></svg>">
-  <meta name="description" content="株式会社MTG 御中 — SIXPAD ライブ配信の年間レギュラー運用ご提案。配信プラン2パターン・サポート内容・お見積もり・留意事項をまとめたご提案資料。">
-  <meta property="og:title" content="SIXPAD ライブ配信 プロフェッショナルサービス ご提案 | Firework">
-  <meta property="og:description" content="株式会社MTG 御中 — SIXPAD ライブ配信の年間レギュラー運用ご提案。配信プラン2パターン・サポート内容・お見積もり・留意事項をまとめたご提案資料。">
+  <meta name="last-modified" content="2026-06-04T15:29:00+09:00">
+  <title>MTG様 ライブ配信 プロフェッショナルサービス ご提案 | Firework</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎥</text></svg>">
+  <meta name="description" content="株式会社MTG 御中 — ライブ配信の年間レギュラー運用ご提案。配信プラン2パターン・ハイブリッド体制・お見積もり・留意事項をまとめたご提案資料。">
+  <meta property="og:title" content="MTG様 ライブ配信 プロフェッショナルサービス ご提案 | Firework">
+  <meta property="og:description" content="株式会社MTG 御中 — ライブ配信の年間レギュラー運用ご提案。配信プラン2パターン・ハイブリッド体制・お見積もり・留意事項をまとめたご提案資料。">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://riderkarubo.github.io/firework-decks/mtg-sixpad-annual/">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="SIXPAD ライブ配信 プロフェッショナルサービス ご提案 | Firework">
-  <meta name="twitter:description" content="株式会社MTG 御中 — SIXPAD ライブ配信の年間レギュラー運用ご提案。配信プラン2パターン・サポート内容・お見積もり・留意事項をまとめたご提案資料。">
+  <meta name="twitter:title" content="MTG様 ライブ配信 プロフェッショナルサービス ご提案 | Firework">
+  <meta name="twitter:description" content="株式会社MTG 御中 — ライブ配信の年間レギュラー運用ご提案。配信プラン2パターン・ハイブリッド体制・お見積もり・留意事項をまとめたご提案資料。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -30,6 +30,7 @@
       --green:   #1B998B;
       --amber:   #D97706;
       --blue:    #2563EB;
+      --gold:    #FCD34D;
       --card-bg: #F8F9FC;
       --border:  #E5E7EB;
       --gray:    #6B7280;
@@ -87,9 +88,7 @@
       font-size: 11px; font-weight: 700; letter-spacing: 0.3em;
       text-transform: uppercase; color: var(--accent); margin-bottom: 20px;
     }
-    .cover-title { font-size: 38px; font-weight: 900; line-height: 1.28; margin-bottom: 16px; letter-spacing: 0.01em; }
-    .cover-sub { font-size: 16px; color: rgba(255,255,255,0.74); margin-bottom: 38px; line-height: 1.7; max-width: 760px; }
-    .cover-sub .hl { color: #fff; font-weight: 700; }
+    .cover-title { font-size: 38px; font-weight: 900; line-height: 1.28; margin-bottom: 30px; letter-spacing: 0.01em; }
     .cover-meta-row {
       display: flex; flex-wrap: wrap; gap: 40px; padding-top: 22px;
       border-top: 1px solid rgba(255,255,255,0.18);
@@ -129,7 +128,7 @@
     }
 
     /* ===== TOC ===== */
-    .toc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .toc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
     .toc-item {
       background: var(--light); border-radius: 8px; padding: 13px 15px;
       display: flex; align-items: center; gap: 11px;
@@ -158,36 +157,6 @@
     .info-value { font-size: 13px; line-height: 1.65; }
     .info-value small { color: var(--gray); }
 
-    /* ===== KPI chips ===== */
-    .kpi-row { display: flex; gap: 10px; flex-wrap: wrap; }
-    .kpi-chip {
-      background: var(--light); border: 1px solid var(--border);
-      border-radius: 20px; padding: 6px 15px; font-size: 12px; font-weight: 600;
-    }
-    .kpi-chip .hl { color: var(--accent); font-weight: 700; }
-
-    /* ===== KPI logic ===== */
-    .kpi-logic { display: flex; flex-direction: column; gap: 9px; }
-    .kpi-logic-item {
-      display: grid; grid-template-columns: 180px 1fr; gap: 14px;
-      padding: 11px 16px; background: var(--card-bg);
-      border: 1px solid var(--border); border-radius: 8px;
-      border-left: 3px solid var(--green); font-size: 12.5px; line-height: 1.6;
-    }
-    .kpi-logic-item .kl-k { font-weight: 700; color: var(--dark); }
-    .kpi-logic-item .kl-k .tgt { display: block; font-size: 11px; color: var(--accent); font-weight: 700; margin-top: 2px; }
-    @media (max-width: 720px) { .kpi-logic-item { grid-template-columns: 1fr; gap: 4px; } }
-
-    /* ===== Benefit grid ===== */
-    .benefit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .benefit-card {
-      background: #F4FFFE; border: 1px solid var(--border);
-      border-top: 3px solid var(--green); border-radius: 8px; padding: 15px 18px;
-    }
-    .benefit-card h4 { font-size: 13px; font-weight: 700; color: var(--green); margin-bottom: 6px; }
-    .benefit-card p { font-size: 12px; color: #444; line-height: 1.7; }
-    .benefit-card p strong { color: var(--green); }
-
     /* ===== Role table ===== */
     .role-table { width: 100%; border-collapse: collapse; font-size: 12px; }
     .role-table th, .role-table td {
@@ -211,13 +180,6 @@
     }
     .plan-card.p1 { border-top: 4px solid var(--accent); }
     .plan-card.p2 { border-top: 4px solid var(--navy); }
-    .plan-rec {
-      position: absolute; top: 13px; right: 14px;
-      color: #fff; font-size: 10px; font-weight: 700;
-      padding: 3px 11px; border-radius: 12px; letter-spacing: 0.06em;
-    }
-    .p1 .plan-rec { background: var(--accent); }
-    .p2 .plan-rec { background: var(--navy); }
     .plan-head { padding: 18px 22px 14px; }
     .plan-badge {
       display: inline-block; font-size: 10px; font-weight: 700;
@@ -230,26 +192,33 @@
 
     .incl-list { padding: 4px 22px 16px; flex-grow: 1; }
     .incl-item {
-      display: flex; gap: 10px; align-items: flex-start;
+      display: flex; gap: 10px; align-items: center;
       padding: 8px 0; border-bottom: 1px dashed var(--border); font-size: 12.5px;
     }
     .incl-item:last-child { border-bottom: none; }
-    .incl-check { color: var(--green); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+    .incl-check { color: var(--green); font-weight: 700; flex-shrink: 0; align-self: flex-start; margin-top: 2px; }
+    .incl-item .it-body { flex-grow: 1; }
     .incl-item .it-name { font-weight: 700; color: var(--dark); }
     .incl-item .it-desc { color: var(--gray); font-size: 11.5px; display: block; margin-top: 1px; line-height: 1.55; }
+    .incl-item .it-price { flex-shrink: 0; font-weight: 800; color: var(--dark); font-size: 13px; white-space: nowrap; }
 
-    /* ===== Price box ===== */
+    /* ===== Price box (discount emphasized) ===== */
     .price-box { background: var(--dark); padding: 20px 24px; }
     .p2 .price-box { background: var(--navy); }
-    .price-cond {
-      font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.7);
-      letter-spacing: 0.06em; margin-bottom: 10px;
-      display: inline-block; padding: 3px 10px; border-radius: 4px;
-      background: rgba(255,255,255,0.1);
+    .price-off-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--accent); color: #fff;
+      font-size: 11.5px; font-weight: 800; letter-spacing: 0.04em;
+      padding: 5px 13px; border-radius: 20px; margin-bottom: 12px;
+      box-shadow: 0 2px 10px rgba(250,0,109,0.4);
     }
+    .price-off-badge .pct { font-size: 13px; }
+    .price-regular { display: flex; align-items: baseline; gap: 8px; margin-bottom: 6px; }
+    .price-regular .pr-k { font-size: 11px; color: rgba(255,255,255,0.5); font-weight: 600; }
+    .price-regular .pr-v { font-size: 15px; color: rgba(255,255,255,0.5); font-weight: 700; text-decoration: line-through; text-decoration-color: rgba(250,0,109,0.8); }
     .price-month { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
-    .price-month .mk { font-size: 12px; color: rgba(255,255,255,0.65); font-weight: 600; }
-    .price-month .mv { font-size: 32px; font-weight: 900; color: var(--accent); line-height: 1.1; letter-spacing: -0.01em; }
+    .price-month .mk { font-size: 12px; color: var(--gold); font-weight: 700; }
+    .price-month .mv { font-size: 33px; font-weight: 900; color: var(--accent); line-height: 1.1; letter-spacing: -0.01em; }
     .p2 .price-month .mv { color: #4FD1C5; }
     .price-month .mu { font-size: 13px; color: rgba(255,255,255,0.7); font-weight: 600; }
     .price-year {
@@ -258,19 +227,19 @@
     }
     .price-year .yk { font-size: 11px; color: rgba(255,255,255,0.6); font-weight: 600; }
     .price-year .yv { font-size: 18px; font-weight: 800; color: #fff; }
-    .price-year .yt { font-size: 11px; color: rgba(255,255,255,0.55); }
-    .price-note {
-      margin-top: 10px; font-size: 10.5px; color: rgba(255,255,255,0.75); line-height: 1.6;
+    .price-save {
+      margin-top: 12px; padding: 8px 12px; border-radius: 6px;
+      background: rgba(252,211,77,0.14); border: 1px solid rgba(252,211,77,0.35);
+      font-size: 12.5px; font-weight: 800; color: var(--gold); text-align: center;
     }
 
-    /* ===== Value justification ===== */
-    .value-just {
-      background: #FFF7FB; border: 1px solid #F5C9DE;
-      border-radius: 10px; padding: 16px 20px; margin-bottom: 18px;
-      font-size: 12.5px; line-height: 1.8; color: #333;
+    /* ===== Breakdown note ===== */
+    .breakdown-note {
+      background: #FFF7FB; border: 1px solid #F5C9DE; border-left: 4px solid var(--accent);
+      border-radius: 8px; padding: 13px 18px; margin-bottom: 18px;
+      font-size: 12.5px; line-height: 1.75; color: #333;
     }
-    .value-just .vj-ttl { font-size: 13px; font-weight: 700; color: var(--accent); margin-bottom: 6px; }
-    .value-just strong { color: var(--accent); }
+    .breakdown-note strong { color: var(--accent); }
 
     /* ===== Option grid ===== */
     .option-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
@@ -283,32 +252,15 @@
     .option-card p { font-size: 11px; color: #555; line-height: 1.6; flex-grow: 1; }
     .option-card .opt-price {
       margin-top: 9px; padding-top: 8px; border-top: 1px dashed var(--border);
-      font-size: 13px; font-weight: 800; color: var(--accent);
+      font-size: 14px; font-weight: 800; color: var(--accent);
     }
     .option-card .opt-price small { font-size: 10.5px; color: var(--gray); font-weight: 600; }
-    .option-card.excluded {
-      background: #F4F4F5; border-top-color: #C4C4C8; opacity: 0.85;
-    }
-    .option-card.excluded h4 { color: var(--gray); text-decoration: line-through; }
-    .option-card.excluded .opt-price { color: var(--gray); }
     .opt-pretext { font-size: 11.5px; color: var(--gray); margin-bottom: 11px; line-height: 1.6; }
-
-    /* ===== Schedule ===== */
-    .timeline { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-    .tl-card {
-      border: 1px solid var(--border); border-radius: 10px; overflow: hidden;
+    .opt-extra {
+      margin-top: 12px; font-size: 11.5px; color: var(--gray); line-height: 1.6;
+      padding: 10px 14px; background: var(--light); border-radius: 8px;
     }
-    .tl-head {
-      padding: 11px 16px; font-size: 13px; font-weight: 700; color: #fff;
-      display: flex; align-items: center; gap: 8px;
-    }
-    .tl-head.t1 { background: var(--accent); }
-    .tl-head.t2 { background: var(--navy); }
-    .tl-head.t3 { background: var(--green); }
-    .tl-head .tl-round { font-size: 10px; background: rgba(255,255,255,0.22); padding: 2px 8px; border-radius: 10px; }
-    .tl-body { padding: 13px 16px; font-size: 12px; line-height: 1.7; color: #444; }
-    .tl-body ul { padding-left: 16px; }
-    .tl-body li { margin-bottom: 4px; }
+    .opt-extra strong { color: #333; }
 
     /* ===== Notice ===== */
     .notice-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
@@ -339,8 +291,8 @@
     .footer { text-align: center; padding: 18px; font-size: 11px; color: var(--gray); line-height: 1.7; }
 
     @media (max-width: 720px) {
-      .info-grid, .benefit-grid, .plan-grid, .notice-grid { grid-template-columns: 1fr; }
-      .toc-grid, .option-grid, .timeline { grid-template-columns: 1fr; }
+      .info-grid, .plan-grid, .notice-grid { grid-template-columns: 1fr; }
+      .toc-grid, .option-grid { grid-template-columns: 1fr; }
       .cover { padding: 36px 26px; }
       .cover-title { font-size: 28px; }
       .section { padding: 22px 20px; }
@@ -354,7 +306,7 @@
       body { background: #fff; }
       .nav { display: none; }
       .section, .cover { page-break-inside: avoid; break-inside: avoid; box-shadow: none; }
-      .plan-card, .tl-card, .notice { page-break-inside: avoid; break-inside: avoid; }
+      .plan-card, .notice { page-break-inside: avoid; break-inside: avoid; }
     }
   </style>
 </head>
@@ -365,30 +317,24 @@
   <div class="nav-brand"><span>Firework</span> Japan</div>
   <div class="nav-links">
     <a href="#toc">目次</a>
-    <a href="#yoken">与件・課題</a>
-    <a href="#value">提供価値</a>
     <a href="#plan">配信プラン</a>
+    <a href="#hybrid">ハイブリッド体制</a>
     <a href="#estimate">お見積もり</a>
-    <a href="#schedule">スケジュール</a>
     <a href="#notes">留意事項</a>
   </div>
-  <div class="nav-meta">SIXPAD ライブ配信ご提案</div>
+  <div class="nav-meta">MTG様 ライブ配信ご提案</div>
 </nav>
 
 <div class="page">
 
   <!-- ===== Cover ===== -->
   <div class="cover">
-    <div class="cover-label">SIXPAD × Firework ／ Live Streaming Professional Service</div>
-    <div class="cover-title">SIXPAD ライブ配信<br>プロフェッショナルサービス ご提案</div>
-    <div class="cover-sub">
-      担当者1名・スマホ1台での運用から、<span class="hl">専門家との共同体制</span>へ。<br>
-      企画設計からデータ分析までを一貫して伴走し、ライブ配信を<span class="hl">年間を通じた持続的な売上エンジン</span>へと育てます。
-    </div>
+    <div class="cover-label">MTG × Firework ／ Live Streaming Professional Service</div>
+    <div class="cover-title">MTG様 ライブ配信<br>プロフェッショナルサービス ご提案</div>
     <div class="cover-meta-row">
       <div class="cover-meta-item">
         <div class="k">Client</div>
-        <div class="v">株式会社MTG 御中<br><small style="color:rgba(255,255,255,0.5)">ブランド: SIXPAD</small></div>
+        <div class="v">株式会社MTG 御中</div>
       </div>
       <div class="cover-meta-item">
         <div class="k">Prepared by</div>
@@ -400,7 +346,7 @@
       </div>
       <div class="cover-meta-item">
         <div class="k">Last Updated</div>
-        <div class="v">2026年6月4日 13:01</div>
+        <div class="v">2026年6月4日 15:29</div>
       </div>
     </div>
   </div>
@@ -409,106 +355,43 @@
   <div class="section" id="toc">
     <div class="section-title"><div class="num">目</div>目次</div>
     <div class="toc-grid">
-      <a class="toc-item" href="#yoken"><div class="toc-num">1</div><div class="toc-label">貴社の現状と課題</div></a>
-      <a class="toc-item" href="#value"><div class="toc-num">2</div><div class="toc-label">Firework PSで実現できること</div></a>
-      <a class="toc-item" href="#plan"><div class="toc-num">3</div><div class="toc-label">配信プラン（2パターン）</div></a>
-      <a class="toc-item" href="#estimate"><div class="toc-num">4</div><div class="toc-label">サポート内容・お見積もり</div></a>
-      <a class="toc-item" href="#schedule"><div class="toc-num">5</div><div class="toc-label">年間運用スケジュール</div></a>
-      <a class="toc-item" href="#notes"><div class="toc-num">6</div><div class="toc-label">留意事項</div></a>
+      <a class="toc-item" href="#plan"><div class="toc-num">1</div><div class="toc-label">配信プラン（2パターン）</div></a>
+      <a class="toc-item" href="#hybrid"><div class="toc-num">2</div><div class="toc-label">ハイブリッド体制</div></a>
+      <a class="toc-item" href="#estimate"><div class="toc-num">3</div><div class="toc-label">サポート内容・お見積もり</div></a>
+      <a class="toc-item" href="#notes"><div class="toc-num">4</div><div class="toc-label">留意事項</div></a>
     </div>
   </div>
 
-  <!-- ===== 1. 与件・課題 ===== -->
-  <div class="section" id="yoken">
-    <div class="section-title"><div class="num">1</div>貴社の現状と課題</div>
+  <!-- ===== 1. 配信プラン ===== -->
+  <div class="section" id="plan">
+    <div class="section-title"><div class="num">1</div>配信プラン（2パターン）</div>
     <div class="lead">
-      月1回・スマホ1台・担当者1名での運用から、<span class="accent">専門家との共同体制</span>で<span class="accent">品質と成果</span>を引き上げます
+      貴社のご要望・品質要件に応じて、<span class="accent">スマホ配信</span>と<span class="navy">一眼1カメ</span>の<span class="accent">2プランからお選びいただけます</span>
     </div>
-
-    <div class="info-grid" style="margin-bottom:22px;">
-      <div class="info-card">
-        <div class="info-label">現在の配信状況</div>
-        <div class="info-value">Instagramライブを月1回（不定期）<br><small>担当者1名が企画〜配信まで一人で対応</small></div>
+    <div class="info-grid">
+      <div class="info-card" style="border-top:3px solid var(--accent);">
+        <div class="info-label" style="color:var(--accent);">プラン1 ／ スマホ配信</div>
+        <div class="info-value">
+          貴社端末を活用したスマートフォン配信。ポケットWi-Fi込みの機材持ち込みで会場の通信環境を問わず自立運用が可能。<br>
+          <small>コストを抑えてレギュラー運用を立ち上げたい場合に適したミニマム構成。</small>
+        </div>
       </div>
-      <div class="info-card">
-        <div class="info-label">使用機材（現状）</div>
-        <div class="info-value">主にスマートフォン（iPhone）<br><small>映像・音声品質に課題、配信トラブル対応に不安</small></div>
+      <div class="info-card" style="border-top:3px solid var(--navy);">
+        <div class="info-label navy">プラン2 ／ 一眼1カメ（品質重視）</div>
+        <div class="info-value">
+          一眼カメラ1台 ＋ OBS運用で、寄り引きのクリエイティブ品質を担保。広告・LP二次利用に耐える映像ラインを実現。<br>
+          <small>ブランド品質と二次活用価値を重視する場合に適した構成。</small>
+        </div>
       </div>
-      <div class="info-card">
-        <div class="info-label">今後の方針</div>
-        <div class="info-value">月1回・年間12回のレギュラー運用<br><small>ウェルネス／SIXPADを軸としたブランディング配信</small></div>
-      </div>
-      <div class="info-card">
-        <div class="info-label">体制の前提</div>
-        <div class="info-value">ハイブリッド体制<br><small>台本叩きは貴社、構成・演出・品質はFireworkが担当</small></div>
-      </div>
-    </div>
-
-    <div class="sub-label">解決すべき課題</div>
-    <div class="issue-list" style="margin-bottom:22px; display:flex; flex-direction:column; gap:8px;">
-      <div class="info-card" style="border-left:3px solid var(--accent);">
-        <strong>リソース・ノウハウ不足</strong> — 担当者1名が企画・台本・配信・分析まで担い、改善サイクルを回す余力がない。どの企画が売上に繋がるかの知見も蓄積しづらい状況です。
-      </div>
-      <div class="info-card" style="border-left:3px solid var(--accent);">
-        <strong>映像品質・効果測定の壁</strong> — スマホ1台では映像・音声品質に限界があり、SIXPADのブランドイメージとの乖離が生じやすく、広告・LP二次利用に耐える品質ラインの確保が困難。視聴データの分析も体系化されていません。
-      </div>
-      <div class="info-card" style="border-left:3px solid var(--amber);">
-        <strong>SIXPAD信頼性の訴求</strong> — 「本当に効くのか」という視聴者の疑念に対し、開発者出演によるエビデンス提示やトレーナーによる使い方提案など、信頼を醸成する番組設計が求められます。
-      </div>
-    </div>
-
-    <div class="sub-label">目標・KPI（中期）</div>
-    <div class="kpi-row">
-      <div class="kpi-chip">平均同時視聴者数 <span class="hl">1,000人</span></div>
-      <div class="kpi-chip">ライブ経由売上 月間EC売上の <span class="hl">5%</span></div>
-      <div class="kpi-chip">月1・年間 <span class="hl">12回</span> レギュラー運用</div>
-      <div class="kpi-chip">広告・LP二次利用に耐える品質ライン</div>
     </div>
   </div>
 
-  <!-- ===== 2. 提供価値 ===== -->
-  <div class="section" id="value">
-    <div class="section-title"><div class="num">2</div>Firework PSで実現できること</div>
+  <!-- ===== 2. ハイブリッド体制 ===== -->
+  <div class="section" id="hybrid">
+    <div class="section-title"><div class="num">2</div>ハイブリッド体制（役割分担）</div>
     <div class="lead">
-      <span class="green">企画設計からデータ分析まで</span>一貫した伴走で、ライブ配信を<span class="accent">再現性のある成果</span>へ育てます
+      Fireworkが<span class="accent">構成・演出・映像品質・レポート</span>を担い、貴社には<span class="navy">台本たたき・商品出し・現場対応の一部</span>をご担当いただきます
     </div>
-
-    <div class="benefit-grid" style="margin-bottom:22px;">
-      <div class="benefit-card">
-        <h4>企画段階からの伴走（PDCA設計）</h4>
-        <p>目標設定・配信テーマ・商品ラインナップ・台本構成をFireworkが主導。毎回の振り返りデータをもとに<strong>成果につながる定石</strong>を蓄積・進化させます。</p>
-      </div>
-      <div class="benefit-card">
-        <h4>映像品質の引き上げ</h4>
-        <p>一眼カメラ・照明・テロップ・OBSによる映像演出を統合し、SIXPADブランドの世界観に相応しい<strong>高品質な配信画面</strong>を実現します。</p>
-      </div>
-      <div class="benefit-card">
-        <h4>データ分析・改善提案</h4>
-        <p>同時視聴者数・視聴継続率・EC誘導数を毎回レポート。<strong>数値で次回アクション</strong>を提案し、配信のたびに精度を高めます。</p>
-      </div>
-      <div class="benefit-card">
-        <h4>切り抜き動画の二次活用</h4>
-        <p>配信アーカイブから縦型ショート動画を制作。広告素材・LP埋め込み・SNS投稿など<strong>複数チャネルで資産化</strong>します。</p>
-      </div>
-    </div>
-
-    <div class="sub-label">KPI到達の考え方</div>
-    <div class="kpi-logic" style="margin-bottom:22px;">
-      <div class="kpi-logic-item">
-        <div class="kl-k">視聴者数<span class="tgt">平均1,000人</span></div>
-        <div>告知設計と切り抜き動画の拡散で配信ごとの視聴導線を強化。立ち上げ3回で基準値を把握し、年間を通じて段階的に積み上げます（初回から断定的な数値を約束するのではなく、データに基づき接近）。</div>
-      </div>
-      <div class="kpi-logic-item">
-        <div class="kl-k">ライブ経由EC売上<span class="tgt">月間EC売上の5%</span></div>
-        <div>商品の見せ方・限定オファー・テロップ訴求で「視聴→EC誘導率」を改善。毎回のレポートで同時視聴・継続率・EC誘導数を可視化し、効く施策に予算を寄せていきます。</div>
-      </div>
-      <div class="kpi-logic-item">
-        <div class="kl-k">未達時の打ち手</div>
-        <div>数値が伸びない場合は次回の構成・テーマ・配信時間帯を即修正。PDCAを毎回回し、再現性のある成功型へ収束させます。年間運用だからこそ蓄積が効きます。</div>
-      </div>
-    </div>
-
-    <div class="sub-label">ハイブリッド体制（役割分担）</div>
     <table class="role-table">
       <thead>
         <tr>
@@ -521,7 +404,7 @@
         <tr>
           <th>企画・台本</th>
           <td class="fw-col">配信テーマ設定・構成設計・演出提案・台本仕上げ・改善提案</td>
-          <td class="cl-col">台本たたき台の作成・法務確認（8〜9営業日）・商品情報の提供</td>
+          <td class="cl-col">台本たたき台の作成・法務確認・商品情報の提供</td>
         </tr>
         <tr>
           <th>準備・リハーサル</th>
@@ -547,199 +430,122 @@
     </table>
   </div>
 
-  <!-- ===== 3. 配信プラン ===== -->
-  <div class="section" id="plan">
-    <div class="section-title"><div class="num">3</div>配信プラン（2パターン）</div>
-    <div class="lead">
-      まず<span class="accent">プラン1で立ち上げ</span>、品質要件に応じて<span class="navy">プラン2へ移行</span>する段階設計でご提案します
-    </div>
-    <div class="info-grid">
-      <div class="info-card" style="border-top:3px solid var(--accent);">
-        <div class="info-label" style="color:var(--accent);">プラン1 ／ スマホ配信（スモールスタート）</div>
-        <div class="info-value">
-          貴社端末を活用したスマートフォン配信。ポケットWi-Fi込みの機材持ち込みで会場の通信環境を問わず自立運用が可能。<br>
-          <small>まずレギュラー運用を立ち上げ、データを蓄積しながら品質投資を判断する入口プラン</small>
-        </div>
-      </div>
-      <div class="info-card" style="border-top:3px solid var(--navy);">
-        <div class="info-label navy">プラン2 ／ 一眼1カメ（品質強化・移行先）</div>
-        <div class="info-value">
-          一眼カメラ1台 ＋ OBS運用で、寄り引きのクリエイティブ品質を担保。広告・LP二次利用に耐える映像ラインを実現。<br>
-          <small>視聴データで手応えを得た後、ブランド品質と二次活用を最大化したい段階での移行先</small>
-        </div>
-      </div>
-    </div>
-    <div class="closing">
-      いずれのプランも<strong>ハイブリッド体制</strong>が前提です。Fireworkが構成・演出・映像品質・レポートを担い、貴社には台本たたき・商品出し・現場対応の一部をご担当いただくことで、品質とコストの両立を図ります。当初ご相談したテスト配信での立ち上げを踏まえ、本提案は<strong>年間を通じたレギュラー運用</strong>を前提に最適化しています。具体的なサポート内容とお見積もりは次章をご覧ください。
-    </div>
-  </div>
-
-  <!-- ===== 4. お見積もり ===== -->
+  <!-- ===== 3. お見積もり ===== -->
   <div class="section" id="estimate">
-    <div class="section-title"><div class="num">4</div>サポート内容・お見積もり</div>
+    <div class="section-title"><div class="num">3</div>サポート内容・お見積もり</div>
     <div class="lead">
-      <span class="accent">年間を通じた伴走</span>を前提に、月1・年間12回レギュラー運用の<span class="accent">専用プライス</span>でご提案します
+      <span class="accent">年間を通じた伴走</span>を前提に、月1・年間12回レギュラー運用の<span class="accent">貴社専用プライス</span>でご提案します
     </div>
 
-    <div class="value-just">
-      <div class="vj-ttl">なぜ専門家との共同体制か</div>
-      企画・台本・撮影・配信・分析を内製で1名が担う体制には限界があります。本ご提案は、制作会社へ全工程を委託する<strong>フル外注と比べ、貴社が担える工程（台本叩き・商品出し・現場対応）を組み込むハイブリッド体制</strong>とすることで、品質を担保しながら費用を圧縮しています。1回の配信は単なる撮影ではなく、<strong>成果の定石を蓄積し、広告・LPへ二次活用できる「資産」</strong>として設計します。年間レギュラー運用は、この蓄積を最大化し、毎月の品質を一定に保つための体制です。
+    <div class="breakdown-note">
+      今回の案件に限り、<strong>項目ごとに詳細ブレイクダウンしたお見積もり</strong>をご提示します。各プランに含まれる項目と単価は以下の通りです。
     </div>
 
     <div class="plan-grid">
       <!-- プラン1 -->
       <div class="plan-card p1">
-        <div class="plan-rec">スモールスタート向き</div>
         <div class="plan-head">
           <div class="plan-badge">PLAN 1</div>
           <div class="plan-name">スマホ配信プラン</div>
           <div class="plan-tagline">ミニマム構成／通信環境を問わず自立運用</div>
         </div>
         <div class="incl-list">
-          <div class="incl-item"><span class="incl-check">✓</span><div><span class="it-name">制作進行（メインディレクター）</span><span class="it-desc">配信全体の企画進行・当日統括</span></div></div>
-          <div class="incl-item"><span class="incl-check">✓</span><div><span class="it-name">台本作成</span><span class="it-desc">構成台本の作成・演出設計（お打ち合わせ1回含む）</span></div></div>
-          <div class="incl-item"><span class="incl-check">✓</span><div><span class="it-name">現場ディレクション</span><span class="it-desc">当日の進行・出演者ディレクション</span></div></div>
-          <div class="incl-item"><span class="incl-check">✓</span><div><span class="it-name">機材コーディネート・持ち込み</span><span class="it-desc">リングライト・照明2灯・ワイヤレスマイク2波・配信用iPhone・ポケットWi-Fi</span></div></div>
-          <div class="incl-item"><span class="incl-check">✓</span><div><span class="it-name">配信管理オペレーター</span><span class="it-desc">配信操作・コメント管理・トラブル対応</span></div></div>
+          <div class="incl-item"><span class="incl-check">✓</span><div class="it-body"><span class="it-name">クリエイティブディレクション・制作進行</span><span class="it-desc">配信全体の企画進行・クリエイティブ統括・当日統括</span></div><span class="it-price">¥100,000</span></div>
+          <div class="incl-item"><span class="incl-check">✓</span><div class="it-body"><span class="it-name">台本作成</span><span class="it-desc">構成台本の作成・演出設計（企画・台本打ち合わせ1回込み）</span></div><span class="it-price">¥90,000</span></div>
+          <div class="incl-item"><span class="incl-check">✓</span><div class="it-body"><span class="it-name">現場ディレクション</span><span class="it-desc">当日の進行・出演者ディレクション</span></div><span class="it-price">¥80,000</span></div>
+          <div class="incl-item"><span class="incl-check">✓</span><div class="it-body"><span class="it-name">機材コーディネート・手配費</span><span class="it-desc">リングライト・NEEWER照明2灯・ワイヤレスマイク2波・配信用iPhone1台・ポケットWi-Fi</span></div><span class="it-price">¥45,000</span></div>
+          <div class="incl-item"><span class="incl-check">✓</span><div class="it-body"><span class="it-name">配信管理オペレーター</span><span class="it-desc">配信操作・コメント管理・トラブル対応</span></div><span class="it-price">¥50,000</span></div>
         </div>
         <div class="price-box">
-          <div class="price-cond">年間12回（月1）レギュラー運用</div>
+          <div class="price-off-badge"><span class="pct">10% OFF</span>年間12回レギュラー契約</div>
+          <div class="price-regular"><span class="pr-k">通常 1回あたり</span><span class="pr-v">¥365,000</span></div>
           <div class="price-month">
-            <span class="mk">月額</span>
-            <span class="mv">¥469,800</span>
-            <span class="mu">／ 月1回</span>
+            <span class="mk">年間契約 1回あたり</span>
+            <span class="mv">¥328,500</span>
           </div>
           <div class="price-year">
-            <span class="yk">年間総額（全12回）</span>
-            <span class="yv">¥5,637,600</span>
-            <span class="yt">（税抜）</span>
+            <span class="yk">年間総額（12回）</span>
+            <span class="yv">¥3,942,000</span>
           </div>
-          <div class="price-note">年間レギュラー運用枠の専用プライス。毎月の品質を一定に保ち、成果の定石を資産化するための継続前提価格です。</div>
+          <div class="price-save">年間契約で ¥438,000 おトク（10%割引）</div>
         </div>
       </div>
 
       <!-- プラン2 -->
       <div class="plan-card p2">
-        <div class="plan-rec">品質強化・移行先</div>
         <div class="plan-head">
           <div class="plan-badge">PLAN 2</div>
           <div class="plan-name">一眼1カメプラン</div>
           <div class="plan-tagline">OBS・有線LAN前提／品質担保・LP転用対応</div>
         </div>
         <div class="incl-list">
-          <div class="incl-item"><span class="incl-check">✓</span><div><span class="it-name">制作進行（メインディレクター）</span><span class="it-desc">配信全体の企画進行・当日統括</span></div></div>
-          <div class="incl-item"><span class="incl-check">✓</span><div><span class="it-name">台本作成</span><span class="it-desc">構成台本の作成・演出設計（お打ち合わせ1回含む）</span></div></div>
-          <div class="incl-item"><span class="incl-check">✓</span><div><span class="it-name">現場ディレクション</span><span class="it-desc">当日の進行・出演者ディレクション</span></div></div>
-          <div class="incl-item"><span class="incl-check">✓</span><div><span class="it-name">機材コーディネート・持ち込み</span><span class="it-desc">一眼カメラ・NEEWER照明・ワイヤレスマイク・OBS機材一式</span></div></div>
-          <div class="incl-item"><span class="incl-check">✓</span><div><span class="it-name">OBS配信オペレーター</span><span class="it-desc">OBSによる配信運用（スイッチャーなし）</span></div></div>
-          <div class="incl-item"><span class="incl-check">✓</span><div><span class="it-name">配信管理</span><span class="it-desc">配信操作・コメント管理・トラブル対応</span></div></div>
-          <div class="incl-item"><span class="incl-check">✓</span><div><span class="it-name">機材運搬費</span><span class="it-desc">機材の搬入・搬出・運搬</span></div></div>
+          <div class="incl-item"><span class="incl-check">✓</span><div class="it-body"><span class="it-name">クリエイティブディレクション・制作進行</span><span class="it-desc">配信全体の企画進行・クリエイティブ統括・当日統括</span></div><span class="it-price">¥120,000</span></div>
+          <div class="incl-item"><span class="incl-check">✓</span><div class="it-body"><span class="it-name">台本作成</span><span class="it-desc">構成台本の作成・演出設計（企画・台本打ち合わせ1回込み）</span></div><span class="it-price">¥90,000</span></div>
+          <div class="incl-item"><span class="incl-check">✓</span><div class="it-body"><span class="it-name">現場ディレクション</span><span class="it-desc">当日の進行・出演者ディレクション</span></div><span class="it-price">¥80,000</span></div>
+          <div class="incl-item"><span class="incl-check">✓</span><div class="it-body"><span class="it-name">機材コーディネート・手配費</span><span class="it-desc">一眼カメラ・NEEWER照明・ワイヤレスマイク2波・OBS機材一式・簡易ミキサー</span></div><span class="it-price">¥80,000</span></div>
+          <div class="incl-item"><span class="incl-check">✓</span><div class="it-body"><span class="it-name">カメラマン</span><span class="it-desc">一眼カメラの撮影オペレーション</span></div><span class="it-price">¥65,000</span></div>
+          <div class="incl-item"><span class="incl-check">✓</span><div class="it-body"><span class="it-name">OBS配信オペレーター（スイッチャーなし）</span><span class="it-desc">OBSによる配信運用</span></div><span class="it-price">¥70,000</span></div>
+          <div class="incl-item"><span class="incl-check">✓</span><div class="it-body"><span class="it-name">配信管理オペレーター</span><span class="it-desc">配信操作・コメント管理・トラブル対応</span></div><span class="it-price">¥50,000</span></div>
+          <div class="incl-item"><span class="incl-check">✓</span><div class="it-body"><span class="it-name">機材運搬費</span><span class="it-desc">機材の搬入・搬出・運搬（スタッフ車両）</span></div><span class="it-price">¥15,000</span></div>
         </div>
         <div class="price-box">
-          <div class="price-cond">年間12回（月1）レギュラー運用</div>
+          <div class="price-off-badge"><span class="pct">10% OFF</span>年間12回レギュラー契約</div>
+          <div class="price-regular"><span class="pr-k">通常 1回あたり</span><span class="pr-v">¥570,000</span></div>
           <div class="price-month">
-            <span class="mk">月額</span>
-            <span class="mv">¥744,300</span>
-            <span class="mu">／ 月1回</span>
+            <span class="mk">年間契約 1回あたり</span>
+            <span class="mv">¥513,000</span>
           </div>
           <div class="price-year">
-            <span class="yk">年間総額（全12回）</span>
-            <span class="yv">¥8,931,600</span>
-            <span class="yt">（税抜）</span>
+            <span class="yk">年間総額（12回）</span>
+            <span class="yv">¥6,156,000</span>
           </div>
-          <div class="price-note">プラン1で手応えを得た後の移行先。一眼・OBSによる品質強化で、広告・LPへの二次活用価値を最大化します。</div>
+          <div class="price-save">年間契約で ¥684,000 おトク（10%割引）</div>
         </div>
       </div>
     </div>
 
     <div class="sub-label" style="margin-top:24px;">オプション（ご希望に応じて追加）</div>
-    <div class="opt-pretext">オプションは本体プラン（年間レギュラー運用）に都度追加する形で、1配信ごとの単価にてご提供します。</div>
+    <div class="opt-pretext">オプションは本体プランに都度追加する形で、1配信ごとの単価にてご提供します。</div>
     <div class="option-grid">
       <div class="option-card">
         <h4>2カメスイッチング追加</h4>
-        <p>カメラ2台体制＋スイッチャー専任。寄り・引きのカット切替で視聴継続率を向上。</p>
-        <div class="opt-price">¥182,000 <small>／回</small></div>
+        <p>カメラ2台体制＋スイッチング機材。寄り・引きのカット切替で視聴継続率を向上。</p>
+        <div class="opt-price">¥50,000 <small>／回</small></div>
       </div>
       <div class="option-card">
-        <h4>音声機材増設（ピンマイク3名）</h4>
-        <p>出演者3名分のピンマイクを追加。複数ゲスト・対談形式の配信に対応。</p>
-        <div class="opt-price">¥73,000 <small>／回</small></div>
+        <h4>スイッチングオペレーター</h4>
+        <p>スイッチング専任オペレーター。2カメ運用時のカット切替を担当。</p>
+        <div class="opt-price">¥65,000 <small>／回</small></div>
+      </div>
+      <div class="option-card">
+        <h4>音声機材増設</h4>
+        <p>ミキサー＋ピンマイク3〜4名分。複数ゲスト・対談形式の配信に対応。</p>
+        <div class="opt-price">¥50,000 <small>／回</small></div>
       </div>
       <div class="option-card">
         <h4>テロップ制作</h4>
-        <p>商品スペック・価格・限定情報等のテロップを事前制作し、配信中にリアルタイム挿入。</p>
-        <div class="opt-price">¥91,000 <small>／回</small></div>
+        <p>商品スペック・価格・限定情報等のテロップを制作（1配信あたり10枚以内、フリップも同様）。</p>
+        <div class="opt-price">¥60,000 <small>／回</small></div>
       </div>
       <div class="option-card">
         <h4>切り抜き動画制作</h4>
-        <p>ライブアーカイブから縦型ショート動画を制作。広告・LP・SNSへの二次活用に。最大3本のパッケージ。</p>
-        <div class="opt-price">¥108,000 <small>／パッケージ（最大3本）</small></div>
+        <p>ライブアーカイブから縦型ショート動画を制作。広告・LP・SNSへの二次活用に。</p>
+        <div class="opt-price">¥60,000 <small>／本</small></div>
       </div>
       <div class="option-card">
-        <h4>練習（編集）動画制作</h4>
-        <p>出演者向けの練習動画・トークスクリプト動画を制作。初回配信前のウォームアップに。</p>
-        <div class="opt-price">¥91,000 <small>／本</small></div>
+        <h4>切り抜き動画制作（20本以上一括）</h4>
+        <p>20本以上の一括発注で10%割引。継続的な二次活用・コンテンツ量産に。</p>
+        <div class="opt-price">¥1,080,000 <small>／20本（¥54,000／本）</small></div>
       </div>
-      <div class="option-card excluded">
-        <h4>TVUルーターレンタル</h4>
-        <p>有線LANが確保できない会場でのモバイル回線安定化。今回は有線LAN確保を前提とし提案外。</p>
-        <div class="opt-price">ネットワーク確保困難時のみ別途お見積もり</div>
-      </div>
+    </div>
+    <div class="opt-extra">
+      <strong>別途お見積り：</strong>サムネイル制作・トレーラー動画制作については、内容に応じて別途お見積もりいたします。
     </div>
   </div>
 
-  <!-- ===== 5. スケジュール ===== -->
-  <div class="section" id="schedule">
-    <div class="section-title"><div class="num">5</div>年間運用スケジュール</div>
-    <div class="lead">
-      <span class="accent">立ち上げ期に手厚く</span>成果の定石を確立し、<span class="green">定着・最適化</span>へと年間で育てます
-    </div>
-    <div class="closing" style="margin-top:0; margin-bottom:18px;">
-      当初ご相談したテスト配信での立ち上げを、年間運用の<strong>立ち上げ期（最初の数回）</strong>として組み込んでいます。最初に手厚くサポートして成果の定石を確立し、その実績をもって定着・最適化へと進めます。
-    </div>
-    <div class="timeline">
-      <div class="tl-card">
-        <div class="tl-head t1">立ち上げ期 <span class="tl-round">1〜3回目</span></div>
-        <div class="tl-body">
-          <ul>
-            <li>キックオフ・体制設計・KPI計測体制の整備</li>
-            <li>初回は特に手厚いディレクションで品質基準を確立</li>
-            <li>配信テーマ・構成の仮説検証、成果の定石を探索</li>
-            <li>毎回レポートで視聴データ・EC誘導を可視化</li>
-          </ul>
-        </div>
-      </div>
-      <div class="tl-card">
-        <div class="tl-head t2">定着期 <span class="tl-round">4〜9回目</span></div>
-        <div class="tl-body">
-          <ul>
-            <li>成果の定石を標準フォーマット化し安定運用</li>
-            <li>データに基づく改善提案を継続反映</li>
-            <li>切り抜き動画の二次活用を本格化</li>
-            <li>出演者・商品ラインナップの最適化</li>
-          </ul>
-        </div>
-      </div>
-      <div class="tl-card">
-        <div class="tl-head t3">最適化期 <span class="tl-round">10〜12回目</span></div>
-        <div class="tl-body">
-          <ul>
-            <li>年間データを総括し成果を可視化</li>
-            <li>インフルエンサー起用・クローズド配信等の拡張検討</li>
-            <li>広告・LPへの二次活用を横展開</li>
-            <li>次年度の運用方針・拡大プランを共同設計</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="closing">
-      配信回数の拡大（月2回・週1など）をご検討の際は、年間の運用実績をもとに別途プランをご提案いたします。
-    </div>
-  </div>
-
-  <!-- ===== 6. 留意事項 ===== -->
+  <!-- ===== 4. 留意事項 ===== -->
   <div class="section" id="notes">
-    <div class="section-title"><div class="num">6</div>留意事項</div>
+    <div class="section-title"><div class="num">4</div>留意事項</div>
     <div class="lead">
       スムーズな運用開始のために、<span class="accent">事前にご確認いただきたい前提条件</span>です
     </div>
@@ -751,9 +557,8 @@
         </div>
         <div class="notice-body">
           <ul>
-            <li>貴社からご提供いただく台本たたき台の粒度をベースに作成する前提でお見積もりしております。</li>
-            <li>この粒度をベースに、配信上における<strong>テクニックやノウハウを反映</strong>いたします。</li>
-            <li>一語一句のフル原稿など、より細かい粒度をご希望の場合は別途ご相談ください。</li>
+            <li>貴社からご提供いただいた台本の粒度をベースに作成いたします。</li>
+            <li>Firework独自のテクニックやノウハウを取り入れた台本を作成いたします。</li>
           </ul>
         </div>
       </div>
@@ -765,8 +570,6 @@
         <div class="notice-body">
           <ul>
             <li>プラン2（一眼1カメ）のOBS運用時は<strong>有線LAN接続が必須</strong>です。</li>
-            <li>有線LAN確保が困難な会場の場合は、TVUルーターの手配が別途必要となります。</li>
-            <li>会場の通信環境（回線速度・有線ポートの有無）を事前にご確認ください。</li>
           </ul>
         </div>
       </div>
@@ -777,8 +580,7 @@
         </div>
         <div class="notice-body">
           <ul>
-            <li>台本の法務チェックには<strong>8〜9営業日</strong>の確認期間が必要です。</li>
-            <li>配信日から逆算したスケジュール設定をお願いいたします。</li>
+            <li>台本の法務チェックには確認期間を想定しております。</li>
             <li>初回配信は準備期間を十分に確保した日程を推奨します。</li>
           </ul>
         </div>
@@ -791,8 +593,6 @@
         <div class="notice-body">
           <ul>
             <li>本ご提案はハイブリッド体制が前提のため、<strong>貴社側にも一定の工数が発生</strong>します。</li>
-            <li>台本たたき台の作成・商品出し・法務確認・現場スタッフ対応をご担当いただきます。</li>
-            <li>事前に社内の役割分担・承認フローをご確認ください。</li>
           </ul>
         </div>
       </div>
@@ -803,8 +603,7 @@
         </div>
         <div class="notice-body">
           <ul>
-            <li>本ご提案は<strong>月1・年間12回のレギュラー運用</strong>を前提とした専用プライスです。</li>
-            <li>表示金額は税抜価格です（別途消費税を申し受けます）。</li>
+            <li>本ご提案は<strong>月1・年間12回のレギュラー運用</strong>を前提とした貴社専用プライスです。</li>
             <li>本ご提案に含まれないもの：会場・スタジオ費用、出演者キャスティング費、商品登録、LP・バナー制作、インフルエンサー起用費（いずれも必要に応じ別途お見積もり）。</li>
             <li>金額・実施内容は本提案時点のものです。確定にあたっては2社協議のうえ決定いたします。</li>
           </ul>
@@ -812,13 +611,13 @@
       </div>
     </div>
     <div class="closing">
-      ご不明な点やご要望がございましたら、お気軽にご連絡ください。貴社のライブ配信を、<strong>年間を通じた持続的な売上エンジン</strong>へと共に育ててまいります。
+      ご不明な点やご要望がございましたら、お気軽にご連絡ください。
     </div>
   </div>
 
   <div class="footer">
-    Firework Japan株式会社 ｜ 株式会社MTG（SIXPAD）御中 — ライブ配信 プロフェッショナルサービス ご提案<br>
-    Last Updated: 2026年6月4日 13:01 ／ 本資料は提案用途であり、契約内容を確定するものではありません。
+    Firework Japan株式会社 ｜ 株式会社MTG 御中 — ライブ配信 プロフェッショナルサービス ご提案<br>
+    Last Updated: 2026年6月4日 15:29 ／ 本資料は提案用途であり、契約内容を確定するものではありません。
   </div>
 
 </div>
