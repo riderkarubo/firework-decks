@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <script src="./gate.js"></script>
+  <title>ライブ配信サポート ご提案 | Firework</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎥</text></svg>">
+  <meta name="description" content="MTG Co.,Ltd. 御中 Nike Strength（ナイキ ストレングス）ライブ配信サポートのご提案。配信内容・お見積もり・留意事項をまとめた1枚資料。">
+  <meta property="og:title" content="ライブ配信サポート ご提案 | Firework">
+  <meta property="og:description" content="MTG Co.,Ltd. 御中 Nike Strength（ナイキ ストレングス）ライブ配信サポートのご提案。配信内容・お見積もり・留意事項をまとめた1枚資料。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="#">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="ライブ配信サポート ご提案 | Firework">
+  <meta name="twitter:description" content="MTG Co.,Ltd. 御中 Nike Strength（ナイキ ストレングス）ライブ配信サポートのご提案。配信内容・お見積もり・留意事項をまとめた1枚資料。">
+  <style>
+    :root {
+      --dark: #1A1A2E;
+      --navy: #0F3460;
+      --accent: #FA006D;
+      --teal: #1B998B;
+      --light-bg: #F4F5F7;
+      --border: #E2E4EA;
+      --gray-txt: #666666;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", sans-serif;
+      color: var(--dark);
+      background: #ECEEF2;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    .sheet {
+      max-width: 880px;
+      margin: 32px auto;
+      background: #fff;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    /* カバー */
+    .cover {
+      background: var(--dark);
+      color: #fff;
+      padding: 40px 48px 32px;
+    }
+    .cover .eyebrow {
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .cover h1 {
+      font-size: 28px;
+      font-weight: 700;
+      line-height: 1.4;
+      margin-bottom: 18px;
+    }
+    .cover-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 28px;
+      border-top: 1px solid rgba(255,255,255,0.18);
+      padding-top: 16px;
+      margin-top: 8px;
+    }
+    .cover-meta .item .label {
+      font-size: 10px;
+      color: rgba(255,255,255,0.55);
+      letter-spacing: 0.08em;
+    }
+    .cover-meta .item .value {
+      font-size: 13px;
+      font-weight: 500;
+    }
+    /* 本文 */
+    .body { padding: 36px 48px 44px; }
+    .section { margin-bottom: 36px; }
+    .section:last-child { margin-bottom: 0; }
+    .sec-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--dark);
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--accent);
+      margin-bottom: 18px;
+    }
+    .sec-num {
+      width: 28px; height: 28px;
+      background: var(--dark);
+      color: #fff;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 700;
+      flex-shrink: 0;
+    }
+    /* 配信内容 */
+    .content-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+    .content-card {
+      background: var(--light-bg);
+      border-radius: 8px;
+      padding: 16px 18px;
+      border-left: 3px solid var(--navy);
+    }
+    .content-card h3 {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 4px;
+      color: var(--navy);
+    }
+    .content-card p {
+      font-size: 13px;
+      color: var(--gray-txt);
+    }
+    .spec-list {
+      margin-top: 16px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .spec-list .row {
+      display: flex;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+    }
+    .spec-list .row:last-child { border-bottom: none; }
+    .spec-list .row .k {
+      width: 140px;
+      flex-shrink: 0;
+      background: var(--light-bg);
+      padding: 10px 16px;
+      font-weight: 600;
+      color: var(--navy);
+    }
+    .spec-list .row .v { padding: 10px 16px; }
+    /* 金額 */
+    .price-box {
+      background: var(--dark);
+      border-radius: 10px;
+      padding: 26px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .price-box .plabel {
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+    }
+    .price-box .plabel small {
+      display: block;
+      font-size: 11px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.6);
+      margin-top: 2px;
+    }
+    .price-box .pamount {
+      color: #fff;
+      font-weight: 700;
+      text-align: right;
+    }
+    .price-box .pamount .num {
+      font-size: 34px;
+      color: var(--accent);
+      line-height: 1;
+    }
+    .price-box .pamount .tax {
+      font-size: 12px;
+      color: rgba(255,255,255,0.7);
+      margin-top: 4px;
+    }
+    .opt-note {
+      margin-top: 14px;
+      background: #FFF7FB;
+      border: 1px solid #F5C9DE;
+      border-radius: 8px;
+      padding: 14px 18px;
+      font-size: 13px;
+    }
+    .opt-note .ttl {
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 6px;
+      font-size: 13px;
+    }
+    .opt-note ul { list-style: none; }
+    .opt-note li {
+      padding: 2px 0 2px 16px;
+      position: relative;
+      color: var(--gray-txt);
+    }
+    .opt-note li::before {
+      content: "›";
+      position: absolute; left: 2px;
+      color: var(--accent);
+      font-weight: 700;
+    }
+    /* 留意事項 */
+    .notes { list-style: none; }
+    .notes li {
+      font-size: 13px;
+      color: #333;
+      padding: 8px 0 8px 22px;
+      position: relative;
+      border-bottom: 1px dashed var(--border);
+    }
+    .notes li:last-child { border-bottom: none; }
+    .notes li::before {
+      content: "※";
+      position: absolute; left: 0;
+      color: var(--accent);
+      font-weight: 700;
+    }
+    /* フッター */
+    .foot {
+      background: var(--light-bg);
+      padding: 20px 48px;
+      font-size: 11px;
+      color: var(--gray-txt);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    @media (max-width: 640px) {
+      .body, .cover, .foot { padding-left: 24px; padding-right: 24px; }
+      .content-grid { grid-template-columns: 1fr; }
+      .cover h1 { font-size: 22px; }
+      .price-box .pamount .num { font-size: 28px; }
+    }
+    @media print {
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color-adjust: exact !important;
+      }
+      @page { size: A4; margin: 10mm; }
+      body { background: #fff; }
+      .sheet { box-shadow: none; margin: 0; max-width: 100%; }
+      .section { page-break-inside: avoid; break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <div class="sheet">
+    <!-- カバー -->
+    <div class="cover">
+      <div class="eyebrow">LIVE STREAMING PROPOSAL</div>
+      <h1>Nike Strength（ナイキ ストレングス）<br>ライブ配信サポート ご提案</h1>
+      <div class="cover-meta">
+        <div class="item">
+          <div class="label">CLIENT</div>
+          <div class="value">MTG Co.,Ltd. 御中</div>
+        </div>
+        <div class="item">
+          <div class="label">PREPARED BY</div>
+          <div class="value">Firework</div>
+        </div>
+        <div class="item">
+          <div class="label">DATE</div>
+          <div class="value">2026年5月20日</div>
+        </div>
+        <div class="item">
+          <div class="label">LAST UPDATED</div>
+          <div class="value">2026年5月20日 20:20</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="body">
+      <!-- 配信内容 -->
+      <div class="section">
+        <div class="sec-title"><span class="sec-num">1</span>配信内容</div>
+        <div class="content-grid">
+          <div class="content-card">
+            <h3>配信ディレクション</h3>
+            <p>配信全体の演出・進行管理を担当。出演者の見せ方や商品デモの構成を最適化し、Nike Strength の世界観を的確に伝えます。</p>
+          </div>
+          <div class="content-card">
+            <h3>テクニカルディレクション・機材一式</h3>
+            <p>テクニカルディレクターによる配信統括、撮影・スイッチング・音響・照明の機材一式、アシスタントを含むワンストップ体制でご提供します。</p>
+          </div>
+          <div class="content-card">
+            <h3>TVUルーターによる安定配信</h3>
+            <p>会場で有線LANが使用できない場合に備え、TVUルーターでネットワークを強化。撮影場所の通信環境を問わず、安定したライブ配信を実現します。</p>
+          </div>
+          <div class="content-card">
+            <h3>一眼カメラ2台構成</h3>
+            <p>一眼カメラ2台によるヒキ・ヨリ構成で、全体の臨場感と商品・出演者のクローズアップを両立。高画質で視聴者を飽きさせない映像をお届けします。</p>
+          </div>
+        </div>
+        <div class="spec-list">
+          <div class="row"><div class="k">実施エリア</div><div class="v">東京都内</div></div>
+          <div class="row"><div class="k">実施日</div><div class="v">平日・単発配信を想定</div></div>
+          <div class="row"><div class="k">通信</div><div class="v">TVUルーター（有線LANが使用できない場合のネットワーク強化）</div></div>
+          <div class="row"><div class="k">撮影場所</div><div class="v">貴社にてご手配（ジム・スタジオ等の利用料・スタジオ費は本見積もりに含みません）</div></div>
+          <div class="row"><div class="k">出演者</div><div class="v">キャスティングは貴社にてご手配をお願いいたします</div></div>
+        </div>
+      </div>
+
+      <!-- 金額 -->
+      <div class="section">
+        <div class="sec-title"><span class="sec-num">2</span>お見積もり</div>
+        <div class="price-box">
+          <div class="plabel">
+            ライブ配信制作費
+            <small>テクニカルディレクション・機材・配信運営一式</small>
+          </div>
+          <div class="pamount">
+            <div class="num">¥710,000</div>
+          </div>
+        </div>
+        <div class="opt-note">
+          <div class="ttl">オプション（ご希望に応じて別途お見積もり）</div>
+          <ul>
+            <li>ライブ配信切り抜き動画制作</li>
+            <li>配信後の分析レポート＋改善提案</li>
+            <li>告知用トレーラー動画制作</li>
+            <li>サムネイル制作</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 留意事項 -->
+      <div class="section">
+        <div class="sec-title"><span class="sec-num">3</span>その他留意事項</div>
+        <ul class="notes">
+          <li>本見積もりは東京都内・平日・単発配信を前提としています。複数回・休日対応・遠距離での実施の場合は別途お見積もりとなります。</li>
+          <li>配信プラットフォームへの配信設定・アカウント運用は、事前に2社間で役割を確認のうえ進行いたします。</li>
+          <li>当日の進行・台本は貴社のご意向を踏まえ、Firework側で構成案をご提案いたします。</li>
+          <li>金額・実施内容は本提案時点のものです。確定にあたっては2社協議のうえ決定いたします。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="foot">
+      <span>Firework ｜ Nike Strength（ナイキ ストレングス）ライブ配信サポート ご提案</span>
+      <span>本資料は提案用途であり、契約内容を確定するものではありません。</span>
+    </div>
+  </div>
+</body>
+</html>
