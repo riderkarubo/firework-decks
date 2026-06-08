@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <script src="../auth.js"></script>
+  <script>document.addEventListener('DOMContentLoaded',function(){FireworkSSO.protect();});</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="last-modified" content="2026-06-08T17:58:00+09:00">
+  <title>MTG様 ライブ配信 機材リスト（現場確認用） | Firework</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎥</text></svg>">
+  <meta name="description" content="株式会社MTG 御中 — ライブ配信の機材リスト。一眼1カメ構成・マルチカメラ構成の必要機材を一覧化し、現場確認で『貴社設備で対応可／Fireworkが手配』を整理するための資料です。">
+  <meta property="og:title" content="MTG様 ライブ配信 機材リスト（現場確認用） | Firework">
+  <meta property="og:description" content="株式会社MTG 御中 — ライブ配信の機材リスト。一眼1カメ構成・マルチカメラ構成の必要機材を一覧化し、現場確認で『貴社設備で対応可／Fireworkが手配』を整理するための資料です。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://riderkarubo.github.io/firework-decks/mtg-sixpad-annual/equipment.html">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="MTG様 ライブ配信 機材リスト（現場確認用） | Firework">
+  <meta name="twitter:description" content="株式会社MTG 御中 — ライブ配信の機材リスト。一眼1カメ構成・マルチカメラ構成の必要機材を一覧化し、現場確認で整理するための資料です。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --dark:    #1A1A2E;
+      --navy:    #0F3460;
+      --white:   #FFFFFF;
+      --text:    #1F2937;
+      --accent:  #FA006D;
+      --green:   #1B998B;
+      --amber:   #D97706;
+      --blue:    #2563EB;
+      --gold:    #FCD34D;
+      --card-bg: #F8F9FC;
+      --border:  #E5E7EB;
+      --gray:    #6B7280;
+      --light:   #F3F4F6;
+      --bg-page: #EEF0F4;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg-page);
+      font-family: 'Noto Sans JP', 'Hiragino Sans', -apple-system, sans-serif;
+      color: var(--text);
+      line-height: 1.65;
+      font-size: 14px;
+      -webkit-font-smoothing: antialiased;
+    }
+    .navy { color: var(--navy); }
+
+    /* ===== Nav ===== */
+    .nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--dark);
+      display: flex; align-items: center;
+      padding: 0 24px; height: 52px; gap: 8px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+    }
+    .nav-brand { font-weight: 700; font-size: 13px; color: #fff; letter-spacing: 0.06em; }
+    .nav-brand span { color: var(--accent); }
+    .nav-links { display: flex; gap: 2px; margin-left: 14px; flex-wrap: wrap; }
+    .nav-links a {
+      color: rgba(255,255,255,0.6); text-decoration: none;
+      font-size: 11px; font-weight: 600;
+      padding: 4px 9px; border-radius: 4px;
+      letter-spacing: 0.03em; transition: all 0.15s;
+    }
+    .nav-links a:hover { color: #fff; background: rgba(255,255,255,0.1); }
+    .nav-links a.back { color: var(--gold); }
+    .nav-meta { margin-left: auto; font-size: 11px; color: rgba(255,255,255,0.4); white-space: nowrap; }
+
+    /* ===== Layout ===== */
+    .page { max-width: 1040px; margin: 0 auto; padding: 32px 24px 80px; }
+
+    /* ===== Cover ===== */
+    .cover {
+      background: linear-gradient(135deg, #0A0A18 0%, #1F1F3A 60%, #0F3460 100%);
+      border-radius: 14px; padding: 46px 56px;
+      color: #fff; margin-bottom: 24px;
+      position: relative; overflow: hidden;
+    }
+    .cover::after {
+      content: ''; position: absolute; right: -60px; top: -60px;
+      width: 340px; height: 340px;
+      background: radial-gradient(circle, rgba(250,0,109,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cover-label {
+      font-size: 11px; font-weight: 700; letter-spacing: 0.3em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 18px;
+    }
+    .cover-title { font-size: 34px; font-weight: 900; line-height: 1.3; margin-bottom: 28px; letter-spacing: 0.01em; }
+    .cover-meta-row {
+      display: flex; flex-wrap: wrap; gap: 40px; padding-top: 22px;
+      border-top: 1px solid rgba(255,255,255,0.18);
+    }
+    .cover-meta-item .k {
+      font-size: 10px; color: rgba(255,255,255,0.45);
+      letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 5px;
+    }
+    .cover-meta-item .v { font-size: 13px; color: #fff; font-weight: 600; line-height: 1.5; }
+
+    /* ===== Section ===== */
+    .section {
+      background: #fff; border-radius: 12px;
+      padding: 30px 34px; margin-bottom: 20px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    }
+    .section-title {
+      font-size: 16px; font-weight: 700; color: var(--dark);
+      display: flex; align-items: center; gap: 11px;
+      margin-bottom: 20px; padding-bottom: 13px;
+      border-bottom: 2px solid var(--accent);
+    }
+    .section-title .num {
+      min-width: 29px; height: 29px; padding: 0 9px; background: var(--accent); color: #fff;
+      border-radius: 15px; display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 700; flex-shrink: 0;
+    }
+    .section-title .num.navy { background: var(--navy); }
+    .lead {
+      font-size: 14px; font-weight: 500; color: var(--text);
+      line-height: 1.7; margin-bottom: 20px;
+    }
+    .lead .accent { color: var(--accent); font-weight: 700; }
+    .lead .navy { color: var(--navy); font-weight: 700; }
+
+    /* ===== Next Action callout ===== */
+    .next-action {
+      background: linear-gradient(135deg, #FFF5F8 0%, #FFFFFF 100%);
+      border: 1px solid #F9C8DB; border-left: 5px solid var(--accent);
+      border-radius: 10px; padding: 18px 22px; margin-bottom: 20px;
+    }
+    .next-action .na-head {
+      font-size: 13px; font-weight: 800; color: var(--accent);
+      letter-spacing: 0.04em; margin-bottom: 9px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .next-action .na-head .na-tag {
+      font-size: 10px; font-weight: 700; background: var(--accent); color: #fff;
+      padding: 3px 10px; border-radius: 4px; letter-spacing: 0.08em;
+    }
+    .next-action ol { margin: 0; padding-left: 20px; }
+    .next-action li { font-size: 13px; line-height: 1.75; margin-bottom: 5px; }
+    .next-action li:last-child { margin-bottom: 0; }
+    .next-action strong { color: var(--accent); }
+
+    /* ===== Legend ===== */
+    .legend {
+      display: flex; flex-wrap: wrap; gap: 10px 22px;
+      padding: 14px 18px; background: var(--card-bg);
+      border: 1px solid var(--border); border-radius: 10px; margin-bottom: 20px;
+    }
+    .legend-item { display: flex; align-items: center; gap: 8px; font-size: 12px; color: #444; }
+    .legend-item .desc { color: var(--gray); font-size: 11.5px; }
+
+    /* ===== Status badges ===== */
+    .st {
+      display: inline-block; font-size: 11px; font-weight: 700;
+      padding: 3px 10px; border-radius: 12px; white-space: nowrap; line-height: 1.5;
+    }
+    .st-todo { background: #FEF3E2; color: var(--amber); border: 1px solid #F6D9AE; }
+    .st-have { background: #E8EEF7; color: var(--navy); border: 1px solid #C5D4EA; }
+    .st-fw   { background: #FFF5F8; color: var(--accent); border: 1px solid #F9C8DB; }
+
+    /* ===== Config header ===== */
+    .config-head {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 14px; flex-wrap: wrap;
+    }
+    .config-badge {
+      font-size: 11px; font-weight: 700; padding: 5px 13px; border-radius: 6px;
+      letter-spacing: 0.04em;
+    }
+    .config-badge.c1 { background: #E8EEF7; color: var(--navy); }
+    .config-badge.c2 { background: #FEF3E2; color: var(--amber); }
+    .config-map { font-size: 12px; color: var(--gray); }
+    .config-map strong { color: var(--dark); }
+
+    /* ===== Equipment table ===== */
+    .eq-table { width: 100%; border-collapse: collapse; font-size: 12.5px; margin-bottom: 8px; }
+    .eq-table th, .eq-table td {
+      border: 1px solid var(--border); padding: 8px 11px;
+      vertical-align: middle; line-height: 1.55; text-align: left;
+    }
+    .eq-table thead th {
+      background: var(--dark); color: #fff; font-size: 11.5px; font-weight: 700;
+      text-align: center; letter-spacing: 0.02em;
+    }
+    .eq-table thead th.col-status { background: var(--accent); }
+    .eq-table td.cat {
+      background: var(--card-bg); font-weight: 700; color: var(--navy);
+      text-align: center; font-size: 12px; width: 64px;
+    }
+    .eq-table td.name { font-weight: 700; color: var(--dark); width: 22%; }
+    .eq-table td.spec { color: #444; width: 20%; }
+    .eq-table td.qty { text-align: center; font-weight: 700; color: var(--dark); width: 52px; white-space: nowrap; }
+    .eq-table td.note { color: var(--gray); font-size: 11.5px; }
+    .eq-table td.status { text-align: center; width: 96px; }
+    .eq-table tbody tr:hover td:not(.cat) { background: #FCFCFE; }
+
+    .eq-foot {
+      font-size: 11px; color: var(--gray); line-height: 1.7; margin-top: 6px;
+    }
+
+    /* ===== Closing ===== */
+    .closing {
+      margin-top: 6px; padding: 14px 18px; border-radius: 8px;
+      background: #F0FDF8; border-left: 4px solid var(--green);
+      font-size: 12.5px; line-height: 1.75; color: #1A4040;
+    }
+    .closing strong { color: var(--accent); }
+
+    /* ===== Footer ===== */
+    .footer { text-align: center; padding: 18px; font-size: 11px; color: var(--gray); line-height: 1.7; }
+
+    @media (max-width: 760px) {
+      .cover { padding: 34px 24px; }
+      .cover-title { font-size: 25px; }
+      .section { padding: 22px 18px; }
+      .eq-table { font-size: 11px; }
+      .eq-table th, .eq-table td { padding: 6px 7px; }
+      .nav-links { display: none; }
+      .legend { gap: 8px 14px; }
+    }
+
+    @media print {
+      * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; color-adjust: exact !important; }
+      @page { size: A4; margin: 12mm; }
+      html, body { background: #fff; }
+      .nav { display: none; }
+      .page { max-width: none; margin: 0; padding: 0; }
+      .section { box-shadow: none; margin-bottom: 0; padding: 0; }
+      .cover { page-break-inside: avoid; break-inside: avoid; }
+      .next-action, .legend { page-break-inside: avoid; break-inside: avoid; }
+      /* 各構成を独立ページに */
+      #config1, #config2 { page-break-before: always; }
+      .eq-table tr { page-break-inside: avoid; break-inside: avoid; }
+      .section-title, .lead, .config-head { page-break-after: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== Nav ===== -->
+<nav class="nav">
+  <div class="nav-brand"><span>Firework</span> Japan</div>
+  <div class="nav-links">
+    <a class="back" href="index.html">← ご提案資料へ戻る</a>
+    <a href="#config1">一眼1カメ構成</a>
+    <a href="#config2">マルチカメラ構成</a>
+  </div>
+  <div class="nav-meta">MTG様 ライブ配信 機材リスト</div>
+</nav>
+
+<div class="page">
+
+  <!-- ===== Cover ===== -->
+  <div class="cover">
+    <div class="cover-label">MTG × Firework ／ Live Streaming Equipment List</div>
+    <div class="cover-title">MTG様 ライブ配信<br>機材リスト（現場確認用）</div>
+    <div class="cover-meta-row">
+      <div class="cover-meta-item">
+        <div class="k">Client</div>
+        <div class="v">株式会社MTG 御中</div>
+      </div>
+      <div class="cover-meta-item">
+        <div class="k">Prepared by</div>
+        <div class="v">Firework Japan株式会社</div>
+      </div>
+      <div class="cover-meta-item">
+        <div class="k">Purpose</div>
+        <div class="v">配信現場の事前確認</div>
+      </div>
+      <div class="cover-meta-item">
+        <div class="k">Last Updated</div>
+        <div class="v">2026年6月8日 17:58</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== イントロ + ネクストアクション ===== -->
+  <div class="section">
+    <div class="section-title"><div class="num">📋</div>本リストについて</div>
+    <div class="lead">
+      ライブ配信に必要な機材を、<span class="navy">一眼1カメ構成</span>と<span class="navy">マルチカメラ構成</span>の2パターンで一覧化したものです。
+      <span class="accent">「貴社設備で対応可能なもの」と「Fireworkが手配するもの」を切り分ける</span>ことで、過不足のない準備と最適なコストでの運用を目指します。
+    </div>
+
+    <div class="next-action">
+      <div class="na-head"><span class="na-tag">NEXT ACTION</span>次のステップ：配信現場の実地確認</div>
+      <ol>
+        <li>Firework・寺田（機材担当）が<strong>MTG様の配信現場へ実地でお伺い</strong>します。</li>
+        <li>下表の各機材について、<strong>現場に「あるもの」／「ないもの」を確認</strong>し、「現場確認」欄を確定します（現状はすべて「要確認」）。</li>
+        <li>「貴社設備」で対応できる機材は<strong>持ち込みを省き、手配コストを抑制</strong>。「ないもの」のみFireworkが手配します。</li>
+        <li>確定した構成・数量をもとに、<strong>最終的な配信プラン・お見積もりを2社協議のうえ確定</strong>します。</li>
+      </ol>
+    </div>
+
+    <div class="legend">
+      <div class="legend-item"><span class="st st-todo">要確認</span><span class="desc">現地確認で確定（現状の初期値）</span></div>
+      <div class="legend-item"><span class="st st-have">貴社設備</span><span class="desc">MTG様の現場に既にあり</span></div>
+      <div class="legend-item"><span class="st st-fw">Firework手配</span><span class="desc">Fireworkが持ち込み</span></div>
+    </div>
+    <div class="closing">
+      ※ 機材の具体的な選定（型番・スペック）は、確認後の使用数・現場環境に応じて最適なものを<strong>Fireworkにて選定</strong>します。「個数」の「〜」は最小構成からの増減を示します。
+    </div>
+  </div>
+
+  <!-- ===== 構成1：一眼1カメ ===== -->
+  <div class="section" id="config1">
+    <div class="section-title"><div class="num navy">1</div>一眼1カメ構成</div>
+    <div class="config-head">
+      <span class="config-badge c1">対応プラン</span>
+      <span class="config-map">ご提案資料の <strong>プラン2「一眼1カメ」</strong> に対応する機材構成です。</span>
+    </div>
+    <table class="eq-table">
+      <thead>
+        <tr>
+          <th>種類</th>
+          <th>機材</th>
+          <th>仕様・メモ</th>
+          <th>個数</th>
+          <th>備考</th>
+          <th class="col-status">現場確認</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="cat" rowspan="5">映像</td><td class="name">カメラ</td><td class="spec">HDMI出力必要</td><td class="qty">1</td><td class="note">一眼カメラ</td><td class="status"><span class="st st-todo">要確認</span></td></tr>
+        <tr><td class="name">レンズ</td><td class="spec">広角レンズ</td><td class="qty">1</td><td class="note">15-35mm 目安</td><td class="status"><span class="st st-todo">要確認</span></td></tr>
+        <tr><td class="name">カメラ周辺機器（リグ）</td><td class="spec">三脚固定用</td><td class="qty">1</td><td class="note">—</td><td class="status"><span class="st st-todo">要確認</span></td></tr>
+        <tr><td class="name">カメラ三脚</td><td class="spec">—</td><td class="qty">1</td><td class="note">カメラを乗せて移動しやすいもの</td><td class="status"><span class="st st-todo">要確認</span></td></tr>
+        <tr><td class="name">モニター</td><td class="spec">HDMI入力</td><td class="qty">2〜</td><td class="note">24インチ以上推奨・縦向き可能タイプ</td><td class="status"><span class="st st-todo">要確認</span></td></tr>
+
+        <tr><td class="cat" rowspan="2">音声</td><td class="name">ワイヤレスマイク</td><td class="spec">ワイヤレス</td><td class="qty">2〜</td><td class="note">使用数により選定機材が変動</td><td class="status"><span class="st st-todo">要確認</span></td></tr>
+        <tr><td class="name">ミキサー</td><td class="spec">オーディオI/F機能必要</td><td class="qty">1</td><td class="note">マイク数により選定機材が変動</td><td class="status"><span class="st st-todo">要確認</span></td></tr>
+
+        <tr><td class="cat" rowspan="2">照明</td><td class="name">照明</td><td class="spec">—</td><td class="qty">1</td><td class="note">小型なら2灯必要</td><td class="status"><span class="st st-todo">要確認</span></td></tr>
+        <tr><td class="name">照明三脚</td><td class="spec">—</td><td class="qty">1</td><td class="note">照明の数により変動</td><td class="status"><span class="st st-todo">要確認</span></td></tr>
+
+        <tr><td class="cat" rowspan="2">配信</td><td class="name">配信用PC</td><td class="spec">OBS使用</td><td class="qty">1</td><td class="note">デスクトップ推奨</td><td class="status"><span class="st st-todo">要確認</span></td></tr>
+        <tr><td class="name">ビデオキャプチャ</td><td class="spec">HDMI入力</td><td class="qty">1</td><td class="note">USB接続</td><td class="status"><span class="st st-todo">要確認</span></td></tr>
+
+        <tr><td class="cat" rowspan="2">分配器</td><td class="name">LANハブ</td><td class="spec">5ポート</td><td class="qty">1</td><td class="note">—</td><td class="status"><span class="st st-todo">要確認</span></td></tr>
+        <tr><td class="name">HDMI分配器</td><td class="spec">1in4out</td><td class="qty">1</td><td class="note">配信映像のばらまき用</td><td class="status"><span class="st st-todo">要確認</span></td></tr>
+
+        <tr><td class="cat">電源</td><td class="name">電源タップ</td><td class="spec">—</td><td class="qty">3〜</td><td class="note">6口タイプ</td><td class="status"><span class="st st-todo">要確認</span></td></tr>
+
+        <tr><td class="cat" rowspan="4">ケーブル</td><td class="name">HDMIケーブル（ロング）</td><td class="spec">—</td><td class="qty">5</td><td class="note">5m以上</td><td class="status"><span class="st st-todo">要確認</span></td></tr>
+        <tr><td class="name">HDMIケーブル（ショート）</td><td class="spec">—</td><td class="qty">5</td><td class="note">1〜3m</td><td class="status"><span class="st st-todo">要確認</span></td></tr>
+        <tr><td class="name">LANケーブル（ロング）</td><td class="spec">—</td><td class="qty">3</td><td class="note">5m以上</td><td class="status"><span class="st st-todo">要確認</span></td></tr>
+        <tr><td class="name">LANケーブル（ショート）</td><td class="spec">—</td><td class="qty">3</td><td class="note">1〜2m</td><td class="status"><span class="st st-todo">要確認</span></td></tr>
+      </tbody>
+    </table>
+    <div class="eq-foot">配信PC・OBS運用時は<strong style="color:var(--accent);">有線LAN接続が前提</strong>です。会場のネットワーク環境（有線LANの可否）も現場確認の対象となります。</div>
+  </div>
+
+  <!-- ===== 構成2：マルチカメラ ===== -->
+  <div class="section" id="config2">
+    <div class="section-title"><div class="num navy">2</div>マルチカメラ構成（スイッチング）</div>
+    <div class="config-head">
+      <span class="config-badge c2">対応オプション</span>
+      <span class="config-map">ご提案資料の <strong>オプション「2カメスイッチング追加」</strong> を採用する場合の機材構成です。</span>
+    </div>
+    <table class="eq-table">
+      <thead>
+        <tr>
+          <th>種類</th>
+          <th>機材</th>
+          <th>仕様・メモ</th>
+          <th>個数</th>
+          <th>備考</th>
+          <th class="col-status">現場確認</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td class="cat" rowspan="7">映像</td><td class="name">カメラ</td><td class="spec">HDMI出力必要</td><td class="qty">2〜</td><td class="note">—</td><td class="status"><span class="st st-todo">要確認</span></td></tr>
+        <tr><td class="name">レンズ（広角）</td><td class="spec">広角ズームレンズ</td><td class="qty">1</td><td class="note">15-35mm 目安</td><td class="status"><span class="st st-todo">要確認</span></td></tr>
+        <tr><td class="name">レンズ（広角〜望遠）</td><td class="spec">広角〜望遠ズームレンズ</td><td class="qty">1〜</td><td class="note">24-100mm 目安／カメラ数により変動</td><td class="status"><span class="st st-todo">要確認</span></td></tr>
+        <tr><td class="name">カメラ周辺機器（リグ）</td><td class="spec">三脚固定用</td><td class="qty">2〜</td><td class="note">カメラ数により変動</td><td class="status"><span class="st st-todo">要確認</span></td></tr>
+        <tr><td class="name">カメラ三脚</td><td class="spec">—</td><td class="qty">2〜</td><td class="note">移動しやすいもの／カメラ数により変動</td><td class="status"><span class="st st-todo">要確認</span></td></tr>
+        <tr><td class="name">スイッチャー</td><td class="spec">—</td><td class="qty">1</td><td class="note">HDMI4入力程度</td><td class="status"><span class="st st-todo">要確認</span></td></tr>
+        <tr><td class="name">モニター</td><td class="spec">HDMI入力</td><td class="qty">3〜</td><td class="note">24インチ以上推奨・縦向き可能タイプ</td><td class="status"><span class="st st-todo">要確認</span></td></tr>
+
+        <tr><td class="cat" rowspan="2">音声</td><td class="name">ワイヤレスマイク</td><td class="spec">ワイヤレス</td><td class="qty">2〜</td><td class="note">使用数により選定機材が変動</td><td class="status"><span class="st st-todo">要確認</span></td></tr>
+        <tr><td class="name">ミキサー</td><td class="spec">オーディオI/F機能必要</td><td class="qty">1</td><td class="note">マイク数により選定機材が変動</td><td class="status"><span class="st st-todo">要確認</span></td></tr>
+
+        <tr><td class="cat" rowspan="2">照明</td><td class="name">照明</td><td class="spec">—</td><td class="qty">1〜</td><td class="note">小型なら2灯必要</td><td class="status"><span class="st st-todo">要確認</span></td></tr>
+        <tr><td class="name">照明三脚</td><td class="spec">—</td><td class="qty">1〜</td><td class="note">照明の数により変動</td><td class="status"><span class="st st-todo">要確認</span></td></tr>
+
+        <tr><td class="cat" rowspan="2">配信</td><td class="name">配信用PC</td><td class="spec">OBS使用</td><td class="qty">1</td><td class="note">デスクトップ推奨</td><td class="status"><span class="st st-todo">要確認</span></td></tr>
+        <tr><td class="name">ビデオキャプチャ</td><td class="spec">HDMI入力</td><td class="qty">1</td><td class="note">USB接続</td><td class="status"><span class="st st-todo">要確認</span></td></tr>
+
+        <tr><td class="cat" rowspan="2">分配器</td><td class="name">LANハブ</td><td class="spec">5ポート</td><td class="qty">1</td><td class="note">—</td><td class="status"><span class="st st-todo">要確認</span></td></tr>
+        <tr><td class="name">HDMI分配器</td><td class="spec">1in4out</td><td class="qty">1</td><td class="note">配信映像のばらまき用</td><td class="status"><span class="st st-todo">要確認</span></td></tr>
+
+        <tr><td class="cat">電源</td><td class="name">電源タップ</td><td class="spec">—</td><td class="qty">3〜</td><td class="note">6口タイプ</td><td class="status"><span class="st st-todo">要確認</span></td></tr>
+
+        <tr><td class="cat" rowspan="4">ケーブル</td><td class="name">HDMIケーブル（ロング）</td><td class="spec">—</td><td class="qty">5</td><td class="note">5m以上</td><td class="status"><span class="st st-todo">要確認</span></td></tr>
+        <tr><td class="name">HDMIケーブル（ショート）</td><td class="spec">—</td><td class="qty">5〜</td><td class="note">1〜3m</td><td class="status"><span class="st st-todo">要確認</span></td></tr>
+        <tr><td class="name">LANケーブル（ロング）</td><td class="spec">—</td><td class="qty">3</td><td class="note">5m以上</td><td class="status"><span class="st st-todo">要確認</span></td></tr>
+        <tr><td class="name">LANケーブル（ショート）</td><td class="spec">—</td><td class="qty">3</td><td class="note">1〜2m</td><td class="status"><span class="st st-todo">要確認</span></td></tr>
+      </tbody>
+    </table>
+    <div class="eq-foot">マルチカメラ構成は、寄り・引きのカット切替で視聴継続率の向上を狙う構成です。カメラ・モニター・ケーブル類が一眼1カメ構成より増えます。</div>
+  </div>
+
+  <div class="footer">
+    Firework Japan株式会社 ｜ 株式会社MTG 御中 — ライブ配信 機材リスト（現場確認用）<br>
+    機材リスト原案：寺田（機材担当）　／　Last Updated: 2026年6月8日 17:58<br>
+    本資料は配信現場の事前確認用であり、契約内容・機材を確定するものではありません。
+  </div>
+
+</div>
+
+</body>
+</html>
