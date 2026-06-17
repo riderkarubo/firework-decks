@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <script src="../auth.js"></script>
+  <script>document.addEventListener('DOMContentLoaded',function(){FireworkSSO.protect();});</script>
+  <meta charset="UTF-8">
+  <meta name="last-modified" content="2026-06-17T20:10:00+09:00">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>English Coaching</title>
+  <style>
+    :root{
+      --ink:#0F3460; --grow:#1B998B; --pop:#FA006D; --warn:#F2A900;
+      --bg:#F7F8FC; --card:#FFFFFF; --line:#E4E7EE; --sub:#6B7280;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:"Noto Sans JP","Hiragino Sans",sans-serif;background:var(--bg);color:#1F2937;line-height:1.7;padding:24px;max-width:1100px;margin:0 auto}
+    .hero{background:linear-gradient(135deg,#0F3460 0%,#1B998B 100%);color:#fff;border-radius:16px;padding:44px;margin-bottom:28px;box-shadow:0 8px 24px rgba(15,52,96,0.18)}
+    .hero .meta{font-size:13px;letter-spacing:0.12em;opacity:0.85;margin-bottom:8px;text-transform:uppercase}
+    .hero h1{font-size:34px;font-weight:800;margin-bottom:12px}
+    .hero .sub{font-size:15px;opacity:0.92;max-width:760px}
+    .hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:24px}
+    .hero-stats .stat{background:rgba(255,255,255,0.12);border-radius:10px;padding:14px}
+    .hero-stats .stat .k{font-size:11px;opacity:0.8;letter-spacing:0.08em;text-transform:uppercase}
+    .hero-stats .stat .v{font-size:22px;font-weight:700;margin-top:4px}
+    section{background:var(--card);border-radius:14px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(15,52,96,0.05)}
+    h2{font-size:20px;font-weight:800;color:var(--ink);margin-bottom:16px;padding-bottom:10px;border-bottom:3px solid var(--grow);display:inline-block}
+    p{margin-bottom:10px;font-size:14px}
+    .lead{color:var(--sub);font-size:14px;margin-bottom:18px}
+    .session{display:grid;grid-template-columns:90px 1fr auto;gap:18px;align-items:center;padding:18px 16px;border:1px solid var(--line);border-radius:12px;margin-bottom:12px;background:#FAFBFE;transition:all 0.2s;border-left:4px solid var(--grow)}
+    .session:hover{background:#fff;box-shadow:0 4px 12px rgba(15,52,96,0.08);transform:translateY(-1px)}
+    .session.upcoming{opacity:0.6;border-left-color:var(--line)}
+    .session a{color:inherit;text-decoration:none;border:none;display:contents}
+    .session .num{font-family:monospace;font-size:13px;color:var(--sub);font-weight:700;letter-spacing:0.05em}
+    .session .num .date{display:block;font-size:11px;margin-top:2px}
+    .session .main .title{font-size:17px;font-weight:700;color:var(--ink);margin-bottom:4px}
+    .session .main .tags{font-size:12px;color:var(--sub)}
+    .session .main .tags .tag{display:inline-block;background:#E6F7F1;color:var(--grow);padding:2px 8px;border-radius:4px;margin-right:4px;font-weight:600}
+    .session .arrow{color:var(--grow);font-size:20px;font-weight:700}
+    .mile{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+    .mile span{background:#FFF0F6;color:var(--pop);padding:6px 12px;border-radius:6px;font-size:13px;font-weight:600}
+    .how{background:#F0F9F6;border-left:4px solid var(--grow);padding:16px 20px;border-radius:8px;margin-top:10px}
+    .how ol{padding-left:22px;font-size:14px}
+    .how li{margin-bottom:6px}
+    footer{text-align:center;color:var(--sub);font-size:12px;padding:20px;margin-top:30px;border-top:1px solid var(--line)}
+    @media (max-width:768px){
+      body{padding:14px}
+      .hero{padding:24px}
+      .hero h1{font-size:22px}
+      .hero-stats{grid-template-columns:1fr 1fr}
+      .session{grid-template-columns:1fr;gap:6px}
+      .session .arrow{display:none}
+    }
+  </style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="meta">English Coaching · for Aiko</div>
+  <h1>English Coaching Sessions</h1>
+  <div class="sub">石島真也（Firework）による週次の英語コーチング記録。毎セッションの議事録をビジュアル化し、宿題のチェック・進捗の比較ができる学習ハブです。</div>
+  <div class="hero-stats">
+    <div class="stat"><div class="k">セッション数</div><div class="v">1</div></div>
+    <div class="stat"><div class="k">学習者</div><div class="v">Aikoさん</div></div>
+    <div class="stat"><div class="k">コーチ</div><div class="v">Shinya Ishijima</div></div>
+  </div>
+</div>
+
+<section>
+  <h2>🎯 中期マイルストーン</h2>
+  <p class="lead">この3つを最初の山として走ります。</p>
+  <div class="mile">
+    <span>自己紹介 2〜3分を即出し</span>
+    <span>2026年7月中にオンライン英会話デビュー</span>
+    <span>盾フレーズ 5個ストック</span>
+    <span>シャドーイング Unit 01 完成</span>
+  </div>
+</section>
+
+<section>
+  <h2>📅 セッション一覧</h2>
+  <p class="lead">最新が上です。クリックで議事録ビジュアライズへ。</p>
+
+  <div class="session">
+    <a href="sessions/2026-06-17.html">
+      <div class="num">#001<span class="date">2026-06-17</span></div>
+      <div class="main">
+        <div class="title">スモールトーク & リンキング攻略</div>
+        <div class="tags">
+          <span class="tag">SmallTalk</span>
+          <span class="tag">ShieldPhrase</span>
+          <span class="tag">Linking</span>
+          <span class="tag">Shadowing 75%</span>
+        </div>
+      </div>
+      <div class="arrow">→</div>
+    </a>
+  </div>
+
+  <div class="session upcoming">
+    <div class="num">#002<span class="date">TBD</span></div>
+    <div class="main">
+      <div class="title">（次回）スモールトーク実践・シャドーイング 100%</div>
+      <div class="tags">予定：仕事状況の説明 / 自己紹介練習 / Quick Response / 基本5文型復習</div>
+    </div>
+    <div class="arrow">—</div>
+  </div>
+</section>
+
+<section>
+  <h2>📖 使い方</h2>
+  <div class="how">
+    <ol>
+      <li>セッション当日に該当回のリンクを開く</li>
+      <li>「次回までの宿題」のチェックボックスをタップ → ブラウザに保存されます</li>
+      <li>翌週セッション前に同じページを見返して、できた／できないをセルフ確認</li>
+      <li>新しいセッションが上に追加されたら、それを開いて続きへ</li>
+    </ol>
+  </div>
+</section>
+
+<footer>
+  English Coaching by 石島 真也 (Firework)<br>
+  Last Updated: 2026年6月17日 20:10 JST
+</footer>
+
+</body>
+</html>

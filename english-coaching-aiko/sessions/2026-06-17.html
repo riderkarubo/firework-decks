@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <script src="../../auth.js"></script>
+  <script>document.addEventListener('DOMContentLoaded',function(){FireworkSSO.protect();});</script>
+  <meta charset="UTF-8">
+  <meta name="last-modified" content="2026-06-17T20:10:00+09:00">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>English Coaching Session</title>
+  <style>
+    :root{
+      --ink:#0F3460; --grow:#1B998B; --pop:#FA006D; --warn:#F2A900;
+      --bg:#F7F8FC; --card:#FFFFFF; --line:#E4E7EE; --sub:#6B7280;
+      --good:#10B981; --bad:#EF4444;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:"Noto Sans JP","Hiragino Sans",sans-serif;background:var(--bg);color:#1F2937;line-height:1.7;padding:24px;max-width:1200px;margin:0 auto}
+    a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
+    .breadcrumb{font-size:13px;color:var(--sub);margin-bottom:12px}
+    .breadcrumb a{color:var(--sub)}
+    .hero{background:linear-gradient(135deg,#0F3460 0%,#1B998B 100%);color:#fff;border-radius:16px;padding:40px;margin-bottom:24px;box-shadow:0 8px 24px rgba(15,52,96,0.18)}
+    .hero .meta{font-size:13px;letter-spacing:0.12em;opacity:0.85;margin-bottom:8px;text-transform:uppercase}
+    .hero h1{font-size:32px;font-weight:800;margin-bottom:12px;letter-spacing:0.02em}
+    .hero .sub{font-size:15px;opacity:0.92;max-width:760px}
+    .hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:24px}
+    .hero-stats .stat{background:rgba(255,255,255,0.12);border-radius:10px;padding:14px;backdrop-filter:blur(4px)}
+    .hero-stats .stat .k{font-size:11px;opacity:0.8;letter-spacing:0.08em;text-transform:uppercase}
+    .hero-stats .stat .v{font-size:22px;font-weight:700;margin-top:4px}
+    section{background:var(--card);border-radius:14px;padding:28px;margin-bottom:20px;box-shadow:0 2px 8px rgba(15,52,96,0.05)}
+    h2{font-size:20px;font-weight:800;color:var(--ink);margin-bottom:16px;padding-bottom:10px;border-bottom:3px solid var(--grow);display:inline-block}
+    h3{font-size:16px;font-weight:700;color:var(--ink);margin:20px 0 12px}
+    p{margin-bottom:10px}
+    .lead{color:var(--sub);font-size:14px;margin-bottom:18px}
+    .grid{display:grid;gap:14px}
+    .grid-2{grid-template-columns:repeat(2,1fr)}
+    .grid-3{grid-template-columns:repeat(3,1fr)}
+    .grid-4{grid-template-columns:repeat(4,1fr)}
+    .card{background:#FAFBFE;border:1px solid var(--line);border-left:4px solid var(--grow);border-radius:10px;padding:16px}
+    .card.pop{border-left-color:var(--pop)}
+    .card.warn{border-left-color:var(--warn)}
+    .card.ink{border-left-color:var(--ink)}
+    .card .label{font-size:11px;font-weight:700;letter-spacing:0.08em;color:var(--sub);text-transform:uppercase;margin-bottom:6px}
+    .card .title{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:6px}
+    .card .body{font-size:13px;color:#374151}
+    .phrase{font-family:"SF Mono","Menlo",monospace;background:#FFF0F6;color:var(--pop);padding:2px 8px;border-radius:5px;font-size:13px;font-weight:600;display:inline-block;margin:2px 2px}
+    .phrase.ok{background:#E6F7F1;color:var(--grow)}
+    .phrase.bad{background:#FEE2E2;color:var(--bad);text-decoration:line-through}
+    .phrase.neutral{background:#EEF2FF;color:var(--ink)}
+    .flow{display:flex;flex-wrap:wrap;align-items:center;gap:10px;background:#F0F9F6;padding:16px;border-radius:10px;margin:10px 0}
+    .flow .step{background:#fff;border:1px solid var(--grow);padding:8px 12px;border-radius:8px;font-size:13px;font-weight:600;color:var(--ink)}
+    .flow .arrow{color:var(--grow);font-weight:700}
+    table{width:100%;border-collapse:collapse;font-size:13px;margin:8px 0}
+    th{background:#0F3460;color:#fff;padding:10px 12px;text-align:left;font-weight:700;font-size:12px;letter-spacing:0.04em}
+    td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+    tr:nth-child(even) td{background:#F7F8FC}
+    .en{font-family:"SF Mono","Menlo",monospace;font-size:12.5px;color:var(--ink)}
+    .mc{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:center;background:#FAFBFE;border:1px solid var(--line);border-radius:10px;padding:14px;margin-bottom:10px}
+    .mc .x{background:#FEE2E2;color:var(--bad);padding:10px 12px;border-radius:8px;font-family:monospace;font-size:13px}
+    .mc .arrow{color:var(--grow);font-size:20px;font-weight:700}
+    .mc .o{background:#E6F7F1;color:var(--grow);padding:10px 12px;border-radius:8px;font-family:monospace;font-size:13px;font-weight:600}
+    .mc .note{grid-column:1/-1;font-size:12px;color:var(--sub);padding-top:6px;border-top:1px dashed var(--line);margin-top:8px}
+    .linking{background:#FFF8E7;border-left:4px solid var(--warn);border-radius:10px;padding:16px;margin-bottom:12px}
+    .linking .src{font-family:monospace;font-size:15px;color:var(--ink);font-weight:700;margin-bottom:6px}
+    .linking .heard{font-size:14px;color:var(--pop);font-weight:600;margin-bottom:8px}
+    .linking .heard::before{content:"🎧 ";opacity:0.6}
+    .linking .phen{font-size:12px;color:var(--sub);margin-bottom:6px}
+    .linking .drill{font-size:13px;background:#fff;padding:8px 12px;border-radius:6px;border:1px dashed var(--warn)}
+    .progress{background:#E4E7EE;height:14px;border-radius:7px;overflow:hidden;margin:8px 0;position:relative}
+    .progress .bar{background:linear-gradient(90deg,var(--grow),var(--ink));height:100%;border-radius:7px;transition:width 0.6s}
+    .progress .pct{position:absolute;right:8px;top:-2px;font-size:11px;font-weight:700;color:#fff;line-height:18px}
+    .radar{display:flex;justify-content:center;align-items:center;padding:10px}
+    .radar svg{max-width:380px;width:100%;height:auto}
+    .checklist label{display:flex;align-items:flex-start;gap:10px;padding:10px 12px;background:#FAFBFE;border:1px solid var(--line);border-radius:8px;margin-bottom:8px;cursor:pointer;font-size:14px;transition:background 0.2s}
+    .checklist label:hover{background:#F0F9F6}
+    .checklist input{margin-top:4px;accent-color:var(--grow);width:16px;height:16px}
+    .checklist input:checked + span{text-decoration:line-through;color:var(--sub)}
+    blockquote{background:#FFF0F6;border-left:4px solid var(--pop);padding:14px 18px;border-radius:8px;margin:14px 0;font-style:italic;color:#374151;font-size:14px}
+    blockquote .who{display:block;font-size:11px;color:var(--sub);margin-top:6px;font-style:normal;letter-spacing:0.06em}
+    .mind-row{display:grid;grid-template-columns:140px 1fr;gap:14px;align-items:start;padding:12px 0;border-bottom:1px solid var(--line)}
+    .mind-row:last-child{border-bottom:none}
+    .mind-row .k{font-size:12px;font-weight:700;color:var(--ink);text-transform:uppercase;letter-spacing:0.05em}
+    .mind-row .v{font-size:13px;color:#374151}
+    footer{text-align:center;color:var(--sub);font-size:12px;padding:20px;margin-top:30px;border-top:1px solid var(--line)}
+    @media print{
+      body{padding:0;background:#fff}
+      section{box-shadow:none;page-break-inside:avoid;margin-bottom:14px}
+      .hero{box-shadow:none}
+      *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+    }
+    @media (max-width:768px){
+      body{padding:14px}
+      .hero{padding:24px}
+      .hero h1{font-size:22px}
+      .hero-stats{grid-template-columns:repeat(2,1fr)}
+      .grid-2,.grid-3,.grid-4{grid-template-columns:1fr}
+      .mc{grid-template-columns:1fr}
+      .mc .arrow{transform:rotate(90deg)}
+    }
+  </style>
+</head>
+<body>
+
+<div class="breadcrumb"><a href="../index.html">← セッション一覧</a></div>
+
+<div class="hero">
+  <div class="meta">Session #001 / 2026-06-17</div>
+  <h1>スモールトーク & リンキング攻略</h1>
+  <div class="sub">初対面の挨拶〜近況報告の自然な流れを身体化し、シャドーイング教材で詰まる「音の連結」を分解する回。完璧な文法より「単語で伝える割り切り」を優先するマインドへ切替える。</div>
+  <div class="hero-stats">
+    <div class="stat"><div class="k">本日のフォーカス</div><div class="v">4テーマ</div></div>
+    <div class="stat"><div class="k">シャドーイング</div><div class="v">75% (0.75x)</div></div>
+    <div class="stat"><div class="k">学習時間 / 日</div><div class="v">約30分</div></div>
+    <div class="stat"><div class="k">次回までの宿題</div><div class="v">9件</div></div>
+  </div>
+</div>
+
+<section>
+  <h2>🎯 本日のフォーカス</h2>
+  <div class="grid grid-2">
+    <div class="card ink"><div class="label">Focus 1</div><div class="title">スモールトークの定型化</div><div class="body">挨拶 → 返答 → 自己紹介 → 近況 の流れを反射で出せるレベルへ。</div></div>
+    <div class="card pop"><div class="label">Focus 2</div><div class="title">盾フレーズで会話を止めない</div><div class="body">わからない時に黙らず、丁寧依頼に切り替えるサバイバル術。</div></div>
+    <div class="card warn"><div class="label">Focus 3</div><div class="title">リンキング攻略</div><div class="body">"new type of steel" が "タイポスティール" に化ける現象を分解→再現。</div></div>
+    <div class="card"><div class="label">Focus 4</div><div class="title">Quick Response & AI 自律学習</div><div class="body">SVOC の即出し力＋Gemini/Claude を使った直訳・意訳・コアイメージ習慣。</div></div>
+  </div>
+</section>
+
+<section>
+  <h2>🧠 まず大事なこと（Mindset）</h2>
+  <p class="lead">英語力より、まずここから。これだけで上達速度が変わります。</p>
+  <div class="mind-row"><div class="k">完璧主義を捨てる</div><div class="v">文法を整えようとして発話が止まるのが最大のブレーキ。<strong>単語だけで伝わればOK</strong>。動詞・前置詞は後でつなげる。</div></div>
+  <div class="mind-row"><div class="k">人格を切り替える</div><div class="v">日本語の自分のテンションのまま英語を喋らない。<strong>モノマネする</strong>つもりで、相手のリズム・テンポに乗っかる（PIVOT 大二郎さんの教え）。</div></div>
+  <div class="mind-row"><div class="k">出川 English を許す</div><div class="v">伝わったらOK。ボディランゲージも含めて<strong>"伝えようとする姿勢"</strong>のほうが、正しい英語より評価される。</div></div>
+  <div class="mind-row"><div class="k">病みそうなら割り切る</div><div class="v">分からない箇所で粘り続けて疲弊しない。<strong>スキップしてOK</strong>。続けることが最重要。</div></div>
+</section>
+
+<section>
+  <h2>💬 Part 1｜スモールトーク 定型スクリプト</h2>
+  <p class="lead">初対面〜近況確認の流れ。これをまず暗唱化＝身体化が今週の最優先。</p>
+
+  <h3>会話フロー</h3>
+  <div class="flow">
+    <div class="step">Hello / Hi</div><span class="arrow">→</span>
+    <div class="step">How are you?</div><span class="arrow">→</span>
+    <div class="step">Good / Doing well</div><span class="arrow">→</span>
+    <div class="step">Nice to meet you</div><span class="arrow">→</span>
+    <div class="step">My name is ... I'm from ...</div>
+  </div>
+
+  <h3>挨拶のバリエーション</h3>
+  <table>
+    <thead><tr><th style="width:40%">フレーズ</th><th>ニュアンス</th></tr></thead>
+    <tbody>
+      <tr><td><span class="phrase">How are you?</span></td><td>丁寧めの基本形。<strong>これがまず絶対</strong>。</td></tr>
+      <tr><td><span class="phrase">How are you doing?</span></td><td>ややカジュアル。"doing" がつく方がフランク。</td></tr>
+      <tr><td><span class="phrase">How have you been?</span></td><td>かしこまり / 久しぶりの相手に。</td></tr>
+    </tbody>
+  </table>
+
+  <h3>返答のバリエーション</h3>
+  <table>
+    <thead><tr><th>言うべき</th><th>避けたい</th><th>理由</th></tr></thead>
+    <tbody>
+      <tr>
+        <td><span class="phrase ok">Good</span> <span class="phrase ok">I'm good</span> <span class="phrase ok">Doing well</span> <span class="phrase ok">Not bad</span> <span class="phrase ok">I'm tired</span></td>
+        <td><span class="phrase bad">I'm fine</span></td>
+        <td>"I'm fine" は「(体調が)大丈夫です」のニュアンスが残り、日常挨拶では不自然。</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>自己紹介の鉄則</h3>
+  <div class="grid grid-2">
+    <div class="card"><div class="label">DO</div><div class="title">自分から先に名乗る</div><div class="body"><span class="phrase ok">Nice to meet you. My name is Aiko. I'm from Tokyo.</span><br>→ 相手も自然に <span class="phrase neutral">My name is Shinya</span> と返してくれる。</div></div>
+    <div class="card pop"><div class="label">DON'T</div><div class="title">What's your name? は使わない</div><div class="body">直球すぎて少し失礼に響く。<strong>自分が先に名乗る</strong>のが丁寧な促し方。</div></div>
+  </div>
+
+  <blockquote>Thank you for ... から世間話に入るのも自然。"Thank you for joining today!" のあとに本題前のひと呼吸。<span class="who">— コーチ・石島</span></blockquote>
+</section>
+
+<section>
+  <h2>🛡 Part 2｜盾フレーズ（Survival Phrases）</h2>
+  <p class="lead">わからない時の駆け込みフレーズ。これで<strong>会話を止めない</strong>。Could は Can より丁寧・距離が遠い分やわらかい。</p>
+  <div class="grid grid-2">
+    <div class="card"><div class="label">SHIELD 01</div><div class="title">もう一度言ってほしい</div><div class="body"><span class="phrase">Could you say that again?</span></div></div>
+    <div class="card"><div class="label">SHIELD 02</div><div class="title">ゆっくり話してほしい</div><div class="body"><span class="phrase">Could you speak more slowly, please?</span></div></div>
+    <div class="card"><div class="label">SHIELD 03</div><div class="title">チャットに書いてほしい</div><div class="body"><span class="phrase">Can you type in the chat box?</span></div></div>
+    <div class="card"><div class="label">SHIELD 04</div><div class="title">翻訳する時間がほしい</div><div class="body"><span class="phrase">Let me translate first.</span></div></div>
+    <div class="card pop"><div class="label">SHIELD 05</div><div class="title">単語が出てこない時</div><div class="body">キーワードだけでもOK：<span class="phrase">AI</span> <span class="phrase">client</span> <span class="phrase">report</span><br>→ 動詞は後で補う。<strong>沈黙より単語列</strong>。</div></div>
+    <div class="card warn"><div class="label">注意</div><div class="title">わからないのに "Uh-huh" は禁物</div><div class="body">相手は「伝わった」と思ってどんどん進めてしまう。正直に依頼するほうが結果ラク。</div></div>
+  </div>
+</section>
+
+<section>
+  <h2>🎙 Part 3｜本日の発話ハイライト</h2>
+  <p class="lead">今日トライした英語。"伝わるなら勝ち" の観点で見返しましょう。</p>
+  <table>
+    <thead><tr><th style="width:8%">#</th><th style="width:42%">English</th><th style="width:30%">日本語</th><th style="width:20%">コーチ評</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td class="en">"The... discount. Yes. So... AI... name? Crowd. AI Agent?"</td><td>えっと…割引。AI…名前？Crowd。AIエージェント？</td><td>沈黙回避◎。動詞・構文を後で。</td></tr>
+      <tr><td>2</td><td class="en">"I'm making report."</td><td>レポートを作っています。</td><td>伝わる◎。冠詞 a が抜けた。</td></tr>
+      <tr><td>3</td><td class="en">"Client, client..."</td><td>クライアント、クライアント…</td><td>キーワード想起◎。文法整え過ぎで停止。</td></tr>
+      <tr><td>4</td><td class="en">"Our office hours..."</td><td>弊社の営業時間は…</td><td>are の弱化が自然。office の母音に改善余地。</td></tr>
+      <tr><td>5</td><td class="en">"Tomorrow is on holiday at our company."</td><td>明日は弊社は休日です。</td><td>前置詞ぎこちなし。自然形は次セクションで。</td></tr>
+      <tr><td>6</td><td class="en">"The first Monday in September is Labour Day in the United States."</td><td>9月の第1月曜日はアメリカの労働者の日です。</td><td>構造◎。発音にムラ。</td></tr>
+      <tr><td>7</td><td class="en">"This is Masaki Kawamura of ABC Company."</td><td>ABC社の川村正樹です。</td><td>from/of の使い分けを後述。</td></tr>
+      <tr><td>8</td><td>シャドーイング："new type of steel" を "new title steel" と誤聴／"I think we could use it to build some of our parts" 高速リンキングに苦戦／"They are my friends" → "man" 誤発／"She is a member of our team" は in→of に自己修正</td><td>—</td><td>0.75x で 75%。自己修正力◎。</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h2>✏️ Part 4｜Mistake → Correction</h2>
+  <p class="lead">今日見つかった9件。来週の自己採点用にどうぞ。</p>
+  <div class="mc"><div class="x">I'm fine.</div><div class="arrow">→</div><div class="o">I'm good. / Doing well. / Not bad.</div><div class="note">"I'm fine" は体調確認のニュアンスが強く、日常挨拶では不自然。</div></div>
+  <div class="mc"><div class="x">What's your name?</div><div class="arrow">→</div><div class="o">My name is [自分の名前].</div><div class="note">初対面はまず自分が名乗り、相手の自己紹介を促すのが丁寧。</div></div>
+  <div class="mc"><div class="x">I'm making report.</div><div class="arrow">→</div><div class="o">I'm making a report.</div><div class="note">report は可算名詞。冠詞 a が必要。</div></div>
+  <div class="mc"><div class="x">Client, live commerce material, report.</div><div class="arrow">→</div><div class="o">I'm putting together a report on the client's live commerce materials.</div><div class="note">初手はキーワード連結でOK。慣れたら前置詞句で精緻化。</div></div>
+  <div class="mc"><div class="x">We know ... new title steel.</div><div class="arrow">→</div><div class="o">... a new type of steel.</div><div class="note">"type of" のリンキングが "title" に誤聴されやすい。Part 5 で分解。</div></div>
+  <div class="mc"><div class="x">She is a member in ...</div><div class="arrow">→</div><div class="o">She is a member of our team.</div><div class="note">所属は of が自然。<strong>自己修正できた点が◎</strong>。</div></div>
+  <div class="mc"><div class="x">They are my man.</div><div class="arrow">→</div><div class="o">They are my friends.</div><div class="note">複数語尾 /z/ の脱落による誤発・誤聴に注意。</div></div>
+  <div class="mc"><div class="x">Tomorrow is on holiday at our company.</div><div class="arrow">→</div><div class="o">Our company will be closed tomorrow.</div><div class="note">組織を主語にした言い方が自然。on holiday は人の休暇に使う。</div></div>
+  <div class="mc"><div class="x">This is Masaki Kawamura <em>of</em> ABC Company.</div><div class="arrow">→</div><div class="o">This is Masaki Kawamura from ABC Company.</div><div class="note">of は強い所属、from は出所・紹介で一般的。</div></div>
+</section>
+
+<section>
+  <h2>🔗 Part 5｜リンキング攻略（音の連結・消失）</h2>
+  <blockquote>完璧再現がゴールではなく、<strong>リズム＆テンポを合わせて意味が伝われば合格</strong>。「言いやすいから端折る」が原則。<span class="who">— コーチング合意</span></blockquote>
+
+  <div class="linking">
+    <div class="src">new type of steel</div>
+    <div class="heard">ニュー・タイポス・ティール</div>
+    <div class="phen">Linking／弱化：type of が連結、of の /v/ が弱化・消失気味</div>
+    <div class="drill">DRILL：カタカナで音像を掴み、リズム優先で反復。意味は "新しい鋼" と分かれば勝ち。</div>
+  </div>
+
+  <div class="linking">
+    <div class="src">I think we could use it to build some of our parts</div>
+    <div class="heard">アイシンウィ クッヂューズィッ トゥ ビゥ サモヴァ パーツ</div>
+    <div class="phen">高速リンキング／フラップT／弱形（couldの d が消える）</div>
+    <div class="drill">DRILL：<span class="phrase">I think we</span> 等の塊に分割→0.75x 反復→等速。聞けない塊だけ YouTube その箇所のみ視聴。</div>
+  </div>
+
+  <div class="linking">
+    <div class="src">Our office hours are 9 to 6</div>
+    <div class="heard">アワ オフィス アワーズァ ナインダシックス</div>
+    <div class="phen">弱形／連結:hours are の are が "ah" 程度に弱化</div>
+    <div class="drill">DRILL：are を単独で発音せず、hours と一緒に流す。コーチ音源の模倣でテンポ合わせ。</div>
+  </div>
+
+  <div class="linking">
+    <div class="src">She is a member of our team</div>
+    <div class="heard">シーザ メンバロヴ アワ チーム</div>
+    <div class="phen">母音連続の連結（is a／member of／of our）</div>
+    <div class="drill">DRILL：連結箇所ごとに区切って練習。無理ならスキップ可。</div>
+  </div>
+
+  <h3>原則のまとめ</h3>
+  <div class="grid grid-3">
+    <div class="card"><div class="title">① 言いやすいから端折る</div><div class="body">"of" "are" "could" の弱化は理屈じゃなく「楽だから」。日本語の「ありがとうございます→あざす」と同じ。</div></div>
+    <div class="card"><div class="title">② 人によって違う</div><div class="body">話者ごとに端折り方が違う。"正解はひとつ" と思うとしんどい。慣れていくしかない。</div></div>
+    <div class="card"><div class="title">③ リズム合わせ優先</div><div class="body">完全再現は無理。スピードとアクセント位置だけ合わせれば、相手には伝わる。</div></div>
+  </div>
+</section>
+
+<section>
+  <h2>🗣 Part 6｜発音 改善メモ</h2>
+  <table>
+    <thead><tr><th>単語 / フレーズ</th><th>観察</th><th>推奨 / 練習方法</th></tr></thead>
+    <tbody>
+      <tr><td><span class="phrase">office</span></td><td>/ɔfɪs/ 寄りの日本語母音</td><td>/ˈɑː.fɪs/（「ア」に近い母音）。母音質とストレス位置に注意。</td></tr>
+      <tr><td><span class="phrase">Labour Day</span></td><td>やや不安定</td><td>/ˈleɪ.bər deɪ/。L/R と強弱に注意。</td></tr>
+      <tr><td><span class="phrase">hours are</span></td><td>are が is 的に聞こえる</td><td>/aʊərz ɑːr/ → 連結で /aʊəzər/。弱形化＋連結。</td></tr>
+      <tr><td><span class="phrase">I'd like to</span></td><td>個別練習推奨</td><td>フレーズ特化の YouTube で舌位置・連結を確認。</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h2>📚 Part 7｜語彙＆コアイメージ</h2>
+
+  <h3>前置詞のコアイメージ（今日の核）</h3>
+  <div class="grid grid-4">
+    <div class="card ink"><div class="label">IN</div><div class="title">空間の中</div><div class="body"><span class="phrase">in our company</span> = 社内で（中のニュアンス）</div></div>
+    <div class="card"><div class="label">AT</div><div class="title">一点</div><div class="body"><span class="phrase">at our company</span> = 会社という点。ピン留めのイメージ。</div></div>
+    <div class="card pop"><div class="label">OF</div><div class="title">強い所属（くっつき）</div><div class="body"><span class="phrase">a member of our team</span> = チームの一員。</div></div>
+    <div class="card"><div class="label">FROM</div><div class="title">出所・距離あり</div><div class="body"><span class="phrase">Masaki from ABC</span> = ABC社の正樹（紹介の一般形）。</div></div>
+  </div>
+
+  <h3>今日の新出フレーズ</h3>
+  <table>
+    <thead><tr><th>フレーズ</th><th>意味・コアイメージ</th><th>用例</th></tr></thead>
+    <tbody>
+      <tr><td><span class="phrase">How is your work?</span></td><td>仕事の <strong>状況・調子</strong>を尋ねる（内容ではない）</td><td>"How is your work?" → "Busy, but going well."</td></tr>
+      <tr><td><span class="phrase">What do you do?</span></td><td><strong>職業</strong>そのものを尋ねる</td><td>"What do you do?" → "I work at Firework."</td></tr>
+      <tr><td><span class="phrase">follow up</span></td><td>直訳「ついていって持ち上げる」→ <strong>面倒みる／サポートする</strong>→ 意訳で「連絡しますね」</td><td>"I'll follow up after the meeting."</td></tr>
+      <tr><td><span class="phrase">cheer up</span></td><td>持ち上げる → <strong>応援する</strong></td><td>"Cheer up, you can do it!"</td></tr>
+      <tr><td><span class="phrase">awesome</span></td><td>畏敬の念 → 「最高／すごい」のカジュアル形</td><td>"That's awesome!"</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h2>📈 Part 8｜シャドーイング進捗</h2>
+  <p class="lead">教材：ビジネス対話（Unit 01 前半）</p>
+  <div>
+    <div style="font-size:13px;margin-bottom:4px"><strong>現在</strong>：0.75x で 75%</div>
+    <div class="progress"><div class="bar" style="width:75%"></div><span class="pct">75%</span></div>
+    <div style="font-size:13px;margin:14px 0 4px"><strong>次回目標</strong>：等速（100%）で前半完成</div>
+    <div class="progress"><div class="bar" style="width:100%;opacity:0.4"></div><span class="pct" style="color:#0F3460">→ 100%</span></div>
+  </div>
+
+  <h3>今週の進め方（合意ルール）</h3>
+  <div class="grid grid-2">
+    <div class="card"><div class="title">パターンB を選択</div><div class="body">範囲を区切って 100% まで詰める（Unit 01 前半を完成）。</div></div>
+    <div class="card"><div class="title">詰まった塊だけ反復</div><div class="body">塊単位で 0.75x → 等速。文全部やり直さない。</div></div>
+    <div class="card warn"><div class="title">無理なら YouTube</div><div class="body">該当フレーズの発音解説動画をピンポイントで視聴。</div></div>
+    <div class="card pop"><div class="title">それでも無理なら Gemini</div><div class="body">「カタカナで」「なぜそう発音？」と聞く。直訳＋意訳＋コアイメージで。</div></div>
+  </div>
+</section>
+
+<section>
+  <h2>🤖 Part 9｜AI 自律学習ワークフロー</h2>
+  <p class="lead">不明単語・フレーズはその場で AI に投げる癖。<strong>直訳と意訳の両方</strong>を必ず出させる。</p>
+  <table>
+    <thead><tr><th>シーン</th><th>ツール</th><th>使い方</th></tr></thead>
+    <tbody>
+      <tr><td>単語レベルの調査</td><td><span class="phrase neutral">DeepL</span></td><td>高速に直訳・意訳。サクッと意味を取りたい時。</td></tr>
+      <tr><td>ニュアンス・コアイメージ</td><td><span class="phrase neutral">Gemini</span></td><td>「ネイティブの感覚で」「カタカナで」と聞く。前置詞やリンキングに有効。</td></tr>
+      <tr><td>スラッシュリーディング</td><td><span class="phrase neutral">Gemini</span></td><td>区切り訳＋自然訳の両方を提示させる。前から読む訓練に。</td></tr>
+      <tr><td>月次レビュー</td><td><span class="phrase neutral">Claude / Gemini</span></td><td>Toggl の PDF を投げて、学習内訳・時間の集計を生成。</td></tr>
+    </tbody>
+  </table>
+  <blockquote>意訳だけだと「なぜそう訳すか」が抜けて、スラッシュリーディング時に対応がとれなくなる。<strong>必ず直訳と意訳の両方を出させる。</strong></blockquote>
+</section>
+
+<section>
+  <h2>📊 Part 10｜本日の評価レーダー</h2>
+  <p class="lead">5段階の主観評価。次週同じ軸で比較します。</p>
+  <div class="grid grid-2">
+    <div class="radar">
+      <svg viewBox="0 0 400 400" aria-label="評価レーダーチャート">
+        <g fill="none" stroke="#E4E7EE" stroke-width="1">
+          <polygon points="200,40 339,131 286,290 114,290 61,131"/>
+          <polygon points="200,80 312,153 270,280 130,280 88,153"/>
+          <polygon points="200,120 286,176 254,270 146,270 114,176"/>
+          <polygon points="200,160 259,198 238,260 162,260 141,198"/>
+          <polygon points="200,200 232,221 222,250 178,250 168,221"/>
+        </g>
+        <g stroke="#E4E7EE" stroke-width="1">
+          <line x1="200" y1="200" x2="200" y2="40"/>
+          <line x1="200" y1="200" x2="339" y2="131"/>
+          <line x1="200" y1="200" x2="286" y2="290"/>
+          <line x1="200" y1="200" x2="114" y2="290"/>
+          <line x1="200" y1="200" x2="61" y2="131"/>
+        </g>
+        <polygon points="200,136 269.5,165.5 251.6,254 165.6,254 116.4,158.4"
+                 fill="rgba(27,153,139,0.35)" stroke="#1B998B" stroke-width="2"/>
+        <g font-family="Noto Sans JP" font-size="12" fill="#0F3460" font-weight="700" text-anchor="middle">
+          <text x="200" y="28">Fluency</text>
+          <text x="358" y="128">Accuracy</text>
+          <text x="305" y="312">Pronunciation</text>
+          <text x="95" y="312">Linking</text>
+          <text x="42" y="128">Confidence</text>
+        </g>
+      </svg>
+    </div>
+    <div>
+      <table>
+        <thead><tr><th>観点</th><th>評価</th><th>コメント</th></tr></thead>
+        <tbody>
+          <tr><td>Fluency</td><td><strong>2</strong>/5</td><td>文法を気にして停止しがち。単語繋ぎで継続。</td></tr>
+          <tr><td>Accuracy</td><td><strong>2〜3</strong>/5</td><td>SVOC が出始め。前置詞調整が必要。</td></tr>
+          <tr><td>Pronunciation</td><td><strong>2〜3</strong>/5</td><td>母音品質（office）改善余地。良い瞬間も。</td></tr>
+          <tr><td>Linking</td><td><strong>2</strong>/5</td><td>典型は気づき始め。高速女声が難所。</td></tr>
+          <tr><td>Confidence</td><td><strong>2〜4</strong>/5</td><td>能動学習・継続力は高い。単語で伝える意志◎。</td></tr>
+        </tbody>
+      </table>
+      <h3>💪 強み</h3>
+      <ul style="padding-left:18px;font-size:14px">
+        <li>毎日30分〜週末1時間の継続学習</li>
+        <li>能動的な発音調査（YouTube 自発検索）</li>
+        <li>盾フレーズ・Toggl・AI への高い受容性</li>
+        <li>自己修正力（in → of などその場で直せる）</li>
+      </ul>
+      <h3>🌱 伸びしろ</h3>
+      <ul style="padding-left:18px;font-size:14px">
+        <li>スモールトーク定型の暗唱化</li>
+        <li>前置詞・冠詞・複数語尾の基礎精度</li>
+        <li>リンキングの細切れ反復で<strong>リズム合わせ</strong></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>📝 次回までの宿題</h2>
+  <p class="lead">チェックボックスは押すたびにブラウザに保存されます（端末ごと）。</p>
+
+  <h3>短期（次回まで）</h3>
+  <div class="checklist" data-hw-key="2026-06-17">
+    <label><input type="checkbox" data-id="hw1"><span>スモールトーク定型スクリプトを音読・暗唱（挨拶→返答→聞き返し→自己紹介→Nice to meet you の流れ）</span></label>
+    <label><input type="checkbox" data-id="hw2"><span>挨拶ループ練習：<span class="phrase">How are you?</span> → <span class="phrase">Good.</span> → <span class="phrase">How are you?</span> を自然なテンポで</span></label>
+    <label><input type="checkbox" data-id="hw3"><span>自己紹介ループ：<span class="phrase">Nice to meet you.</span> → <span class="phrase">Nice to meet you too.</span> → <span class="phrase">My name is 〇〇. I'm from ...</span></span></label>
+    <label><input type="checkbox" data-id="hw4"><span>シャドーイング：Unit 01 前半を <strong>75% → 100%（等速）</strong> まで引き上げ</span></label>
+    <label><input type="checkbox" data-id="hw5"><span>リンキング特訓：<span class="phrase">I think we could use it</span> 等の難所を塊で反復→無理なら YouTube→Gemini</span></label>
+    <label><input type="checkbox" data-id="hw6"><span>Quick Response：現ユニットを「考えずに出せる」レベルまで反復（SVOC の即出し）</span></label>
+    <label><input type="checkbox" data-id="hw7"><span>Toggl Track：Googleカレンダー連携設定／<span class="phrase">Quick Response</span> <span class="phrase">Pronunciation</span> タグ運用</span></label>
+    <label><input type="checkbox" data-id="hw8"><span>不明単語はその場で Gemini に質問（直訳＋意訳＋コアイメージ）</span></label>
+    <label><input type="checkbox" data-id="hw9"><span>通勤中の口慣らし（電車内でも小声でOK）</span></label>
+  </div>
+
+  <h3>中期マイルストーン</h3>
+  <div class="checklist" data-hw-key="2026-06-17-mid">
+    <label><input type="checkbox" data-id="mid1"><span>自己紹介 <strong>2〜3分</strong> を即出しできるレベルまで仕上げる</span></label>
+    <label><input type="checkbox" data-id="mid2"><span><strong>2026年7月中</strong>にオンライン英会話サービスへ登録・初回受講</span></label>
+    <label><input type="checkbox" data-id="mid3"><span>チューター用の盾フレーズを <strong>5個</strong> ストック</span></label>
+  </div>
+</section>
+
+<section>
+  <h2>📅 次回セッション</h2>
+  <table>
+    <tr><th style="width:18%">予定日時</th><td>調整中</td></tr>
+    <tr><th>テーマ（仮）</th><td>スモールトーク実践（仕事の状況説明）／自己紹介練習／シャドーイング Unit 01 前半 100%／Quick Response／基本5文型の復習</td></tr>
+    <tr><th>事前準備</th><td>本日の宿題（定型フレーズ暗唱／Toggl設定／シャドーイング前半完成）</td></tr>
+    <tr><th>持参・共有</th><td>練習音声（必要に応じて）／Toggl 学習ログ PDF（月末）</td></tr>
+  </table>
+</section>
+
+<section>
+  <h2>🎥 紹介された教材</h2>
+  <div class="grid grid-2">
+    <div class="card"><div class="label">YouTube</div><div class="title">Yui先生</div><div class="body">フォニックス／英語のリズム。読めない単語の練習に。</div></div>
+    <div class="card pop"><div class="label">YouTube</div><div class="title">Jedyさん</div><div class="body">リスニング特化・リンキング。日本人がつまずく所を熟知（息子が日本人）。</div></div>
+    <div class="card"><div class="label">YouTube</div><div class="title">PIVOT 大二郎さん</div><div class="body">モノマネ・人格を捨てる思想。リズム模倣の哲学。</div></div>
+    <div class="card warn"><div class="label">AI ツール</div><div class="title">DeepL / Gemini / Claude</div><div class="body">直訳＋意訳＋コアイメージ。スラッシュリーディング、月次集計。</div></div>
+  </div>
+</section>
+
+<footer>
+  English Coaching by 石島 真也 (Firework) ／ 学習者：Aikoさん<br>
+  Last Updated: 2026年6月17日 20:10 JST
+</footer>
+
+<script>
+  document.querySelectorAll('.checklist').forEach(function(list){
+    var key = 'hw-' + list.getAttribute('data-hw-key');
+    var saved = {};
+    try { saved = JSON.parse(localStorage.getItem(key) || '{}'); } catch(e){}
+    list.querySelectorAll('input[type=checkbox]').forEach(function(cb){
+      if(saved[cb.dataset.id]) cb.checked = true;
+      cb.addEventListener('change', function(){
+        saved[cb.dataset.id] = cb.checked;
+        localStorage.setItem(key, JSON.stringify(saved));
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
