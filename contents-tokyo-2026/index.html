@@ -7,15 +7,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>コンテンツ東京2026 競合調査ダッシュボード</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎬</text></svg>">
-<meta name="description" content="コンテンツ東京2026の会社資料14社をカテゴリ別に整理した競合調査ダッシュボード。生成AI・3Dアバター・ライブ配信・動画制作の5カテゴリで一覧。">
-<meta name="last-modified" content="2026-06-18T21:05:48+09:00">
+<meta name="description" content="コンテンツ東京2026の会社資料15社をカテゴリ別に整理した競合調査ダッシュボード。生成AI・3Dアバター・ライブ配信・動画制作の5カテゴリで一覧。">
+<meta name="last-modified" content="2026-06-18T21:27:51+09:00">
 <meta property="og:title" content="コンテンツ東京2026 競合調査ダッシュボード">
-<meta property="og:description" content="コンテンツ東京2026の会社資料14社をカテゴリ別に整理した競合調査ダッシュボード">
+<meta property="og:description" content="コンテンツ東京2026の会社資料15社をカテゴリ別に整理した競合調査ダッシュボード">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://riderkarubo.github.io/firework-decks/contents-tokyo-2026/">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="コンテンツ東京2026 競合調査ダッシュボード">
-<meta name="twitter:description" content="コンテンツ東京2026の会社資料14社をカテゴリ別に整理した競合調査ダッシュボード">
+<meta name="twitter:description" content="コンテンツ東京2026の会社資料15社をカテゴリ別に整理した競合調査ダッシュボード">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
@@ -354,7 +354,18 @@
     align-items: center;
     flex-wrap: wrap;
   }
-  .pdf-link {
+  .pdf-link-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .pdf-link.pdf-link-web {
+    background: #3b82f6;
+  }
+  .pdf-link.pdf-link-web:hover {
+    background: var(--accent);
+  }
+    .pdf-link {
     display: inline-flex;
     align-items: center;
     gap: 5px;
@@ -556,16 +567,16 @@
 <header class="cover">
   <div class="cover-inner">
     <h1>🎬 コンテンツ東京2026 競合調査ダッシュボード</h1>
-    <div class="cover-sub">生成AI・3Dアバター・ライブ配信・動画制作 14社の競合資料を一覧化</div>
+    <div class="cover-sub">動画制作・生成AI・ライブ配信・3D・総合 15社の競合資料を一覧化</div>
     <div class="stats">
-      <div class="stat"><div class="stat-num">14</div><div class="stat-label">総社数</div></div>
+      <div class="stat"><div class="stat-num">15</div><div class="stat-label">総社数</div></div>
       <div class="stat"><div class="stat-num">5</div><div class="stat-label">業種カテゴリ</div></div>
       <div class="stat"><div class="stat-num" id="priced-count">—</div><div class="stat-label">料金明示あり</div></div>
-      <div class="stat"><div class="stat-num">3</div><div class="stat-label">生成AI関連</div></div>
+      <div class="stat"><div class="stat-num">4</div><div class="stat-label">生成AI関連</div></div>
       <div class="stat"><div class="stat-num">6</div><div class="stat-label">動画制作</div></div>
     </div>
     <div class="cover-meta">
-      <div><strong>Last Updated:</strong> 2026年6月18日 21:05</div>
+      <div><strong>Last Updated:</strong> 2026年6月18日 21:27</div>
       <div><strong>Prepared by:</strong> Firework / 軍師</div>
       <div><strong>出典:</strong> コンテンツ東京2026 各社配布パンフレット (PDF)</div>
     </div>
@@ -617,119 +628,29 @@
 </main>
 
 <footer>
-  コンテンツ東京2026 競合調査ダッシュボード / Last Updated: 2026年6月18日 21:05 JST
+  コンテンツ東京2026 競合調査ダッシュボード / Last Updated: 2026年6月18日 21:27 JST
 </footer>
 
 <script>
 // Relative paths from this HTML (HTML and PDFs deployed together)
 
 const CATEGORIES = [
-  { id: "01", label: "生成AI・AIアバター", icon: "🤖", dir: "01_生成AI・AIアバター" },
-  { id: "02", label: "3D・アバター・メタバース", icon: "🎭", dir: "02_3D・アバター・メタバース" },
-  { id: "03", label: "ライブ配信", icon: "📡", dir: "03_ライブ配信" },
   { id: "04", label: "動画・アニメーション制作", icon: "🎬", dir: "04_動画・アニメーション制作" },
+  { id: "01", label: "生成AI・AIアバター", icon: "🤖", dir: "01_生成AI・AIアバター" },
+  { id: "03", label: "ライブ配信", icon: "📡", dir: "03_ライブ配信" },
+  { id: "02", label: "3D・アバター・メタバース", icon: "🎭", dir: "02_3D・アバター・メタバース" },
   { id: "06", label: "その他・総合制作・展示会", icon: "🏢", dir: "06_その他・総合制作・展示会" },
 ];
 
 const COMPANIES = [
-  // === 01 生成AI・AIアバター ===
-  {
-    cat: "01",
-    file: "Brochure.pdf",
-    company: "AI Creator Token Hub (antchain)",
-    service: "All-in-One AI Creation Support Hub",
-    summary: "Seedance 2・VIDU・Claude・GPT・Gemini・DeepSeek等の主要AIモデルを統合したオールインワンAI制作支援ハブ。脚本生成・AI動画・ショートドラマ・多言語翻訳・広告/ゲーム素材生成・アニメ/マンガショート制作をワンストップ。",
-    services: ["脚本生成", "AI動画生成", "ショートドラマ・IP動画化", "多言語翻訳・ローカライズ", "広告・ゲーム素材生成", "アニメ・マンガショート制作"],
-    pricing: ["新規登録で50ドル分のAI制作枠を無料付与（LINE経由）"],
-    features: ["主要AIモデル統合（Seedance 2 / VIDU / Claude / GPT / Gemini / DeepSeek / Qwen / GLM）", "オールインワンAI制作ハブ", "多言語対応"],
-    target: "クリエイター・動画制作者・IPホルダー・広告/ゲーム業界のコンテンツ制作担当者",
-    contact: "antchain@antfin.com",
-  },
-  {
-    cat: "01",
-    file: "COLOWORKS(size-s).pdf",
-    company: "株式会社スカイトップ / 日本コロムビアグループ",
-    service: "COLOWORKS（コロワークス）",
-    summary: "日本コロムビアグループ傘下のAIクリエイター共創ネットワーク。映像/音楽/プロンプト設計の専門AIクリエイターが多数登録。独自ソリューション「Stop Fake™」で著作権・肖像権の類似リスクをAI+目視のダブルチェック。細川たかし・德永英明・JYOCHO等の公式MVを全編AIで制作した実績。",
-    services: ["AIクリエイターネットワークによる映像制作", "AIミュージックビデオ・リリックビデオ制作", "Stop Fake™ 類似リスク検知", "AIコンテスト『COLOTEK』運営", "ブランド向けAIコンテンツ制作"],
-    pricing: [],
-    features: ["独自AI『Stop Fake™』で著作権・肖像権リスクを自動判定", "AI判定＋専門スタッフ目視のダブルチェック", "日本コロムビアグループ（115年以上）の事業基盤", "メジャーアーティスト公式映像の全編AI制作実績"],
-    target: "法人クライアント（大企業・有名ブランドのマーケ担当）、音楽・エンタメ業界",
-    contact: "080-9099-4618 (笛木) / 090-9246-7765 (関根)",
-  },
-  {
-    cat: "01",
-    file: "aicrew 紹介資料.pdf",
-    company: "aicrew(エーアイクルー)",
-    service: "AI動画制作・AI研修",
-    summary: "「AI Communication Company」を標榜。代表は元博報堂出身の明賀大介氏、CCOはYouTube登録者2.7万人のAI動画講師Norihiko氏。クオリティ・スピード・コストで日本トップレベルのAI動画制作を標榜し、企業向けAI内製化研修も展開。電通・博報堂・日テレ・テレ東・UNIVERSAL等の取引実績。",
-    services: ["AI動画制作（CM・PR・SNS）", "AI内製化研修（動画・営業・バックオフィス・建築不動産）", "自治体・地域PR向けAI動画", "教育・施設PR（顔出し不可業界）", "障がい者就労支援", "スポーツ/タレント/IP向け", "不動産AIパース・物件PR"],
-    pricing: [],
-    features: ["元博報堂代表・YouTube登録者2.7万人のCCO", "電通・博報堂・日テレ・テレ東・UNIVERSAL等の実績", "三井住友信託銀行・DMM TV等のAI動画実績", "人材開発支援助成金活用で実質負担額DOWN", "ロケ撮影不要で全国自治体展開可能"],
-    target: "広告主・代理店・地方自治体・スポーツチーム・タレント事務所・IPホルダー・不動産業界・教育機関・障がい者就労支援事業所・AI内製化を目指す各業界企業",
-    contact: "—",
-  },
-
-  // === 02 3D・アバター・メタバース ===
-  {
-    cat: "02",
-    file: "3Dコンテンツプロジェクト_実践ガイド.pdf",
-    company: "株式会社メルタ",
-    service: "MODELY（モデリー）— 3Dコンテンツ全般",
-    summary: "AR・VTuber・3Dプリント・ホログラム・3Dバーチャル展示会など幅広い3Dコンテンツを着想から着地までワンストップ支援。500件以上の支援実績。仕様が固まっていなくても寄り添う提案力が強み。",
-    services: ["3DCG・3Dモデル制作", "AR制作", "VTuber向け3Dモデル", "3Dプリント", "ホログラム表示用3DCG", "3Dバーチャル展示会・空間制作", "VR/メタバース向け3Dモデル", "企画・要件整理・事前調査"],
-    pricing: [],
-    features: ["500件以上の3Dコンテンツ支援実績", "AR・VTuber・3Dプリントまで幅広い技術力", "イラストから本番環境までワンストップ", "目的に応じて2D解決も率直に提案"],
-    target: "3Dコンテンツを初めて検討する事業会社、AR/VR/メタバース/展示会/ホログラム/VTuberの活用検討マーケ担当",
-    contact: "—",
-  },
-  {
-    cat: "02",
-    file: "3Dプロジェクトの基礎知識_アバター編.pdf",
-    company: "株式会社メルタ（MELTA / MODELY）",
-    service: "MODELY — 3Dアバター制作",
-    summary: "3Dアバター制作の基礎知識資料。デザイン→モデリング→表情→リギング→揺れもの→アプリ用設定までの一貫サポート。Animaze・Live2D・MMD・VTuber・VRChat・Virtual Cast対応。",
-    services: ["3Dアバター制作（簡単/動物/人型）", "キャラクターデザイン", "モデリング・テクスチャリング", "リギング・スキニング", "表情作成（あいうえお・喜怒哀楽）", "揺れもの・物理剛体設定", "アプリ用設定（VTuber/VRChat/Virtual Cast等）"],
-    pricing: ["簡単なキャラクター: 40万円〜（納期1ヶ月）", "動物キャラクター: 60万円〜（納期1ヶ月）", "人型キャラクター: 80万円〜（納期1.5ヶ月）"],
-    features: ["専属デザイナーによる3Dデータ制作", "主要アバタープラットフォーム全対応", "用途に応じた表情パターン", "揺れもの・剛体設定で自然な動き"],
-    target: "3Dアバターを活用したい企業・団体（プロモーション）、研究機関、VTuber・個人配信者、メタバース/VR活用層",
-    contact: "info@melta.co.jp / 03-5839-2567",
-  },
-
-  // === 03 ライブ配信 ===
-  {
-    cat: "03",
-    file: "2.)SKYTOP-LIVE_panf_yoko_(2025)(2.5MB).pdf",
-    company: "株式会社スカイトップ",
-    service: "SKYTOP LIVE",
-    summary: "動画制作で培った企画力を活かし、株主総会・製品発表会・ウェビナーなどを企画・会場手配から撮影・配信・編集まで一気通貫サポート。芸能プロダクション連携でキャスト手配も可能。",
-    services: ["ライブ配信（株主総会・ウェビナー・発表会・バーチャル展示会・ゲームイベント）", "映像コンテンツ企画・制作", "テロップ・挿入動画制作", "会場手配・配信機材選定・スタッフ手配", "芸能プロ連携キャスト手配"],
-    pricing: ["ウェビナープラン: 20万円〜（カメラ1台〜・スタッフ2名〜）", "ハイブリッドプラン: 50万円〜（カメラ2台〜・配信ディレクター・音響オペ付）", "プレミアムプラン: 100万円〜（カメラ3台〜・複数日対応）"],
-    features: ["企画から配信・編集までワンストップ", "動画制作会社ならではの企画力・演出力", "テロップ・挿入動画でコンテンツ強化", "スタジオ配信は背景合成でTV番組のような演出"],
-    target: "株主総会・製品発表会・ウェビナー・セミナー・バーチャル展示会等を実施する企業（ベンチャー〜上場企業）、大手代理店",
-    contact: "03-5927-8740 / https://skytop-live.com",
-  },
-  {
-    cat: "03",
-    file: "【ライヴル】ライブ配信サポートサービス.pdf",
-    company: "cheese-group（チーズグループ）",
-    service: "ライヴル（LIVEL）",
-    summary: "自社運用サポート（オンライン相談→デモ→マニュアル）の3ステップ内製化支援と、4プランの配信代行サービスを提供。配信現場の内製化から丸ごと代行まで段階対応。",
-    services: ["自社運用サポート3ステップ（相談60分・デモ3時間・マニュアル作成）", "ライブ配信代行（スターター/ベーシック/アドバンス/プレミアム）", "オプション：スタジオ・カメラ・スタッフ・企画構成・現場進行・回線・アーカイブ・テロップ"],
-    pricing: ["自社運用サポート3ステップ: 150,000円(税込165,000円) ※期間限定無料キャンペーン", "スタータープラン: 100,000円〜(税込110,000円) カメラ1台/1人/1時間", "ベーシックプラン: 150,000円〜(税込165,000円) カメラ2台/2人/1時間", "アドバンスプラン: 300,000円〜(税込330,000円) カメラ3台/3人/2時間", "プレミアムプラン: 応相談 カメラ4台/4人", "オプション例: スタジオ10,000円/時〜、現役TVスタッフ45,000円/人〜、企画構成80,000円〜"],
-    features: ["3ステップで内製化支援", "現役TVスタッフによる企画構成・現場進行オプション", "カメラ台数・スタッフ・時間で柔軟プラン", "各ステップ単品注文可能"],
-    target: "ライブ配信を内製化したい企業、配信を丸ごと外注したい企業（セミナー・対談・テレビ風配信等）",
-    contact: "03-6452-3895 / livel@cheese-group.com",
-  },
-
-  // === 04 動画・アニメーション制作 ===
+  // === 04 動画・アニメーション制作 (6社) ===
   {
     cat: "04",
-    file: "1本3万円　ヒビミル.pdf",
+    files: [{ file: "1本3万円　ヒビミル.pdf", label: "サービス紹介資料" }],
     company: "株式会社フェリエスト",
-    service: "ヒビミル（業界最安水準ショート動画）",
+    service: "ヒビミル(業界最安水準ショート動画)",
     summary: "1本3万円〜の業界最安水準ショート動画制作。500社以上のSNS運用実績・制作本数12,000本以上・総再生数1.2億回以上。初期費用無料・二次利用無期限OK。SNS運用代行・コンサル・内製化支援・広告運用・TikTok Shopまでワンストップ。",
-    services: ["ショート動画制作（ヒビミル）", "ショートドラマ制作（ヒビドラ）", "SNS公式アカウント運用代行", "SNSコンサル・内製化支援・広告運用", "TikTok Shop運用", "TikTok自動分析（カチレポ）", "インフルエンサープロモ"],
+    services: ["ショート動画制作(ヒビミル)", "ショートドラマ制作(ヒビドラ)", "SNS公式アカウント運用代行", "SNSコンサル・内製化支援・広告運用", "TikTok Shop運用", "TikTok自動分析(カチレポ)", "インフルエンサープロモ"],
     pricing: ["ショート動画 商品/自社スタジオ撮影: 3万円/本", "ショート動画 人物/ロケ撮影: 5万円/本", "ヒビドラ ミニマム: 15万円/3ヶ月〜", "公式アカウント運用: 月額30万円〜", "SNSコンサル: 月額20万円〜", "SNS内製化支援: 月額15万円〜", "SNS広告運用: 手数料20%", "ヒビドラ月額: 月額25万円 5本〜", "TikTok Shop運用: 月額30万円〜", "初期費用: 無料"],
     features: ["1本3万円〜の業界最安水準", "初期費用無料・二次利用無期限OK", "500社以上のSNS運用実績", "Instagram/TikTok/YouTube対応", "3回チェックだけで完成する低工数フロー", "ヤクルト/モスフード/マックハウス/立正大/東急バケーションズ等の実績"],
     target: "SNSマーケティングでショート動画を活用したい企業全般。低予算でショート動画施策を始めたい企業に最適",
@@ -737,84 +658,217 @@ const COMPANIES = [
   },
   {
     cat: "04",
-    file: "REALMIXA製品説明.pdf",
+    files: [{ file: "REALMIXA製品説明.pdf", label: "製品説明書" }],
     company: "リーダー電子株式会社",
-    service: "REALMIXA（リアルミクサ）— 実写×CG合成ツール",
+    service: "REALMIXA(リアルミクサ) — 実写×CG合成ツール",
     summary: "実写とCGをシームレスに統合する映像制作ツール。AIによる高精度の自動クロマキー処理＋CG照明を実写に自動反映するカラーグレーディング処理で、実写・CG合成の制作工数を削減し編集者のスキル依存を排除。",
-    services: ["実写映像の自動クロマキー処理（髪・指・衣装の細部まで自然な抜け）", "CG照明を実写に自動反映するカラーグレーディング", "1フレームプレビュー機能", "Premiere・DaVinci Resolve連携", "Unity・Unreal・Blender作成CGに対応"],
+    services: ["実写映像の自動クロマキー処理(髪・指・衣装の細部まで自然な抜け)", "CG照明を実写に自動反映するカラーグレーディング", "1フレームプレビュー機能", "Premiere・DaVinci Resolve連携", "Unity・Unreal・Blender作成CGに対応"],
     pricing: ["初期費用不要", "ソフトウェアダウンロード無料", "クレジット消費の従量課金", "1機能1フレーム=1クレジット消費", "プレビューはクレジット消費なし", "単価はrealmixa@leader.co.jpへ問い合わせ"],
-    features: ["CG照明を実写に自動反映し光の馴染みを実現", "点滅するCG照明にも対応", "AIによる保護強度設定で高精度クロマキー", "同じ設定なら誰でも同じ出力（属人化排除）", "1分60fps動画を30分以内で処理", "Windows11 / NVIDIA RTX 20xx-50xx対応"],
+    features: ["CG照明を実写に自動反映し光の馴染みを実現", "点滅するCG照明にも対応", "AIによる保護強度設定で高精度クロマキー", "同じ設定なら誰でも同じ出力(属人化排除)", "1分60fps動画を30分以内で処理", "Windows11 / NVIDIA RTX 20xx-50xx対応"],
     target: "実写・CG合成映像を制作する映像制作会社、MV/PV制作者、VTuber・アニメキャラとのコラボ映像、グリーンバック撮影スタジオ",
     contact: "realmixa@leader.co.jp",
   },
   {
     cat: "04",
-    file: "【2dotV】アニメーション映像制作承ります.pdf",
-    company: "2dot V inc.",
-    service: "アニメーション映像制作",
-    summary: "アニメPV・ショートフィルム・MV・作品紹介映像に対応。「空と海は、物語になる。」をコンセプトに、シネマティックなビジュアル表現と生成AIを組み合わせた制作スタイルが特徴。",
-    services: ["アニメPV", "ショートフィルム", "MV（ミュージックビデオ）", "作品紹介映像", "企画構成・絵コンテ・映像設計", "生成AI演出", "YouTube・SNS展開"],
-    pricing: [],
-    features: ["アニメ短編・シネマティックビジュアルに特化", "生成AI活用映像演出（AI-assisted production）", "企画→納品→SNS展開までワンストップ", "世界観・尺・用途に応じたカスタム制作"],
-    target: "アニメPV・ショートフィルム・MV・作品紹介映像を必要とするクリエイター・アーティスト・コンテンツ事業者",
-    contact: "https://2dotv-jp.com/",
-  },
-  {
-    cat: "04",
-    file: "【2dotV】会社案内.pdf",
+    files: [
+      { file: "【2dotV】会社案内.pdf", label: "会社案内" },
+      { file: "【2dotV】アニメーション映像制作承ります.pdf", label: "アニメーション映像制作" },
+    ],
     company: "株式会社ツードットブイ (2dotV)",
     service: "2dotV — AI×映像 次世代スタジオ",
-    summary: "AI技術と映像を掛け合わせた次世代の映像制作スタジオ。映画・CM・アニメ・MV・遊技機などあらゆるジャンルを企画から納品までワンストップ。AI導入コンサル・法人研修・GPTs/RAG開発まで展開。",
-    services: ["映像制作（映画/CM/アニメ/MV/遊技機）", "3DCG制作", "AI映像・ジェネレーティブAI活用映像", "映像コンサル（AI導入・業務改善・運用サポート）", "セミナー・研修（法人向けAI研修）", "開発（GPTs・チャットボット・RAG・ファインチューニング・業務システム）"],
+    summary: "AI技術と映像を掛け合わせた次世代の映像制作スタジオ。映画・CM・アニメ・MV・遊技機などあらゆるジャンルを企画から納品までワンストップ。アニメPV・ショートフィルム・MVに特化したシネマティック演出と、AI導入コンサル・法人研修・GPTs/RAG開発まで展開。",
+    services: ["映像制作(映画/CM/アニメ/MV/遊技機)", "アニメPV・ショートフィルム・MV制作", "3DCG制作", "AI映像・ジェネレーティブAI活用映像", "企画構成・絵コンテ・映像設計", "AI導入コンサル(業務改善・運用サポート)", "セミナー・研修(法人向けAI研修)", "開発(GPTs・チャットボット・RAG・ファインチューニング・業務システム)"],
     pricing: [],
-    features: ["AI×映像の次世代スタジオ", "Video/Visual/Vision の3つの力", "映画・ショートドラマ・MV・CM・観光動画・イベント動画など多ジャンル", "ジェネレーティブAI活用"],
-    target: "映像制作を必要とする企業全般（映画・CM・アニメ・MV・遊技機メーカー等）、AI導入を検討する法人",
+    features: ["AI×映像の次世代スタジオ", "Video/Visual/Vision の3つの力", "シネマティックビジュアル × 生成AI演出", "映画・ショートドラマ・MV・CM・観光動画・イベント動画など多ジャンル", "企画→納品→SNS展開までワンストップ"],
+    target: "映像制作を必要とする企業全般(映画・CM・アニメ・MV・遊技機メーカー等)、アニメPV/ショートフィルム制作者、AI導入を検討する法人",
     contact: "info@2dotv-jp.com / 岐阜県美濃加茂市",
   },
   {
     cat: "04",
-    file: "会社紹介資料.pdf",
+    files: [{ file: "会社紹介資料.pdf", label: "会社紹介資料" }],
     company: "株式会社エレファントストーン",
     service: "ヨリゾウ / ROOT / ヒトテマ / OTAKEBI",
-    summary: "2011年設立・従業員56名の映像制作会社。企画・撮影・編集・マーケティングまでワンチームで対応。4ブランドを展開し、AI×アジアリソースのハイブリッド制作（ヒトテマ）、伴走型ブランディング（ROOT）、広告運用代行統合（OTAKEBI）まで包括サポート。",
-    services: ["ヨリゾウ：社内40名+パートナー150社のオーダーメイド映像", "ROOT：オリジナルボードゲームを使った伴走型ブランディング", "ヒトテマ：AI×アジアリソースの低価格・多言語動画", "OTAKEBI：映像制作+広告運用代行統合"],
-    pricing: ["ヒトテマ おにぎりプラン: 〜15秒 1本3万円（税別）", "ヒトテマ 専任コンサル: 60秒まで10万円〜", "費用レンジ事例: 〜10万円 / 〜50万円 / 51〜150万円 / 151〜300万円 / 301〜500万円", "OTAKEBI事例: JICA 出稿予算50万円でPV10万超"],
-    features: ["企画・撮影・編集・マーケまで社内完結のONE TEAM STYLE", "社内クリエイター40名+パートナー150社", "AI×アジアリソース（タイ中心の東南アジア提携）", "日本語・英語・中国語など多言語対応", "ヨリゾウは打ち合わせ・修正回数無制限", "ファーストリテイリング・集英社・JR・JTB・トヨタ等の実績"],
-    target: "業界・業種を問わない法人全般（アパレル・小売・食品・旅行・航空・美容・出版・教育・不動産・IT/通信・金融・自治体）",
+    summary: "2011年設立・従業員56名の映像制作会社。企画・撮影・編集・マーケティングまでワンチームで対応。4ブランドを展開し、AI×アジアリソースのハイブリッド制作(ヒトテマ)、伴走型ブランディング(ROOT)、広告運用代行統合(OTAKEBI)まで包括サポート。",
+    services: ["ヨリゾウ:社内40名+パートナー150社のオーダーメイド映像", "ROOT:オリジナルボードゲームを使った伴走型ブランディング", "ヒトテマ:AI×アジアリソースの低価格・多言語動画", "OTAKEBI:映像制作+広告運用代行統合"],
+    pricing: ["ヒトテマ おにぎりプラン: 〜15秒 1本3万円(税別)", "ヒトテマ 専任コンサル: 60秒まで10万円〜", "費用レンジ事例: 〜10万円 / 〜50万円 / 51〜150万円 / 151〜300万円 / 301〜500万円", "OTAKEBI事例: JICA 出稿予算50万円でPV10万超"],
+    features: ["企画・撮影・編集・マーケまで社内完結のONE TEAM STYLE", "社内クリエイター40名+パートナー150社", "AI×アジアリソース(タイ中心の東南アジア提携)", "日本語・英語・中国語など多言語対応", "ヨリゾウは打ち合わせ・修正回数無制限", "ファーストリテイリング・集英社・JR・JTB・トヨタ等の実績"],
+    target: "業界・業種を問わない法人全般(アパレル・小売・食品・旅行・航空・美容・出版・教育・不動産・IT/通信・金融・自治体)",
     contact: "03-6712-7864 / 東京都渋谷区猿楽町",
   },
   {
     cat: "04",
-    file: "展示会パンフレット_株式会社トラストスタジオ.pdf",
+    files: [{ file: "展示会パンフレット_株式会社トラストスタジオ.pdf", label: "展示会パンフレット" }],
     company: "株式会社トラストスタジオ",
     service: "映像制作トータルサポート",
     summary: "企画・撮影・編集まで自社中心で対応する映像制作会社。映像クリエイター出身の代表が直接ディレクションし、撮影機材も自社保有することで中間コストを抑える。初めての映像制作企業からの相談にも対応。",
     services: ["SNSショート動画", "採用・会社紹介動画", "ブランディングムービー", "展示会用映像", "イベント記録動画", "インタビュー・座談会", "1日密着動画", "お客様の声・導入事例", "教育・研修動画", "生成AI動画", "Instagram/TikTok/YouTubeショート"],
-    pricing: ["SNSショート動画: 3〜5万円/本（毎月1日撮影）", "採用・会社紹介動画: 20〜60万円/本（撮影1日）", "ブランディングムービー: 80〜150万円/本（撮影2〜3日）", "主な相談価格帯: 20〜50万円/本"],
+    pricing: ["SNSショート動画: 3〜5万円/本(毎月1日撮影)", "採用・会社紹介動画: 20〜60万円/本(撮影1日)", "ブランディングムービー: 80〜150万円/本(撮影2〜3日)", "主な相談価格帯: 20〜50万円/本"],
     features: ["企画・構成・進行管理・編集を自社中心で対応し中間コスト削減", "映像クリエイター出身の代表が直接ディレクション", "カメラ・照明・音声機材を自社保有", "初めての映像制作企業へのサポート体制", "無料相談対応"],
-    target: "採用動画・会社紹介・SNS発信・展示会映像を必要とする企業（初めての映像制作企業含む）",
+    target: "採用動画・会社紹介・SNS発信・展示会映像を必要とする企業(初めての映像制作企業含む)",
     contact: "090-5495-7397 / movie@truststudio.net",
   },
+  {
+    cat: "04",
+    files: [],
+    website: "https://www.w-creative.tv/",
+    websiteLabel: "公式サイト",
+    company: "W CREATIVE株式会社(ダブルクリエイティブ)",
+    service: "B2B特化動画マーケティング",
+    summary: "B2B特化の動画マーケティング専門集団。戦略立案から企画・制作・配信までワンストップ。約2,500名の動画クリエイターネットワーク(実写・アニメ・CG・ドローン)と500社以上の実績。AIを活用したコンテンツパーソナライゼーション・インタラクティブ動画・360度動画・AR/VRも対応。",
+    services: ["B2B動画マーケティング(戦略〜制作〜配信ワンストップ)", "展示会ブースコンサルティング", "動画コンテンツ制作", "インターネット広告", "クラウドソーシング", "AIコンテンツパーソナライゼーション", "インタラクティブ動画・360度動画・AR/VR"],
+    pricing: [],
+    features: ["B2B特化(BtoB動画マーケ協会会員)", "世界2,500名のクリエイターネットワーク(実写・アニメ・CG・ドローン)", "500社以上の実績", "戦略〜制作〜配信のワンストップ体制", "AI活用・インタラクティブ動画・AR/VR対応", "展示会ブースコンサルも提供"],
+    target: "B2B(BtoB)企業のマーケティング・営業・展示会担当者。動画でリード獲得・商談化を目指す企業",
+    contact: "東京都千代田区有楽町 / 公式サイトより問い合わせ",
+  },
 
-  // === 06 その他・総合制作・展示会 ===
+  // === 01 生成AI・AIアバター (4社) ===
+  {
+    cat: "01",
+    files: [{ file: "Brochure.pdf", label: "Brochure (英語版)" }],
+    company: "AI Creator Token Hub (antchain)",
+    service: "All-in-One AI Creation Support Hub",
+    summary: "Seedance 2・VIDU・Claude・GPT・Gemini・DeepSeek等の主要AIモデルを統合したオールインワンAI制作支援ハブ。脚本生成・AI動画・ショートドラマ・多言語翻訳・広告/ゲーム素材生成・アニメ/マンガショート制作をワンストップ。",
+    services: ["脚本生成", "AI動画生成", "ショートドラマ・IP動画化", "多言語翻訳・ローカライズ", "広告・ゲーム素材生成", "アニメ・マンガショート制作"],
+    pricing: ["新規登録で50ドル分のAI制作枠を無料付与(LINE経由)"],
+    features: ["主要AIモデル統合(Seedance 2 / VIDU / Claude / GPT / Gemini / DeepSeek / Qwen / GLM)", "オールインワンAI制作ハブ", "多言語対応"],
+    target: "クリエイター・動画制作者・IPホルダー・広告/ゲーム業界のコンテンツ制作担当者",
+    contact: "antchain@antfin.com",
+  },
+  {
+    cat: "01",
+    files: [{ file: "COLOWORKS(size-s).pdf", label: "サービス紹介" }],
+    company: "株式会社スカイトップ / 日本コロムビアグループ",
+    service: "COLOWORKS(コロワークス)",
+    summary: "日本コロムビアグループ傘下のAIクリエイター共創ネットワーク。映像/音楽/プロンプト設計の専門AIクリエイターが多数登録。独自ソリューション「Stop Fake™」で著作権・肖像権の類似リスクをAI+目視のダブルチェック。細川たかし・德永英明・JYOCHO等の公式MVを全編AIで制作した実績。",
+    services: ["AIクリエイターネットワークによる映像制作", "AIミュージックビデオ・リリックビデオ制作", "Stop Fake™ 類似リスク検知", "AIコンテスト『COLOTEK』運営", "ブランド向けAIコンテンツ制作"],
+    pricing: [],
+    features: ["独自AI『Stop Fake™』で著作権・肖像権リスクを自動判定", "AI判定＋専門スタッフ目視のダブルチェック", "日本コロムビアグループ(115年以上)の事業基盤", "メジャーアーティスト公式映像の全編AI制作実績"],
+    target: "法人クライアント(大企業・有名ブランドのマーケ担当)、音楽・エンタメ業界",
+    contact: "080-9099-4618 (笛木) / 090-9246-7765 (関根)",
+  },
+  {
+    cat: "01",
+    files: [{ file: "aicrew 紹介資料.pdf", label: "サービス紹介資料" }],
+    company: "aicrew(エーアイクルー)",
+    service: "AI動画制作・AI研修",
+    summary: "「AI Communication Company」を標榜。代表は元博報堂出身の明賀大介氏、CCOはYouTube登録者2.7万人のAI動画講師Norihiko氏。クオリティ・スピード・コストで日本トップレベルのAI動画制作を標榜し、企業向けAI内製化研修も展開。電通・博報堂・日テレ・テレ東・UNIVERSAL等の取引実績。",
+    services: ["AI動画制作(CM・PR・SNS)", "AI内製化研修(動画・営業・バックオフィス・建築不動産)", "自治体・地域PR向けAI動画", "教育・施設PR(顔出し不可業界)", "障がい者就労支援", "スポーツ/タレント/IP向け", "不動産AIパース・物件PR"],
+    pricing: [],
+    features: ["元博報堂代表・YouTube登録者2.7万人のCCO", "電通・博報堂・日テレ・テレ東・UNIVERSAL等の実績", "三井住友信託銀行・DMM TV等のAI動画実績", "人材開発支援助成金活用で実質負担額DOWN", "ロケ撮影不要で全国自治体展開可能"],
+    target: "広告主・代理店・地方自治体・スポーツチーム・タレント事務所・IPホルダー・不動産業界・教育機関・障がい者就労支援事業所・AI内製化を目指す各業界企業",
+    contact: "—",
+  },
+  {
+    cat: "01",
+    files: [],
+    website: "https://eltoa.jp/",
+    websiteLabel: "公式サイト",
+    company: "株式会社ELTOA(ファブリカ・HASH・アンディファインド共同設立)",
+    service: "ELTOA(エルトア) — 対話型AI搭載バーチャルヒューマン",
+    summary: "ファブリカ・HASH・アンディファインド3社が2026年5月に共同設立した、対話型AI搭載バーチャルヒューマン。高精細CGリアルタイムレンダリング × 大規模言語モデル(LLM) × 独自ナレッジ連携で「ブランド体験としての対話」を実現。表情・アイコンタクト・うなずきなど非言語コミュニケーションを音声と同期してリアルタイム制御。日本語特化音声リップシンクモデルを自社開発。CONTENT TOKYO 2026出展。",
+    services: ["AIバーチャルアシスタント企画/開発/導入", "対話型AIサービス開発/運営/ライセンス", "ブランドデザイン・体験デザイン・対話デザイン", "高精細CGリアルタイムレンダリング", "LLM × 独自ナレッジ連携", "日本語特化リップシンク・モデル提供"],
+    pricing: [],
+    features: ["対話型AI×バーチャルヒューマンのハイブリッド", "高精細CGリアルタイムレンダリング", "LLM+独自ナレッジ連携で『ブランド体験としての対話』", "表情・アイコンタクト・うなずきをリアルタイム制御", "日本語特化音声リップシンクモデル自社開発", "2026年5月設立(新規事業会社)・資本金900万円"],
+    target: "ブランドの『対話接点』を設計したい大企業・有名ブランド、AIアシスタント導入を検討する企業、バーチャルヒューマン活用を検討するマーケティング担当者",
+    contact: "公式サイトより問い合わせ",
+  },
+
+  // === 03 ライブ配信 (2社) ===
+  {
+    cat: "03",
+    files: [{ file: "2.)SKYTOP-LIVE_panf_yoko_(2025)(2.5MB).pdf", label: "サービスパンフレット (2025)" }],
+    company: "株式会社スカイトップ",
+    service: "SKYTOP LIVE",
+    summary: "動画制作で培った企画力を活かし、株主総会・製品発表会・ウェビナーなどを企画・会場手配から撮影・配信・編集まで一気通貫サポート。芸能プロダクション連携でキャスト手配も可能。",
+    services: ["ライブ配信(株主総会・ウェビナー・発表会・バーチャル展示会・ゲームイベント)", "映像コンテンツ企画・制作", "テロップ・挿入動画制作", "会場手配・配信機材選定・スタッフ手配", "芸能プロ連携キャスト手配"],
+    pricing: ["ウェビナープラン: 20万円〜(カメラ1台〜・スタッフ2名〜)", "ハイブリッドプラン: 50万円〜(カメラ2台〜・配信ディレクター・音響オペ付)", "プレミアムプラン: 100万円〜(カメラ3台〜・複数日対応)"],
+    features: ["企画から配信・編集までワンストップ", "動画制作会社ならではの企画力・演出力", "テロップ・挿入動画でコンテンツ強化", "スタジオ配信は背景合成でTV番組のような演出"],
+    target: "株主総会・製品発表会・ウェビナー・セミナー・バーチャル展示会等を実施する企業(ベンチャー〜上場企業)、大手代理店",
+    contact: "03-5927-8740 / https://skytop-live.com",
+  },
+  {
+    cat: "03",
+    files: [{ file: "【ライヴル】ライブ配信サポートサービス.pdf", label: "サービス資料" }],
+    company: "cheese-group(チーズグループ)",
+    service: "ライヴル(LIVEL)",
+    summary: "自社運用サポート(オンライン相談→デモ→マニュアル)の3ステップ内製化支援と、4プランの配信代行サービスを提供。配信現場の内製化から丸ごと代行まで段階対応。",
+    services: ["自社運用サポート3ステップ(相談60分・デモ3時間・マニュアル作成)", "ライブ配信代行(スターター/ベーシック/アドバンス/プレミアム)", "オプション:スタジオ・カメラ・スタッフ・企画構成・現場進行・回線・アーカイブ・テロップ"],
+    pricing: ["自社運用サポート3ステップ: 150,000円(税込165,000円) ※期間限定無料キャンペーン", "スタータープラン: 100,000円〜(税込110,000円) カメラ1台/1人/1時間", "ベーシックプラン: 150,000円〜(税込165,000円) カメラ2台/2人/1時間", "アドバンスプラン: 300,000円〜(税込330,000円) カメラ3台/3人/2時間", "プレミアムプラン: 応相談 カメラ4台/4人", "オプション例: スタジオ10,000円/時〜、現役TVスタッフ45,000円/人〜、企画構成80,000円〜"],
+    features: ["3ステップで内製化支援", "現役TVスタッフによる企画構成・現場進行オプション", "カメラ台数・スタッフ・時間で柔軟プラン", "各ステップ単品注文可能"],
+    target: "ライブ配信を内製化したい企業、配信を丸ごと外注したい企業(セミナー・対談・テレビ風配信等)",
+    contact: "03-6452-3895 / livel@cheese-group.com",
+  },
+
+  // === 02 3D・アバター・メタバース (1社・統合) ===
+  {
+    cat: "02",
+    files: [
+      { file: "3Dコンテンツプロジェクト_実践ガイド.pdf", label: "3Dコンテンツ実践ガイド" },
+      { file: "3Dプロジェクトの基礎知識_アバター編.pdf", label: "3Dアバター制作ガイド" },
+    ],
+    company: "株式会社メルタ(MELTA)",
+    service: "MODELY(モデリー) — 3Dコンテンツ・アバター制作",
+    summary: "AR・VTuber・3Dプリント・ホログラム・3Dバーチャル展示会など幅広い3Dコンテンツを着想から着地までワンストップ支援。500件以上の支援実績。3Dアバター制作はキャラクターデザイン→モデリング→表情→リギング→アプリ用設定まで一貫対応し、Animaze・Live2D・VTuber・VRChat・Virtual Cast等の主要プラットフォームに対応。",
+    services: ["3DCG・3Dモデル制作", "3Dアバター制作(簡単/動物/人型)", "AR制作", "VTuber向け3Dモデル", "3Dプリント", "ホログラム表示用3DCG", "3Dバーチャル展示会・空間制作", "VR/メタバース向け3Dモデル", "キャラクターデザイン・モデリング・テクスチャリング", "リギング・スキニング・表情作成", "揺れもの・物理剛体設定", "アプリ用設定(VTuber/VRChat/Virtual Cast等)"],
+    pricing: ["3Dアバター 簡単なキャラクター: 40万円〜(納期1ヶ月)", "3Dアバター 動物キャラクター: 60万円〜(納期1ヶ月)", "3Dアバター 人型キャラクター: 80万円〜(納期1.5ヶ月)"],
+    features: ["500件以上の3Dコンテンツ支援実績", "AR・VTuber・3Dプリントまで幅広い技術力", "専属デザイナーによる3Dデータ制作", "主要アバタープラットフォーム全対応(Animaze/Live2D/MMD/VTuber/VRChat/Virtual Cast)", "イラストから本番環境までワンストップ", "目的に応じて2D解決も率直に提案"],
+    target: "3Dコンテンツを初めて検討する事業会社、AR/VR/メタバース/展示会/ホログラム/VTuberの活用検討マーケ担当、3Dアバターを活用したい企業・団体・研究機関、VTuber・個人配信者",
+    contact: "info@melta.co.jp / 03-5839-2567",
+  },
+
+  // === 06 その他・総合制作・展示会 (2社) ===
   {
     cat: "06",
-    file: "CMD_leaf_6p_260528_single.pdf",
+    files: [{ file: "CMD_leaf_6p_260528_single.pdf", label: "リーフレット (6p)" }],
     company: "株式会社北斗社 コンテンツ事業部",
     service: "BtoBマーケティングコンテンツ制作・設計",
     summary: "1949年創業のBtoB特化型制作会社。IT・製造業中心にWEBサイト・動画・PDF・SEO記事・ビジネスマンガ・PPT等を一貫制作。AI時代において「成果につながるコンテンツ設計」を強みとし、戦略立案→企画→制作→効果測定まで伴走。",
-    services: ["WEBサイト制作（サービス・LP・企業・採用・SEO強化）", "動画コンテンツ（商品・プロモ・会社紹介・IR・採用・マニュアル）", "PDF（ホワイトペーパー・カタログ・パンフレット）", "導入事例（WEB/リーフ/動画/PPT）", "SEOコラム記事", "ビジネスマンガ", "PPTデザイン（営業提案書・セミナー資料）"],
+    services: ["WEBサイト制作(サービス・LP・企業・採用・SEO強化)", "動画コンテンツ(商品・プロモ・会社紹介・IR・採用・マニュアル)", "PDF(ホワイトペーパー・カタログ・パンフレット)", "導入事例(WEB/リーフ/動画/PPT)", "SEOコラム記事", "ビジネスマンガ", "PPTデザイン(営業提案書・セミナー資料)"],
     pricing: [],
-    features: ["1949年創業の長い歴史と豊富な実績", "BtoB特化", "IT業・製造業中心に大手〜スタートアップまで", "戦略設計→企画→制作→効果測定まで一貫伴走", "自社内に紙・動画・WEBの各制作チーム完備", "実績：日立・Cisco・Canon・富士通・京セラ・三菱電機・SONY・TOYOTA・YAMAHA・Panasonic・KONICA MINOLTA・ASKUL・NTT東日本等"],
+    features: ["1949年創業の長い歴史と豊富な実績", "BtoB特化", "IT業・製造業中心に大手〜スタートアップまで", "戦略設計→企画→制作→効果測定まで一貫伴走", "自社内に紙・動画・WEBの各制作チーム完備", "実績:日立・Cisco・Canon・富士通・京セラ・三菱電機・SONY・TOYOTA・YAMAHA・Panasonic・KONICA MINOLTA・ASKUL・NTT東日本等"],
     target: "BtoB企業全般。特にIT業・製造業。国内外の大手から中堅中小・スタートアップまで",
     contact: "03-3944-3045 / contact_con@hoku.co.jp",
+  },
+  {
+    cat: "06",
+    files: [],
+    website: "https://basehub.co.jp/",
+    websiteLabel: "公式サイト",
+    company: "株式会社BaseHub",
+    service: "総合制作(動画・HP・3DCG・広告運用)",
+    summary: "動画・ホームページ・3DCG・広告運用・デジタルコンテンツ制作をワンストップで提供する東京の総合制作会社。デジタルマーケティング関連の各種コンテンツ制作を一気通貫で支援。",
+    services: ["動画制作", "ホームページ制作", "3DCG制作", "広告運用", "デジタルコンテンツ制作"],
+    pricing: [],
+    features: ["動画・HP・3DCG・広告運用までワンストップ", "デジタルコンテンツ全般に対応", "東京拠点の総合制作会社"],
+    target: "動画・WEB・3DCG・広告を一括で発注したい企業",
+    contact: "公式サイトより問い合わせ",
   },
 ];
 
 // === Rendering ===
-function pdfUrl(c) {
+function pdfUrl(c, idx) {
+  idx = idx || 0;
   const cat = CATEGORIES.find(x => x.id === c.cat);
-  return `./${encodeURI(cat.dir + '/' + c.file)}`;
+  const f = c.files[idx];
+  return `./${encodeURI(cat.dir + '/' + f.file)}`;
+}
+
+function renderLinks(c, isPill) {
+  const cls = isPill ? 't-link' : 'pdf-link';
+  if (c.files && c.files.length > 0) {
+    return c.files.map((f, i) => isPill
+      ? `<a class="${cls}" href="${pdfUrl(c, i)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${escapeHtml(f.label)} →</a>`
+      : `<a class="${cls}" href="${pdfUrl(c, i)}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>${escapeHtml(f.label)}</a>`
+    ).join(isPill ? '<br>' : '');
+  }
+  if (c.website) {
+    const label = escapeHtml(c.websiteLabel || '公式サイト');
+    return isPill
+      ? `<a class="${cls}" href="${c.website}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${label} ↗</a>`
+      : `<a class="${cls} pdf-link-web" href="${c.website}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>${label} ↗</a>`;
+  }
+  return '';
 }
 
 function getCatMeta(catId) {
@@ -871,10 +925,7 @@ function renderDashboard(filterCat, searchTerm, priceOnly) {
         <div class="pill-list">${(c.features || []).slice(0, 6).map(f => `<span class="pill" style="background:#fff5fa;color:var(--accent);border:1px solid #ffd6e9">${escapeHtml(f)}</span>`).join('')}</div>
         <div class="card-target"><b>ターゲット:</b> ${escapeHtml(c.target)}</div>
         <div class="card-foot">
-          <a class="pdf-link" href="${pdfUrl(c)}" target="_blank" rel="noopener">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-            PDFを開く
-          </a>
+          <div class="pdf-link-group">${renderLinks(c, false)}</div>
           <div class="card-contact">${escapeHtml(c.contact || '—')}</div>
         </div>
       `;
@@ -973,7 +1024,7 @@ function renderTable(filterCat, searchTerm, priceOnly) {
       <td>${(c.services || []).slice(0, 4).map(s => `<span class="t-pill-mini">${escapeHtml(s)}</span>`).join('')}${(c.services || []).length > 4 ? `<span class="t-pill-mini" style="opacity:0.6">+${(c.services||[]).length - 4}</span>` : ''}</td>
       <td>${(c.features || []).slice(0, 3).map(f => `<span class="t-pill-mini accent">${escapeHtml(f)}</span>`).join('')}</td>
       <td style="font-size:11px;color:var(--ink-soft);line-height:1.5">${escapeHtml((c.target || '').slice(0, 80))}${(c.target || '').length > 80 ? '…' : ''}</td>
-      <td><a class="t-link" href="${pdfUrl(c)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">PDF →</a></td>
+      <td>${renderLinks(c, true)}</td>
     `;
     tbody.appendChild(trMain);
 
@@ -1149,7 +1200,7 @@ document.addEventListener('DOMContentLoaded', () => {
         (c.features || []).join(' / '),
         c.target,
         c.contact || '',
-        c.file,
+        (c.files && c.files.length > 0 ? c.files.map(f => f.file).join(' | ') : (c.website || '')),
       ].map(escCsv).join(','));
     }
     const csv = '\uFEFF' + lines.join('\r\n'); // BOM for Excel
