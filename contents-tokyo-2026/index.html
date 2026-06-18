@@ -8,7 +8,7 @@
 <title>コンテンツ東京2026 競合調査ダッシュボード</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎬</text></svg>">
 <meta name="description" content="コンテンツ東京2026の会社資料14社をカテゴリ別に整理した競合調査ダッシュボード。生成AI・3Dアバター・ライブ配信・動画制作の5カテゴリで一覧。">
-<meta name="last-modified" content="2026-06-18T22:17:13+09:00">
+<meta name="last-modified" content="2026-06-18T22:25:42+09:00">
 <meta property="og:title" content="コンテンツ東京2026 競合調査ダッシュボード">
 <meta property="og:description" content="コンテンツ東京2026の会社資料14社をカテゴリ別に整理した競合調査ダッシュボード">
 <meta property="og:type" content="website">
@@ -588,7 +588,7 @@
       <div class="stat"><div class="stat-num">3</div><div class="stat-label">動画制作</div></div>
     </div>
     <div class="cover-meta">
-      <div><strong>Last Updated:</strong> 2026年6月18日 22:17</div>
+      <div><strong>Last Updated:</strong> 2026年6月18日 22:25</div>
       <div><strong>Prepared by:</strong> Firework / 軍師</div>
       <div><strong>出典:</strong> コンテンツ東京2026 各社配布パンフレット (PDF)</div>
     </div>
@@ -624,12 +624,13 @@
       <table id="mainTable">
         <thead>
           <tr>
-            <th class="sortable" data-sort="cat" style="width:10%">カテゴリ<span class="sort-ind">▲▼</span></th>
-            <th class="sortable" data-sort="company" style="width:15%">会社 / サービス<span class="sort-ind">▲▼</span></th>
-            <th style="width:32%">📖 サービスの中身</th>
-            <th style="width:23%">🤖 AI・技術の活用</th>
-            <th style="width:12%">ターゲット</th>
-            <th style="width:8%">PDF</th>
+            <th class="sortable" data-sort="cat" style="width:9%">カテゴリ<span class="sort-ind">▲▼</span></th>
+            <th class="sortable" data-sort="company" style="width:13%">会社 / サービス<span class="sort-ind">▲▼</span></th>
+            <th class="sortable" data-sort="minPrice" style="width:10%">💰 最安価格<span class="sort-ind">▲▼</span></th>
+            <th style="width:28%">📖 サービスの中身</th>
+            <th style="width:20%">🤖 AI・技術の活用</th>
+            <th style="width:13%">ターゲット</th>
+            <th style="width:7%">PDF</th>
           </tr>
         </thead>
         <tbody id="tableBody"></tbody>
@@ -639,7 +640,7 @@
 </main>
 
 <footer>
-  コンテンツ東京2026 競合調査ダッシュボード / Last Updated: 2026年6月18日 22:17 JST
+  コンテンツ東京2026 競合調査ダッシュボード / Last Updated: 2026年6月18日 22:25 JST
 </footer>
 
 <script>
@@ -1030,7 +1031,7 @@ function renderTable(filterCat, searchTerm, priceOnly) {
   }
 
   if (filtered.length === 0) {
-    tbody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:30px;color:var(--muted);">該当する会社がございません</td></tr>';
+    tbody.innerHTML = '<tr><td colspan="7" style="text-align:center;padding:30px;color:var(--muted);">該当する会社がございません</td></tr>';
     return;
   }
 
@@ -1045,6 +1046,7 @@ function renderTable(filterCat, searchTerm, priceOnly) {
     trMain.innerHTML = `
       <td><span class="expand-tri"></span><span class="t-cat" data-cat="${c.cat}">${cat.icon} ${escapeHtml(cat.label)}</span></td>
       <td><strong>${escapeHtml(c.company)}</strong><br><span style="color:var(--muted);font-size:11px">${escapeHtml(c.service)}</span></td>
+      <td>${price.value !== null ? `<span class="t-price-min">${escapeHtml(price.label)}</span>` : `<span class="t-price-na">${escapeHtml(price.label)}</span>`}</td>
       <td class="t-detail">${escapeHtml(c.serviceDetail || c.summary || '')}</td>
       <td class="t-ai">${escapeHtml(c.aiTechUsage || '')}</td>
       <td style="font-size:11px;color:var(--ink-soft);line-height:1.5">${escapeHtml((c.target || '').slice(0, 100))}${(c.target || '').length > 100 ? '…' : ''}</td>
@@ -1056,7 +1058,7 @@ function renderTable(filterCat, searchTerm, priceOnly) {
     trDetail.className = 'row-detail';
     trDetail.dataset.idx = idx;
     trDetail.innerHTML = `
-      <td colspan="6">
+      <td colspan="7">
         <div style="padding:14px 18px 8px;font-size:12.5px;color:var(--ink-soft);line-height:1.7">${escapeHtml(c.summary)}</div>
         <div class="detail-grid">
           <div class="detail-block">
@@ -1207,7 +1209,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       return true;
     });
-    const header = ['カテゴリ', '会社名', 'サービス名', '概要', 'サービスの中身', 'AI・技術の活用', 'ターゲット', '連絡先', 'PDFファイル'];
+    const header = ['カテゴリ', '会社名', 'サービス名', '概要', '最安価格', 'サービスの中身', 'AI・技術の活用', 'ターゲット', '連絡先', 'PDFファイル'];
     const escCsv = v => `"${String(v || '').replace(/"/g, '""')}"`;
     const lines = [header.map(escCsv).join(',')];
     for (const c of rows) {
@@ -1218,6 +1220,7 @@ document.addEventListener('DOMContentLoaded', () => {
         c.company,
         c.service,
         c.summary,
+        price.label,
         c.serviceDetail || '',
         c.aiTechUsage || '',
         c.target,
