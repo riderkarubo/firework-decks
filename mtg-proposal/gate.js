@@ -10,7 +10,7 @@
   'use strict';
 
   // 許可パスワードの SHA-256 ハッシュ（平文は埋め込まない）
-  var PASSWORD_HASH = '941543b20f7c5b1fa578acbf5fe1e256b3a50b96f28e989051365a3fca7da748';
+  var PASSWORD_HASH = 'd03bd78f02941b329a7d97220cafa061965d203b013ac0b7e9c9a7e5e1c84a63';
   var STORAGE_KEY = 'mtg_proposal_auth';
   var TITLE = 'Firework ｜ ご提案資料';
   var SUBTITLE = 'この資料はパスワードで保護されています';
