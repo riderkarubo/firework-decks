@@ -25,6 +25,9 @@ node_modules/
 .next/
 dist/
 build/
+
+# 入れ子リポ回避: 独立cloneしたサブリポは親追跡から除外
+/claude-code-guide/
 # 一般公開禁止: ローカルメモ・ストック原稿
 *.rtf
 AIによるハイクオリティスライド作成.rtf
