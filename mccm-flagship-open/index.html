@@ -12,13 +12,13 @@
   <!-- OGP / Slack unfurl -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="新店舗OPEN記念 現地ライブ配信ご提案｜Firework社内">
-  <meta property="og:description" content="フラッグシップ店OPEN記念の現地ライブ配信。ミニマム/リッチの2プランで企画＋見積もり（社内限定）。">
+  <meta property="og:description" content="フラッグシップ店OPEN記念の現地ライブ配信。スマホ／OBSの2プランで配信スタイルを選択可能（社内限定）。">
   <meta property="og:url" content="https://riderkarubo.github.io/firework-decks/mccm-flagship-open/">
   <meta property="og:site_name" content="Firework社内 / クライアント提案">
   <meta property="og:locale" content="ja_JP">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="新店舗OPEN記念 現地ライブ配信ご提案｜Firework社内">
-  <meta name="twitter:description" content="フラッグシップ店OPEN記念の現地ライブ配信。ミニマム/リッチの2プランで企画＋見積もり（社内限定）。">
+  <meta name="twitter:description" content="フラッグシップ店OPEN記念の現地ライブ配信。スマホ／OBSの2プランで配信スタイルを選択可能（社内限定）。">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -441,6 +441,146 @@
     .crew-list.rich .role { color: var(--navy); }
     .crew-list .task { color: #555; flex: 1; }
 
+
+
+    /* ===== OBS Grade Comparison Table (CH.06) ===== */
+    .obs-grade-section {
+      margin-top: 14px;
+      margin-bottom: 12px;
+      padding: 12px 14px;
+      background: linear-gradient(135deg, #FAFBFE 0%, #F4F7FC 100%);
+      border-radius: 8px;
+      border: 1px solid var(--card-border);
+    }
+    .obs-grade-title {
+      margin: 0 0 8px;
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--navy);
+      letter-spacing: 0.02em;
+    }
+    .obs-grade-title::before {
+      content: '▸ ';
+      color: var(--accent);
+    }
+    .obs-grade-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 10.5px;
+      background: #fff;
+    }
+    .obs-grade-table thead th {
+      background: var(--navy);
+      color: #fff;
+      padding: 6px 8px;
+      font-weight: 700;
+      text-align: left;
+      font-size: 10.5px;
+      letter-spacing: 0.03em;
+    }
+    .obs-grade-table tbody th {
+      padding: 7px 8px;
+      text-align: left;
+      font-weight: 700;
+      color: var(--dark);
+      background: #F8FAFD;
+      border-bottom: 1px solid #E8EEF7;
+      position: relative;
+    }
+    .obs-grade-table tbody td {
+      padding: 7px 8px;
+      border-bottom: 1px solid #E8EEF7;
+      vertical-align: middle;
+      line-height: 1.55;
+      color: #444;
+    }
+    .obs-grade-table tr.recommended {
+      background: linear-gradient(90deg, #FFF8F9 0%, #FFFFFF 100%);
+    }
+    .obs-grade-table tr.recommended th,
+    .obs-grade-table tr.recommended td {
+      background: #FFF6F8;
+    }
+    .obs-grade-table .grade-eco {
+      border-left: 3px solid #B0BEC5;
+    }
+    .obs-grade-table .grade-std {
+      border-left: 3px solid var(--accent);
+    }
+    .obs-grade-table .grade-prm {
+      border-left: 3px solid var(--navy);
+    }
+    .obs-grade-table .price-cell {
+      font-weight: 800;
+      color: var(--accent);
+      font-size: 12px;
+      letter-spacing: 0.01em;
+      white-space: nowrap;
+    }
+    .obs-grade-table .rec-badge {
+      display: inline-block;
+      margin-left: 6px;
+      padding: 1px 6px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 9px;
+      font-weight: 700;
+      border-radius: 3px;
+      letter-spacing: 0.05em;
+      vertical-align: middle;
+    }
+    .obs-grade-note {
+      margin-top: 7px;
+      font-size: 9.5px;
+      color: #666;
+      line-height: 1.6;
+    }
+    .obs-grade-note strong {
+      color: var(--navy);
+      font-weight: 700;
+    }
+
+    /* ===== Plan pattern grid (CH.03 ブレスト) ===== */
+    .pp-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+    .pp-card {
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 16px 18px;
+      background: #fff;
+      display: flex; flex-direction: column;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+    .pp-card.summary {
+      background: linear-gradient(135deg, #F0FDF8 0%, #E0F2F1 100%);
+      border-color: #A8DFD0; border-left: 4px solid var(--green);
+    }
+    .pp-head { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 10px; }
+    .pp-num {
+      background: var(--accent); color: #fff;
+      width: 30px; height: 30px; border-radius: 50%;
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 14px; font-weight: 800; flex-shrink: 0; line-height: 1;
+    }
+    .pp-title {
+      font-size: 15px; font-weight: 700; color: var(--dark);
+      line-height: 1.4; padding-top: 4px;
+    }
+    .pp-tags { display: flex; gap: 6px; margin-bottom: 10px; flex-wrap: wrap; }
+    .pp-tag {
+      display: inline-block; font-size: 11px; font-weight: 700;
+      padding: 3px 9px; border-radius: 3px; letter-spacing: 0.04em; line-height: 1.5;
+    }
+    .pp-tag.fmt { background: var(--accent-soft); color: var(--accent); }
+    .pp-tag.aim { background: #e8eef7; color: var(--navy); }
+    .pp-desc { margin: 0; font-size: 13.5px; color: #555; line-height: 1.75; flex-grow: 1; }
+    .pp-card.summary .pp-num { background: var(--green); }
+    .pp-card.summary .pp-title { color: var(--green); }
+    .pp-card.summary .pp-desc { color: #1A4040; font-weight: 500; }
+
     @media print {
       * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
       @page { size: 1280px 720px landscape; margin: 0; }
@@ -456,7 +596,7 @@
   <!-- ===== Toolbar ===== -->
   <div class="toolbar">
     <div class="toolbar-brand">MCCM <span class="accent">×</span> Firework ／ 新店舗OPEN記念 現地ライブ配信</div>
-    <div class="toolbar-meta">スライドモック v1.0 ／ Last Updated 2026年6月24日 18:55</div>
+    <div class="toolbar-meta">スライドモック v1.3 ／ Last Updated 2026年6月24日 18:55</div>
     <div class="toolbar-actions">
       <button id="btn-print" class="primary">🖨️ 印刷</button>
     </div>
@@ -474,14 +614,10 @@
       <div class="cover-body">
         <div class="cover-label">MCCM × FIREWORK ／ 新店舗OPEN 現地ライブ配信</div>
         <div class="cover-title">フラッグシップ店OPEN記念<br>現地ライブ配信<br>ご提案</div>
-        <div class="cover-sub">
-          POPUPスペースを舞台に、<span class="hl">協賛メーカーの世界観</span>を現地から届ける。<br>
-          ミニマム/リッチの<span class="hl">2プラン</span>で、ご予算と表現規模に合わせて選択可能です
-        </div>
         <div class="cover-meta">
           <div class="cover-meta-item">
             <div class="k">Attention</div>
-            <div class="v">株式会社MCCマネジメント<br>佐藤静香 様</div>
+            <div class="v">株式会社MCCマネジメント 御中</div>
           </div>
           <div class="cover-meta-item">
             <div class="k">Prepared by</div>
@@ -512,12 +648,11 @@
         <div class="toc-section-title">Table of Contents</div>
         <div class="toc-grid">
           <div class="toc-item"><a href="#sec-3"><div class="toc-num">1</div><span>新店舗OPEN記念 配信の機会と狙い</span></a></div>
-          <div class="toc-item"><a href="#sec-4"><div class="toc-num">2</div><span>企画コンセプト（現地×協賛メーカー協業）</span></a></div>
-          <div class="toc-item"><a href="#sec-5"><div class="toc-num">3</div><span>2プラン提案（ミニマム / リッチ）</span></a></div>
-          <div class="toc-item"><a href="#sec-6"><div class="toc-num">4</div><span>体制と当日のフロー</span></a></div>
-          <div class="toc-item"><a href="#sec-7"><div class="toc-num">5</div><span>価格プラン・遠征費・オプション</span></a></div>
-          <div class="toc-item"><a href="#sec-8"><div class="toc-num">6</div><span>スケジュール（〜OPEN配信日）</span></a></div>
-          <div class="toc-item"><a href="#sec-9"><div class="toc-num">7</div><span>留意事項・前提条件</span></a></div>
+          <div class="toc-item"><a href="#sec-4"><div class="toc-num">2</div><span>企画コンセプト(現地×協賛メーカー協業)</span></a></div>
+          <div class="toc-item"><a href="#sec-5"><div class="toc-num">3</div><span>企画パターン集(5案ブレスト)</span></a></div>
+          <div class="toc-item"><a href="#sec-6"><div class="toc-num">4</div><span>配信スタイル選択（スマホ／OBS）</span></a></div>
+          <div class="toc-item"><a href="#sec-7"><div class="toc-num">5</div><span>体制と当日のフロー</span></a></div>
+          <div class="toc-item"><a href="#sec-8"><div class="toc-num">6</div><span>留意事項・前提条件</span></a></div>
         </div>
         <div class="insight" style="margin-top: 28px;">
           <span class="label">本提案のスコープ</span>
@@ -536,7 +671,7 @@
       </div>
       <div class="s-footer">
         <div class="brand">Firework Japan株式会社</div>
-        <div>2 ／ 9</div>
+        <div>2 ／ 8</div>
       </div>
     </div>
 
@@ -584,7 +719,7 @@
       </div>
       <div class="s-footer">
         <div class="brand">Firework Japan株式会社</div>
-        <div>3 ／ 9</div>
+        <div>3 ／ 8</div>
       </div>
     </div>
 
@@ -635,61 +770,146 @@
       </div>
       <div class="s-footer">
         <div class="brand">Firework Japan株式会社</div>
-        <div>4 ／ 9</div>
+        <div>4 ／ 8</div>
       </div>
     </div>
 
-    <!-- ===== Slide 5: 2プラン比較 ===== -->
-    <div class="slide" id="sec-5" data-slide-num="5" data-slide-title="CH.03 2プラン提案">
-      <div class="slide-num-label">SLIDE 5 ／ CH.03 プラン比較</div>
+    <!-- ===== Slide 5: 企画パターン集（5案ブレスト） ===== -->
+    <div class="slide" id="sec-5" data-slide-num="5" data-slide-title="CH.03 企画パターン集">
+      <div class="slide-num-label">SLIDE 5 ／ CH.03 企画パターン集</div>
       <div class="s-header">
         <div class="dot"></div>
         <div class="tag">CH. 03</div>
         <div class="sep"></div>
-        <div class="title">2プラン提案（ミニマム / リッチ）</div>
-        <div class="section-label">Section 3 · プラン比較</div>
+        <div class="title">企画パターン集（5案ブレスト）</div>
+        <div class="section-label">Section 3 · プラン候補</div>
+      </div>
+      <div class="s-body">
+        <div class="pp-grid">
+          <!-- 01 店舗ツアー企画 -->
+          <div class="pp-card">
+            <div class="pp-head">
+              <span class="pp-num">01</span>
+              <span class="pp-title">店舗ツアー企画<br>（各フロアの紹介）</span>
+            </div>
+            <div class="pp-tags">
+              <span class="pp-tag fmt">スマホ or OBS配信</span>
+              <span class="pp-tag aim">認知拡大／来店動機</span>
+            </div>
+            <p class="pp-desc">B1コスメ→2Fヘルスケア…のようにフロアごとに見どころスポットを巡り、各フロアの担当バイヤーや店長がバトンタッチで案内。配信中に出てくる「隠れキーワード」を集めた人だけのクーポンを最後に発行するなど、最後までの視聴維持を促す仕掛けも有効。</p>
+          </div>
+
+          <!-- 02 予算1万円カゴ買い企画 -->
+          <div class="pp-card">
+            <div class="pp-head">
+              <span class="pp-num">02</span>
+              <span class="pp-title">予算1万円！店舗スタッフが<br>本気で選ぶマストアイテム</span>
+            </div>
+            <div class="pp-tags">
+              <span class="pp-tag fmt">スマホ or OBS配信</span>
+              <span class="pp-tag aim">新規視聴数獲得</span>
+            </div>
+            <p class="pp-desc">フラッグシップ店の品揃え豊富さ×再生数の多い「◯◯円」企画。スタッフがテーマ別（コスメ系／スキンケア系／家族みんなのトータルケア系）に1万円分を実際にカゴ買い。視聴者投票で「一番欲しい組み合わせ」を決める参加型要素も。協賛メーカー商品を1点入れる縛りで複数協賛との合わせ技も可能。</p>
+          </div>
+
+          <!-- 03 開業記念ロングライブ -->
+          <div class="pp-card">
+            <div class="pp-head">
+              <span class="pp-num">03</span>
+              <span class="pp-title">フラッグシップ開業記念<br>ロングライブ</span>
+            </div>
+            <div class="pp-tags">
+              <span class="pp-tag fmt">OBS配信</span>
+              <span class="pp-tag aim">開業話題化／初動最大化</span>
+            </div>
+            <p class="pp-desc">店舗オープン日にテープカット・先行入店・限定セット完売実況などを軸に丸1日生中継。朝のテープカット→開店ダッシュ実況→午前のPOPUPツアー→午後の限定セット完売カウントダウン→夕方のクロージングまで、時間帯ごとに見どころと出演者を切り替え。限定商品の時間帯解禁で「次の時間も観たい」を引き出す。</p>
+          </div>
+
+          <!-- 04 プレゼン対決 -->
+          <div class="pp-card">
+            <div class="pp-head">
+              <span class="pp-num">04</span>
+              <span class="pp-title">テーマ別お悩み解決<br>プレゼン対決</span>
+            </div>
+            <div class="pp-tags">
+              <span class="pp-tag fmt">OBS配信</span>
+              <span class="pp-tag aim">新規視聴／リピーター比率改善</span>
+            </div>
+            <p class="pp-desc">複数のマツココスタッフが、季節やお悩みに沿ったお題（「夏の崩れにくいベースメイク」「乾燥肌救済」「梅雨の髪うねり対策」等）に沿って店内アイテムをプレゼン。お題発表→3〜5分で探索→順番にプレゼン→コメント投票で勝敗決定のバトル形式。優勝アイテムは配信限定割引で即購入導線へ。月替わりお題で定期番組化も可能。</p>
+          </div>
+
+          <!-- 05 ヘアメイク特別ゲスト -->
+          <div class="pp-card">
+            <div class="pp-head">
+              <span class="pp-num">05</span>
+              <span class="pp-title">ヘアメイク・美容家<br>による即興メイク配信</span>
+            </div>
+            <div class="pp-tags">
+              <span class="pp-tag fmt">スマホ or OBS配信</span>
+              <span class="pp-tag aim">使い方提示／CTR・購入率向上</span>
+            </div>
+            <p class="pp-desc">オープン記念に合わせて特別ゲストを起用。プロのヘアメイクがPOPUP内のコスメだけでメイクを完成させる「縛り企画」。「韓国アイドル風」「夏のヘルシー小麦肌」「オフィスきちんと顔」など完成形テーマを設定。プロが商品を選ぶ理由を解説し、視聴者は「再現レシピ」として持ち帰り可能。ビフォーアフターはSNS二次活用素材へ。</p>
+          </div>
+
+        </div>
+      </div>
+      <div class="s-footer">
+        <div class="brand">Firework Japan株式会社</div>
+        <div>5 ／ 8</div>
+      </div>
+    </div>
+
+    <!-- ===== Slide 6: 2プラン比較 ===== -->
+    <div class="slide" id="sec-6" data-slide-num="6" data-slide-title="CH.04 配信スタイル選択">
+      <div class="slide-num-label">SLIDE 6 ／ CH.04 配信スタイル選択</div>
+      <div class="s-header">
+        <div class="dot"></div>
+        <div class="tag">CH. 04</div>
+        <div class="sep"></div>
+        <div class="title">配信スタイル選択 ─ スマホ配信 ／ OBS配信</div>
+        <div class="section-label">Section 4 · 配信スタイル</div>
       </div>
       <div class="s-body">
         <div class="conclusion">
-          コンパクトな<span class="accent">ミニマム</span>と、ブランド世界観を担保する<span class="green">リッチ</span>の2プランから選択可能
+          機動力を活かした<span class="accent">スマホ配信</span>と、フラッグシップ品質を担保する<span class="green">OBS配信</span>。フラッグシップ店舗の魅力を最大限お届けする場合は、<span class="green">OBS配信</span>を推奨いたします
         </div>
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; height: calc(100% - 42px);">
           <div class="plan-card">
-            <div class="plan-head minim">プラン1 ／ ミニマム（スマホ配信・2名体制）</div>
+            <div class="plan-head rich">プラン1 ／ スマホ配信（2名・機動力重視）</div>
             <div class="plan-body">
-              <div class="plan-badge minim">CASUAL ／ 機動力重視</div>
+              <div class="plan-badge rich">CASUAL ／ 臨場感・回遊向き</div>
               <table class="spec-table" style="margin-top: 4px;">
                 <tr><th>画質・質感</th><td>スマホ配信の<span class="em">HD画質（720p）</span>／ 自然体・機動力・現場の臨場感重視</td></tr>
                 <tr><th>機材</th><td>スマートフォン配信・リングライト・ワイヤレスマイク</td></tr>
                 <tr><th>カメラ</th><td>スマホ1台（手持ち回遊）</td></tr>
-                <tr><th>体制</th><td><span class="em">2名</span>（制作進行 + 現地サポート兼配信操作）</td></tr>
-                <tr><th>回線</th><td>ポケットWi-Fi（3日レンタル）</td></tr>
-                <tr><th>含むもの</th><td>企画・台本・配信ディレクション・配信後レポート</td></tr>
+                <tr><th>体制</th><td><span class="em">2名</span>（ディレクター + カメラマン兼アシスタント）</td></tr>
+                <tr><th>回線</th><td>現地のネット環境利用（ポケットWi-Fi 3日レンタル込み）<br><small style="color:#999;">※ ネットワーク不安定／使用不可の場合は別途TVUルーター手配費 ¥160,000 が発生</small></td></tr>
+                <tr><th>含むもの</th><td>企画・台本・配信ディレクション</td></tr>
               </table>
-              <div class="pricebox" style="margin-top: 10px;">
+              <div class="pricebox rich" style="margin-top: 10px;">
                 <div class="label">1配信あたり（遠征費込み）</div>
                 <div class="value">¥525,000<span class="per">／回</span></div>
-                <div class="note">遠征費（2名分¥80,000）を本体に内包 ／ 構成： 制作進行＆メインD・台本作成・カメラマン兼現場AS・機材コーディネート・モバイル回線</div>
+                <div class="note">現地遠征費（2名分）¥80,000込み／ TVUルーター手配時は別途 ¥160,000</div>
               </div>
             </div>
           </div>
           <div class="plan-card">
-            <div class="plan-head rich">プラン2 ／ リッチ（OBS配信・5名体制）</div>
+            <div class="plan-head minim">プラン2 ／ OBS配信（4名・フラッグシップ品質）</div>
             <div class="plan-body">
-              <div class="plan-badge rich">PREMIUM ／ ブランド品質担保</div>
+              <div class="plan-badge minim">FLAGSHIP ／ 画質・テロップ・演出</div>
               <table class="spec-table" style="margin-top: 4px;">
-                <tr><th>画質・質感</th><td>一眼カメラ＋OBS処理（<span style="color: var(--accent); font-weight: 700;">FHD画質（1080p）</span>）でフラッグシップにふさわしい高解像度・色再現・質感<br><small style="font-size:10.5px; color:#666;">配信クオリティ参考: <a href="https://www.starbucks.co.jp/onlinestore/live/?srsltid=AfmBOoo3Iyxl3Wnca3bdA_TS4Sd2ZONN7QfTFKRpwRAvJf05ee3Kbe35" target="_blank" style="color: var(--navy);">Starbucks ライブ配信ページ</a></small></td></tr>
-                <tr><th>機材</th><td><span class="em-navy">一眼カメラ1台</span>・NEEWER照明・ワイヤレスマイク・OBS機材一式</td></tr>
-                <tr><th>カメラ</th><td>1カメ体制／オプションで2カメ目追加可</td></tr>
+                <tr><th>画質・質感</th><td>一眼カメラ＋OBS処理（<span style="color: var(--accent); font-weight: 700;">FHD画質（1080p）</span>）でフラッグシップにふさわしい高解像度・色再現・質感<br><small style="font-size:10.5px; color:#666;">配信クオリティ参考: <a href="https://www.starbucks.co.jp/onlinestore/live/?srsltid=AfmBOoo3Iyxl3Wnca3bdA_TS4Sd2ZONN7QfTFKRpwRAvJf05ee3Kbe35" target="_blank" style="color: var(--accent);">Starbucks ライブ配信ページ</a></small></td></tr>
+                <tr><th>テロップ演出</th><td>協賛社ロゴ・商品スペック・限定価格・QRを<span class="em-navy">リアルタイム差し込み</span>。視聴者の理解と購買意欲を後押し</td></tr>
+                <tr><th>機材</th><td>一眼カメラ・照明・OBS・テロップ機材一式</td></tr>
+                <tr><th>カメラ</th><td>1カメ</td></tr>
                 <tr><th>体制</th><td><span style="color: var(--accent); font-weight: 700;">4名</span>現場稼働（D + AD + カメラマン + OBSオペレーター）</td></tr>
-                <tr><th>回線</th><td>有線LAN前提（不可ならTVUルーター手配）</td></tr>
-                <tr><th>テロップ</th><td>協賛社情報・商品スペック・限定情報をリアルタイム挿入</td></tr>
-                <tr><th>含むもの</th><td>企画・台本・テロップ制作・配信ディレクション・配信後レポート</td></tr>
+                <tr><th>回線</th><td>TVUルーター手配前提<br><small style="color:#999;">※ 有線LANが利用可能な場合はTVUルーター不要</small></td></tr>
+                <tr><th>含むもの</th><td>企画・台本・テロップ制作・配信ディレクション</td></tr>
               </table>
-              <div class="pricebox rich" style="margin-top: 10px;">
+              <div class="pricebox" style="margin-top: 10px;">
                 <div class="label">1配信あたり（遠征費込み）</div>
                 <div class="value">¥1,100,000<span class="per">／回</span></div>
-                <div class="note">遠征費（4名分¥160,000）・TVUルーター¥160,000 を本体に内包 ／ 現場稼働4名（D・AD・カメラマン・OBSオペレーター）＋業務委託（台本・機材コ・運搬・テロップ）</div>
+                <div class="note">＋現地遠征費（4名分）・TVUルーター実費 ／ 現場稼働4名（D・AD・カメラマン・OBSオペレーター）</div>
               </div>
             </div>
           </div>
@@ -697,23 +917,23 @@
       </div>
       <div class="s-footer">
         <div class="brand">Firework Japan株式会社</div>
-        <div>5 ／ 9</div>
+        <div>6 ／ 8</div>
       </div>
     </div>
 
-    <!-- ===== Slide 6: 体制と当日のフロー ===== -->
-    <div class="slide" id="sec-6" data-slide-num="6" data-slide-title="CH.04 体制と当日のフロー">
-      <div class="slide-num-label">SLIDE 6 ／ CH.04 体制とフロー</div>
+    <!-- ===== Slide 7: 体制と当日のフロー ===== -->
+    <div class="slide" id="sec-7" data-slide-num="7" data-slide-title="CH.05 体制と当日のフロー">
+      <div class="slide-num-label">SLIDE 7 ／ CH.05 体制とフロー</div>
       <div class="s-header">
         <div class="dot"></div>
-        <div class="tag">CH. 04</div>
+        <div class="tag">CH. 05</div>
         <div class="sep"></div>
         <div class="title">体制と当日のフロー</div>
-        <div class="section-label">Section 4 · 体制・進行</div>
+        <div class="section-label">Section 5 · 体制・進行</div>
       </div>
       <div class="s-body">
         <div class="conclusion">
-          <span class="accent">Firework側で全工程をリード</span>し、貴社は商品・現場対応に集中いただける体制
+          配信制作はFirework側で担当いたします。<span class="accent">貴社ご対応部分は商品・現場対応の一部のみ</span>です
         </div>
         <div class="crew-grid" style="margin-bottom: 12px;">
           <div class="crew-list">
@@ -757,180 +977,25 @@
               <td class="fw-col">ディレクション・カメラ操作・配信オペレーション・テロップ出し</td>
               <td class="cl-col">商品の準備・受け渡し・現場フロアスタッフ対応・協賛社対応・<strong>配信管理（コメント返信・回線監視）</strong><br><span style="color: var(--accent); font-size: 10.5px;">※プラン1（スマホ配信）の場合は<strong>カンペ出し</strong>も貴社側で対応</span></td>
             </tr>
-            <tr>
-              <th>配信後</th>
-              <td class="fw-col">視聴データ分析・協賛社向け実績レポート・切り抜き動画制作（オプション）</td>
-              <td class="cl-col">配信実績の社内・協賛社向け共有・次回施策の方針判断</td>
-            </tr>
+            
           </tbody>
         </table>
       </div>
       <div class="s-footer">
         <div class="brand">Firework Japan株式会社</div>
-        <div>6 ／ 9</div>
+        <div>7 ／ 8</div>
       </div>
     </div>
 
-    <!-- ===== Slide 7: 価格プラン・遠征費・オプション ===== -->
-    <div class="slide" id="sec-7" data-slide-num="7" data-slide-title="CH.05 価格プラン">
-      <div class="slide-num-label">SLIDE 7 ／ CH.05 価格プラン</div>
-      <div class="s-header">
-        <div class="dot"></div>
-        <div class="tag">CH. 05</div>
-        <div class="sep"></div>
-        <div class="title">価格プラン・遠征費・オプション</div>
-        <div class="section-label">Section 5 · お見積もり</div>
-      </div>
-      <div class="s-body">
-        <div class="conclusion">
-          配信費＋現地遠征費の<span class="accent">2レイヤー構成</span>。プランごとに人数が変わるため遠征費を明示
-        </div>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 12px;">
-          <div class="card" style="border-top: 3px solid var(--accent);">
-            <div class="plan-badge minim">PLAN 1 ／ ミニマム（スマホ配信・2名）</div>
-            <table class="spec-table">
-              <tr><th>制作進行＆メインD（石島）</th><td>¥150,000</td></tr>
-              <tr><th>台本作成</th><td>¥100,000</td></tr>
-              <tr><th>カメラマン兼現場AS</th><td>¥120,000</td></tr>
-              <tr><th>機材コーディネート</th><td>¥60,000</td></tr>
-              <tr><th>モバイル回線（ポケットWi-Fi 3日）</th><td>¥15,000</td></tr>
-              <tr><th>【ミニマム】宿泊費＋交通費(2名)</th><td>¥80,000</td></tr>
-              <tr><th>配信費 合計</th><td><span class="em">¥525,000</span></td></tr>
-            </table>
-            
-          </div>
-          <div class="card" style="border-top: 3px solid var(--navy);">
-            <div class="plan-badge rich">PLAN 2 ／ リッチ（OBS配信・5名）</div>
-            <table class="spec-table">
-              <tr><th>ディレクター</th><td>¥150,000</td></tr>
-              <tr><th>アシスタントD（いしじま）</th><td>¥100,000</td></tr>
-              <tr><th>台本作成</th><td>¥100,000</td></tr>
-              <tr><th>カメラマン（1カメ）</th><td>¥100,000</td></tr>
-              <tr><th>OBSオペレーター</th><td>¥100,000</td></tr>
-              <tr><th>機材コーディネート</th><td>¥150,000</td></tr>
-              <tr><th>TVUルーター（3日）</th><td>¥160,000</td></tr>
-              <tr><th>機材運搬費</th><td>¥30,000</td></tr>
-              <tr><th>テロップ制作</th><td>¥50,000</td></tr>
-              <tr><th>【リッチ】宿泊費＋交通費(4名)</th><td>¥160,000</td></tr>
-              <tr><th>配信費 合計</th><td><span class="em-navy">¥1,100,000</span></td></tr>
-            </table>
-            
-          </div>
-        </div>
-        <div class="option-grid">
-          <div class="option-card">
-            <h4>リハーサル日（前日テスト配信）</h4>
-            <p>配信前日に現地でリハーサル。出演者の通し練習・機材確認・回線テストまで実施。</p>
-            <div class="price">価格：別途お見積もり</div>
-          </div>
-          <div class="option-card">
-            <h4>切り抜き動画（最大3本）</h4>
-            <p>配信アーカイブから縦型ショート動画を切り出し。協賛社個別のSNS・LP素材に。</p>
-            <div class="price">価格：別途お見積もり</div>
-          </div>
-          <div class="option-card">
-            <h4>2カメ目追加（ヨリ・固定）</h4>
-            <p>商品アップ用の2カメ目を追加。1カメではカバーしきれないヨリ映像を補強。</p>
-            <div class="price">価格：別途お見積もり</div>
-          </div>
-        </div>
-      </div>
-      <div class="s-footer">
-        <div class="brand">Firework Japan株式会社</div>
-        <div>7 ／ 9</div>
-      </div>
-    </div>
-
-    <!-- ===== Slide 8: スケジュール ===== -->
-    <div class="slide" id="sec-8" data-slide-num="8" data-slide-title="CH.06 スケジュール">
-      <div class="slide-num-label">SLIDE 8 ／ CH.06 スケジュール</div>
+    <!-- ===== Slide 8: 留意事項 ===== -->
+    <div class="slide" id="sec-8" data-slide-num="8" data-slide-title="CH.06 留意事項">
+      <div class="slide-num-label">SLIDE 8 ／ CH.06 留意事項</div>
       <div class="s-header">
         <div class="dot"></div>
         <div class="tag">CH. 06</div>
         <div class="sep"></div>
-        <div class="title">スケジュール（〜OPEN配信日まで）</div>
-        <div class="section-label">Section 6 · ロードマップ</div>
-      </div>
-      <div class="s-body">
-        <div class="conclusion">
-          OPEN配信日（<span class="accent">2026年12月下旬</span>）に向けて、約半年のリードタイムで段階的に準備
-        </div>
-        <table class="schedule-table">
-          <thead>
-            <tr>
-              <th style="width:14%;">時期</th>
-              <th>6月</th>
-              <th>7月</th>
-              <th>8月</th>
-              <th>9月</th>
-              <th>10月</th>
-              <th>11月</th>
-              <th>12月</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th>フェーズ</th>
-              <td class="prep">ラフ提案</td>
-              <td class="prep">詳細企画</td>
-              <td class="prep">キャスト確定</td>
-              <td class="prep">台本初稿</td>
-              <td class="prep">法務・テロップ</td>
-              <td class="prep">リハ・物件確認</td>
-              <td class="shoot">本番配信</td>
-            </tr>
-            <tr>
-              <th>主なタスク</th>
-              <td style="font-size:10px; text-align:left;">本資料送付</td>
-              <td style="font-size:10px; text-align:left;">プラン確定<br>協賛社確定開始</td>
-              <td style="font-size:10px; text-align:left;">出演者選定<br>会場下見</td>
-              <td style="font-size:10px; text-align:left;">台本初稿<br>協賛社確定</td>
-              <td style="font-size:10px; text-align:left;">法務チェック<br>テロップ制作</td>
-              <td style="font-size:10px; text-align:left;">出演者リハ<br>機材最終確認</td>
-              <td style="font-size:10px; text-align:left;">前日入り<br>当日配信<br>切り抜き納品</td>
-            </tr>
-            <tr>
-              <th>マイルストーン</th>
-              <td style="font-size:10px;">企画ラフ受領</td>
-              <td style="font-size:10px;">見積もり確定</td>
-              <td style="font-size:10px;">出演者契約</td>
-              <td style="font-size:10px;">台本決裁着手</td>
-              <td style="font-size:10px;">法務クリア</td>
-              <td style="font-size:10px;">配信GO/NO判定</td>
-              <td style="font-size:10px;">OPEN配信実施</td>
-            </tr>
-          </tbody>
-        </table>
-        <div class="kpi-bar" style="margin-top: 12px;">
-          <div class="kpi-item">
-            <div class="k">ラフ提出（本資料）</div>
-            <div class="v">2026年6月末</div>
-          </div>
-          <div class="kpi-item">
-            <div class="k">配信予定日</div>
-            <div class="v">2026年12月下旬<small>（OPEN週末）</small></div>
-          </div>
-        </div>
-        <div class="insight" style="margin-top: 10px;">
-          <span class="label">CRITICAL PATH</span>
-          台本の<strong>法務チェックには8〜9営業日</strong>を確保する必要があるため、9月末までに台本初稿確定が必須となります。OPEN期日から逆算したスケジュール設定をお願いいたします。
-        </div>
-      </div>
-      <div class="s-footer">
-        <div class="brand">Firework Japan株式会社</div>
-        <div>8 ／ 9</div>
-      </div>
-    </div>
-
-    <!-- ===== Slide 9: 留意事項 ===== -->
-    <div class="slide" id="sec-9" data-slide-num="9" data-slide-title="CH.07 留意事項">
-      <div class="slide-num-label">SLIDE 9 ／ CH.07 留意事項</div>
-      <div class="s-header">
-        <div class="dot"></div>
-        <div class="tag">CH. 07</div>
-        <div class="sep"></div>
         <div class="title">留意事項・前提条件</div>
-        <div class="section-label">Section 7 · 前提条件</div>
+        <div class="section-label">Section 6 · 前提条件</div>
       </div>
       <div class="s-body">
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
@@ -942,22 +1007,19 @@
               </div>
               <div class="notice-body">
                 <ul>
-                  <li>プラン2（OBS配信）は<strong>有線LAN接続が必須</strong>です。POPUP会場での有線確保可否を事前にご確認ください。</li>
-                  <li>有線LAN確保が困難な場合は<strong>TVUルーター</strong>（3日レンタル）の手配が必要です（別途お見積もり）。</li>
-                  <li>プラン1（スマホ配信）はポケットWi-Fi（3日レンタル）込みの構成です。</li>
+                  <li>プラン2（OBS配信）は<strong>TVUルーター手配が前提</strong>です。会場で<strong>有線LANが利用可能な場合はTVUルーター不要</strong>です。</li>
+                  <li>プラン1（スマホ配信）は<strong>会場のネットワーク（有線 or Wi-Fi）使用想定</strong>。不安定／使用不可の場合は別途TVUルーター手配費が発生します。</li>
                 </ul>
               </div>
             </div>
             <div class="notice">
               <div class="notice-head">
-                <span>台本・法務確認のスケジュール</span>
-                <span class="num">スケジュール</span>
+                <span>スケジュール</span>
+                <span class="num">進行</span>
               </div>
               <div class="notice-body">
                 <ul>
-                  <li>台本の法務チェックには<strong>8〜9営業日</strong>の確認期間が必要です。</li>
-                  <li>協賛メーカーの確定が遅れると、法務チェック期間を圧迫します。</li>
-                  <li>9月末までに台本初稿を確定できる進行をお願いいたします。</li>
+                  <li><strong>キックオフは最遅でも配信予定日の2か月前まで</strong>に実施をお願いいたします。</li>
                 </ul>
               </div>
             </div>
@@ -978,27 +1040,13 @@
           <div>
             <div class="notice">
               <div class="notice-head">
-                <span>本提案に含まれるもの／含まれないもの</span>
-                <span class="num">スコープ</span>
-              </div>
-              <div class="notice-body">
-                <ul>
-                  <li><strong>含まれる：</strong>企画・台本・配信ディレクション・現地配信オペレーション・配信後レポート・現地遠征費</li>
-                  <li><strong>含まれない：</strong>会場・スタジオ費用、出演者キャスティング費、商品登録、LP・バナー制作、メーカー協賛獲得の代行、<strong>配信管理（コメント返信・回線監視）は貴社側で実施</strong></li>
-                  <li>切り抜き動画・リハーサル日・3カメ目追加等はオプション枠でお見積もりに反映します。</li>
-                </ul>
-              </div>
-            </div>
-            <div class="notice">
-              <div class="notice-head">
                 <span>遠征費の精算方法</span>
                 <span class="num">精算</span>
               </div>
               <div class="notice-body">
                 <ul>
                   <li>現地までの往復交通費・現地宿泊費・現地諸経費は<strong>概算でのお見積もり</strong>となります。</li>
-                  <li>実費との差額が大きい場合は、領収書ベースで精算させていただく場合があります。</li>
-                  <li>配信前日入り1泊での想定です。早朝入り・翌日撤収希望の場合は別途調整いたします。</li>
+                  <li><strong>配信前日もしくは配信後の宿泊</strong>を想定しております。<strong>配信時間や当日準備スケジュール</strong>によって変動いたします。</li>
                 </ul>
               </div>
             </div>
