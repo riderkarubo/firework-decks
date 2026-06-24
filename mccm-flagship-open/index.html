@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="last-modified" content="2026-06-24T15:32:00+09:00">
+  <script src="../auth.js"></script>
+  <script>document.addEventListener('DOMContentLoaded',function(){FireworkSSO.protect();});</script>
+  <title>MCCM 新店舗OPEN記念 現地ライブ配信ご提案｜スライドモック</title>
+
+  <!-- OGP / Slack unfurl -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="新店舗OPEN記念 現地ライブ配信ご提案｜Firework社内">
+  <meta property="og:description" content="フラッグシップ店OPEN記念の現地ライブ配信。ミニマム/リッチの2プランで企画＋見積もり（社内限定）。">
+  <meta property="og:url" content="https://riderkarubo.github.io/firework-decks/mccm-flagship-open/">
+  <meta property="og:site_name" content="Firework社内 / クライアント提案">
+  <meta property="og:locale" content="ja_JP">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="新店舗OPEN記念 現地ライブ配信ご提案｜Firework社内">
+  <meta name="twitter:description" content="フラッグシップ店OPEN記念の現地ライブ配信。ミニマム/リッチの2プランで企画＋見積もり（社内限定）。">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --dark:    #1A1A2E;
+      --navy:    #0F3460;
+      --white:   #FFFFFF;
+      --text:    #333333;
+      --accent:  #FA006D;
+      --green:   #1B998B;
+      --card-bg: #F8F9FC;
+      --card-border: #E8E8E8;
+      --gray:    #777777;
+      --light:   #F5F5F5;
+      --soft:    #F8F8F8;
+      --bg-page: #E5E7EB;
+      --accent-soft: #FFF0F6;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; padding: 0;
+      background: var(--bg-page);
+      font-family: 'Noto Sans JP', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', -apple-system, sans-serif;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ===== Toolbar ===== */
+    .toolbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: var(--dark);
+      color: #fff;
+      padding: 10px 20px;
+      display: flex; align-items: center; gap: 16px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    }
+    .toolbar-brand { font-weight: 700; font-size: 13px; letter-spacing: 0.06em; }
+    .toolbar-brand .accent { color: var(--accent); }
+    .toolbar-meta { font-size: 11px; color: rgba(255,255,255,0.6); margin-left: 12px; }
+    .toolbar-actions { margin-left: auto; display: flex; align-items: center; gap: 8px; }
+    .toolbar-actions button {
+      background: rgba(255,255,255,0.1);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 6px 14px;
+      font-size: 12px; font-weight: 600;
+      border-radius: 4px; cursor: pointer;
+      letter-spacing: 0.04em;
+      transition: background 0.15s;
+      font-family: inherit;
+    }
+    .toolbar-actions button:hover { background: rgba(255,255,255,0.2); }
+    .toolbar-actions button.primary { background: var(--accent); border-color: var(--accent); }
+    .toolbar-actions button.primary:hover { opacity: 0.85; }
+
+    /* ===== Slides ===== */
+    .slides-container {
+      padding: 70px 0 60px;
+      display: flex; flex-direction: column;
+      align-items: center; gap: 24px;
+    }
+    .slide {
+      position: relative;
+      width: 1280px; height: 720px;
+      background: #fff;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      overflow: hidden;
+    }
+    .slide-num-label {
+      position: absolute; top: -28px; left: 0;
+      font-size: 11px; color: #6B7280;
+      font-weight: 600; letter-spacing: 0.08em;
+    }
+
+    /* ===== Header ===== */
+    .s-header {
+      position: absolute;
+      top: 0; left: 0; right: 0; height: 64px;
+      background: var(--accent);
+      display: flex; align-items: center;
+      padding: 0 28px; gap: 14px;
+    }
+    .s-header .dot {
+      width: 12px; height: 12px;
+      background: rgba(255,255,255,0.6);
+      border-radius: 50%; flex-shrink: 0;
+    }
+    .s-header .tag {
+      color: #fff; font-size: 12px; font-weight: 700;
+      letter-spacing: 0.22em; text-transform: uppercase;
+    }
+    .s-header .sep {
+      width: 1px; height: 28px;
+      background: rgba(255,255,255,0.3); margin: 0 6px;
+    }
+    .s-header .title {
+      color: #fff; font-size: 19px; font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+    .s-header .section-label {
+      margin-left: auto; font-size: 11px;
+      color: rgba(255,255,255,0.6); letter-spacing: 0.06em;
+    }
+
+    .s-footer {
+      position: absolute; bottom: 0; left: 0; right: 0; height: 32px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 28px; font-size: 10px; color: #888;
+      border-top: 1px solid var(--card-border);
+    }
+    .s-footer .brand { font-weight: 600; color: var(--accent); }
+
+    .s-body {
+      position: absolute; top: 64px; bottom: 32px;
+      left: 0; right: 0; padding: 22px 32px 16px;
+    }
+
+    /* ===== Cover ===== */
+    .cover-slide {
+      background: linear-gradient(135deg, #0A0A18 0%, #1F1F3A 60%, #0F3460 100%);
+      color: #fff;
+    }
+    .cover-slide .s-header { background: transparent; }
+    .cover-slide .s-footer {
+      background: transparent; color: rgba(255,255,255,0.5);
+      border-top: 1px solid rgba(255,255,255,0.15);
+    }
+    .cover-slide .s-footer .brand { color: rgba(255,255,255,0.8); }
+    .cover-body {
+      position: absolute; top: 50%; left: 0; right: 0;
+      transform: translateY(-50%); padding: 0 80px;
+    }
+    .cover-label {
+      font-size: 12px; letter-spacing: 0.35em;
+      color: var(--accent); font-weight: 700;
+      margin-bottom: 24px; text-transform: uppercase;
+    }
+    .cover-title {
+      font-size: 42px; font-weight: 900;
+      line-height: 1.25; margin-bottom: 20px;
+      letter-spacing: 0.01em;
+    }
+    .cover-sub {
+      font-size: 17px; color: rgba(255,255,255,0.78);
+      margin-bottom: 44px; line-height: 1.65;
+    }
+    .cover-sub .hl { color: #fff; font-weight: 700; }
+    .cover-meta {
+      display: grid; grid-template-columns: repeat(3, auto);
+      gap: 44px; padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.18);
+    }
+    .cover-meta-item .k {
+      font-size: 10px; color: rgba(255,255,255,0.5);
+      letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 5px;
+    }
+    .cover-meta-item .v { font-size: 14px; color: #fff; font-weight: 600; line-height: 1.5; }
+
+    /* ===== TOC ===== */
+    .toc-section-title {
+      font-size: 1.1em; font-weight: 700; color: var(--dark);
+      margin-bottom: 16px; padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent);
+    }
+    .toc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 32px; }
+    .toc-item { display: flex; align-items: center; }
+    .toc-item a {
+      display: flex; align-items: center; gap: 10px;
+      width: 100%; text-decoration: none; color: inherit;
+      border-radius: 6px; padding: 6px 8px;
+      transition: background 0.15s; font-size: 13px;
+    }
+    .toc-item a:hover { background: #e8eaf0; }
+    .toc-num {
+      width: 24px; height: 24px; background: var(--dark);
+      color: white; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 700; flex-shrink: 0;
+    }
+
+    /* ===== Conclusion ===== */
+    .conclusion {
+      text-align: center; font-size: 16px; font-weight: 700;
+      color: #2A2A2A; margin-bottom: 16px; line-height: 1.5;
+    }
+    .conclusion .accent { color: var(--accent); }
+    .conclusion .green { color: var(--green); }
+
+    /* ===== Cards ===== */
+    .card {
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 8px; padding: 16px 20px; overflow: hidden;
+    }
+    .card-title {
+      font-size: 11px; font-weight: 700; color: var(--accent);
+      letter-spacing: 0.16em; text-transform: uppercase;
+      margin-bottom: 10px; border-bottom: 2px solid var(--accent);
+      padding-bottom: 6px;
+    }
+
+    /* ===== Opportunity card ===== */
+    .opp-card {
+      border: 1px solid var(--card-border); border-left: 4px solid var(--accent);
+      border-radius: 6px; padding: 12px 14px; background: var(--accent-soft);
+    }
+    .opp-card h4 {
+      margin: 0 0 5px; font-size: 12px; font-weight: 700; color: var(--accent);
+    }
+    .opp-card p { margin: 0; font-size: 11px; color: #555; line-height: 1.65; }
+
+    /* ===== Benefit card ===== */
+    .benefit-card {
+      border: 1px solid var(--card-border); border-top: 3px solid var(--green);
+      border-radius: 6px; padding: 14px 16px; background: #f4fffe;
+    }
+    .benefit-card h4 {
+      margin: 0 0 6px; font-size: 12px; font-weight: 700; color: var(--green);
+    }
+    .benefit-card p { margin: 0; font-size: 11px; color: #444; line-height: 1.7; }
+
+    /* ===== Plan card ===== */
+    .plan-card {
+      border: 1px solid var(--card-border); border-radius: 8px;
+      overflow: hidden; height: 100%;
+    }
+    .plan-head {
+      padding: 10px 18px; font-weight: 700; font-size: 13px; color: #fff;
+    }
+    .plan-head.minim { background: var(--accent); }
+    .plan-head.rich { background: var(--navy); }
+    .plan-body { padding: 12px 18px; font-size: 12px; line-height: 1.7; color: #333; }
+    .plan-badge {
+      display: inline-block; font-size: 10px; font-weight: 700;
+      letter-spacing: 0.1em; padding: 3px 10px; border-radius: 3px; margin-bottom: 6px;
+    }
+    .plan-badge.minim { background: var(--accent-soft); color: var(--accent); }
+    .plan-badge.rich { background: #e8eef7; color: var(--navy); }
+
+    /* ===== Spec table ===== */
+    .spec-table { width: 100%; border-collapse: collapse; font-size: 11.5px; }
+    .spec-table th, .spec-table td {
+      text-align: left; padding: 5px 10px;
+      border-bottom: 1px dashed var(--card-border);
+      vertical-align: top; line-height: 1.55;
+    }
+    .spec-table th { width: 36%; color: #555; font-weight: 500; background: rgba(0,0,0,0.02); }
+    .spec-table tr:last-child th, .spec-table tr:last-child td { border-bottom: 0; }
+    .spec-table .em { color: var(--accent); font-weight: 700; }
+    .spec-table .em-green { color: var(--green); font-weight: 700; }
+    .spec-table .em-navy { color: var(--navy); font-weight: 700; }
+
+    /* ===== Role table ===== */
+    .role-table { width: 100%; border-collapse: collapse; font-size: 11.5px; }
+    .role-table th, .role-table td {
+      border: 1px solid var(--card-border); padding: 7px 12px;
+      vertical-align: top; line-height: 1.6;
+    }
+    .role-table thead th { background: var(--dark); color: #fff; font-size: 12px; font-weight: 700; text-align: center; }
+    .role-table thead th.fw-col { background: var(--accent); }
+    .role-table thead th.cl-col { background: var(--navy); }
+    .role-table tbody th {
+      background: var(--card-bg); font-weight: 600; color: #333; width: 18%; text-align: left;
+    }
+    .role-table td.fw-col { background: #fff5f8; }
+    .role-table td.cl-col { background: #f0f4fc; }
+
+    /* ===== Price box ===== */
+    .pricebox {
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 6px; padding: 12px 16px;
+    }
+    .pricebox .label { font-size: 10px; color: #777; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 4px; }
+    .pricebox .value { font-size: 28px; font-weight: 800; color: var(--accent); line-height: 1.1; }
+    .pricebox .value .per { font-size: 13px; color: #555; font-weight: 700; margin-left: 4px; }
+    .pricebox .note { margin-top: 8px; font-size: 10px; color: #777; line-height: 1.6; border-top: 1px solid var(--card-border); padding-top: 8px; }
+    .pricebox.rich .value { color: var(--navy); }
+
+    /* ===== Travel cost ===== */
+    .travel-box {
+      background: #fff5f5; border: 1px solid #ffcdd2;
+      border-left: 4px solid #c62828; border-radius: 6px;
+      padding: 12px 16px;
+    }
+    .travel-box h4 {
+      margin: 0 0 8px; font-size: 12px; font-weight: 700; color: #c62828;
+      letter-spacing: 0.08em;
+    }
+    .travel-box .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 16px; font-size: 11px; }
+    .travel-box .grid .k { color: #666; }
+    .travel-box .grid .v { color: #c62828; font-weight: 700; text-align: right; }
+
+    /* ===== Option grid ===== */
+    .option-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .option-card {
+      border: 1px solid var(--card-border); border-top: 3px solid var(--green);
+      border-radius: 6px; padding: 10px 12px; background: #fafffe;
+      display: flex; flex-direction: column;
+    }
+    .option-card h4 { margin: 0 0 4px; font-size: 11.5px; font-weight: 700; color: var(--navy); }
+    .option-card p { margin: 0; flex-grow: 1; font-size: 10px; color: #555; line-height: 1.65; }
+    .option-card .price {
+      margin-top: 6px; padding-top: 6px; border-top: 1px dashed var(--card-border);
+      font-size: 10.5px; color: var(--text); font-weight: 600;
+    }
+    .option-card .price .placeholder {
+      background: #ffe8c4; color: #a06000;
+      font-size: 10px; font-weight: 700; padding: 1px 6px; border-radius: 3px;
+    }
+
+    /* ===== Schedule table ===== */
+    .schedule-table { width: 100%; border-collapse: collapse; font-size: 11.5px; }
+    .schedule-table th, .schedule-table td {
+      border: 1px solid var(--card-border); padding: 7px 10px;
+      vertical-align: middle; line-height: 1.5; text-align: center;
+    }
+    .schedule-table thead th { background: var(--dark); color: #fff; font-weight: 700; }
+    .schedule-table tbody th { background: var(--card-bg); font-weight: 600; width: 14%; text-align: left; }
+    .schedule-table td.prep { background: #f4fffe; color: var(--green); font-weight: 700; }
+    .schedule-table td.shoot { background: #fff0f6; color: var(--accent); font-weight: 700; }
+    .schedule-table td.deliver { background: #eef3fc; color: var(--navy); font-weight: 700; }
+
+    /* ===== Notice ===== */
+    .notice { border: 1px solid var(--card-border); border-radius: 6px; overflow: hidden; margin-bottom: 10px; }
+    .notice-head {
+      background: var(--dark); color: #fff; padding: 7px 14px;
+      font-size: 12px; font-weight: 700; letter-spacing: 0.04em;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .notice-head .num {
+      font-size: 10px; background: rgba(255,255,255,0.18);
+      padding: 2px 8px; border-radius: 3px; letter-spacing: 0.1em;
+    }
+    .notice-body { padding: 9px 14px; background: #FCFCFA; font-size: 11px; line-height: 1.65; }
+    .notice-body ul { margin: 0; padding-left: 18px; }
+    .notice-body ul li { margin-bottom: 3px; }
+
+    /* ===== Insight ===== */
+    .insight {
+      background: #F0FDF8; border: 1px solid #A8DFD0;
+      border-left: 4px solid var(--green); border-radius: 4px;
+      padding: 10px 14px; font-size: 11.5px; line-height: 1.7; color: #1A4040;
+    }
+    .insight strong { color: var(--accent); font-weight: 700; }
+    .insight .label {
+      display: inline-block; font-size: 10px; font-weight: 700;
+      letter-spacing: 0.14em; color: var(--green); margin-right: 8px;
+    }
+
+    /* ===== KPI bar ===== */
+    .kpi-bar {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;
+      padding: 12px 14px; background: var(--card-bg);
+      border: 1px solid var(--card-border); border-radius: 6px;
+    }
+    .kpi-item .k { font-size: 10px; font-weight: 700; color: var(--gray); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 3px; }
+    .kpi-item .v { font-size: 16px; font-weight: 800; color: var(--accent); }
+    .kpi-item .v small { font-size: 11px; color: #555; font-weight: 600; margin-left: 3px; }
+
+    /* ===== Concept hero ===== */
+    .concept-hero {
+      display: grid; grid-template-columns: 1.1fr 1fr; gap: 20px; align-items: stretch;
+    }
+    .concept-vision {
+      background: linear-gradient(135deg, #FFF0F6 0%, #FFE0EC 100%);
+      border-radius: 8px; padding: 18px 20px;
+      border-left: 4px solid var(--accent);
+    }
+    .concept-vision h4 {
+      margin: 0 0 10px; font-size: 13px; font-weight: 700; color: var(--accent);
+      letter-spacing: 0.06em;
+    }
+    .concept-vision p {
+      margin: 0 0 8px; font-size: 12px; color: #333; line-height: 1.75;
+    }
+
+    .reference-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px; padding: 14px 16px;
+    }
+    .reference-card .ref-label {
+      font-size: 10px; font-weight: 700; color: var(--navy);
+      letter-spacing: 0.18em; text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .reference-card h4 {
+      margin: 0 0 8px; font-size: 13px; font-weight: 700; color: #333;
+    }
+    .reference-card p { margin: 0; font-size: 11px; color: #555; line-height: 1.7; }
+
+    /* ===== Crew grid ===== */
+    .crew-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .crew-list {
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 8px; padding: 14px 18px;
+    }
+    .crew-list h4 {
+      margin: 0 0 10px; font-size: 13px; font-weight: 700;
+      padding-bottom: 6px; border-bottom: 2px solid var(--accent);
+    }
+    .crew-list.rich h4 { border-bottom-color: var(--navy); }
+    .crew-list ul { margin: 0; padding-left: 0; list-style: none; }
+    .crew-list li {
+      font-size: 11.5px; line-height: 1.7; padding: 4px 0;
+      border-bottom: 1px dashed var(--card-border);
+      display: flex; gap: 8px;
+    }
+    .crew-list li:last-child { border-bottom: 0; }
+    .crew-list .role { font-weight: 700; color: var(--accent); min-width: 88px; }
+    .crew-list.rich .role { color: var(--navy); }
+    .crew-list .task { color: #555; flex: 1; }
+
+    @media print {
+      * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+      @page { size: 1280px 720px landscape; margin: 0; }
+      body { background: #fff; }
+      .toolbar { display: none !important; }
+      .slides-container { padding: 0; gap: 0; }
+      .slide { box-shadow: none; page-break-after: always; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== Toolbar ===== -->
+  <div class="toolbar">
+    <div class="toolbar-brand">MCCM <span class="accent">×</span> Firework ／ 新店舗OPEN記念 現地ライブ配信</div>
+    <div class="toolbar-meta">スライドモック v1.0 ／ Last Updated 2026年6月24日 15:32</div>
+    <div class="toolbar-actions">
+      <button id="btn-print" class="primary">🖨️ 印刷</button>
+    </div>
+  </div>
+
+  <div class="slides-container">
+
+    <!-- ===== Slide 1: 表紙 ===== -->
+    <div class="slide cover-slide" data-slide-num="1" data-slide-title="表紙">
+      <div class="slide-num-label">SLIDE 1 ／ 表紙</div>
+      <div class="s-header" style="background: transparent;">
+        <div class="dot"></div>
+        <div class="tag" style="color: rgba(255,255,255,0.7);">FLAGSHIP STORE OPEN ／ LIVE COMMERCE PROPOSAL</div>
+      </div>
+      <div class="cover-body">
+        <div class="cover-label">MCCM × FIREWORK ／ 新店舗OPEN 現地ライブ配信</div>
+        <div class="cover-title">フラッグシップ店OPEN記念<br>現地ライブ配信<br>ご提案</div>
+        <div class="cover-sub">
+          POPUPスペースを舞台に、<span class="hl">協賛メーカーの世界観</span>を現地から届ける。<br>
+          ミニマム/リッチの<span class="hl">2プラン</span>で、ご予算と表現規模に合わせて選択可能です
+        </div>
+        <div class="cover-meta">
+          <div class="cover-meta-item">
+            <div class="k">Attention</div>
+            <div class="v">株式会社MCCマネジメント<br>佐藤静香 様</div>
+          </div>
+          <div class="cover-meta-item">
+            <div class="k">Prepared by</div>
+            <div class="v">Firework Japan株式会社</div>
+          </div>
+          <div class="cover-meta-item">
+            <div class="k">Date</div>
+            <div class="v">2026年6月24日</div>
+          </div>
+        </div>
+      </div>
+      <div class="s-footer">
+        <div class="brand">Firework Japan株式会社</div>
+        <div>新店舗OPEN記念 現地ライブ配信 ご提案</div>
+      </div>
+    </div>
+
+    <!-- ===== Slide 2: 目次 ===== -->
+    <div class="slide" data-slide-num="2" data-slide-title="目次">
+      <div class="slide-num-label">SLIDE 2 ／ 目次</div>
+      <div class="s-header">
+        <div class="dot"></div>
+        <div class="tag">CONTENTS</div>
+        <div class="sep"></div>
+        <div class="title">目次</div>
+      </div>
+      <div class="s-body">
+        <div class="toc-section-title">Table of Contents</div>
+        <div class="toc-grid">
+          <div class="toc-item"><a href="#sec-3"><div class="toc-num">1</div><span>新店舗OPEN記念 配信の機会と狙い</span></a></div>
+          <div class="toc-item"><a href="#sec-4"><div class="toc-num">2</div><span>企画コンセプト（現地×協賛メーカー協業）</span></a></div>
+          <div class="toc-item"><a href="#sec-5"><div class="toc-num">3</div><span>2プラン提案（ミニマム / リッチ）</span></a></div>
+          <div class="toc-item"><a href="#sec-6"><div class="toc-num">4</div><span>体制と当日のフロー</span></a></div>
+          <div class="toc-item"><a href="#sec-7"><div class="toc-num">5</div><span>価格プラン・遠征費・オプション</span></a></div>
+          <div class="toc-item"><a href="#sec-8"><div class="toc-num">6</div><span>スケジュール（〜OPEN配信日）</span></a></div>
+          <div class="toc-item"><a href="#sec-9"><div class="toc-num">7</div><span>留意事項・前提条件</span></a></div>
+        </div>
+        <div class="insight" style="margin-top: 28px;">
+          <span class="label">本提案のスコープ</span>
+          フラッグシップ店OPEN記念の<strong>1回限り現地ライブ配信</strong>。メーカー協賛のエントリー獲得はMCCM側で対応し、本提案ではFirework側の配信制作費・遠征費・オプションを定義します。
+        </div>
+        <div class="kpi-bar" style="margin-top: 14px;">
+          <div class="kpi-item">
+            <div class="k">ラフ提出期限</div>
+            <div class="v">2026年6月末<small>（本資料）</small></div>
+          </div>
+          <div class="kpi-item">
+            <div class="k">配信予定日</div>
+            <div class="v">2026年12月下旬<small>（フラッグシップ店OPEN週末）</small></div>
+          </div>
+        </div>
+      </div>
+      <div class="s-footer">
+        <div class="brand">Firework Japan株式会社</div>
+        <div>2 ／ 9</div>
+      </div>
+    </div>
+
+    <!-- ===== Slide 3: 機会と狙い ===== -->
+    <div class="slide" id="sec-3" data-slide-num="3" data-slide-title="CH.01 配信の機会と狙い">
+      <div class="slide-num-label">SLIDE 3 ／ CH.01 機会と狙い</div>
+      <div class="s-header">
+        <div class="dot"></div>
+        <div class="tag">CH. 01</div>
+        <div class="sep"></div>
+        <div class="title">新店舗OPEN記念 配信の機会と狙い</div>
+        <div class="section-label">Section 1 · オポチュニティ整理</div>
+      </div>
+      <div class="s-body">
+        <div class="conclusion">
+          フラッグシップ店OPENという<span class="accent">一度きりの祭事</span>を、<span class="green">協賛メーカーと共に資産化</span>するライブ配信
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1.4fr; gap: 16px;">
+          <div class="card">
+            <div class="card-title">Context ／ 与件整理</div>
+            <table class="spec-table">
+              <tr><th>OPEN時期</th><td>2026年12月下旬</td></tr>
+              <tr><th>会場</th><td><span class="em">フラッグシップ店POPUPスペース</span>（B1/2F）</td></tr>
+              <tr><th>SNS方針</th><td>大々的なにぎやかしを実施</td></tr>
+              <tr><th>協賛スキーム</th><td>メーカー協賛による配信実施</td></tr>
+              <tr><th>参考事例</th><td>@cosme名古屋店OPEN時の現地ライブ配信</td></tr>
+              <tr><th>運営前提</th><td>Firework側にディレクション一任</td></tr>
+            </table>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <div class="opp-card">
+              <h4>狙い① OPENの熱量を可視化資産に変える</h4>
+              <p>OPEN日のPOPUPスペースの賑わい・初日ならではの空気感は、その日にしか撮れない素材。ライブ配信＋アーカイブ＋切り抜き動画で、SNS・EC・店頭サイネージへ展開可能な恒久資産へ昇華します。</p>
+            </div>
+            <div class="opp-card">
+              <h4>狙い② 協賛メーカーへの強烈な訴求機会</h4>
+              <p>フラッグシップ店OPENという文脈は、メーカーにとって「ここで露出したい」と思わせる強い動機を生み出します。通常のブランド横断配信より高いエントリー価値を提示でき、協賛獲得の単価・本数アップが見込めます。</p>
+            </div>
+            <div class="opp-card">
+              <h4>狙い③ 現地ならではの臨場感×購買導線</h4>
+              <p>店舗の世界観・実物商品・OPEN限定POPUP什器を背景にしたライブは、スタジオ配信と全く異なるエモーショナルな視聴体験を提供。視聴者の購買意欲を高め、Firework埋込ECサイトへの誘導効果を最大化します。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="s-footer">
+        <div class="brand">Firework Japan株式会社</div>
+        <div>3 ／ 9</div>
+      </div>
+    </div>
+
+    <!-- ===== Slide 4: 企画コンセプト ===== -->
+    <div class="slide" id="sec-4" data-slide-num="4" data-slide-title="CH.02 企画コンセプト">
+      <div class="slide-num-label">SLIDE 4 ／ CH.02 企画コンセプト</div>
+      <div class="s-header">
+        <div class="dot"></div>
+        <div class="tag">CH. 02</div>
+        <div class="sep"></div>
+        <div class="title">企画コンセプト（現地×協賛メーカー協業）</div>
+        <div class="section-label">Section 2 · コンセプト</div>
+      </div>
+      <div class="s-body">
+        <div class="conclusion">
+          POPUPスペースを<span class="accent">巨大ライブセット</span>に見立て、<span class="green">協賛メーカーの世界観</span>を交互に届ける構成
+        </div>
+        <div class="concept-hero" style="margin-bottom: 14px;">
+          <div class="concept-vision">
+            <h4>VISION ／ 配信のあり方</h4>
+            <p>普段のスタジオ配信や担当者運用とは異なる、<strong>OPEN日でしか実現できないライブ体験</strong>を設計します。フラッグシップ店の世界観を背景に、複数の協賛メーカーのアイテムを段階的に紹介。視聴者にとっては<strong>「OPEN当日のお店を覗き見」する感覚</strong>になり、メーカーにとっては<strong>店舗開店という文脈の中で商品が紹介される</strong>強い接点となります。</p>
+            <p>配信は単発で完結させず、<strong>切り抜き動画・アーカイブ・SNS連動</strong>でOPEN直後の数週間に渡って活用。OPENプロモーション全体の中核コンテンツとして機能させる構成です。</p>
+          </div>
+          <div class="reference-card">
+            <div class="ref-label">REFERENCE</div>
+            <h4>@cosme名古屋店OPEN事例の踏襲</h4>
+            <p>同様の<strong>新店舗OPEN記念現地ライブ配信</strong>事例。店舗とインフルエンサー・ブランドが一体となって、OPENの熱量を配信を通じて拡散しました。POPUPスペースの巨大什器・限定アイテム・体験コーナーをカメラで回遊させ、視聴者を仮想的に店内ツアーへ誘う構成は、本案件にもそのまま応用可能です。</p>
+          </div>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;">
+          <div class="benefit-card">
+            <h4>① 店内回遊型の構成</h4>
+            <p>B1・2FのPOPUPを順番に巡る構成。視聴者は「店内ツアー」感覚で全フロアを把握できます。</p>
+          </div>
+          <div class="benefit-card">
+            <h4>② 協賛社ローテーション</h4>
+            <p>協賛メーカーごとに10〜20分のセクションを設定。コーナーごとに商品体験・実演を実施。</p>
+          </div>
+          <div class="benefit-card">
+            <h4>③ Firework埋込導線</h4>
+            <p>配信中・アーカイブから直接ECへ誘導。視聴と購買のシームレスな接続を実現します。</p>
+          </div>
+          <div class="benefit-card">
+            <h4>④ 切り抜きの二次活用</h4>
+            <p>配信終了後、コーナーごとに切り抜き動画を制作。協賛メーカー個別のSNS・LP素材として横展開。</p>
+          </div>
+        </div>
+      </div>
+      <div class="s-footer">
+        <div class="brand">Firework Japan株式会社</div>
+        <div>4 ／ 9</div>
+      </div>
+    </div>
+
+    <!-- ===== Slide 5: 2プラン比較 ===== -->
+    <div class="slide" id="sec-5" data-slide-num="5" data-slide-title="CH.03 2プラン提案">
+      <div class="slide-num-label">SLIDE 5 ／ CH.03 プラン比較</div>
+      <div class="s-header">
+        <div class="dot"></div>
+        <div class="tag">CH. 03</div>
+        <div class="sep"></div>
+        <div class="title">2プラン提案（ミニマム / リッチ）</div>
+        <div class="section-label">Section 3 · プラン比較</div>
+      </div>
+      <div class="s-body">
+        <div class="conclusion">
+          コンパクトな<span class="accent">ミニマム</span>と、ブランド世界観を担保する<span class="green">リッチ</span>の2プランから選択可能
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; height: calc(100% - 42px);">
+          <div class="plan-card">
+            <div class="plan-head minim">プラン1 ／ ミニマム（スマホ配信・2名体制）</div>
+            <div class="plan-body">
+              <div class="plan-badge minim">CASUAL ／ 機動力重視</div>
+              <table class="spec-table" style="margin-top: 4px;">
+                <tr><th>機材</th><td>スマートフォン配信・リングライト・ワイヤレスマイク</td></tr>
+                <tr><th>カメラ</th><td>スマホ1台（手持ち回遊）</td></tr>
+                <tr><th>体制</th><td><span class="em">2名</span>（制作進行 + 現地サポート兼配信操作）</td></tr>
+                <tr><th>回線</th><td>ポケットWi-Fi（3日レンタル）</td></tr>
+                <tr><th>テロップ</th><td>シンプルテロップ（オプションで詳細化可能）</td></tr>
+                <tr><th>含むもの</th><td>企画・台本・配信ディレクション・配信後レポート</td></tr>
+                <tr><th>適した場面</th><td>OPENの臨場感を素早く・自然体で届けたいシーン</td></tr>
+              </table>
+              <div class="pricebox" style="margin-top: 10px;">
+                <div class="label">1配信あたり（遠征費別）</div>
+                <div class="value">¥692,000<span class="per">＋回線実費／回</span></div>
+                <div class="note">＋現地遠征費（2名分）約¥136,000＋モバイル回線実費 → トータル目安 約¥828,000＋回線実費／回</div>
+              </div>
+            </div>
+          </div>
+          <div class="plan-card">
+            <div class="plan-head rich">プラン2 ／ リッチ（OBS配信・5名体制）</div>
+            <div class="plan-body">
+              <div class="plan-badge rich">PREMIUM ／ ブランド品質担保</div>
+              <table class="spec-table" style="margin-top: 4px;">
+                <tr><th>機材</th><td><span class="em-navy">一眼カメラ2台</span>・照明・OBS・スイッチャー・テロップ機材</td></tr>
+                <tr><th>カメラ</th><td>2カメ体制（ヒキ＋ヨリ）／オプションで3カメ目追加可</td></tr>
+                <tr><th>体制</th><td><span class="em-navy">5名</span>（制作進行 + ディレクター + カメラ×2 + スイッチャー + 配信管理）</td></tr>
+                <tr><th>回線</th><td>有線LAN前提（不可ならTVUルーター手配）</td></tr>
+                <tr><th>テロップ</th><td>協賛社情報・商品スペック・限定情報をリアルタイム挿入</td></tr>
+                <tr><th>含むもの</th><td>企画・台本・テロップ制作・配信ディレクション・配信後レポート</td></tr>
+                <tr><th>適した場面</th><td>ブランド世界観を担保したい・切り抜きを高品質で二次活用したい</td></tr>
+              </table>
+              <div class="pricebox rich" style="margin-top: 10px;">
+                <div class="label">1配信あたり（遠征費別）</div>
+                <div class="value">¥1,432,000<span class="per">＋TVU実費／回</span></div>
+                <div class="note">＋現地遠征費（5名分）約¥330,000＋TVU実費 → トータル目安 約¥1,762,000＋TVU実費／回</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="s-footer">
+        <div class="brand">Firework Japan株式会社</div>
+        <div>5 ／ 9</div>
+      </div>
+    </div>
+
+    <!-- ===== Slide 6: 体制と当日のフロー ===== -->
+    <div class="slide" id="sec-6" data-slide-num="6" data-slide-title="CH.04 体制と当日のフロー">
+      <div class="slide-num-label">SLIDE 6 ／ CH.04 体制とフロー</div>
+      <div class="s-header">
+        <div class="dot"></div>
+        <div class="tag">CH. 04</div>
+        <div class="sep"></div>
+        <div class="title">体制と当日のフロー</div>
+        <div class="section-label">Section 4 · 体制・進行</div>
+      </div>
+      <div class="s-body">
+        <div class="conclusion">
+          <span class="accent">Firework側で全工程をリード</span>し、貴社は商品・現場対応に集中いただける体制
+        </div>
+        <div class="crew-grid" style="margin-bottom: 12px;">
+          <div class="crew-list">
+            <h4>ミニマム体制 ／ 2名</h4>
+            <ul>
+              <li><span class="role">制作進行</span><span class="task">企画立案・進行管理・現地統括・配信メインカメラ操作</span></li>
+              <li><span class="role">現場サポート</span><span class="task">出演者アテンド・コメント確認・現場の細かな対応</span></li>
+            </ul>
+          </div>
+          <div class="crew-list rich">
+            <h4>リッチ体制 ／ 5名</h4>
+            <ul>
+              <li><span class="role">制作進行</span><span class="task">企画統括・全体進行・MCCM・出演者・協賛社との調整</span></li>
+              <li><span class="role">現場D</span><span class="task">フロアディレクション・進行管理・コメント拾い</span></li>
+              <li><span class="role">カメラ×2</span><span class="task">ヒキ（全体）＋ヨリ（商品アップ）の2カメ体制</span></li>
+              <li><span class="role">スイッチャー</span><span class="task">OBS操作・カット切替・テロップ出し・配信品質管理</span></li>
+              <li><span class="role">配信管理</span><span class="task">回線監視・コメント返信・トラブル対応</span></li>
+            </ul>
+          </div>
+        </div>
+        <table class="role-table">
+          <thead>
+            <tr>
+              <th style="width:14%;">フェーズ</th>
+              <th class="fw-col">Firework担当</th>
+              <th class="cl-col">貴社（MCCM）担当</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>事前準備</th>
+              <td class="fw-col">企画構成・台本作成・テロップ制作・配信フロー設計・出演者ブリーフィング</td>
+              <td class="cl-col">協賛メーカーの確定・商品情報の提供・店舗側との会場調整・出演者キャスティング</td>
+            </tr>
+            <tr>
+              <th>当日 設営</th>
+              <td class="fw-col">機材搬入・カメラセッティング・照明調整・回線確認・リハーサル進行</td>
+              <td class="cl-col">店舗・POPUP什器の最終確認・商品の準備・出演者の現場入り対応</td>
+            </tr>
+            <tr>
+              <th>当日 本番</th>
+              <td class="fw-col">ディレクション・カメラ操作・配信オペレーション・テロップ出し・コメント確認</td>
+              <td class="cl-col">商品ハンドオフ・現場フロアスタッフ対応・協賛社対応</td>
+            </tr>
+            <tr>
+              <th>配信後</th>
+              <td class="fw-col">視聴データ分析・協賛社向け実績レポート・切り抜き動画制作（オプション）</td>
+              <td class="cl-col">配信実績の社内・協賛社向け共有・次回施策の方針判断</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="s-footer">
+        <div class="brand">Firework Japan株式会社</div>
+        <div>6 ／ 9</div>
+      </div>
+    </div>
+
+    <!-- ===== Slide 7: 価格プラン・遠征費・オプション ===== -->
+    <div class="slide" id="sec-7" data-slide-num="7" data-slide-title="CH.05 価格プラン">
+      <div class="slide-num-label">SLIDE 7 ／ CH.05 価格プラン</div>
+      <div class="s-header">
+        <div class="dot"></div>
+        <div class="tag">CH. 05</div>
+        <div class="sep"></div>
+        <div class="title">価格プラン・遠征費・オプション</div>
+        <div class="section-label">Section 5 · お見積もり</div>
+      </div>
+      <div class="s-body">
+        <div class="conclusion">
+          配信費＋現地遠征費の<span class="accent">2レイヤー構成</span>。プランごとに人数が変わるため遠征費を明示
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 12px;">
+          <div class="card" style="border-top: 3px solid var(--accent);">
+            <div class="plan-badge minim">PLAN 1 ／ ミニマム（スマホ配信・2名）</div>
+            <table class="spec-table">
+              <tr><th>制作進行</th><td>¥250,000</td></tr>
+              <tr><th>台本作成</th><td>¥123,000</td></tr>
+              <tr><th>現地ディレクション</th><td>¥98,000</td></tr>
+              <tr><th>機材コーディネート</th><td>¥123,000</td></tr>
+              <tr><th>モバイル回線（3日）</th><td><span class="em">別途お見積もり</span></td></tr>
+              <tr><th>配信後レポート</th><td>¥98,000</td></tr>
+              <tr><th>配信費 小計</th><td><span class="em">¥692,000＋回線実費</span></td></tr>
+            </table>
+            <div class="travel-box" style="margin-top: 10px;">
+              <h4>＋ 現地遠征費（2名分）</h4>
+              <div class="grid">
+                <div class="k">現地までの往復交通費</div><div class="v">¥76,000</div>
+                <div class="k">現地宿泊費（前日入り1泊）</div><div class="v">¥40,000</div>
+                <div class="k">現地諸経費</div><div class="v">¥20,000</div>
+                <div class="k">遠征費 小計</div><div class="v">¥136,000</div>
+              </div>
+            </div>
+          </div>
+          <div class="card" style="border-top: 3px solid var(--navy);">
+            <div class="plan-badge rich">PLAN 2 ／ リッチ（OBS配信・5名）</div>
+            <table class="spec-table">
+              <tr><th>制作進行</th><td>¥250,000</td></tr>
+              <tr><th>台本作成</th><td>¥123,000</td></tr>
+              <tr><th>現場ディレクション</th><td>¥98,000</td></tr>
+              <tr><th>カメラオペレーター×2</th><td>¥196,000</td></tr>
+              <tr><th>OBSスイッチャー</th><td>¥196,000</td></tr>
+              <tr><th>機材コーディネート</th><td>¥250,000</td></tr>
+              <tr><th>TVUルーター（3日）</th><td><span class="em-navy">別途お見積もり</span></td></tr>
+              <tr><th>機材運搬費</th><td>¥98,000</td></tr>
+              <tr><th>テロップ制作</th><td>¥123,000</td></tr>
+              <tr><th>配信後レポート</th><td>¥98,000</td></tr>
+              <tr><th>配信費 小計</th><td><span class="em-navy">¥1,432,000＋回線実費</span></td></tr>
+            </table>
+            <div class="travel-box" style="margin-top: 10px; border-left-color: var(--navy); background: #f0f4fc; border-color: #c5cee0;">
+              <h4 style="color: var(--navy);">＋ 現地遠征費（5名分）</h4>
+              <div class="grid">
+                <div class="k">現地までの往復交通費</div><div class="v" style="color: var(--navy);">¥190,000</div>
+                <div class="k">現地宿泊費（前日入り1泊）</div><div class="v" style="color: var(--navy);">¥100,000</div>
+                <div class="k">現地諸経費</div><div class="v" style="color: var(--navy);">¥40,000</div>
+                <div class="k">遠征費 小計</div><div class="v" style="color: var(--navy);">¥330,000</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="option-grid">
+          <div class="option-card">
+            <h4>リハーサル日（前日テスト配信）</h4>
+            <p>配信前日に現地でリハーサル。出演者の通し練習・機材確認・回線テストまで実施。</p>
+            <div class="price">価格：¥156,000／回</div>
+          </div>
+          <div class="option-card">
+            <h4>切り抜き動画（最大3本）</h4>
+            <p>配信アーカイブから縦型ショート動画を切り出し。協賛社個別のSNS・LP素材に。</p>
+            <div class="price">価格：¥147,000（3本セット）</div>
+          </div>
+          <div class="option-card">
+            <h4>3カメ目追加（俯瞰固定）</h4>
+            <p>全体俯瞰映像を追加し、POPUPスペース全体の臨場感を出します。</p>
+            <div class="price">価格：¥123,000／回</div>
+          </div>
+        </div>
+      </div>
+      <div class="s-footer">
+        <div class="brand">Firework Japan株式会社</div>
+        <div>7 ／ 9</div>
+      </div>
+    </div>
+
+    <!-- ===== Slide 8: スケジュール ===== -->
+    <div class="slide" id="sec-8" data-slide-num="8" data-slide-title="CH.06 スケジュール">
+      <div class="slide-num-label">SLIDE 8 ／ CH.06 スケジュール</div>
+      <div class="s-header">
+        <div class="dot"></div>
+        <div class="tag">CH. 06</div>
+        <div class="sep"></div>
+        <div class="title">スケジュール（〜OPEN配信日まで）</div>
+        <div class="section-label">Section 6 · ロードマップ</div>
+      </div>
+      <div class="s-body">
+        <div class="conclusion">
+          OPEN配信日（<span class="accent">2026年12月下旬</span>）に向けて、約半年のリードタイムで段階的に準備
+        </div>
+        <table class="schedule-table">
+          <thead>
+            <tr>
+              <th style="width:14%;">時期</th>
+              <th>6月</th>
+              <th>7月</th>
+              <th>8月</th>
+              <th>9月</th>
+              <th>10月</th>
+              <th>11月</th>
+              <th>12月</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>フェーズ</th>
+              <td class="prep">ラフ提案</td>
+              <td class="prep">詳細企画</td>
+              <td class="prep">キャスト確定</td>
+              <td class="prep">台本初稿</td>
+              <td class="prep">法務・テロップ</td>
+              <td class="prep">リハ・物件確認</td>
+              <td class="shoot">本番配信</td>
+            </tr>
+            <tr>
+              <th>主なタスク</th>
+              <td style="font-size:10px; text-align:left;">本資料送付</td>
+              <td style="font-size:10px; text-align:left;">プラン確定<br>協賛社確定開始</td>
+              <td style="font-size:10px; text-align:left;">出演者選定<br>会場下見</td>
+              <td style="font-size:10px; text-align:left;">台本初稿<br>協賛社確定</td>
+              <td style="font-size:10px; text-align:left;">法務チェック<br>テロップ制作</td>
+              <td style="font-size:10px; text-align:left;">出演者リハ<br>機材最終確認</td>
+              <td style="font-size:10px; text-align:left;">前日入り<br>当日配信<br>切り抜き納品</td>
+            </tr>
+            <tr>
+              <th>マイルストーン</th>
+              <td style="font-size:10px;">企画ラフ受領</td>
+              <td style="font-size:10px;">見積もり確定</td>
+              <td style="font-size:10px;">出演者契約</td>
+              <td style="font-size:10px;">台本決裁着手</td>
+              <td style="font-size:10px;">法務クリア</td>
+              <td style="font-size:10px;">配信GO/NO判定</td>
+              <td style="font-size:10px;">OPEN配信実施</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="kpi-bar" style="margin-top: 12px;">
+          <div class="kpi-item">
+            <div class="k">ラフ提出（本資料）</div>
+            <div class="v">2026年6月末</div>
+          </div>
+          <div class="kpi-item">
+            <div class="k">配信予定日</div>
+            <div class="v">2026年12月下旬<small>（OPEN週末）</small></div>
+          </div>
+        </div>
+        <div class="insight" style="margin-top: 10px;">
+          <span class="label">CRITICAL PATH</span>
+          台本の<strong>法務チェックには8〜9営業日</strong>を確保する必要があるため、9月末までに台本初稿確定が必須となります。OPEN期日から逆算したスケジュール設定をお願いいたします。
+        </div>
+      </div>
+      <div class="s-footer">
+        <div class="brand">Firework Japan株式会社</div>
+        <div>8 ／ 9</div>
+      </div>
+    </div>
+
+    <!-- ===== Slide 9: 留意事項 ===== -->
+    <div class="slide" id="sec-9" data-slide-num="9" data-slide-title="CH.07 留意事項">
+      <div class="slide-num-label">SLIDE 9 ／ CH.07 留意事項</div>
+      <div class="s-header">
+        <div class="dot"></div>
+        <div class="tag">CH. 07</div>
+        <div class="sep"></div>
+        <div class="title">留意事項・前提条件</div>
+        <div class="section-label">Section 7 · 前提条件</div>
+      </div>
+      <div class="s-body">
+        <div class="conclusion">
+          スムーズな運用開始のために、<span class="accent">事前にご確認いただきたい前提条件</span>です
+        </div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+          <div>
+            <div class="notice">
+              <div class="notice-head">
+                <span>会場・回線環境の前提</span>
+                <span class="num">環境</span>
+              </div>
+              <div class="notice-body">
+                <ul>
+                  <li>プラン2（OBS配信）は<strong>有線LAN接続が必須</strong>です。POPUP会場での有線確保可否を事前にご確認ください。</li>
+                  <li>有線LAN確保が困難な場合は<strong>TVUルーター</strong>（3日レンタル）の手配が必要です（別途お見積もり）。</li>
+                  <li>プラン1（スマホ配信）はポケットWi-Fi（3日レンタル）込みの構成です。</li>
+                </ul>
+              </div>
+            </div>
+            <div class="notice">
+              <div class="notice-head">
+                <span>台本・法務確認のスケジュール</span>
+                <span class="num">スケジュール</span>
+              </div>
+              <div class="notice-body">
+                <ul>
+                  <li>台本の法務チェックには<strong>8〜9営業日</strong>の確認期間が必要です。</li>
+                  <li>協賛メーカーの確定が遅れると、法務チェック期間を圧迫します。</li>
+                  <li>9月末までに台本初稿を確定できる進行をお願いいたします。</li>
+                </ul>
+              </div>
+            </div>
+            <div class="notice">
+              <div class="notice-head">
+                <span>協賛社・出演者の役割分担</span>
+                <span class="num">役割</span>
+              </div>
+              <div class="notice-body">
+                <ul>
+                  <li>協賛メーカーのエントリー獲得は<strong>MCCM側で対応</strong>いただきます。</li>
+                  <li>出演者キャスティング（インフルエンサー等）は<strong>別途お見積もり</strong>。本提案には含まれません。</li>
+                  <li>店舗・POPUP什器との取り合いは事前に店舗側との調整が必要です。</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="notice">
+              <div class="notice-head">
+                <span>本提案に含まれるもの／含まれないもの</span>
+                <span class="num">スコープ</span>
+              </div>
+              <div class="notice-body">
+                <ul>
+                  <li><strong>含まれる：</strong>企画・台本・配信ディレクション・現地配信オペレーション・配信後レポート・現地遠征費</li>
+                  <li><strong>含まれない：</strong>会場・スタジオ費用、出演者キャスティング費、商品登録、LP・バナー制作、メーカー協賛獲得の代行</li>
+                  <li>切り抜き動画・リハーサル日・3カメ目追加等はオプション枠でお見積もりに反映します。</li>
+                </ul>
+              </div>
+            </div>
+            <div class="notice">
+              <div class="notice-head">
+                <span>遠征費の精算方法</span>
+                <span class="num">精算</span>
+              </div>
+              <div class="notice-body">
+                <ul>
+                  <li>現地までの往復交通費・現地宿泊費・現地諸経費は<strong>概算でのお見積もり</strong>となります。</li>
+                  <li>実費との差額が大きい場合は、領収書ベースで精算させていただく場合があります。</li>
+                  <li>配信前日入り1泊での想定です。早朝入り・翌日撤収希望の場合は別途調整いたします。</li>
+                </ul>
+              </div>
+            </div>
+            <div class="notice">
+              <div class="notice-head">
+                <span>キャンセル・延期</span>
+                <span class="num">条件</span>
+              </div>
+              <div class="notice-body">
+                <ul>
+                  <li>OPEN日の変更等で配信日が動く場合は、可能な限り柔軟に対応いたします。</li>
+                  <li>配信1ヶ月前以降のキャンセル・大幅延期の場合、機材手配・人員アサインの再調整費が発生する可能性があります。</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top: 10px; padding: 9px 14px; background: #F0FDF8; border-left: 3px solid var(--green); font-size: 11px; color: #1A4040; line-height: 1.7; border-radius: 4px;">
+          ご不明な点・ご質問・追加のご要望がございましたら、お気軽にご連絡くださいませ。詳細のお見積もりは2026年6月末までにお送りいたします。　Firework Japan株式会社
+        </div>
+      </div>
+      <div class="s-footer">
+        <div class="brand">Firework Japan株式会社</div>
+        <div>最終更新: 2026年6月24日 15:32</div>
+      </div>
+    </div>
+
+  </div><!-- /slides-container -->
+
+  <script>
+    document.getElementById('btn-print').addEventListener('click', function() {
+      window.print();
+    });
+  </script>
+</body>
+</html>
