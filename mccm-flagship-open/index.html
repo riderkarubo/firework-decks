@@ -583,11 +583,33 @@
 
     @media print {
       * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
-      @page { size: 1280px 720px landscape; margin: 0; }
-      body { background: #fff; }
+      /* スライド本体は16:9(1280x720)。同じ比率のカスタムページサイズで書き出し、隙間なく収める */
+      @page { size: 1280px 720px; margin: 0; }
+      html, body {
+        background: #fff;
+        margin: 0;
+        padding: 0;
+        width: 1280px;
+      }
       .toolbar { display: none !important; }
-      .slides-container { padding: 0; gap: 0; }
-      .slide { box-shadow: none; page-break-after: always; }
+      .slides-container {
+        padding: 0;
+        gap: 0;
+        display: block;
+        margin: 0;
+        width: 1280px;
+      }
+      .slide {
+        width: 1280px;
+        height: 720px;
+        box-shadow: none;
+        page-break-after: always;
+        page-break-inside: avoid;
+        margin: 0;
+        overflow: hidden;
+      }
+      .slide:last-child { page-break-after: auto; }
+      .slide-num-label { display: none !important; }
     }
   </style>
 </head>
@@ -596,7 +618,7 @@
   <!-- ===== Toolbar ===== -->
   <div class="toolbar">
     <div class="toolbar-brand">MCCM <span class="accent">×</span> Firework ／ 新店舗OPEN記念 現地ライブ配信</div>
-    <div class="toolbar-meta">スライドモック v1.3 ／ Last Updated 2026年6月25日 12:37</div>
+    <div class="toolbar-meta">スライドモック v1.3 ／ Last Updated 2026年6月25日 12:43</div>
     <div class="toolbar-actions">
       <button id="btn-print" class="primary">🖨️ 印刷</button>
     </div>
@@ -1057,7 +1079,7 @@
       </div>
       <div class="s-footer">
         <div class="brand">Firework Japan株式会社</div>
-        <div>最終更新: 2026年6月25日 12:37</div>
+        <div>最終更新: 2026年6月25日 12:43</div>
       </div>
     </div>
 
