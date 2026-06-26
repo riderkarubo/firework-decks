@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <script src="../auth.js"></script>
+  <script>document.addEventListener('DOMContentLoaded',function(){FireworkSSO.protect();});</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>コメントピックアップツール v4 マニュアル — Firework Live</title>
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Firework Assistant + YouTube ライブチャットのコメントをスプシに記録するChrome拡張のセットアップ・運用マニュアル">
+  <meta name="last-modified" content="2026-06-26T15:55:00+09:00">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="コメントピックアップツール v4 マニュアル">
+  <meta property="og:description" content="Firework Assistant + YouTube ライブチャットのコメントをスプシに記録するChrome拡張のセットアップ・運用マニュアル（社内秘・@fireworkhq.com限定）">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:site_name" content="Firework Decks">
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap');
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:'Noto Sans JP','Hiragino Sans',-apple-system,sans-serif; background:#faf8f5; color:#1a1a1a; font-size:13px; line-height:1.8; }
+    .page { max-width:920px; margin:0 auto; padding:40px 20px 80px; }
+
+    /* COVER */
+    .cover { background:#1a1a2e; border-radius:20px; padding:52px 56px 44px; margin-bottom:40px; position:relative; overflow:hidden; }
+    .cover::after { content:"💬"; position:absolute; right:48px; bottom:28px; font-size:120px; opacity:0.08; line-height:1; }
+    .cover-eyebrow { display:inline-block; background:#fa006d; color:white; font-size:10px; font-weight:700; letter-spacing:3px; padding:4px 14px; border-radius:20px; margin-bottom:18px; }
+    .cover h1 { font-size:30px; font-weight:900; color:white; line-height:1.4; margin-bottom:12px; }
+    .cover h1 em { font-style:normal; color:#fa006d; }
+    .cover-sub { font-size:13px; color:rgba(255,255,255,0.65); line-height:1.8; margin-bottom:28px; max-width:660px; }
+    .cover-meta { margin-top:24px; display:flex; gap:0; border:1px solid rgba(255,255,255,0.15); border-radius:10px; overflow:hidden; max-width:640px; flex-wrap:wrap; }
+    .cover-meta-item { flex:1; min-width:140px; padding:12px 16px; border-right:1px solid rgba(255,255,255,0.15); }
+    .cover-meta-item:last-child { border-right:none; }
+    .cover-meta-label { font-size:9px; color:rgba(255,255,255,0.4); letter-spacing:2px; margin-bottom:3px; }
+    .cover-meta-value { font-size:11px; font-weight:700; color:white; }
+
+    /* TOC */
+    .toc { background:white; border-radius:14px; padding:24px 28px; margin-bottom:40px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
+    .toc-title { font-size:11px; font-weight:700; letter-spacing:3px; color:#fa006d; margin-bottom:14px; }
+    .toc-list { list-style:none; display:grid; grid-template-columns:repeat(2,1fr); gap:8px 24px; }
+    .toc-list a { color:#1a1a2e; text-decoration:none; font-size:13px; padding:6px 0; display:flex; align-items:center; gap:8px; }
+    .toc-list a:hover { color:#fa006d; }
+    .toc-num { display:inline-block; width:22px; height:22px; line-height:22px; text-align:center; background:#1a1a2e; color:white; border-radius:50%; font-size:10px; font-weight:700; flex-shrink:0; }
+
+    /* SECTION */
+    .section-wrap { margin-bottom:56px; }
+    .sec-heading { display:flex; align-items:baseline; gap:14px; margin-bottom:24px; padding-bottom:12px; border-bottom:2px solid #1a1a2e; }
+    .sec-num { font-size:11px; font-weight:700; color:#fa006d; letter-spacing:2px; }
+    .sec-heading h2 { font-size:20px; font-weight:900; color:#1a1a2e; }
+    .sec-lead { color:#555; font-size:13px; margin-bottom:20px; line-height:1.9; }
+
+    /* STEP CARD */
+    .step-card { background:white; border-radius:12px; padding:22px 26px; margin-bottom:14px; box-shadow:0 2px 10px rgba(0,0,0,0.05); display:flex; gap:18px; align-items:flex-start; }
+    .step-num { width:36px; height:36px; flex-shrink:0; background:#1a1a2e; color:white; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:900; }
+    .step-card.accent .step-num { background:#fa006d; }
+    .step-body { flex:1; min-width:0; }
+    .step-title { font-size:15px; font-weight:700; color:#1a1a2e; margin-bottom:8px; }
+    .step-text { font-size:13px; color:#444; line-height:1.85; }
+    .step-text ul, .step-text ol { margin:8px 0 0 0; padding-left:20px; }
+    .step-text li { margin-bottom:6px; }
+
+    /* SCREENSHOT PLACEHOLDER */
+    .ss { margin:14px 0 4px; padding:18px 20px; background:#fafbfc; border:2px dashed #c7d0d8; border-radius:10px; }
+    .ss-head { display:flex; align-items:center; gap:10px; margin-bottom:6px; }
+    .ss-badge { display:inline-block; background:#1a1a2e; color:white; font-size:10px; font-weight:700; letter-spacing:1px; padding:2px 8px; border-radius:4px; }
+    .ss-num { font-size:11px; font-weight:700; color:#fa006d; letter-spacing:1px; }
+    .ss-desc { font-size:13px; color:#1a1a2e; font-weight:600; line-height:1.7; }
+    .ss-file { display:block; margin-top:8px; font-family:"Courier New",monospace; font-size:11px; color:#7c8794; background:white; padding:6px 10px; border-radius:4px; border:1px solid #e5e9ed; }
+    .ss-img { display:block; margin-top:10px; max-width:100%; border-radius:6px; border:1px solid #e5e9ed; }
+
+    /* INLINE BADGES */
+    .file-name { display:inline-block; background:#f0f0f0; color:#1a1a2e; font-family:"Courier New",monospace; font-size:11px; font-weight:700; padding:2px 8px; border-radius:4px; }
+    .kbd { display:inline-block; background:#1a1a2e; color:white; font-family:"Courier New",monospace; font-size:11px; font-weight:700; padding:2px 8px; border-radius:4px; }
+    .badge-fw { display:inline-block; background:#1976d2; color:white; font-size:10px; font-weight:900; padding:2px 7px; border-radius:4px; letter-spacing:1px; }
+    .badge-yt { display:inline-block; background:#e50914; color:white; font-size:10px; font-weight:900; padding:2px 7px; border-radius:4px; letter-spacing:1px; }
+    .badge-q { display:inline-block; background:#1976d2; color:white; font-size:10px; font-weight:900; padding:2px 7px; border-radius:4px; letter-spacing:1px; }
+    .badge-a { display:inline-block; background:#e50914; color:white; font-size:10px; font-weight:900; padding:2px 7px; border-radius:4px; letter-spacing:1px; }
+    .badge-q-mode { background:#1976d2; color:white; padding:3px 10px; border-radius:6px; font-weight:700; font-size:12px; }
+    .badge-a-mode { background:#e50914; color:white; padding:3px 10px; border-radius:6px; font-weight:700; font-size:12px; }
+
+    /* CALLOUTS */
+    .info-callout { background:#f0faf8; border:1px solid #b2dfdb; border-radius:10px; padding:14px 18px; margin:12px 0; font-size:13px; line-height:1.85; }
+    .info-callout strong { color:#1b998b; }
+    .warn-callout { background:#fff9f0; border:1px solid #f5c518; border-radius:10px; padding:14px 18px; margin:12px 0; font-size:13px; color:#7a5a00; line-height:1.85; }
+    .warn-callout strong { color:#c98a00; }
+    .tip-callout { background:#fef0f5; border:1px solid #fbb6d2; border-radius:10px; padding:14px 18px; margin:12px 0; font-size:13px; color:#8b1a4a; line-height:1.85; }
+    .danger-callout { background:#fdecec; border:1px solid #f5b7b7; border-radius:10px; padding:14px 18px; margin:12px 0; font-size:13px; color:#8b1a1a; line-height:1.85; }
+
+    /* FLOW */
+    .flow-title { font-size:13px; font-weight:700; color:#1a1a2e; margin:8px 0 12px; }
+    .flow-wrap { display:flex; flex-direction:column; gap:6px; margin:16px 0 24px; }
+    .flow-item { background:white; border-radius:10px; padding:14px 22px; font-size:13px; font-weight:700; color:#1a1a2e; box-shadow:0 1px 6px rgba(0,0,0,0.06); display:flex; align-items:center; gap:14px; border-left:4px solid #fa006d; }
+    .flow-icon { font-size:22px; }
+    .flow-label { flex:1; }
+    .flow-sub { font-size:11px; font-weight:400; color:#7c8794; margin-top:2px; }
+    .flow-arrow { text-align:center; color:#fa006d; font-size:18px; font-weight:700; line-height:1; padding:2px 0; }
+
+    /* HORIZONTAL FLOW */
+    .hflow { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin:18px 0 28px; }
+    .hflow-item { background:white; border-radius:10px; padding:14px 12px; text-align:center; box-shadow:0 2px 8px rgba(0,0,0,0.06); position:relative; border-top:3px solid #fa006d; }
+    .hflow-item::after { content:"→"; position:absolute; right:-12px; top:50%; transform:translateY(-50%); color:#fa006d; font-weight:700; font-size:16px; z-index:1; background:#faf8f5; padding:0 4px; }
+    .hflow-item:last-child::after { content:""; }
+    .hflow-icon { font-size:28px; margin-bottom:6px; }
+    .hflow-label { font-size:12px; font-weight:700; color:#1a1a2e; line-height:1.4; }
+    .hflow-sub { font-size:10px; color:#7c8794; margin-top:4px; line-height:1.4; }
+
+    /* 2COL CARDS (mode compare) */
+    .mode-grid { display:grid; grid-template-columns:1fr 1fr; gap:14px; margin:18px 0 24px; }
+    .mode-card { background:white; border-radius:14px; padding:22px 24px; box-shadow:0 2px 10px rgba(0,0,0,0.06); border-top:4px solid #1976d2; }
+    .mode-card.mode-a { border-top-color:#e50914; }
+    .mode-head { display:flex; align-items:center; gap:10px; margin-bottom:14px; }
+    .mode-name { font-size:18px; font-weight:900; color:#1a1a2e; }
+    .mode-row { display:flex; gap:10px; padding:8px 0; border-bottom:1px dashed #e5e9ed; font-size:12px; line-height:1.6; }
+    .mode-row:last-child { border-bottom:none; }
+    .mode-row-label { width:78px; flex-shrink:0; font-weight:700; color:#7c8794; font-size:11px; }
+    .mode-row-val { flex:1; color:#1a1a2e; }
+
+    /* SHEET STRUCTURE */
+    .table-wrap { background:white; border-radius:12px; padding:6px; margin:14px 0; box-shadow:0 2px 10px rgba(0,0,0,0.05); overflow-x:auto; }
+    .sheet-table { width:100%; border-collapse:collapse; font-size:12px; min-width:600px; }
+    .sheet-table th { background:#1a1a2e; color:white; text-align:left; padding:10px 14px; font-weight:700; font-size:11px; }
+    .sheet-table td { padding:10px 14px; border-bottom:1px solid #f0f0f0; line-height:1.7; }
+    .sheet-table tr:last-child td { border-bottom:none; }
+    .sheet-table .col-letter { font-weight:900; color:#fa006d; font-family:"Courier New",monospace; width:50px; }
+
+    /* TROUBLE TABLE */
+    .trouble-list { background:white; border-radius:12px; padding:6px 0; box-shadow:0 2px 10px rgba(0,0,0,0.05); margin:12px 0 24px; }
+    .trouble-row { display:grid; grid-template-columns:280px 1fr; gap:18px; padding:14px 22px; border-bottom:1px solid #f0f0f0; font-size:13px; line-height:1.75; }
+    .trouble-row:last-child { border-bottom:none; }
+    .trouble-symptom { font-weight:700; color:#1a1a2e; }
+    .trouble-symptom::before { content:"⚠"; color:#fa006d; margin-right:6px; }
+    .trouble-fix { color:#444; }
+
+    /* DIVIDER */
+    .divider { height:1px; background:linear-gradient(to right, #fa006d, rgba(250,0,109,0.1) 60%, transparent); margin:48px 0; }
+
+    /* DONT-TOUCH LIST */
+    .dont-card { background:#fdecec; border:1px solid #f5b7b7; border-radius:12px; padding:18px 22px; margin:12px 0; }
+    .dont-card-title { font-size:13px; font-weight:900; color:#8b1a1a; margin-bottom:10px; letter-spacing:0.5px; }
+    .dont-card-row { display:grid; grid-template-columns:240px 1fr; gap:14px; padding:8px 0; font-size:12px; line-height:1.7; border-bottom:1px dashed #f5b7b7; }
+    .dont-card-row:last-child { border-bottom:none; }
+    .dont-card-item { font-weight:700; color:#8b1a1a; }
+    .dont-card-why { color:#555; }
+
+    /* FOOTER */
+    .footer { text-align:center; color:#999; font-size:11px; margin-top:48px; padding-top:24px; border-top:1px solid #e8e8e8; line-height:1.8; }
+
+    /* MOBILE */
+    @media (max-width:720px) {
+      .page { padding:24px 14px 60px; }
+      .cover { padding:36px 28px 32px; }
+      .cover h1 { font-size:22px; }
+      .toc-list { grid-template-columns:1fr; }
+      .hflow { grid-template-columns:repeat(2,1fr); }
+      .hflow-item::after { content:""; }
+      .mode-grid { grid-template-columns:1fr; }
+      .trouble-row { grid-template-columns:1fr; gap:4px; }
+      .dont-card-row { grid-template-columns:1fr; gap:4px; }
+    }
+
+    /* PRINT */
+    @media print {
+      * { -webkit-print-color-adjust:exact !important; print-color-adjust:exact !important; }
+      @page { size:A4; margin:10mm; }
+      body { background:white; }
+      .cover { break-inside:avoid; }
+      .section-wrap { break-inside:avoid-page; }
+      .step-card { break-inside:avoid; }
+      .ss { break-inside:avoid; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- COVER -->
+  <section class="cover">
+    <span class="cover-eyebrow">INTERNAL MANUAL</span>
+    <h1>コメント<em>ピックアップ</em>ツール v4<br>セットアップ＆運用マニュアル</h1>
+    <p class="cover-sub">
+      Firework Assistant モード ＋ YouTube ライブチャットのコメントを<br>
+      Google スプレッドシートに自動記録する Chrome 拡張機能の手順書です。<br>
+      初回セットアップから配信運用、月次の複製手順までを一気通貫でまとめてあります。
+    </p>
+    <div class="cover-meta">
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">VERSION</div>
+        <div class="cover-meta-value">v4.4.0</div>
+      </div>
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">UPDATED</div>
+        <div class="cover-meta-value">2026年6月26日 15:55</div>
+      </div>
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">AUDIENCE</div>
+        <div class="cover-meta-value">Firework 配信担当者</div>
+      </div>
+      <div class="cover-meta-item">
+        <div class="cover-meta-label">ACCESS</div>
+        <div class="cover-meta-value">@fireworkhq.com 限定</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOC -->
+  <nav class="toc">
+    <div class="toc-title">CONTENTS</div>
+    <ol class="toc-list">
+      <li><a href="#sec-0"><span class="toc-num">0</span>このツールでできること</a></li>
+      <li><a href="#sec-1"><span class="toc-num">1</span>全体フロー（30秒で把握）</a></li>
+      <li><a href="#sec-2"><span class="toc-num">2</span>初回セットアップ</a></li>
+      <li><a href="#sec-3"><span class="toc-num">3</span>共通設定（GAS URL＋スプシURL）</a></li>
+      <li><a href="#sec-4"><span class="toc-num">4</span>モード選択</a></li>
+      <li><a href="#sec-5"><span class="toc-num">5</span>配信時の運用</a></li>
+      <li><a href="#sec-6"><span class="toc-num">6</span>NGワード・誹謗中傷ワードの編集</a></li>
+      <li><a href="#sec-7"><span class="toc-num">7</span>月次：新規配信ごとの複製運用</a></li>
+      <li><a href="#sec-8"><span class="toc-num">8</span>トラブルシュート</a></li>
+      <li><a href="#sec-9"><span class="toc-num">9</span>触ってはいけないもの</a></li>
+    </ol>
+  </nav>
+
+  <!-- SEC 0 -->
+  <section class="section-wrap" id="sec-0">
+    <div class="sec-heading">
+      <span class="sec-num">SECTION 00</span>
+      <h2>このツールでできること</h2>
+    </div>
+    <p class="sec-lead">
+      Firework Assistant モードと YouTube ライブチャットのコメントを <strong>Google スプレッドシートに自動記録</strong> する Chrome 拡張機能です。
+      <span class="badge-q-mode">質問のみ</span> と <span class="badge-a-mode">全コメント</span> の <strong>2モード切替</strong> で動作が変わります。
+    </p>
+
+    <div class="mode-grid">
+      <div class="mode-card">
+        <div class="mode-head">
+          <span class="badge-q">Q</span>
+          <span class="mode-name">質問のみモード</span>
+        </div>
+        <div class="mode-row"><div class="mode-row-label">FW</div><div class="mode-row-val">「Show Questions Only」ボタンがONの時のみ収集</div></div>
+        <div class="mode-row"><div class="mode-row-label">YouTube</div><div class="mode-row-val">収集しない（content script が早期終了）</div></div>
+        <div class="mode-row"><div class="mode-row-label">NGワード</div><div class="mode-row-val">既定なし（必要に応じて追加）</div></div>
+        <div class="mode-row"><div class="mode-row-label">バッジ</div><div class="mode-row-val"><span class="badge-q">Q</span> 青色 #1976d2</div></div>
+      </div>
+      <div class="mode-card mode-a">
+        <div class="mode-head">
+          <span class="badge-a">A</span>
+          <span class="mode-name">全コメントモード</span>
+        </div>
+        <div class="mode-row"><div class="mode-row-label">FW</div><div class="mode-row-val">ボタン状態を無視して全コメント収集</div></div>
+        <div class="mode-row"><div class="mode-row-label">YouTube</div><div class="mode-row-val">全チャット収集</div></div>
+        <div class="mode-row"><div class="mode-row-label">NGワード</div><div class="mode-row-val">既定で <span class="file-name">iphone / アイフォン / アイフォーン / アイホン</span></div></div>
+        <div class="mode-row"><div class="mode-row-label">バッジ</div><div class="mode-row-val"><span class="badge-a">A</span> 赤色 #e50914</div></div>
+      </div>
+    </div>
+
+    <div class="info-callout">
+      <strong>💡 モード切替は popup の上半分のトグル1クリックで完了します。</strong><br>
+      切替後は <strong>配信ページのリロードを忘れずに</strong>（content script が新しいモードを読みに行くため）。
+    </div>
+  </section>
+
+  <!-- SEC 1 全体フロー -->
+  <section class="section-wrap" id="sec-1">
+    <div class="sec-heading">
+      <span class="sec-num">SECTION 01</span>
+      <h2>全体フロー（30秒で把握）</h2>
+    </div>
+    <p class="sec-lead">
+      ツールが動いている間のデータの流れはこの4ステップで完結します。<br>
+      コメントは「拡張→GAS→スプシ」と渡り、F列の値で「ディレクター向け」シートにも自動同期されます。
+    </p>
+
+    <div class="hflow">
+      <div class="hflow-item">
+        <div class="hflow-icon">🌐</div>
+        <div class="hflow-label">配信ページ</div>
+        <div class="hflow-sub">FW / YouTube の content script がコメントを検知</div>
+      </div>
+      <div class="hflow-item">
+        <div class="hflow-icon">🧩</div>
+        <div class="hflow-label">Chrome 拡張</div>
+        <div class="hflow-sub">NGワード等で一次フィルタ後 GAS へ POST</div>
+      </div>
+      <div class="hflow-item">
+        <div class="hflow-icon">⚙️</div>
+        <div class="hflow-label">Apps Script (GAS)</div>
+        <div class="hflow-sub">再フィルタ → スプシ A〜F列へ書き込み</div>
+      </div>
+      <div class="hflow-item">
+        <div class="hflow-icon">📊</div>
+        <div class="hflow-label">スプレッドシート</div>
+        <div class="hflow-sub">元シート＋ディレクター向けシートに同期</div>
+      </div>
+    </div>
+
+    <div class="flow-title">セットアップ全体像（初回 → 月次 → 配信時）</div>
+    <div class="flow-wrap">
+      <div class="flow-item"><span class="flow-icon">🔧</span><div class="flow-label">【初回】マスター GAS をデプロイ ＋ マスタースプシ作成<div class="flow-sub">SECTION 02</div></div></div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-item"><span class="flow-icon">🧩</span><div class="flow-label">【初回】Chrome 拡張をインストール ＋ 共通設定<div class="flow-sub">SECTION 02 / 03</div></div></div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-item"><span class="flow-icon">🗓️</span><div class="flow-label">【月次】配信ごとにマスターを複製してセットアップ<div class="flow-sub">SECTION 07</div></div></div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-item"><span class="flow-icon">🎬</span><div class="flow-label">【配信時】モード選択 → 配信ページをリロードして待機<div class="flow-sub">SECTION 04 / 05</div></div></div>
+    </div>
+  </section>
+
+  <!-- SEC 2 初回セットアップ -->
+  <section class="section-wrap" id="sec-2">
+    <div class="sec-heading">
+      <span class="sec-num">SECTION 02</span>
+      <h2>初回セットアップ（1回だけ実施）</h2>
+    </div>
+    <p class="sec-lead">
+      ここは <strong>初回 or 担当者が変わった時の1度だけ</strong> 行う作業です。<br>
+      ① マスター GAS をデプロイ → ② マスタースプシを準備 → ③ 拡張をインストール、の3ブロック構成。
+    </p>
+
+    <!-- 2-1 GAS -->
+    <div class="step-card accent">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <div class="step-title">マスター GAS（Apps Script）をデプロイする</div>
+        <div class="step-text">
+          <ol>
+            <li><a href="https://script.google.com/" target="_blank" rel="noopener">https://script.google.com/</a> を開いて <strong>新しいプロジェクト</strong> を作成</li>
+            <li>このリポジトリの <span class="file-name">gas/Code.gs</span> の中身を全選択コピーし、エディタに貼り付け</li>
+            <li>右上の <strong>「デプロイ」 → 「新しいデプロイ」</strong> をクリック</li>
+            <li>種類: <strong>ウェブアプリ</strong>、実行ユーザー: <strong>自分</strong>、アクセスできるユーザー: <strong>全員</strong> に設定</li>
+            <li>発行された <strong>Web アプリ URL をコピー</strong>（後で拡張に貼り付けます）</li>
+          </ol>
+        </div>
+        <div class="ss">
+          <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#01 — Apps Script の新規プロジェクト作成画面</span></div>
+          <div class="ss-desc">script.google.com の左上「新しいプロジェクト」ボタンが見える画面</div>
+          <span class="ss-file">→ screenshots/01_gas-new-project.png に配置</span>
+        </div>
+        <div class="ss">
+          <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#02 — Code.gs を貼り付けた直後のエディタ</span></div>
+          <div class="ss-desc">エディタに gas/Code.gs の中身が貼り付いている状態</div>
+          <span class="ss-file">→ screenshots/02_gas-paste-code.png に配置</span>
+        </div>
+        <div class="ss">
+          <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#03 — 「デプロイ → 新しいデプロイ」の設定ダイアログ</span></div>
+          <div class="ss-desc">種類=ウェブアプリ / 実行ユーザー=自分 / アクセス=全員 が見えるダイアログ</div>
+          <span class="ss-file">→ screenshots/03_gas-deploy-webapp.png に配置</span>
+        </div>
+        <div class="ss">
+          <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#04 — 発行された Web アプリ URL のコピー</span></div>
+          <div class="ss-desc">「ウェブアプリ URL」とコピーアイコンが映ったダイアログ</div>
+          <span class="ss-file">→ screenshots/04_copy-webapp-url.png に配置</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2-2 スプシ -->
+    <div class="step-card accent">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <div class="step-title">マスタースプレッドシートを用意する</div>
+        <div class="step-text">
+          <ol>
+            <li>新規スプレッドシートを作成（または既存のマスターを開く）</li>
+            <li>ブラウザの URL バーから <strong>URL を丸ごとコピー</strong>（ID だけでも可）</li>
+            <li>このスプシを「マスター」として保管し、<strong>本番では使わない</strong>（後で複製して使います）</li>
+          </ol>
+          <div class="info-callout" style="margin-top:14px;">
+            <strong>📊 列構成（v4.4.0）</strong>
+            <div class="table-wrap" style="margin-top:10px;">
+              <table class="sheet-table">
+                <thead><tr><th>列</th><th>内容</th></tr></thead>
+                <tbody>
+                  <tr><td class="col-letter">A</td><td>チェックボックス（手動・チェック=対応済み → グレーアウト）</td></tr>
+                  <tr><td class="col-letter">B</td><td>timestamp（JST <span class="file-name">HH:MM:SS</span>）</td></tr>
+                  <tr><td class="col-letter">C</td><td>配信媒体（<span class="badge-fw">FW</span> = 青 / <span class="badge-yt">YT</span> = 赤）</td></tr>
+                  <tr><td class="col-letter">D</td><td>username</td></tr>
+                  <tr><td class="col-letter">E</td><td>comment</td></tr>
+                  <tr><td class="col-letter">F</td><td>手動入力欄（<span class="file-name">小松原さんより</span> / <span class="file-name">出演者</span> / <span class="file-name">FW→潮崎さんへ</span> を入れるとディレクター向けに即同期）</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="ss">
+          <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#05 — マスタースプシ＋列構成</span></div>
+          <div class="ss-desc">A〜F列のヘッダー行が見えるスプレッドシート画面</div>
+          <span class="ss-file">→ screenshots/05_master-spreadsheet.png に配置</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2-3 拡張 -->
+    <div class="step-card accent">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <div class="step-title">Chrome 拡張機能をインストールする</div>
+        <div class="step-text">
+          <ol>
+            <li>Chrome のアドレスバーに <span class="file-name">chrome://extensions/</span> を入力</li>
+            <li>右上の <strong>「デベロッパーモード」</strong> を <span class="kbd">ON</span></li>
+            <li>左上の <strong>「パッケージ化されていない拡張機能を読み込む」</strong> をクリック</li>
+            <li>このリポジトリの <span class="file-name">extension/</span> フォルダを選択</li>
+            <li>拡張が一覧に表示されればOK。アイコンが Chrome 右上に出ます</li>
+          </ol>
+          <div class="warn-callout" style="margin-top:14px;">
+            <strong>⚠ 旧拡張（v3.1）が入っている場合は OFF にしてください。</strong>同じイベントを二重で拾ってしまいます。
+          </div>
+        </div>
+        <div class="ss">
+          <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#06 — chrome://extensions/ のデベロッパーモード ON</span></div>
+          <div class="ss-desc">右上「デベロッパーモード」トグルが ON の状態</div>
+          <span class="ss-file">→ screenshots/06_chrome-extensions-page.png に配置</span>
+        </div>
+        <div class="ss">
+          <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#07 — 「パッケージ化されていない拡張機能を読み込む」でフォルダ選択</span></div>
+          <div class="ss-desc">extension/ フォルダを選択するダイアログ</div>
+          <span class="ss-file">→ screenshots/07_extension-load-unpacked.png に配置</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEC 3 共通設定 -->
+  <section class="section-wrap" id="sec-3">
+    <div class="sec-heading">
+      <span class="sec-num">SECTION 03</span>
+      <h2>共通設定（GAS URL ＋ スプシ URL を拡張に登録）</h2>
+    </div>
+    <p class="sec-lead">
+      拡張アイコンをクリックすると popup が開きます。ここで2つの値を貼り付けるだけで完了です。
+    </p>
+
+    <div class="step-card">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <div class="step-title">GAS URL を貼って保存する</div>
+        <div class="step-text">
+          SECTION 02-1 でコピーした <strong>Web アプリ URL</strong> を popup の上部「GAS URL」欄にペースト → 保存。
+        </div>
+        <div class="ss">
+          <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#08 — popup の GAS URL 入力欄</span></div>
+          <div class="ss-desc">GAS URL 欄に Web アプリ URL を貼り付けた状態</div>
+          <span class="ss-file">→ screenshots/08_popup-gas-url-input.png に配置</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <div class="step-title">スプシ URL を丸ごと貼って保存する</div>
+        <div class="step-text">
+          ブラウザの URL バーから <strong>スプシの URL 丸ごと</strong> を popup の「スプシ URL」欄にペースト → 保存。
+          ID 部分だけがプレビュー表示されます。
+        </div>
+        <div class="info-callout">
+          ✅ URL 例：<span class="file-name">https://docs.google.com/spreadsheets/d/&lt;ID&gt;/edit#gid=0</span>
+        </div>
+        <div class="ss">
+          <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#09 — popup のスプシ URL 入力欄</span></div>
+          <div class="ss-desc">スプシ URL 欄に URL 貼り付け＋プレビュー表示の状態</div>
+          <span class="ss-file">→ screenshots/09_popup-spreadsheet-url-input.png に配置</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEC 4 モード選択 -->
+  <section class="section-wrap" id="sec-4">
+    <div class="sec-heading">
+      <span class="sec-num">SECTION 04</span>
+      <h2>モード選択</h2>
+    </div>
+    <p class="sec-lead">
+      popup の上半分にある <strong>「質問のみ」 / 「全コメント」</strong> トグルをクリックして、配信内容に合うモードを選んでください。
+      切替直後にバッジ表示が <span class="badge-q">Q</span>（青）／<span class="badge-a">A</span>（赤）に変わります。
+    </p>
+
+    <div class="step-card">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <div class="step-title">モードを選ぶ</div>
+        <div class="step-text">
+          <ul>
+            <li>質問だけを抽出したい配信 → <span class="badge-q-mode">質問のみ</span> をクリック</li>
+            <li>全コメントを取りたい配信 → <span class="badge-a-mode">全コメント</span> をクリック</li>
+          </ul>
+        </div>
+        <div class="ss">
+          <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#10 — popup のモード切替トグル</span></div>
+          <div class="ss-desc">「質問のみ」「全コメント」のトグルが見える popup 上半分</div>
+          <span class="ss-file">→ screenshots/10_popup-mode-toggle.png に配置</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="warn-callout">
+      <strong>⚠ モード切替後は必ず配信ページをリロードしてください。</strong><br>
+      content script は起動時にモードを読み込むため、リロードしないと旧モードのまま動き続けます。
+    </div>
+  </section>
+
+  <!-- SEC 5 配信時 -->
+  <section class="section-wrap" id="sec-5">
+    <div class="sec-heading">
+      <span class="sec-num">SECTION 05</span>
+      <h2>配信時の運用</h2>
+    </div>
+    <p class="sec-lead">
+      モードによって配信時にやることが少しだけ違います。下記のチェックリストに沿って進めてください。
+    </p>
+
+    <!-- 質問のみ -->
+    <div class="step-card">
+      <div class="step-num">Q</div>
+      <div class="step-body">
+        <div class="step-title"><span class="badge-q-mode">質問のみ</span> 運用フロー</div>
+        <div class="step-text">
+          <ol>
+            <li>popup → <span class="badge-q-mode">質問のみ</span> をクリック（バッジが <span class="badge-q">Q</span> 青になる）</li>
+            <li>Firework <strong>Assistant モード</strong> を開いて配信ページをリロード</li>
+            <li>配信ページ上の <strong>「Show Questions Only」ボタンを青 ON</strong> にする</li>
+            <li>質問コメントだけがスプシに記録されることを確認</li>
+            <li>YouTube は何もしなくてOK（content script が早期終了するため）</li>
+          </ol>
+        </div>
+        <div class="ss">
+          <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#11 — FW Assistant の「Show Questions Only」ボタンが青 ON</span></div>
+          <div class="ss-desc">配信ページ上の質問フィルタボタンが青く点灯している状態</div>
+          <span class="ss-file">→ screenshots/11_questions-only-button-on.png に配置</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 全コメント -->
+    <div class="step-card">
+      <div class="step-num">A</div>
+      <div class="step-body">
+        <div class="step-title"><span class="badge-a-mode">全コメント</span> 運用フロー</div>
+        <div class="step-text">
+          <ol>
+            <li>popup → <span class="badge-a-mode">全コメント</span> をクリック（バッジが <span class="badge-a">A</span> 赤になる）</li>
+            <li>Firework / YouTube の配信ページをリロード</li>
+            <li>FW: ボタン状態を無視して全コメント収集</li>
+            <li>YouTube: チャット欄を <strong>「全チャット」モード</strong> にしておけば全部記録</li>
+            <li>iPhone 関連コメントは既定 NG ワードで除外されます</li>
+          </ol>
+        </div>
+        <div class="ss">
+          <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#12 — YouTube 配信ページのチャット「全チャット」設定</span></div>
+          <div class="ss-desc">YouTube ライブのチャットメニューから「全チャット」を選んだ状態</div>
+          <span class="ss-file">→ screenshots/12_youtube-chat-mode.png に配置</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip-callout">
+      💡 <strong>F列を使ったディレクター向け同期：</strong>
+      スプシ F列に <span class="file-name">小松原さんより</span> / <span class="file-name">出演者</span> / <span class="file-name">FW→潮崎さんへ</span> のいずれかを入力すると、
+      その行が <strong>「ディレクター向け」シートに即時追加</strong> されます（onEdit トリガー）。
+      削除・書式同期は時間主導トリガー（1分間隔）が拾ってくれます。
+    </div>
+  </section>
+
+  <!-- SEC 6 NGワード -->
+  <section class="section-wrap" id="sec-6">
+    <div class="sec-heading">
+      <span class="sec-num">SECTION 06</span>
+      <h2>NGワード・誹謗中傷ワードの編集</h2>
+    </div>
+    <p class="sec-lead">
+      popup の下半分「<strong>選択中モードの設定</strong>」エリアに、表示中のモードの辞書が出ます。<br>
+      ここで NG ワードを追加・削除できます。
+    </p>
+
+    <div class="step-card">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <div class="step-title">NG ワードの追加・削除</div>
+        <div class="step-text">
+          <ul>
+            <li><strong>1行 1語</strong> で入力。含まれていたら除外されます</li>
+            <li>大文字小文字無視・全角半角正規化・部分一致なので、ゆるく書けばOK</li>
+            <li>二重ゲート：content script で先に弾き、GAS 側でも再チェックされるので、保存後すぐ反映</li>
+            <li>モードごとに辞書が独立しています（質問のみ／全コメントで別々）</li>
+          </ul>
+        </div>
+        <div class="ss">
+          <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#13 — popup 下半分の NG ワード編集エリア</span></div>
+          <div class="ss-desc">「選択中モードの設定」で NG ワードと誹謗中傷ワードを編集している画面</div>
+          <span class="ss-file">→ screenshots/13_ng-words-edit.png に配置</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEC 7 月次 -->
+  <section class="section-wrap" id="sec-7">
+    <div class="sec-heading">
+      <span class="sec-num">SECTION 07</span>
+      <h2>月次：新規配信ごとの複製運用</h2>
+    </div>
+    <p class="sec-lead">
+      毎月いくつかの配信で並走させる前提です。<strong>マスターをテンプレートとして「ファイル → コピーを作成」で複製</strong> し、
+      配信ごとに 1 つずつ「配信用スプシ」を用意します。コードは複製先に独立コピーされる仕様です。
+    </p>
+
+    <div class="info-callout">
+      <strong>📘 用語の整理</strong>
+      <ul style="margin-top:8px; padding-left:20px;">
+        <li><strong>マスタースプシ</strong>：コードが入った原本（編集の中心・本番には使わない）</li>
+        <li><strong>配信用スプシ</strong>：マスターを複製したもの。各配信で1つずつ作る</li>
+        <li><strong>マスター GAS</strong>：マスタースプシにバインドされた Apps Script</li>
+      </ul>
+    </div>
+
+    <!-- 7-1 -->
+    <div class="step-card accent">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <div class="step-title">マスタースプシをコピーする</div>
+        <div class="step-text">
+          マスタースプシを開き <span class="kbd">ファイル → コピーを作成</span><br>
+          名前は <span class="file-name">YYYY-MM-DD_配信名_コメント抽出</span> のように日付・配信名で識別可能に。
+        </div>
+        <div class="ss">
+          <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#14 — スプシの「コピーを作成」ダイアログ</span></div>
+          <div class="ss-desc">ファイル名を「YYYY-MM-DD_配信名_コメント抽出」に変更した状態</div>
+          <span class="ss-file">→ screenshots/14_spreadsheet-copy.png に配置</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7-2 -->
+    <div class="step-card accent">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <div class="step-title">複製先の Apps Script エディタを開く</div>
+        <div class="step-text">
+          複製先スプシで <span class="kbd">拡張機能 → Apps Script</span><br>
+          コードはコピー済みです。必要に応じて Script Properties を再設定します：
+          <ul style="margin-top:8px;">
+            <li><span class="file-name">DEFAULT_SPREADSHEET_ID</span>: 複製先スプシの ID（任意）</li>
+            <li><span class="file-name">BANNED_KEYWORDS</span> / <span class="file-name">NEGATIVE_WORDS</span>: 配信ごとにカスタマイズしたい場合のみ</li>
+          </ul>
+        </div>
+        <div class="ss">
+          <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#15 — 複製先スプシの Apps Script エディタ</span></div>
+          <div class="ss-desc">「拡張機能 → Apps Script」で開いたエディタ画面</div>
+          <span class="ss-file">→ screenshots/15_apps-script-editor-from-spreadsheet.png に配置</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7-3 -->
+    <div class="step-card accent">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <div class="step-title">setupMainSheetFormatting() を 1 回だけ実行する</div>
+        <div class="step-text">
+          エディタ上部の関数選択で <span class="file-name">setupMainSheetFormatting</span> を選んで <span class="kbd">▶ 実行</span>。<br>
+          A 列にチェックボックスが入り、チェック→グレーアウトの条件付き書式が設定されます。
+        </div>
+        <div class="warn-callout">
+          ⚠ 基本冪等ですが、念のため<strong>1回で止める</strong>こと（連続実行は不要）。
+        </div>
+        <div class="ss">
+          <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#16 — setupMainSheetFormatting 実行画面</span></div>
+          <div class="ss-desc">関数選択 → 実行ボタンを押した直後の Apps Script エディタ</div>
+          <span class="ss-file">→ screenshots/16_setup-main-sheet-formatting.png に配置</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7-4 -->
+    <div class="step-card accent">
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <div class="step-title">Web アプリとして新規デプロイする</div>
+        <div class="step-text">
+          <span class="kbd">デプロイ → 新しいデプロイ</span> → 種類: <strong>ウェブアプリ</strong> / 実行ユーザー: <strong>自分</strong> / アクセス: <strong>全員</strong><br>
+          新しい Web アプリ URL が発行されます。<strong>マスターとは別物</strong> なので必ずコピーしてください。
+        </div>
+        <div class="ss">
+          <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#17 — 新規デプロイの設定ダイアログ</span></div>
+          <div class="ss-desc">「新しいデプロイ」のウェブアプリ設定画面</div>
+          <span class="ss-file">→ screenshots/17_new-deployment.png に配置</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7-5 -->
+    <div class="step-card accent">
+      <div class="step-num">5</div>
+      <div class="step-body">
+        <div class="step-title">Chrome 拡張の URL を切替える</div>
+        <div class="step-text">
+          拡張アイコンクリック → popup で
+          <ol style="margin-top:6px;">
+            <li><strong>GAS URL</strong> を新しい Web アプリ URL に更新 → 保存</li>
+            <li><strong>スプシ URL</strong> を配信用スプシの URL に更新 → 保存</li>
+          </ol>
+        </div>
+        <div class="ss">
+          <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#18 — popup の URL 切替後の状態</span></div>
+          <div class="ss-desc">GAS URL とスプシ URL の両方を新しい値に更新した popup</div>
+          <span class="ss-file">→ screenshots/18_extension-url-update.png に配置</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7-6 -->
+    <div class="step-card accent">
+      <div class="step-num">6</div>
+      <div class="step-body">
+        <div class="step-title">時間主導トリガーを登録する（ディレクター向け同期用）</div>
+        <div class="step-text">
+          Apps Script エディタ左の <span class="kbd">⏰ トリガー</span> → <strong>+ トリガーを追加</strong>
+          <ul style="margin-top:8px;">
+            <li>実行する関数：<span class="file-name">reflectToDirectorSheet</span></li>
+            <li>イベントのソース：<strong>時間主導型</strong></li>
+            <li>トリガーのタイプ：<strong>分ベース → 1 分タイマー</strong>（推奨）</li>
+          </ul>
+          <div class="tip-callout" style="margin-top:10px;">
+            💡 削除・黄色塗りの双方向反映を担当します。配信中のリアルタイム性重視で 1 分間隔がおすすめ。
+            処理が 10 秒を超え始めたら 3〜5 分に伸ばしてチューニング可。
+          </div>
+        </div>
+        <div class="ss">
+          <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#19 — トリガー追加ダイアログ</span></div>
+          <div class="ss-desc">関数=reflectToDirectorSheet / 時間主導型 / 1分タイマー を選んだ状態</div>
+          <span class="ss-file">→ screenshots/19_trigger-add.png に配置</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7-7 -->
+    <div class="step-card accent">
+      <div class="step-num">7</div>
+      <div class="step-body">
+        <div class="step-title">onEdit シンプルトリガーの権限承認</div>
+        <div class="step-text">
+          配信開始前に元シートの F 列に何か 1 度入力してください。<br>
+          初回承認ダイアログが出るので <strong>許可</strong>。以降は自動で動きます。
+        </div>
+        <div class="ss">
+          <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#20 — onEdit 初回承認ダイアログ</span></div>
+          <div class="ss-desc">F列に入力した直後に出る「権限を確認」ダイアログ</div>
+          <span class="ss-file">→ screenshots/20_onedit-permission.png に配置</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7-8 動作確認 -->
+    <div class="step-card accent">
+      <div class="step-num">8</div>
+      <div class="step-body">
+        <div class="step-title">動作確認チェックリスト</div>
+        <div class="step-text">
+          <ul>
+            <li>☑ テストコメントを拡張から送って <strong>2 行目</strong> に書き込まれるか</li>
+            <li>☑ F 列に <span class="file-name">出演者</span> と入力 → ディレクター向けシートに即時追加されるか</li>
+            <li>☑ ディレクター向けでチェック → 元シートにもチェックが付くか</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEC 8 トラブル -->
+  <section class="section-wrap" id="sec-8">
+    <div class="sec-heading">
+      <span class="sec-num">SECTION 08</span>
+      <h2>トラブルシュート</h2>
+    </div>
+    <p class="sec-lead">配信中にハマりやすい症状と対処をまとめてあります。配信前にざっと目を通しておくと安心です。</p>
+
+    <div class="trouble-list">
+      <div class="trouble-row"><div class="trouble-symptom">質問のみモードで FW が拾えない</div><div class="trouble-fix">配信ページの「Show Questions Only」ボタンが <strong>青 ON</strong> か確認</div></div>
+      <div class="trouble-row"><div class="trouble-symptom">YouTube が拾われない</div><div class="trouble-fix">モードが <span class="badge-a-mode">全コメント</span> か / チャット欄を <strong>「全チャット」</strong> モードに</div></div>
+      <div class="trouble-row"><div class="trouble-symptom">スプシ URL を貼ったらエラー</div><div class="trouble-fix"><span class="file-name">https://docs.google.com/spreadsheets/d/&lt;ID&gt;/...</span> 形式か確認</div></div>
+      <div class="trouble-row"><div class="trouble-symptom">モード切替が効かない</div><div class="trouble-fix">配信ページを <strong>リロード</strong> 必須</div></div>
+      <div class="trouble-row"><div class="trouble-symptom">iPhone が拾われちゃう</div><div class="trouble-fix">popup のモード設定で <span class="file-name">iphone</span> / <span class="file-name">アイフォン</span> を NG に追加</div></div>
+      <div class="trouble-row"><div class="trouble-symptom">コメントが 4 桁行（10001 行目以降）に飛ぶ</div><div class="trouble-fix">v4.4.0 以降では発生しません。発生時は <strong>古い GAS のまま</strong> → 再デプロイで解消</div></div>
+      <div class="trouble-row"><div class="trouble-symptom">ディレクター向けに反映されない</div><div class="trouble-fix">① F 列に値を入れたか確認<br>② 時間主導トリガー（reflectToDirectorSheet）が登録されているか確認</div></div>
+      <div class="trouble-row"><div class="trouble-symptom">onEdit を手動実行で <span class="file-name">TypeError: Cannot read properties of undefined (reading 'range')</span></div><div class="trouble-fix">onEdit はシンプルトリガー。エディタ実行ではなく <strong>実際に F 列を編集</strong> して動作確認する</div></div>
+    </div>
+  </section>
+
+  <!-- SEC 9 触るな -->
+  <section class="section-wrap" id="sec-9">
+    <div class="sec-heading">
+      <span class="sec-num">SECTION 09</span>
+      <h2>触ってはいけないもの</h2>
+    </div>
+    <p class="sec-lead">複製先で以下を変更すると<strong>即座にロジックが壊れます</strong>。コード前提として固定されている要素です。</p>
+
+    <div class="dont-card">
+      <div class="dont-card-title">🚫 DO NOT TOUCH</div>
+      <div class="dont-card-row">
+        <div class="dont-card-item">列構成 A〜F</div>
+        <div class="dont-card-why">doPost / onEdit / reflectToDirectorSheet が決め打ち</div>
+      </div>
+      <div class="dont-card-row">
+        <div class="dont-card-item">シート名「ディレクター向け」</div>
+        <div class="dont-card-why">コード内ハードコード</div>
+      </div>
+      <div class="dont-card-row">
+        <div class="dont-card-item">F 列の 3 値リテラル<br><span class="file-name">小松原さんより</span> / <span class="file-name">出演者</span> / <span class="file-name">FW→潮崎さんへ</span></div>
+        <div class="dont-card-why">allowedValues 配列にハードコード</div>
+      </div>
+      <div class="dont-card-row">
+        <div class="dont-card-item">元シート = 一番左のシート という前提</div>
+        <div class="dont-card-why">getSheets()[0] 決め打ち</div>
+      </div>
+    </div>
+
+    <div class="info-callout">
+      <strong>📌 マスター GAS を修正した場合の全配信反映フロー：</strong>
+      <ol style="margin-top:8px; padding-left:20px;">
+        <li>マスタースプシの GAS エディタで修正・clasp push で反映</li>
+        <li>修正内容を全選択コピー</li>
+        <li>各配信用スプシの GAS エディタを順に開く</li>
+        <li>Code.gs を全選択削除 → マスターのコードを貼り付け</li>
+        <li>各配信用スプシで「デプロイ → デプロイを管理 → 鉛筆 → 新しいバージョン」</li>
+        <li>変更履歴をマスター README に追記</li>
+      </ol>
+      <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #b2dfdb;">
+        ⚠ 配信本数が増えてきたら（5本超え目安）<strong>スタンドアロン 1 本集約方式</strong>へリファクタを推奨。
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <footer class="footer">
+    <div>Livestream Comment Pickup Tool v4.4.0 — Internal Manual</div>
+    <div style="margin-top:6px;">最終更新: 2026年6月26日 15:55 / Maintainer: Issy</div>
+    <div style="margin-top:6px;">本マニュアルは @fireworkhq.com アカウント限定で公開されています</div>
+  </footer>
+
+</div>
+</body>
+</html>
