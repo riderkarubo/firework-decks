@@ -7,12 +7,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>コメントピックアップツール v4 マニュアル — Firework Live</title>
   <meta name="robots" content="noindex, nofollow">
-  <meta name="description" content="Firework Assistant + YouTube ライブチャットのコメントをスプシに記録するChrome拡張のセットアップ・運用マニュアル">
-  <meta name="last-modified" content="2026-06-26T15:55:00+09:00">
+  <meta name="description" content="Firework Assistant + YouTube ライブチャットのコメントをスプシに記録するChrome拡張のセットアップ・運用マニュアル。3人運用ゆえ配信ごとにフルセットアップを通します">
+  <meta name="last-modified" content="2026-06-26T16:41:00+09:00">
 
   <meta property="og:type" content="article">
   <meta property="og:title" content="コメントピックアップツール v4 マニュアル">
-  <meta property="og:description" content="Firework Assistant + YouTube ライブチャットのコメントをスプシに記録するChrome拡張のセットアップ・運用マニュアル（社内秘・@fireworkhq.com限定）">
+  <meta property="og:description" content="配信ごとにフルセットアップを通すChrome拡張の手順書（社内秘・@fireworkhq.com限定）">
   <meta property="og:locale" content="ja_JP">
   <meta property="og:site_name" content="Firework Decks">
 
@@ -34,6 +34,8 @@
     .cover-meta-item:last-child { border-right:none; }
     .cover-meta-label { font-size:9px; color:rgba(255,255,255,0.4); letter-spacing:2px; margin-bottom:3px; }
     .cover-meta-value { font-size:11px; font-weight:700; color:white; }
+    .cover-policy { background:#fa006d; border-radius:10px; padding:14px 20px; margin-top:20px; color:white; font-size:13px; font-weight:700; line-height:1.7; max-width:640px; }
+    .cover-policy strong { display:block; font-size:11px; letter-spacing:2px; opacity:0.8; margin-bottom:4px; }
 
     /* TOC */
     .toc { background:white; border-radius:14px; padding:24px 28px; margin-bottom:40px; box-shadow:0 2px 10px rgba(0,0,0,0.04); }
@@ -42,12 +44,15 @@
     .toc-list a { color:#1a1a2e; text-decoration:none; font-size:13px; padding:6px 0; display:flex; align-items:center; gap:8px; }
     .toc-list a:hover { color:#fa006d; }
     .toc-num { display:inline-block; width:22px; height:22px; line-height:22px; text-align:center; background:#1a1a2e; color:white; border-radius:50%; font-size:10px; font-weight:700; flex-shrink:0; }
+    .toc-list a.hot .toc-num { background:#fa006d; }
 
     /* SECTION */
     .section-wrap { margin-bottom:56px; }
     .sec-heading { display:flex; align-items:baseline; gap:14px; margin-bottom:24px; padding-bottom:12px; border-bottom:2px solid #1a1a2e; }
     .sec-num { font-size:11px; font-weight:700; color:#fa006d; letter-spacing:2px; }
     .sec-heading h2 { font-size:20px; font-weight:900; color:#1a1a2e; }
+    .sec-label-every { display:inline-block; background:#fa006d; color:white; font-size:10px; font-weight:900; letter-spacing:2px; padding:3px 10px; border-radius:4px; margin-left:8px; }
+    .sec-label-once { display:inline-block; background:#1a1a2e; color:white; font-size:10px; font-weight:900; letter-spacing:2px; padding:3px 10px; border-radius:4px; margin-left:8px; }
     .sec-lead { color:#555; font-size:13px; margin-bottom:20px; line-height:1.9; }
 
     /* STEP CARD */
@@ -86,15 +91,21 @@
     .warn-callout strong { color:#c98a00; }
     .tip-callout { background:#fef0f5; border:1px solid #fbb6d2; border-radius:10px; padding:14px 18px; margin:12px 0; font-size:13px; color:#8b1a4a; line-height:1.85; }
     .danger-callout { background:#fdecec; border:1px solid #f5b7b7; border-radius:10px; padding:14px 18px; margin:12px 0; font-size:13px; color:#8b1a1a; line-height:1.85; }
+    .ops-callout { background:#1a1a2e; border-radius:10px; padding:18px 22px; margin:14px 0; color:#f1f1f1; font-size:13px; line-height:1.85; }
+    .ops-callout strong { color:#fa006d; }
+    .ops-callout .ops-label { display:inline-block; background:#fa006d; color:white; font-size:10px; font-weight:900; letter-spacing:2px; padding:3px 10px; border-radius:4px; margin-bottom:8px; }
 
     /* FLOW */
     .flow-title { font-size:13px; font-weight:700; color:#1a1a2e; margin:8px 0 12px; }
     .flow-wrap { display:flex; flex-direction:column; gap:6px; margin:16px 0 24px; }
     .flow-item { background:white; border-radius:10px; padding:14px 22px; font-size:13px; font-weight:700; color:#1a1a2e; box-shadow:0 1px 6px rgba(0,0,0,0.06); display:flex; align-items:center; gap:14px; border-left:4px solid #fa006d; }
+    .flow-item.once { border-left-color:#1a1a2e; }
     .flow-icon { font-size:22px; }
     .flow-label { flex:1; }
     .flow-sub { font-size:11px; font-weight:400; color:#7c8794; margin-top:2px; }
     .flow-arrow { text-align:center; color:#fa006d; font-size:18px; font-weight:700; line-height:1; padding:2px 0; }
+    .flow-tag { display:inline-block; background:#fa006d; color:white; font-size:9px; font-weight:900; letter-spacing:1px; padding:2px 7px; border-radius:3px; margin-left:8px; }
+    .flow-tag.once { background:#1a1a2e; }
 
     /* HORIZONTAL FLOW */
     .hflow { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin:18px 0 28px; }
@@ -143,6 +154,13 @@
     .dont-card-item { font-weight:700; color:#8b1a1a; }
     .dont-card-why { color:#555; }
 
+    /* CHECK LIST */
+    .check-card { background:white; border-radius:12px; padding:20px 24px; box-shadow:0 2px 10px rgba(0,0,0,0.05); margin:12px 0; }
+    .check-card-title { font-size:13px; font-weight:900; color:#fa006d; letter-spacing:1px; margin-bottom:12px; }
+    .check-item { display:flex; align-items:flex-start; gap:10px; padding:8px 0; border-bottom:1px solid #f0f0f0; font-size:13px; color:#333; }
+    .check-item:last-child { border-bottom:none; }
+    .check-box { width:18px; height:18px; flex-shrink:0; border:2px solid #fa006d; border-radius:4px; margin-top:1px; }
+
     /* FOOTER */
     .footer { text-align:center; color:#999; font-size:11px; margin-top:48px; padding-top:24px; border-top:1px solid #e8e8e8; line-height:1.8; }
 
@@ -181,8 +199,13 @@
     <p class="cover-sub">
       Firework Assistant モード ＋ YouTube ライブチャットのコメントを<br>
       Google スプレッドシートに自動記録する Chrome 拡張機能の手順書です。<br>
-      初回セットアップから配信運用、月次の複製手順までを一気通貫でまとめてあります。
+      3人運用ゆえ、<strong style="color:#fa006d;">配信ごとにフルセットアップを毎回通す</strong>方針で運用しています。
     </p>
+    <div class="cover-policy">
+      <strong>OPERATION POLICY</strong>
+      毎回の配信前に「複製 → デプロイ → 権限承認 → 動作確認」を必ずゼロから通します。<br>
+      「やったはず」をなくし、3人の誰が担当しても100%動く状態を担保するためです。
+    </div>
     <div class="cover-meta">
       <div class="cover-meta-item">
         <div class="cover-meta-label">VERSION</div>
@@ -190,11 +213,11 @@
       </div>
       <div class="cover-meta-item">
         <div class="cover-meta-label">UPDATED</div>
-        <div class="cover-meta-value">2026年6月26日 15:55</div>
+        <div class="cover-meta-value">2026年6月26日 16:41</div>
       </div>
       <div class="cover-meta-item">
         <div class="cover-meta-label">AUDIENCE</div>
-        <div class="cover-meta-value">Firework 配信担当者</div>
+        <div class="cover-meta-value">Firework 配信担当者 3名</div>
       </div>
       <div class="cover-meta-item">
         <div class="cover-meta-label">ACCESS</div>
@@ -208,15 +231,14 @@
     <div class="toc-title">CONTENTS</div>
     <ol class="toc-list">
       <li><a href="#sec-0"><span class="toc-num">0</span>このツールでできること</a></li>
-      <li><a href="#sec-1"><span class="toc-num">1</span>全体フロー（30秒で把握）</a></li>
-      <li><a href="#sec-2"><span class="toc-num">2</span>初回セットアップ</a></li>
-      <li><a href="#sec-3"><span class="toc-num">3</span>共通設定（GAS URL＋スプシURL）</a></li>
+      <li><a href="#sec-1"><span class="toc-num">1</span>全体フロー（毎回／1回だけ）</a></li>
+      <li><a href="#sec-2"><span class="toc-num">2</span>最初の1回だけ準備するもの</a></li>
+      <li><a href="#sec-3" class="hot"><span class="toc-num">3</span>【配信ごと】フルセットアップ</a></li>
       <li><a href="#sec-4"><span class="toc-num">4</span>モード選択</a></li>
       <li><a href="#sec-5"><span class="toc-num">5</span>配信時の運用</a></li>
       <li><a href="#sec-6"><span class="toc-num">6</span>NGワード・誹謗中傷ワードの編集</a></li>
-      <li><a href="#sec-7"><span class="toc-num">7</span>月次：新規配信ごとの複製運用</a></li>
-      <li><a href="#sec-8"><span class="toc-num">8</span>トラブルシュート</a></li>
-      <li><a href="#sec-9"><span class="toc-num">9</span>触ってはいけないもの</a></li>
+      <li><a href="#sec-7"><span class="toc-num">7</span>トラブルシュート</a></li>
+      <li><a href="#sec-8"><span class="toc-num">8</span>触ってはいけないもの</a></li>
     </ol>
   </nav>
 
@@ -264,7 +286,7 @@
   <section class="section-wrap" id="sec-1">
     <div class="sec-heading">
       <span class="sec-num">SECTION 01</span>
-      <h2>全体フロー（30秒で把握）</h2>
+      <h2>全体フロー（毎回／1回だけ）</h2>
     </div>
     <p class="sec-lead">
       ツールが動いている間のデータの流れはこの4ステップで完結します。<br>
@@ -294,76 +316,70 @@
       </div>
     </div>
 
-    <div class="flow-title">セットアップ全体像（初回 → 月次 → 配信時）</div>
+    <div class="flow-title">「1回だけやること」と「毎回やること」の区別</div>
     <div class="flow-wrap">
-      <div class="flow-item"><span class="flow-icon">🔧</span><div class="flow-label">【初回】マスター GAS をデプロイ ＋ マスタースプシ作成<div class="flow-sub">SECTION 02</div></div></div>
+      <div class="flow-item once">
+        <span class="flow-icon">🔧</span>
+        <div class="flow-label">
+          マスタースプシ＋マスター GAS の準備 <span class="flow-tag once">1回だけ</span>
+          <div class="flow-sub">SECTION 02 — 担当者交代やマスター紛失時のみ作り直し</div>
+        </div>
+      </div>
+      <div class="flow-item once">
+        <span class="flow-icon">🧩</span>
+        <div class="flow-label">
+          Chrome 拡張のインストール <span class="flow-tag once">PCごと1回だけ</span>
+          <div class="flow-sub">SECTION 02 — 各担当者のPCに1度ずつ</div>
+        </div>
+      </div>
       <div class="flow-arrow">↓</div>
-      <div class="flow-item"><span class="flow-icon">🧩</span><div class="flow-label">【初回】Chrome 拡張をインストール ＋ 共通設定<div class="flow-sub">SECTION 02 / 03</div></div></div>
+      <div class="flow-item">
+        <span class="flow-icon">📋</span>
+        <div class="flow-label">
+          配信ごとフルセットアップ（複製→デプロイ→権限承認→動作確認）<span class="flow-tag">毎回</span>
+          <div class="flow-sub">SECTION 03 — 配信1本ごとに必ずゼロから通す</div>
+        </div>
+      </div>
       <div class="flow-arrow">↓</div>
-      <div class="flow-item"><span class="flow-icon">🗓️</span><div class="flow-label">【月次】配信ごとにマスターを複製してセットアップ<div class="flow-sub">SECTION 07</div></div></div>
-      <div class="flow-arrow">↓</div>
-      <div class="flow-item"><span class="flow-icon">🎬</span><div class="flow-label">【配信時】モード選択 → 配信ページをリロードして待機<div class="flow-sub">SECTION 04 / 05</div></div></div>
-    </div>
-  </section>
-
-  <!-- SEC 2 初回セットアップ -->
-  <section class="section-wrap" id="sec-2">
-    <div class="sec-heading">
-      <span class="sec-num">SECTION 02</span>
-      <h2>初回セットアップ（1回だけ実施）</h2>
-    </div>
-    <p class="sec-lead">
-      ここは <strong>初回 or 担当者が変わった時の1度だけ</strong> 行う作業です。<br>
-      ① マスター GAS をデプロイ → ② マスタースプシを準備 → ③ 拡張をインストール、の3ブロック構成。
-    </p>
-
-    <!-- 2-1 GAS -->
-    <div class="step-card accent">
-      <div class="step-num">1</div>
-      <div class="step-body">
-        <div class="step-title">マスター GAS（Apps Script）をデプロイする</div>
-        <div class="step-text">
-          <ol>
-            <li><a href="https://script.google.com/" target="_blank" rel="noopener">https://script.google.com/</a> を開いて <strong>新しいプロジェクト</strong> を作成</li>
-            <li>このリポジトリの <span class="file-name">gas/Code.gs</span> の中身を全選択コピーし、エディタに貼り付け</li>
-            <li>右上の <strong>「デプロイ」 → 「新しいデプロイ」</strong> をクリック</li>
-            <li>種類: <strong>ウェブアプリ</strong>、実行ユーザー: <strong>自分</strong>、アクセスできるユーザー: <strong>全員</strong> に設定</li>
-            <li>発行された <strong>Web アプリ URL をコピー</strong>（後で拡張に貼り付けます）</li>
-          </ol>
-        </div>
-        <div class="ss">
-          <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#01 — Apps Script の新規プロジェクト作成画面</span></div>
-          <div class="ss-desc">script.google.com の左上「新しいプロジェクト」ボタンが見える画面</div>
-          <span class="ss-file">→ screenshots/01_gas-new-project.png に配置</span>
-        </div>
-        <div class="ss">
-          <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#02 — Code.gs を貼り付けた直後のエディタ</span></div>
-          <div class="ss-desc">エディタに gas/Code.gs の中身が貼り付いている状態</div>
-          <span class="ss-file">→ screenshots/02_gas-paste-code.png に配置</span>
-        </div>
-        <div class="ss">
-          <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#03 — 「デプロイ → 新しいデプロイ」の設定ダイアログ</span></div>
-          <div class="ss-desc">種類=ウェブアプリ / 実行ユーザー=自分 / アクセス=全員 が見えるダイアログ</div>
-          <span class="ss-file">→ screenshots/03_gas-deploy-webapp.png に配置</span>
-        </div>
-        <div class="ss">
-          <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#04 — 発行された Web アプリ URL のコピー</span></div>
-          <div class="ss-desc">「ウェブアプリ URL」とコピーアイコンが映ったダイアログ</div>
-          <span class="ss-file">→ screenshots/04_copy-webapp-url.png に配置</span>
+      <div class="flow-item">
+        <span class="flow-icon">🎬</span>
+        <div class="flow-label">
+          モード選択 → 配信ページをリロードして待機 <span class="flow-tag">毎回</span>
+          <div class="flow-sub">SECTION 04 / 05</div>
         </div>
       </div>
     </div>
 
-    <!-- 2-2 スプシ -->
-    <div class="step-card accent">
-      <div class="step-num">2</div>
+    <div class="ops-callout">
+      <span class="ops-label">なぜ毎回フルセットアップか</span>
+      <strong>3人運用</strong>では「やったはず」「誰かがやってるはず」が一番の事故源にございます。<br>
+      過去の事故も <strong>デプロイし忘れ・onEdit権限承認漏れ</strong> が原因の大半。<br>
+      毎回ゼロから通すことで、<strong>当日担当者が単独で100%動く状態を作る</strong> 運用にしています。複製＋デプロイ＋権限承認は慣れれば <strong>10〜15分</strong> 程度です。
+    </div>
+  </section>
+
+  <!-- SEC 2 最初の1回 -->
+  <section class="section-wrap" id="sec-2">
+    <div class="sec-heading">
+      <span class="sec-num">SECTION 02</span>
+      <h2>最初の1回だけ準備するもの<span class="sec-label-once">ONCE</span></h2>
+    </div>
+    <p class="sec-lead">
+      ここは <strong>運用開始時・担当者が増えた時・マスターを作り直す時</strong> だけ実施します。<br>
+      普段の配信ごとセットアップ（SECTION 03）には含めません。
+    </p>
+
+    <!-- 2-1 マスタースプシ＋マスターGAS -->
+    <div class="step-card">
+      <div class="step-num">A</div>
       <div class="step-body">
-        <div class="step-title">マスタースプレッドシートを用意する</div>
+        <div class="step-title">マスタースプレッドシート＋マスター GAS を作る（チーム共有・1回だけ）</div>
         <div class="step-text">
           <ol>
-            <li>新規スプレッドシートを作成（または既存のマスターを開く）</li>
-            <li>ブラウザの URL バーから <strong>URL を丸ごとコピー</strong>（ID だけでも可）</li>
-            <li>このスプシを「マスター」として保管し、<strong>本番では使わない</strong>（後で複製して使います）</li>
+            <li>Google ドライブで新規スプレッドシートを作成（名前: <span class="file-name">livestream-master-template</span> など）</li>
+            <li>スプシ上で <span class="kbd">拡張機能 → Apps Script</span> を開く</li>
+            <li>このリポジトリの <span class="file-name">gas/Code.gs</span> の中身を全選択コピーしてエディタに貼り付け</li>
+            <li>マスタースプシは <strong>本番では使わない</strong>。配信ごとに「ファイル → コピーを作成」で複製する原本として保管</li>
           </ol>
           <div class="info-callout" style="margin-top:14px;">
             <strong>📊 列構成（v4.4.0）</strong>
@@ -383,18 +399,23 @@
           </div>
         </div>
         <div class="ss">
-          <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#05 — マスタースプシ＋列構成</span></div>
-          <div class="ss-desc">A〜F列のヘッダー行が見えるスプレッドシート画面</div>
-          <span class="ss-file">→ screenshots/05_master-spreadsheet.png に配置</span>
+          <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#01 — マスタースプシ＋GASエディタを開いた状態</span></div>
+          <div class="ss-desc">「拡張機能 → Apps Script」で開いた直後のマスター環境</div>
+          <span class="ss-file">→ screenshots/01_master-spreadsheet-gas.png に配置</span>
+        </div>
+        <div class="ss">
+          <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#02 — Code.gs を貼り付けた直後のマスター GAS エディタ</span></div>
+          <div class="ss-desc">エディタに gas/Code.gs の中身が貼り付いている状態</div>
+          <span class="ss-file">→ screenshots/02_gas-paste-code.png に配置</span>
         </div>
       </div>
     </div>
 
-    <!-- 2-3 拡張 -->
-    <div class="step-card accent">
-      <div class="step-num">3</div>
+    <!-- 2-2 拡張インストール -->
+    <div class="step-card">
+      <div class="step-num">B</div>
       <div class="step-body">
-        <div class="step-title">Chrome 拡張機能をインストールする</div>
+        <div class="step-title">Chrome 拡張機能をインストールする（PCごと1回だけ）</div>
         <div class="step-text">
           <ol>
             <li>Chrome のアドレスバーに <span class="file-name">chrome://extensions/</span> を入力</li>
@@ -408,59 +429,224 @@
           </div>
         </div>
         <div class="ss">
-          <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#06 — chrome://extensions/ のデベロッパーモード ON</span></div>
+          <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#03 — chrome://extensions/ のデベロッパーモード ON</span></div>
           <div class="ss-desc">右上「デベロッパーモード」トグルが ON の状態</div>
-          <span class="ss-file">→ screenshots/06_chrome-extensions-page.png に配置</span>
+          <span class="ss-file">→ screenshots/03_chrome-extensions-page.png に配置</span>
         </div>
         <div class="ss">
-          <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#07 — 「パッケージ化されていない拡張機能を読み込む」でフォルダ選択</span></div>
+          <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#04 — 「パッケージ化されていない拡張機能を読み込む」でフォルダ選択</span></div>
           <div class="ss-desc">extension/ フォルダを選択するダイアログ</div>
-          <span class="ss-file">→ screenshots/07_extension-load-unpacked.png に配置</span>
+          <span class="ss-file">→ screenshots/04_extension-load-unpacked.png に配置</span>
         </div>
       </div>
+    </div>
+
+    <div class="info-callout">
+      ✅ ここまで終わったら、SECTION 02 はもう触りません。次の配信からは <strong>SECTION 03 を毎回</strong> 通します。
     </div>
   </section>
 
-  <!-- SEC 3 共通設定 -->
+  <!-- SEC 3 配信ごとフルセットアップ -->
   <section class="section-wrap" id="sec-3">
     <div class="sec-heading">
       <span class="sec-num">SECTION 03</span>
-      <h2>共通設定（GAS URL ＋ スプシ URL を拡張に登録）</h2>
+      <h2>【配信ごと】フルセットアップ<span class="sec-label-every">EVERY STREAM</span></h2>
     </div>
     <p class="sec-lead">
-      拡張アイコンをクリックすると popup が開きます。ここで2つの値を貼り付けるだけで完了です。
+      <strong>毎回の配信前に必ずゼロから全工程を通します。</strong> 慣れれば10〜15分です。<br>
+      順番に進めれば、<strong>当日担当者の手元で100%動く状態</strong> が担保されます。
     </p>
 
-    <div class="step-card">
+    <div class="ops-callout">
+      <span class="ops-label">EVERY-STREAM RULE</span>
+      「マスターは前回も使ったから動くはず」は禁物にございます。<br>
+      <strong>① マスター複製 → ② setupMainSheetFormatting実行 → ③ 新規デプロイ → ④ 拡張URL更新 → ⑤ トリガー登録 → ⑥ onEdit権限承認 → ⑦ 動作確認</strong>。これを毎回通してください。
+    </div>
+
+    <!-- 3-1 -->
+    <div class="step-card accent">
       <div class="step-num">1</div>
       <div class="step-body">
-        <div class="step-title">GAS URL を貼って保存する</div>
+        <div class="step-title">マスタースプシをコピーする</div>
         <div class="step-text">
-          SECTION 02-1 でコピーした <strong>Web アプリ URL</strong> を popup の上部「GAS URL」欄にペースト → 保存。
+          マスタースプシを開き <span class="kbd">ファイル → コピーを作成</span><br>
+          名前は <span class="file-name">YYYY-MM-DD_配信名_コメント抽出</span> のように日付・配信名で識別可能に。
         </div>
         <div class="ss">
-          <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#08 — popup の GAS URL 入力欄</span></div>
-          <div class="ss-desc">GAS URL 欄に Web アプリ URL を貼り付けた状態</div>
-          <span class="ss-file">→ screenshots/08_popup-gas-url-input.png に配置</span>
+          <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#05 — スプシの「コピーを作成」ダイアログ</span></div>
+          <div class="ss-desc">ファイル名を「YYYY-MM-DD_配信名_コメント抽出」に変更した状態</div>
+          <span class="ss-file">→ screenshots/05_spreadsheet-copy.png に配置</span>
         </div>
       </div>
     </div>
 
-    <div class="step-card">
+    <!-- 3-2 -->
+    <div class="step-card accent">
       <div class="step-num">2</div>
       <div class="step-body">
-        <div class="step-title">スプシ URL を丸ごと貼って保存する</div>
+        <div class="step-title">複製先の Apps Script エディタを開く</div>
         <div class="step-text">
-          ブラウザの URL バーから <strong>スプシの URL 丸ごと</strong> を popup の「スプシ URL」欄にペースト → 保存。
-          ID 部分だけがプレビュー表示されます。
-        </div>
-        <div class="info-callout">
-          ✅ URL 例：<span class="file-name">https://docs.google.com/spreadsheets/d/&lt;ID&gt;/edit#gid=0</span>
+          複製先スプシで <span class="kbd">拡張機能 → Apps Script</span><br>
+          コードはコピー済みです。必要に応じて Script Properties を再設定します：
+          <ul style="margin-top:8px;">
+            <li><span class="file-name">DEFAULT_SPREADSHEET_ID</span>: 複製先スプシの ID（任意）</li>
+            <li><span class="file-name">BANNED_KEYWORDS</span> / <span class="file-name">NEGATIVE_WORDS</span>: 配信ごとにカスタマイズしたい場合のみ</li>
+          </ul>
         </div>
         <div class="ss">
-          <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#09 — popup のスプシ URL 入力欄</span></div>
-          <div class="ss-desc">スプシ URL 欄に URL 貼り付け＋プレビュー表示の状態</div>
-          <span class="ss-file">→ screenshots/09_popup-spreadsheet-url-input.png に配置</span>
+          <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#06 — 複製先スプシの Apps Script エディタ</span></div>
+          <div class="ss-desc">「拡張機能 → Apps Script」で開いたエディタ画面</div>
+          <span class="ss-file">→ screenshots/06_apps-script-editor-from-spreadsheet.png に配置</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3-3 -->
+    <div class="step-card accent">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <div class="step-title">setupMainSheetFormatting() を 1 回だけ実行する</div>
+        <div class="step-text">
+          エディタ上部の関数選択で <span class="file-name">setupMainSheetFormatting</span> を選んで <span class="kbd">▶ 実行</span>。<br>
+          A 列にチェックボックスが入り、チェック→グレーアウトの条件付き書式が設定されます。
+        </div>
+        <div class="warn-callout">
+          ⚠ 基本冪等ですが、念のため<strong>この配信用スプシに対して1回で止める</strong>こと。
+        </div>
+        <div class="ss">
+          <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#07 — setupMainSheetFormatting 実行画面</span></div>
+          <div class="ss-desc">関数選択 → 実行ボタンを押した直後の Apps Script エディタ</div>
+          <span class="ss-file">→ screenshots/07_setup-main-sheet-formatting.png に配置</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3-4 -->
+    <div class="step-card accent">
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <div class="step-title">Web アプリとして新規デプロイする <span style="color:#fa006d;">★最重要</span></div>
+        <div class="step-text">
+          <span class="kbd">デプロイ → 新しいデプロイ</span> → 種類: <strong>ウェブアプリ</strong> / 実行ユーザー: <strong>自分</strong> / アクセス: <strong>全員</strong><br>
+          新しい Web アプリ URL が発行されます。<strong>URL は前の配信のものとは別物</strong> なので必ずコピーしてください。
+        </div>
+        <div class="danger-callout">
+          🚨 <strong>「動かない」事故の最頻原因はここの抜けです。</strong><br>
+          「デプロイを管理」での更新ではなく、<strong>必ず「新しいデプロイ」</strong>を選んでください。<br>
+          発行されたURLは必ず popup の GAS URL 欄に貼り直すこと（古いURLのままだと前の配信のスプシに書き込んでしまいます）。
+        </div>
+        <div class="ss">
+          <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#08 — 新規デプロイの設定ダイアログ</span></div>
+          <div class="ss-desc">「新しいデプロイ」のウェブアプリ設定画面（実行ユーザー=自分 / アクセス=全員）</div>
+          <span class="ss-file">→ screenshots/08_new-deployment.png に配置</span>
+        </div>
+        <div class="ss">
+          <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#09 — 発行された Web アプリ URL のコピー</span></div>
+          <div class="ss-desc">デプロイ完了後の「ウェブアプリ URL」とコピーアイコン</div>
+          <span class="ss-file">→ screenshots/09_copy-webapp-url.png に配置</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3-5 -->
+    <div class="step-card accent">
+      <div class="step-num">5</div>
+      <div class="step-body">
+        <div class="step-title">Chrome 拡張の GAS URL ＋ スプシ URL を更新する</div>
+        <div class="step-text">
+          拡張アイコンクリック → popup で
+          <ol style="margin-top:6px;">
+            <li><strong>GAS URL</strong> を ステップ4 で発行された新しい Web アプリ URL に貼り替え → 保存</li>
+            <li><strong>スプシ URL</strong> を今回の配信用スプシの URL に貼り替え → 保存</li>
+          </ol>
+          <div class="info-callout" style="margin-top:10px;">
+            ✅ スプシURLは丸ごとペースト可。例：<span class="file-name">https://docs.google.com/spreadsheets/d/&lt;ID&gt;/edit#gid=0</span>
+          </div>
+        </div>
+        <div class="ss">
+          <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#10 — popup の GAS URL 入力欄</span></div>
+          <div class="ss-desc">GAS URL 欄に新しい Web アプリ URL を貼り付けた状態</div>
+          <span class="ss-file">→ screenshots/10_popup-gas-url-input.png に配置</span>
+        </div>
+        <div class="ss">
+          <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#11 — popup のスプシ URL 入力欄</span></div>
+          <div class="ss-desc">スプシ URL 欄に新しい URL 貼り付け＋ID プレビュー表示の状態</div>
+          <span class="ss-file">→ screenshots/11_popup-spreadsheet-url-input.png に配置</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3-6 -->
+    <div class="step-card accent">
+      <div class="step-num">6</div>
+      <div class="step-body">
+        <div class="step-title">時間主導トリガーを登録する（ディレクター向け同期用）</div>
+        <div class="step-text">
+          Apps Script エディタ左の <span class="kbd">⏰ トリガー</span> → <strong>+ トリガーを追加</strong>
+          <ul style="margin-top:8px;">
+            <li>実行する関数：<span class="file-name">reflectToDirectorSheet</span></li>
+            <li>イベントのソース：<strong>時間主導型</strong></li>
+            <li>トリガーのタイプ：<strong>分ベース → 1 分タイマー</strong>（推奨）</li>
+          </ul>
+          <div class="tip-callout" style="margin-top:10px;">
+            💡 削除・黄色塗りの双方向反映を担当します。配信中のリアルタイム性重視で 1 分間隔がおすすめ。
+            処理が 10 秒を超え始めたら 3〜5 分に伸ばしてチューニング可。
+          </div>
+        </div>
+        <div class="ss">
+          <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#12 — トリガー追加ダイアログ</span></div>
+          <div class="ss-desc">関数=reflectToDirectorSheet / 時間主導型 / 1分タイマー を選んだ状態</div>
+          <span class="ss-file">→ screenshots/12_trigger-add.png に配置</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3-7 -->
+    <div class="step-card accent">
+      <div class="step-num">7</div>
+      <div class="step-body">
+        <div class="step-title">onEdit シンプルトリガーの権限承認 <span style="color:#fa006d;">★忘れがち</span></div>
+        <div class="step-text">
+          配信開始前に <strong>必ず自分の手で</strong> 元シートの F 列に <span class="file-name">出演者</span> と1度入力してください。<br>
+          初回承認ダイアログが出るので <strong>許可</strong>。以降は自動で動きます。
+        </div>
+        <div class="danger-callout">
+          🚨 <strong>onEdit はシンプルトリガーゆえ、「人間が編集する」まで承認ダイアログが出ません。</strong><br>
+          編集ではなくApps Scriptエディタから手動実行すると <span class="file-name">TypeError: Cannot read properties of undefined</span> エラーで失敗します。<br>
+          <strong>必ずスプシのF列に入力する形で承認</strong> してください。
+        </div>
+        <div class="ss">
+          <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#13 — onEdit 初回承認ダイアログ</span></div>
+          <div class="ss-desc">F列に入力した直後に出る「権限を確認」ダイアログ</div>
+          <span class="ss-file">→ screenshots/13_onedit-permission.png に配置</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3-8 動作確認 -->
+    <div class="step-card accent">
+      <div class="step-num">8</div>
+      <div class="step-body">
+        <div class="step-title">動作確認チェックリスト <span style="color:#fa006d;">★ここを通したら完了</span></div>
+        <div class="step-text">
+          配信開始30分前までに、以下3点が <strong>全部 ✅</strong> になっていることを担当者が確認してください。
+        </div>
+
+        <div class="check-card">
+          <div class="check-card-title">PRE-FLIGHT CHECK</div>
+          <div class="check-item"><div class="check-box"></div><div><strong>① テストPOSTで2行目に書き込まれるか</strong><br><span style="color:#666; font-size:12px;">拡張からテストコメントを送信 → 配信用スプシの2行目に書き込みを確認</span></div></div>
+          <div class="check-item"><div class="check-box"></div><div><strong>② F列に「出演者」と入力 → ディレクター向けシートに即時追加されるか</strong><br><span style="color:#666; font-size:12px;">onEdit シンプルトリガーの動作確認＝権限承認が通っている証拠</span></div></div>
+          <div class="check-item"><div class="check-box"></div><div><strong>③ ディレクター向けでチェック → 元シートにもチェックが付くか</strong><br><span style="color:#666; font-size:12px;">双方向同期の確認＝時間主導トリガーが動いている証拠</span></div></div>
+        </div>
+
+        <div class="ss">
+          <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#14 — 動作確認OK時のスプシ状態</span></div>
+          <div class="ss-desc">テストコメントが2行目に入り、ディレクター向けにも同期されている画面</div>
+          <span class="ss-file">→ screenshots/14_pre-flight-ok.png に配置</span>
+        </div>
+
+        <div class="info-callout" style="margin-top:14px;">
+          ✅ <strong>3つすべて通ったらフルセットアップ完了です。</strong> あとは SECTION 04 でモードを選び、配信ページをリロードして本番に臨んでください。
         </div>
       </div>
     </div>
@@ -488,9 +674,9 @@
           </ul>
         </div>
         <div class="ss">
-          <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#10 — popup のモード切替トグル</span></div>
+          <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#15 — popup のモード切替トグル</span></div>
           <div class="ss-desc">「質問のみ」「全コメント」のトグルが見える popup 上半分</div>
-          <span class="ss-file">→ screenshots/10_popup-mode-toggle.png に配置</span>
+          <span class="ss-file">→ screenshots/15_popup-mode-toggle.png に配置</span>
         </div>
       </div>
     </div>
@@ -526,9 +712,9 @@
           </ol>
         </div>
         <div class="ss">
-          <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#11 — FW Assistant の「Show Questions Only」ボタンが青 ON</span></div>
+          <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#16 — FW Assistant の「Show Questions Only」ボタンが青 ON</span></div>
           <div class="ss-desc">配信ページ上の質問フィルタボタンが青く点灯している状態</div>
-          <span class="ss-file">→ screenshots/11_questions-only-button-on.png に配置</span>
+          <span class="ss-file">→ screenshots/16_questions-only-button-on.png に配置</span>
         </div>
       </div>
     </div>
@@ -548,9 +734,9 @@
           </ol>
         </div>
         <div class="ss">
-          <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#12 — YouTube 配信ページのチャット「全チャット」設定</span></div>
+          <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#17 — YouTube 配信ページのチャット「全チャット」設定</span></div>
           <div class="ss-desc">YouTube ライブのチャットメニューから「全チャット」を選んだ状態</div>
-          <span class="ss-file">→ screenshots/12_youtube-chat-mode.png に配置</span>
+          <span class="ss-file">→ screenshots/17_youtube-chat-mode.png に配置</span>
         </div>
       </div>
     </div>
@@ -587,211 +773,39 @@
           </ul>
         </div>
         <div class="ss">
-          <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#13 — popup 下半分の NG ワード編集エリア</span></div>
+          <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#18 — popup 下半分の NG ワード編集エリア</span></div>
           <div class="ss-desc">「選択中モードの設定」で NG ワードと誹謗中傷ワードを編集している画面</div>
-          <span class="ss-file">→ screenshots/13_ng-words-edit.png に配置</span>
+          <span class="ss-file">→ screenshots/18_ng-words-edit.png に配置</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- SEC 7 月次 -->
+  <!-- SEC 7 トラブル -->
   <section class="section-wrap" id="sec-7">
     <div class="sec-heading">
       <span class="sec-num">SECTION 07</span>
-      <h2>月次：新規配信ごとの複製運用</h2>
-    </div>
-    <p class="sec-lead">
-      毎月いくつかの配信で並走させる前提です。<strong>マスターをテンプレートとして「ファイル → コピーを作成」で複製</strong> し、
-      配信ごとに 1 つずつ「配信用スプシ」を用意します。コードは複製先に独立コピーされる仕様です。
-    </p>
-
-    <div class="info-callout">
-      <strong>📘 用語の整理</strong>
-      <ul style="margin-top:8px; padding-left:20px;">
-        <li><strong>マスタースプシ</strong>：コードが入った原本（編集の中心・本番には使わない）</li>
-        <li><strong>配信用スプシ</strong>：マスターを複製したもの。各配信で1つずつ作る</li>
-        <li><strong>マスター GAS</strong>：マスタースプシにバインドされた Apps Script</li>
-      </ul>
-    </div>
-
-    <!-- 7-1 -->
-    <div class="step-card accent">
-      <div class="step-num">1</div>
-      <div class="step-body">
-        <div class="step-title">マスタースプシをコピーする</div>
-        <div class="step-text">
-          マスタースプシを開き <span class="kbd">ファイル → コピーを作成</span><br>
-          名前は <span class="file-name">YYYY-MM-DD_配信名_コメント抽出</span> のように日付・配信名で識別可能に。
-        </div>
-        <div class="ss">
-          <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#14 — スプシの「コピーを作成」ダイアログ</span></div>
-          <div class="ss-desc">ファイル名を「YYYY-MM-DD_配信名_コメント抽出」に変更した状態</div>
-          <span class="ss-file">→ screenshots/14_spreadsheet-copy.png に配置</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- 7-2 -->
-    <div class="step-card accent">
-      <div class="step-num">2</div>
-      <div class="step-body">
-        <div class="step-title">複製先の Apps Script エディタを開く</div>
-        <div class="step-text">
-          複製先スプシで <span class="kbd">拡張機能 → Apps Script</span><br>
-          コードはコピー済みです。必要に応じて Script Properties を再設定します：
-          <ul style="margin-top:8px;">
-            <li><span class="file-name">DEFAULT_SPREADSHEET_ID</span>: 複製先スプシの ID（任意）</li>
-            <li><span class="file-name">BANNED_KEYWORDS</span> / <span class="file-name">NEGATIVE_WORDS</span>: 配信ごとにカスタマイズしたい場合のみ</li>
-          </ul>
-        </div>
-        <div class="ss">
-          <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#15 — 複製先スプシの Apps Script エディタ</span></div>
-          <div class="ss-desc">「拡張機能 → Apps Script」で開いたエディタ画面</div>
-          <span class="ss-file">→ screenshots/15_apps-script-editor-from-spreadsheet.png に配置</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- 7-3 -->
-    <div class="step-card accent">
-      <div class="step-num">3</div>
-      <div class="step-body">
-        <div class="step-title">setupMainSheetFormatting() を 1 回だけ実行する</div>
-        <div class="step-text">
-          エディタ上部の関数選択で <span class="file-name">setupMainSheetFormatting</span> を選んで <span class="kbd">▶ 実行</span>。<br>
-          A 列にチェックボックスが入り、チェック→グレーアウトの条件付き書式が設定されます。
-        </div>
-        <div class="warn-callout">
-          ⚠ 基本冪等ですが、念のため<strong>1回で止める</strong>こと（連続実行は不要）。
-        </div>
-        <div class="ss">
-          <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#16 — setupMainSheetFormatting 実行画面</span></div>
-          <div class="ss-desc">関数選択 → 実行ボタンを押した直後の Apps Script エディタ</div>
-          <span class="ss-file">→ screenshots/16_setup-main-sheet-formatting.png に配置</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- 7-4 -->
-    <div class="step-card accent">
-      <div class="step-num">4</div>
-      <div class="step-body">
-        <div class="step-title">Web アプリとして新規デプロイする</div>
-        <div class="step-text">
-          <span class="kbd">デプロイ → 新しいデプロイ</span> → 種類: <strong>ウェブアプリ</strong> / 実行ユーザー: <strong>自分</strong> / アクセス: <strong>全員</strong><br>
-          新しい Web アプリ URL が発行されます。<strong>マスターとは別物</strong> なので必ずコピーしてください。
-        </div>
-        <div class="ss">
-          <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#17 — 新規デプロイの設定ダイアログ</span></div>
-          <div class="ss-desc">「新しいデプロイ」のウェブアプリ設定画面</div>
-          <span class="ss-file">→ screenshots/17_new-deployment.png に配置</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- 7-5 -->
-    <div class="step-card accent">
-      <div class="step-num">5</div>
-      <div class="step-body">
-        <div class="step-title">Chrome 拡張の URL を切替える</div>
-        <div class="step-text">
-          拡張アイコンクリック → popup で
-          <ol style="margin-top:6px;">
-            <li><strong>GAS URL</strong> を新しい Web アプリ URL に更新 → 保存</li>
-            <li><strong>スプシ URL</strong> を配信用スプシの URL に更新 → 保存</li>
-          </ol>
-        </div>
-        <div class="ss">
-          <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#18 — popup の URL 切替後の状態</span></div>
-          <div class="ss-desc">GAS URL とスプシ URL の両方を新しい値に更新した popup</div>
-          <span class="ss-file">→ screenshots/18_extension-url-update.png に配置</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- 7-6 -->
-    <div class="step-card accent">
-      <div class="step-num">6</div>
-      <div class="step-body">
-        <div class="step-title">時間主導トリガーを登録する（ディレクター向け同期用）</div>
-        <div class="step-text">
-          Apps Script エディタ左の <span class="kbd">⏰ トリガー</span> → <strong>+ トリガーを追加</strong>
-          <ul style="margin-top:8px;">
-            <li>実行する関数：<span class="file-name">reflectToDirectorSheet</span></li>
-            <li>イベントのソース：<strong>時間主導型</strong></li>
-            <li>トリガーのタイプ：<strong>分ベース → 1 分タイマー</strong>（推奨）</li>
-          </ul>
-          <div class="tip-callout" style="margin-top:10px;">
-            💡 削除・黄色塗りの双方向反映を担当します。配信中のリアルタイム性重視で 1 分間隔がおすすめ。
-            処理が 10 秒を超え始めたら 3〜5 分に伸ばしてチューニング可。
-          </div>
-        </div>
-        <div class="ss">
-          <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#19 — トリガー追加ダイアログ</span></div>
-          <div class="ss-desc">関数=reflectToDirectorSheet / 時間主導型 / 1分タイマー を選んだ状態</div>
-          <span class="ss-file">→ screenshots/19_trigger-add.png に配置</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- 7-7 -->
-    <div class="step-card accent">
-      <div class="step-num">7</div>
-      <div class="step-body">
-        <div class="step-title">onEdit シンプルトリガーの権限承認</div>
-        <div class="step-text">
-          配信開始前に元シートの F 列に何か 1 度入力してください。<br>
-          初回承認ダイアログが出るので <strong>許可</strong>。以降は自動で動きます。
-        </div>
-        <div class="ss">
-          <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#20 — onEdit 初回承認ダイアログ</span></div>
-          <div class="ss-desc">F列に入力した直後に出る「権限を確認」ダイアログ</div>
-          <span class="ss-file">→ screenshots/20_onedit-permission.png に配置</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- 7-8 動作確認 -->
-    <div class="step-card accent">
-      <div class="step-num">8</div>
-      <div class="step-body">
-        <div class="step-title">動作確認チェックリスト</div>
-        <div class="step-text">
-          <ul>
-            <li>☑ テストコメントを拡張から送って <strong>2 行目</strong> に書き込まれるか</li>
-            <li>☑ F 列に <span class="file-name">出演者</span> と入力 → ディレクター向けシートに即時追加されるか</li>
-            <li>☑ ディレクター向けでチェック → 元シートにもチェックが付くか</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SEC 8 トラブル -->
-  <section class="section-wrap" id="sec-8">
-    <div class="sec-heading">
-      <span class="sec-num">SECTION 08</span>
       <h2>トラブルシュート</h2>
     </div>
     <p class="sec-lead">配信中にハマりやすい症状と対処をまとめてあります。配信前にざっと目を通しておくと安心です。</p>
 
     <div class="trouble-list">
+      <div class="trouble-row"><div class="trouble-symptom">コメントが何も書き込まれない</div><div class="trouble-fix">SECTION 03 ステップ4「新規デプロイ」をやり直し、新URLを popup に貼り直す</div></div>
       <div class="trouble-row"><div class="trouble-symptom">質問のみモードで FW が拾えない</div><div class="trouble-fix">配信ページの「Show Questions Only」ボタンが <strong>青 ON</strong> か確認</div></div>
       <div class="trouble-row"><div class="trouble-symptom">YouTube が拾われない</div><div class="trouble-fix">モードが <span class="badge-a-mode">全コメント</span> か / チャット欄を <strong>「全チャット」</strong> モードに</div></div>
       <div class="trouble-row"><div class="trouble-symptom">スプシ URL を貼ったらエラー</div><div class="trouble-fix"><span class="file-name">https://docs.google.com/spreadsheets/d/&lt;ID&gt;/...</span> 形式か確認</div></div>
       <div class="trouble-row"><div class="trouble-symptom">モード切替が効かない</div><div class="trouble-fix">配信ページを <strong>リロード</strong> 必須</div></div>
       <div class="trouble-row"><div class="trouble-symptom">iPhone が拾われちゃう</div><div class="trouble-fix">popup のモード設定で <span class="file-name">iphone</span> / <span class="file-name">アイフォン</span> を NG に追加</div></div>
       <div class="trouble-row"><div class="trouble-symptom">コメントが 4 桁行（10001 行目以降）に飛ぶ</div><div class="trouble-fix">v4.4.0 以降では発生しません。発生時は <strong>古い GAS のまま</strong> → 再デプロイで解消</div></div>
-      <div class="trouble-row"><div class="trouble-symptom">ディレクター向けに反映されない</div><div class="trouble-fix">① F 列に値を入れたか確認<br>② 時間主導トリガー（reflectToDirectorSheet）が登録されているか確認</div></div>
+      <div class="trouble-row"><div class="trouble-symptom">ディレクター向けに反映されない</div><div class="trouble-fix">① F 列に値を入れたか確認<br>② 時間主導トリガー（reflectToDirectorSheet）が登録されているか確認<br>③ onEdit権限が通っているか（SECTION 03 ステップ7）</div></div>
       <div class="trouble-row"><div class="trouble-symptom">onEdit を手動実行で <span class="file-name">TypeError: Cannot read properties of undefined (reading 'range')</span></div><div class="trouble-fix">onEdit はシンプルトリガー。エディタ実行ではなく <strong>実際に F 列を編集</strong> して動作確認する</div></div>
     </div>
   </section>
 
-  <!-- SEC 9 触るな -->
-  <section class="section-wrap" id="sec-9">
+  <!-- SEC 8 触るな -->
+  <section class="section-wrap" id="sec-8">
     <div class="sec-heading">
-      <span class="sec-num">SECTION 09</span>
+      <span class="sec-num">SECTION 08</span>
       <h2>触ってはいけないもの</h2>
     </div>
     <p class="sec-lead">複製先で以下を変更すると<strong>即座にロジックが壊れます</strong>。コード前提として固定されている要素です。</p>
@@ -817,17 +831,15 @@
     </div>
 
     <div class="info-callout">
-      <strong>📌 マスター GAS を修正した場合の全配信反映フロー：</strong>
+      <strong>📌 マスター GAS のコード自体を改修した場合：</strong>
       <ol style="margin-top:8px; padding-left:20px;">
         <li>マスタースプシの GAS エディタで修正・clasp push で反映</li>
-        <li>修正内容を全選択コピー</li>
-        <li>各配信用スプシの GAS エディタを順に開く</li>
-        <li>Code.gs を全選択削除 → マスターのコードを貼り付け</li>
-        <li>各配信用スプシで「デプロイ → デプロイを管理 → 鉛筆 → 新しいバージョン」</li>
-        <li>変更履歴をマスター README に追記</li>
+        <li>マスター側で動作確認</li>
+        <li>以降の配信は <strong>SECTION 03 の「マスター複製」から自動的に新コード入り</strong> になる</li>
       </ol>
       <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #b2dfdb;">
-        ⚠ 配信本数が増えてきたら（5本超え目安）<strong>スタンドアロン 1 本集約方式</strong>へリファクタを推奨。
+        ✅ <strong>毎回マスター複製方式の利点：</strong>マスターを直すだけで翌配信から自動的に新コードが入ります。
+        既に走っている過去配信のスプシは触らなくてOK（個別配信は配信が終われば役目を終えるため）。
       </div>
     </div>
   </section>
@@ -836,7 +848,7 @@
 
   <footer class="footer">
     <div>Livestream Comment Pickup Tool v4.4.0 — Internal Manual</div>
-    <div style="margin-top:6px;">最終更新: 2026年6月26日 15:55 / Maintainer: Issy</div>
+    <div style="margin-top:6px;">最終更新: 2026年6月26日 16:41 / Maintainer: Issy</div>
     <div style="margin-top:6px;">本マニュアルは @fireworkhq.com アカウント限定で公開されています</div>
   </footer>
 
