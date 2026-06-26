@@ -1,0 +1,177 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
+<rect width="1200" height="760" fill="#faf8f5"/>
+
+<rect x="0" y="0" width="1200" height="68" fill="#dee1e6"/>
+<circle cx="20" cy="22" r="6" fill="#ff5f56"/>
+<circle cx="40" cy="22" r="6" fill="#ffbd2e"/>
+<circle cx="60" cy="22" r="6" fill="#27c93f"/>
+<path d="M 90 44 Q 90 12 110 12 L 320 12 Q 340 12 340 44 Z" fill="#fff"/>
+<circle cx="115" cy="28" r="7" fill="#1a73e8"/>
+<text x="130" y="32" font-size="12" fill="#202124">2026-06-28_スタバ配信_コメント抽出</text>
+<rect x="110" y="46" width="980" height="22" rx="11" fill="#fff" stroke="#dadce0"/>
+<text x="124" y="61" font-size="11" fill="#5f6368">🔒 docs.google.com/spreadsheets/d/.../edit</text>
+
+<!-- White sheet area -->
+<rect x="0" y="68" width="1200" height="682" fill="#fff"/>
+<!-- Top title bar -->
+<rect x="0" y="68" width="1200" height="40" fill="#fff" stroke="#e8eaed"/>
+<text x="20" y="94" font-size="14" font-weight="700" fill="#202124">📗 2026-06-28_スタバ配信_コメント抽出</text>
+
+<!-- Big top banner: PRE-FLIGHT OK -->
+<rect x="20" y="124" width="1160" height="68" fill="#1a1a2e" rx="10"/>
+<rect x="20" y="124" width="280" height="68" fill="#fa006d" rx="10"/>
+<text x="160" y="156" font-size="14" font-weight="700" fill="#fff" text-anchor="middle">PRE-FLIGHT CHECK</text>
+<text x="160" y="178" font-size="18" font-weight="900" fill="#fff" text-anchor="middle">✅ ALL PASSED</text>
+<g font-size="13" fill="#fff">
+<text x="324" y="148">✅ ① テスト POST → 2 行目に書き込み</text>
+<text x="324" y="170">✅ ② F列「出演者」入力 → ディレクター向けに即時追加</text>
+<text x="780" y="148">✅ ③ ディレクター向けでチェック → 元シートにも反映</text>
+<text x="780" y="170" font-weight="700" fill="#fa006d">⇒ フルセットアップ完了・本番OK</text>
+</g>
+
+<!-- LEFT PANE: コメント抽出 sheet -->
+<text x="20" y="232" font-size="13" font-weight="700" fill="#5f6368">▍ 左ペイン：コメント抽出シート（元シート）</text>
+<rect x="20" y="244" width="580" height="240" fill="#fff" stroke="#e8eaed" rx="6"/>
+<!-- Column header -->
+<rect x="20" y="244" width="580" height="32" fill="#1a1a2e" rx="6"/>
+<rect x="20" y="262" width="580" height="14" fill="#1a1a2e"/>
+<g font-size="10" font-weight="700" fill="#fff">
+<text x="40" y="264" text-anchor="middle">A</text>
+<text x="100" y="264" text-anchor="middle">B (時刻)</text>
+<text x="200" y="264" text-anchor="middle">C</text>
+<text x="290" y="264" text-anchor="middle">D</text>
+<text x="430" y="264" text-anchor="middle">E (comment)</text>
+<text x="546" y="264" text-anchor="middle">F</text>
+</g>
+<!-- Row 2: just-typed test -->
+<rect x="20" y="276" width="580" height="36" fill="#fff"/>
+<line x1="20" y1="312" x2="600" y2="312" stroke="#e8eaed"/>
+<rect x="32" y="284" width="16" height="16" fill="#fff" stroke="#dadce0"/>
+<text x="100" y="299" font-size="11" font-family="monospace" fill="#202124" text-anchor="middle">14:32:10</text>
+<rect x="186" y="284" width="28" height="16" fill="#1976d2" rx="2"/>
+<text x="200" y="297" font-size="9" font-weight="700" fill="#fff" text-anchor="middle">FW</text>
+<text x="232" y="299" font-size="11" fill="#202124">テストユーザー</text>
+<text x="346" y="299" font-size="11" fill="#202124">マニュアル動作確認用</text>
+<rect x="500" y="282" width="90" height="22" fill="#fef0f5" stroke="#fa006d" stroke-width="1.5" rx="3"/>
+<text x="545" y="298" font-size="11" font-weight="700" fill="#fa006d" text-anchor="middle">出演者</text>
+<!-- ✅ marker outside -->
+<circle cx="612" cy="294" r="11" fill="#34a853"/>
+<text x="612" y="299" font-size="13" font-weight="700" fill="#fff" text-anchor="middle">✓</text>
+<text x="630" y="299" font-size="11" font-weight="700" fill="#34a853">① テスト書き込み OK</text>
+
+<!-- Row 3: checked -->
+<rect x="20" y="312" width="580" height="36" fill="#f5f5f5"/>
+<line x1="20" y1="348" x2="600" y2="348" stroke="#e8eaed"/>
+<rect x="32" y="320" width="16" height="16" fill="#1a73e8"/>
+<text x="40" y="333" font-size="13" font-weight="700" fill="#fff" text-anchor="middle">✓</text>
+<text x="100" y="335" font-size="11" font-family="monospace" fill="#5f6368" text-anchor="middle">14:32:25</text>
+<rect x="186" y="320" width="28" height="16" fill="#1976d2" rx="2"/>
+<text x="200" y="333" font-size="9" font-weight="700" fill="#fff" text-anchor="middle">FW</text>
+<text x="232" y="335" font-size="11" fill="#5f6368">あさひ</text>
+<text x="346" y="335" font-size="11" fill="#5f6368">対応済み（グレーアウト）</text>
+<!-- ✅ marker -->
+<circle cx="612" cy="330" r="11" fill="#34a853"/>
+<text x="612" y="335" font-size="13" font-weight="700" fill="#fff" text-anchor="middle">✓</text>
+<text x="630" y="335" font-size="11" font-weight="700" fill="#34a853">③ 双方向同期 OK</text>
+
+<!-- Row 4-5: normal -->
+<rect x="20" y="348" width="580" height="36" fill="#fff"/>
+<line x1="20" y1="384" x2="600" y2="384" stroke="#e8eaed"/>
+<rect x="32" y="356" width="16" height="16" fill="#fff" stroke="#dadce0"/>
+<text x="100" y="371" font-size="11" font-family="monospace" fill="#202124" text-anchor="middle">14:33:02</text>
+<rect x="186" y="356" width="28" height="16" fill="#e50914" rx="2"/>
+<text x="200" y="369" font-size="9" font-weight="700" fill="#fff" text-anchor="middle">YT</text>
+<text x="232" y="371" font-size="11" fill="#202124">のぞみ</text>
+<text x="346" y="371" font-size="11" fill="#202124">商品の質問です</text>
+
+<rect x="20" y="384" width="580" height="36" fill="#fff"/>
+<rect x="32" y="392" width="16" height="16" fill="#fff" stroke="#dadce0"/>
+<text x="100" y="407" font-size="11" font-family="monospace" fill="#202124" text-anchor="middle">14:33:18</text>
+<rect x="186" y="392" width="28" height="16" fill="#1976d2" rx="2"/>
+<text x="200" y="405" font-size="9" font-weight="700" fill="#fff" text-anchor="middle">FW</text>
+<text x="232" y="407" font-size="11" fill="#202124">れい</text>
+<text x="346" y="407" font-size="11" fill="#202124">配送について</text>
+
+<!-- Sheet tab bar -->
+<rect x="20" y="450" width="580" height="32" fill="#f8f9fa" stroke="#e8eaed" rx="4"/>
+<rect x="28" y="456" width="120" height="22" fill="#fff" stroke="#fa006d" stroke-width="2" rx="3"/>
+<text x="88" y="471" font-size="11" font-weight="700" fill="#fa006d" text-anchor="middle">コメント抽出</text>
+<rect x="156" y="456" width="138" height="22" fill="#fff" rx="3"/>
+<text x="225" y="471" font-size="11" fill="#5f6368" text-anchor="middle">ディレクター向け</text>
+
+<!-- RIGHT PANE: ディレクター向け sheet -->
+<text x="640" y="232" font-size="13" font-weight="700" fill="#5f6368">▍ 右ペイン：ディレクター向けシート（自動同期）</text>
+<rect x="640" y="244" width="540" height="240" fill="#fff" stroke="#e8eaed" rx="6"/>
+<rect x="640" y="244" width="540" height="32" fill="#1a1a2e" rx="6"/>
+<rect x="640" y="262" width="540" height="14" fill="#1a1a2e"/>
+<g font-size="10" font-weight="700" fill="#fff">
+<text x="660" y="264" text-anchor="middle">A</text>
+<text x="720" y="264" text-anchor="middle">B (時刻)</text>
+<text x="820" y="264" text-anchor="middle">D</text>
+<text x="980" y="264" text-anchor="middle">E (comment)</text>
+<text x="1140" y="264" text-anchor="middle">F</text>
+</g>
+<rect x="640" y="276" width="540" height="36" fill="#fff"/>
+<line x1="640" y1="312" x2="1180" y2="312" stroke="#e8eaed"/>
+<rect x="652" y="284" width="16" height="16" fill="#fff" stroke="#dadce0"/>
+<text x="720" y="299" font-size="11" font-family="monospace" fill="#202124" text-anchor="middle">14:32:10</text>
+<text x="820" y="299" font-size="11" fill="#202124" text-anchor="middle">テストユーザー</text>
+<text x="980" y="299" font-size="11" fill="#202124" text-anchor="middle">マニュアル動作確認用</text>
+<rect x="1100" y="282" width="80" height="22" fill="#fef0f5" stroke="#fa006d" stroke-width="1.5" rx="3"/>
+<text x="1140" y="298" font-size="11" font-weight="700" fill="#fa006d" text-anchor="middle">出演者</text>
+<!-- ✅ marker — below row (no overlap with neighbor) -->
+<circle cx="1192" cy="294" r="11" fill="#34a853"/>
+<text x="1192" y="299" font-size="13" font-weight="700" fill="#fff" text-anchor="middle">✓</text>
+
+<text x="640" y="338" font-size="12" font-weight="700" fill="#34a853">② F列「出演者」入力 → 即時追加 OK</text>
+<text x="640" y="362" font-size="11" fill="#5f6368">onEdit シンプルトリガーが動作している証拠です</text>
+
+<!-- Empty state for additional rows -->
+<g opacity="0.5">
+<rect x="640" y="376" width="540" height="36" fill="#fff"/>
+<line x1="640" y1="412" x2="1180" y2="412" stroke="#e8eaed"/>
+<rect x="640" y="412" width="540" height="36" fill="#fff"/>
+<text x="900" y="430" font-size="11" fill="#bdc1c6" text-anchor="middle">（本番開始後にここへ自動追加されていきます）</text>
+</g>
+
+<!-- Sheet tab bar (right) -->
+<rect x="640" y="450" width="540" height="32" fill="#f8f9fa" stroke="#e8eaed" rx="4"/>
+<rect x="648" y="456" width="120" height="22" fill="#fff" rx="3"/>
+<text x="708" y="471" font-size="11" fill="#5f6368" text-anchor="middle">コメント抽出</text>
+<rect x="776" y="456" width="138" height="22" fill="#fff" stroke="#fa006d" stroke-width="2" rx="3"/>
+<text x="845" y="471" font-size="11" font-weight="700" fill="#fa006d" text-anchor="middle">ディレクター向け</text>
+
+<!-- Bottom flow diagram -->
+<rect x="20" y="510" width="1160" height="220" fill="#faf8f5" stroke="#e8eaed" rx="10"/>
+<text x="40" y="540" font-size="14" font-weight="700" fill="#1a1a2e">🔄 双方向同期のしくみ</text>
+
+<!-- Flow steps -->
+<rect x="40" y="556" width="240" height="80" fill="#fff" stroke="#1a1a2e" rx="6"/>
+<text x="160" y="580" font-size="12" font-weight="700" fill="#1a1a2e" text-anchor="middle">① 拡張 → GAS → A〜F列</text>
+<text x="160" y="600" font-size="10" fill="#5f6368" text-anchor="middle">テストコメント書き込み</text>
+<text x="160" y="618" font-size="10" fill="#34a853" text-anchor="middle">✅ 2行目に入った</text>
+
+<text x="293" y="603" font-size="20" font-weight="700" fill="#fa006d" text-anchor="middle">→</text>
+
+<rect x="313" y="556" width="240" height="80" fill="#fff" stroke="#1a1a2e" rx="6"/>
+<text x="433" y="580" font-size="12" font-weight="700" fill="#1a1a2e" text-anchor="middle">② F列に「出演者」</text>
+<text x="433" y="600" font-size="10" fill="#5f6368" text-anchor="middle">onEdit シンプルトリガー</text>
+<text x="433" y="618" font-size="10" fill="#34a853" text-anchor="middle">✅ ディレクター向けに追加</text>
+
+<text x="566" y="603" font-size="20" font-weight="700" fill="#fa006d" text-anchor="middle">→</text>
+
+<rect x="586" y="556" width="240" height="80" fill="#fff" stroke="#1a1a2e" rx="6"/>
+<text x="706" y="580" font-size="12" font-weight="700" fill="#1a1a2e" text-anchor="middle">③ A列チェック</text>
+<text x="706" y="600" font-size="10" fill="#5f6368" text-anchor="middle">時間主導トリガー (1分)</text>
+<text x="706" y="618" font-size="10" fill="#34a853" text-anchor="middle">✅ 元シートにも反映</text>
+
+<text x="839" y="603" font-size="20" font-weight="700" fill="#fa006d" text-anchor="middle">→</text>
+
+<rect x="859" y="556" width="300" height="80" fill="#fa006d" rx="6"/>
+<text x="1009" y="588" font-size="16" font-weight="900" fill="#fff" text-anchor="middle">🎬 本番準備完了</text>
+<text x="1009" y="612" font-size="11" fill="#fff" text-anchor="middle">SECTION 04 でモード選び → 配信ページをリロード</text>
+
+<text x="40" y="676" font-size="11" fill="#5f6368">💡 この 3 つが全部 ✅ になっていれば、当日担当者が単独で 100% 動く状態が担保されています。</text>
+<text x="40" y="694" font-size="11" fill="#5f6368">　 何かひとつでも ❌ なら、SECTION 03 の該当ステップに戻ってください（特に ④ デプロイ・⑦ onEdit 権限承認）。</text>
+
+</svg>

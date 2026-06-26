@@ -8,13 +8,26 @@
   <title>コメントピックアップツール v4 マニュアル — Firework Live</title>
   <meta name="robots" content="noindex, nofollow">
   <meta name="description" content="Firework Assistant + YouTube ライブチャットのコメントをスプシに記録するChrome拡張のセットアップ・運用マニュアル。3人運用ゆえ配信ごとにフルセットアップを通します">
-  <meta name="last-modified" content="2026-06-26T16:59:00+09:00">
+  <meta name="last-modified" content="2026-06-26T17:45:53+09:00">
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="alternate icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.svg">
 
   <meta property="og:type" content="article">
-  <meta property="og:title" content="コメントピックアップツール v4 マニュアル">
+  <meta property="og:title" content="コメントピックアップツール v4 マニュアル｜Firework社内">
   <meta property="og:description" content="配信ごとにフルセットアップを通すChrome拡張の手順書（社内秘・@fireworkhq.com限定）">
+  <meta property="og:url" content="https://riderkarubo.github.io/firework-decks/livestream-comment-pickup-manual/">
+  <meta property="og:site_name" content="Firework社内 / AIGC事業">
   <meta property="og:locale" content="ja_JP">
-  <meta property="og:site_name" content="Firework Decks">
+  <meta property="og:image" content="https://riderkarubo.github.io/firework-decks/livestream-comment-pickup-manual/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="コメントピックアップツール v4 マニュアル — 配信ごとにフルセットアップを通すChrome拡張の手順書">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="コメントピックアップツール v4 マニュアル｜Firework社内">
+  <meta name="twitter:description" content="配信ごとにフルセットアップを通すChrome拡張の手順書（社内秘・@fireworkhq.com限定）">
+  <meta name="twitter:image" content="https://riderkarubo.github.io/firework-decks/livestream-comment-pickup-manual/og.png">
 
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap');
@@ -65,14 +78,13 @@
     .step-text ul, .step-text ol { margin:8px 0 0 0; padding-left:20px; }
     .step-text li { margin-bottom:6px; }
 
-    /* SCREENSHOT PLACEHOLDER */
-    .ss { margin:14px 0 4px; padding:18px 20px; background:#fafbfc; border:2px dashed #c7d0d8; border-radius:10px; }
-    .ss-head { display:flex; align-items:center; gap:10px; margin-bottom:6px; }
+    /* SCREENSHOT */
+    .ss { margin:16px 0 6px; padding:14px 14px 12px; background:#fff; border:1px solid #e5e9ed; border-radius:10px; box-shadow:0 1px 6px rgba(0,0,0,0.04); }
+    .ss-head { display:flex; align-items:center; gap:10px; margin-bottom:8px; }
     .ss-badge { display:inline-block; background:#1a1a2e; color:white; font-size:10px; font-weight:700; letter-spacing:1px; padding:2px 8px; border-radius:4px; }
     .ss-num { font-size:11px; font-weight:700; color:#fa006d; letter-spacing:1px; }
-    .ss-desc { font-size:13px; color:#1a1a2e; font-weight:600; line-height:1.7; }
-    .ss-file { display:block; margin-top:8px; font-family:"Courier New",monospace; font-size:11px; color:#7c8794; background:white; padding:6px 10px; border-radius:4px; border:1px solid #e5e9ed; }
-    .ss-img { display:block; margin-top:10px; max-width:100%; border-radius:6px; border:1px solid #e5e9ed; }
+    .ss-desc { font-size:12px; color:#5f6368; line-height:1.6; margin-bottom:8px; }
+    .ss-img { display:block; width:100%; max-width:100%; border-radius:6px; border:1px solid #e5e9ed; background:#fafbfc; }
 
     /* INLINE BADGES */
     .file-name { display:inline-block; background:#f0f0f0; color:#1a1a2e; font-family:"Courier New",monospace; font-size:11px; font-weight:700; padding:2px 8px; border-radius:4px; }
@@ -213,7 +225,7 @@
       </div>
       <div class="cover-meta-item">
         <div class="cover-meta-label">UPDATED</div>
-        <div class="cover-meta-value">2026年6月26日 16:59</div>
+        <div class="cover-meta-value">2026年6月26日 17:45</div>
       </div>
       <div class="cover-meta-item">
         <div class="cover-meta-label">AUDIENCE</div>
@@ -383,12 +395,12 @@
         <div class="ss">
           <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#01 — chrome://extensions/ のデベロッパーモード ON</span></div>
           <div class="ss-desc">右上「デベロッパーモード」トグルが ON の状態</div>
-          <span class="ss-file">→ screenshots/01_chrome-extensions-page.png に配置</span>
+          <img class="ss-img" src="screenshots/01_chrome-extensions-page.svg" alt="SCREENSHOT #01 — chrome-extensions-page" loading="lazy">
         </div>
         <div class="ss">
           <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#02 — 「パッケージ化されていない拡張機能を読み込む」でフォルダ選択</span></div>
           <div class="ss-desc">extension/ フォルダを選択するダイアログ</div>
-          <span class="ss-file">→ screenshots/02_extension-load-unpacked.png に配置</span>
+          <img class="ss-img" src="screenshots/02_extension-load-unpacked.svg" alt="SCREENSHOT #02 — extension-load-unpacked" loading="lazy">
         </div>
       </div>
     </div>
@@ -444,7 +456,7 @@
         <div class="ss">
           <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#05 — スプシの「コピーを作成」ダイアログ</span></div>
           <div class="ss-desc">ファイル名を「YYYY-MM-DD_配信名_コメント抽出」に変更した状態</div>
-          <span class="ss-file">→ screenshots/05_spreadsheet-copy.png に配置</span>
+          <img class="ss-img" src="screenshots/05_spreadsheet-copy.svg" alt="SCREENSHOT #05 — spreadsheet-copy" loading="lazy">
         </div>
       </div>
     </div>
@@ -465,7 +477,7 @@
         <div class="ss">
           <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#06 — 複製先スプシの Apps Script エディタ</span></div>
           <div class="ss-desc">「拡張機能 → Apps Script」で開いたエディタ画面</div>
-          <span class="ss-file">→ screenshots/06_apps-script-editor-from-spreadsheet.png に配置</span>
+          <img class="ss-img" src="screenshots/06_apps-script-editor-from-spreadsheet.svg" alt="SCREENSHOT #06 — apps-script-editor-from-spreadsheet" loading="lazy">
         </div>
       </div>
     </div>
@@ -485,7 +497,7 @@
         <div class="ss">
           <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#07 — setupMainSheetFormatting 実行画面</span></div>
           <div class="ss-desc">関数選択 → 実行ボタンを押した直後の Apps Script エディタ</div>
-          <span class="ss-file">→ screenshots/07_setup-main-sheet-formatting.png に配置</span>
+          <img class="ss-img" src="screenshots/07_setup-main-sheet-formatting.svg" alt="SCREENSHOT #07 — setup-main-sheet-formatting" loading="lazy">
         </div>
       </div>
     </div>
@@ -507,12 +519,12 @@
         <div class="ss">
           <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#08 — 新規デプロイの設定ダイアログ</span></div>
           <div class="ss-desc">「新しいデプロイ」のウェブアプリ設定画面（実行ユーザー=自分 / アクセス=全員）</div>
-          <span class="ss-file">→ screenshots/08_new-deployment.png に配置</span>
+          <img class="ss-img" src="screenshots/08_new-deployment.svg" alt="SCREENSHOT #08 — new-deployment" loading="lazy">
         </div>
         <div class="ss">
           <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#09 — 発行された Web アプリ URL のコピー</span></div>
           <div class="ss-desc">デプロイ完了後の「ウェブアプリ URL」とコピーアイコン</div>
-          <span class="ss-file">→ screenshots/09_copy-webapp-url.png に配置</span>
+          <img class="ss-img" src="screenshots/09_copy-webapp-url.svg" alt="SCREENSHOT #09 — copy-webapp-url" loading="lazy">
         </div>
       </div>
     </div>
@@ -535,12 +547,12 @@
         <div class="ss">
           <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#10 — popup の GAS URL 入力欄</span></div>
           <div class="ss-desc">GAS URL 欄に新しい Web アプリ URL を貼り付けた状態</div>
-          <span class="ss-file">→ screenshots/10_popup-gas-url-input.png に配置</span>
+          <img class="ss-img" src="screenshots/10_popup-gas-url-input.svg" alt="SCREENSHOT #10 — popup-gas-url-input" loading="lazy">
         </div>
         <div class="ss">
           <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#11 — popup のスプシ URL 入力欄</span></div>
           <div class="ss-desc">スプシ URL 欄に新しい URL 貼り付け＋ID プレビュー表示の状態</div>
-          <span class="ss-file">→ screenshots/11_popup-spreadsheet-url-input.png に配置</span>
+          <img class="ss-img" src="screenshots/11_popup-spreadsheet-url-input.svg" alt="SCREENSHOT #11 — popup-spreadsheet-url-input" loading="lazy">
         </div>
       </div>
     </div>
@@ -565,7 +577,7 @@
         <div class="ss">
           <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#12 — トリガー追加ダイアログ</span></div>
           <div class="ss-desc">関数=syncAll / 時間主導型 / 1分タイマー を選んだ状態</div>
-          <span class="ss-file">→ screenshots/12_trigger-add.png に配置</span>
+          <img class="ss-img" src="screenshots/12_trigger-add.svg" alt="SCREENSHOT #12 — trigger-add" loading="lazy">
         </div>
       </div>
     </div>
@@ -587,7 +599,7 @@
         <div class="ss">
           <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#13 — onEdit 初回承認ダイアログ</span></div>
           <div class="ss-desc">F列に入力した直後に出る「権限を確認」ダイアログ</div>
-          <span class="ss-file">→ screenshots/13_onedit-permission.png に配置</span>
+          <img class="ss-img" src="screenshots/13_onedit-permission.svg" alt="SCREENSHOT #13 — onedit-permission" loading="lazy">
         </div>
       </div>
     </div>
@@ -611,7 +623,7 @@
         <div class="ss">
           <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#14 — 動作確認OK時のスプシ状態</span></div>
           <div class="ss-desc">テストコメントが2行目に入り、ディレクター向けにも同期されている画面</div>
-          <span class="ss-file">→ screenshots/14_pre-flight-ok.png に配置</span>
+          <img class="ss-img" src="screenshots/14_pre-flight-ok.svg" alt="SCREENSHOT #14 — pre-flight-ok" loading="lazy">
         </div>
 
         <div class="info-callout" style="margin-top:14px;">
@@ -645,7 +657,7 @@
         <div class="ss">
           <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#15 — popup のモード切替トグル</span></div>
           <div class="ss-desc">「質問のみ」「全コメント」のトグルが見える popup 上半分</div>
-          <span class="ss-file">→ screenshots/15_popup-mode-toggle.png に配置</span>
+          <img class="ss-img" src="screenshots/15_popup-mode-toggle.svg" alt="SCREENSHOT #15 — popup-mode-toggle" loading="lazy">
         </div>
       </div>
     </div>
@@ -683,7 +695,7 @@
         <div class="ss">
           <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#16 — FW Assistant の「Show Questions Only」ボタンが青 ON</span></div>
           <div class="ss-desc">配信ページ上の質問フィルタボタンが青く点灯している状態</div>
-          <span class="ss-file">→ screenshots/16_questions-only-button-on.png に配置</span>
+          <img class="ss-img" src="screenshots/16_questions-only-button-on.svg" alt="SCREENSHOT #16 — questions-only-button-on" loading="lazy">
         </div>
       </div>
     </div>
@@ -708,7 +720,7 @@
         <div class="ss">
           <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#17 — YouTube 配信ページのチャット「全チャット」設定</span></div>
           <div class="ss-desc">YouTube ライブのチャットメニューから「全チャット」を選んだ状態</div>
-          <span class="ss-file">→ screenshots/17_youtube-chat-mode.png に配置</span>
+          <img class="ss-img" src="screenshots/17_youtube-chat-mode.svg" alt="SCREENSHOT #17 — youtube-chat-mode" loading="lazy">
         </div>
       </div>
     </div>
@@ -747,7 +759,7 @@
         <div class="ss">
           <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#18 — popup 下半分の NG ワード編集エリア</span></div>
           <div class="ss-desc">「選択中モードの設定」で NG ワードと誹謗中傷ワードを編集している画面</div>
-          <span class="ss-file">→ screenshots/18_ng-words-edit.png に配置</span>
+          <img class="ss-img" src="screenshots/18_ng-words-edit.svg" alt="SCREENSHOT #18 — ng-words-edit" loading="lazy">
         </div>
       </div>
     </div>
@@ -808,7 +820,7 @@
 
   <footer class="footer">
     <div>Livestream Comment Pickup Tool v4.4.0 — Internal Manual</div>
-    <div style="margin-top:6px;">最終更新: 2026年6月26日 16:59 / Maintainer: Issy</div>
+    <div style="margin-top:6px;">最終更新: 2026年6月26日 17:45 / Maintainer: Issy</div>
     <div style="margin-top:6px;">本マニュアルは @fireworkhq.com アカウント限定で公開されています</div>
   </footer>
 

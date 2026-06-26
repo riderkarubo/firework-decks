@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
+<rect width="1200" height="750" fill="#000"/>
+
+<!-- Browser frame -->
+<rect x="0" y="0" width="1200" height="68" fill="#dee1e6"/>
+<circle cx="20" cy="22" r="6" fill="#ff5f56"/>
+<circle cx="40" cy="22" r="6" fill="#ffbd2e"/>
+<circle cx="60" cy="22" r="6" fill="#27c93f"/>
+<path d="M 90 44 Q 90 12 110 12 L 460 12 Q 480 12 480 44 Z" fill="#fff"/>
+<circle cx="115" cy="28" r="7" fill="#fa006d"/>
+<text x="130" y="32" font-size="12" fill="#202124">Firework Assistant — Live Studio</text>
+<rect x="110" y="46" width="980" height="22" rx="11" fill="#fff" stroke="#dadce0"/>
+<text x="124" y="61" font-size="11" fill="#5f6368">🔒 studio.firework.com/live/abc123/assistant</text>
+<!-- FW background -->
+<rect x="0" y="68" width="1200" height="682" fill="#0a0a0f"/>
+<!-- Left: video preview -->
+<rect x="20" y="88" width="640" height="360" rx="8" fill="#1a1a2e"/>
+<text x="340" y="280" font-size="48" fill="#fa006d" text-anchor="middle" font-weight="700">▶</text>
+<text x="340" y="320" font-size="13" fill="#9aa0a6" text-anchor="middle">LIVE STREAM PREVIEW</text>
+<rect x="36" y="104" width="58" height="22" fill="#e50914" rx="4"/>
+<text x="65" y="120" font-size="11" font-weight="700" fill="#fff" text-anchor="middle">● LIVE</text>
+<text x="106" y="120" font-size="11" fill="#fff">1,243 viewers</text>
+<!-- Right: comment panel -->
+<rect x="680" y="88" width="500" height="660" rx="8" fill="#16161f"/>
+<text x="700" y="120" font-size="14" font-weight="700" fill="#fff">💬 ライブコメント</text>
+<!-- Toggle bar — Show Questions Only ON -->
+<rect x="700" y="140" width="460" height="48" fill="#0a0a0f" rx="6"/>
+<text x="716" y="170" font-size="12" font-weight="500" fill="#9aa0a6">Show Questions Only</text>
+<rect x="1080" y="150" width="60" height="28" fill="#1976d2" rx="14"/>
+<circle cx="1124" cy="164" r="10" fill="#fff"/>
+<text x="1108" y="170" font-size="10" font-weight="700" fill="#fff">ON</text>
+<!-- Highlight ring -->
+<rect x="1074" y="144" width="72" height="40" fill="none" stroke="#fa006d" stroke-width="3" rx="20"/>
+<!-- Comment list — only questions -->
+<g font-size="12">
+<rect x="700" y="208" width="460" height="56" fill="#1f1f2e" rx="6"/>
+<rect x="708" y="214" width="44" height="20" fill="#1976d2" rx="3"/>
+<text x="730" y="228" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">Q</text>
+<text x="760" y="228" font-size="11" fill="#bdc1c6">あさひ — 14:32:08</text>
+<text x="708" y="252" font-size="12" fill="#fff">新作のおすすめ商品はどれですか？</text>
+
+<rect x="700" y="272" width="460" height="56" fill="#1f1f2e" rx="6"/>
+<rect x="708" y="278" width="44" height="20" fill="#1976d2" rx="3"/>
+<text x="730" y="292" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">Q</text>
+<text x="760" y="292" font-size="11" fill="#bdc1c6">のぞみ — 14:32:18</text>
+<text x="708" y="316" font-size="12" fill="#fff">アイスはホットでも美味しいですか？</text>
+
+<rect x="700" y="336" width="460" height="56" fill="#1f1f2e" rx="6"/>
+<rect x="708" y="342" width="44" height="20" fill="#1976d2" rx="3"/>
+<text x="730" y="356" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">Q</text>
+<text x="760" y="356" font-size="11" fill="#bdc1c6">さくら — 14:32:34</text>
+<text x="708" y="380" font-size="12" fill="#fff">クーポンは使えますか？</text>
+
+<rect x="700" y="400" width="460" height="56" fill="#1f1f2e" rx="6"/>
+<rect x="708" y="406" width="44" height="20" fill="#1976d2" rx="3"/>
+<text x="730" y="420" font-size="10" font-weight="700" fill="#fff" text-anchor="middle">Q</text>
+<text x="760" y="420" font-size="11" fill="#bdc1c6">れい — 14:32:51</text>
+<text x="708" y="444" font-size="12" fill="#fff">配送はいつ届きますか？</text>
+</g>
+<!-- Callouts -->
+<path d="M 1200 120 L 1170 152" stroke="#fa006d" stroke-width="3" fill="none" marker-end="url(#a16)"/>
+<defs><marker id="a16" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#fa006d"/></marker></defs>
+<rect x="20" y="468" width="640" height="120" fill="#1f1f2e" rx="10" stroke="#fa006d" stroke-width="2"/>
+<text x="40" y="498" font-size="16" font-weight="700" fill="#fa006d">📌 Show Questions Only を 青 ON</text>
+<text x="40" y="524" font-size="13" fill="#fff">質問のみモード では、このトグルが青く点灯しているときだけ</text>
+<text x="40" y="544" font-size="13" fill="#fff">コメントがスプシに記録されます。</text>
+<text x="40" y="572" font-size="13" font-weight="700" fill="#e50914">⚠ OFF のままだと「動かない」事故になります</text>
+
+</svg>

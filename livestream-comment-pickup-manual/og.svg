@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" font-family="-apple-system, BlinkMacSystemFont, 'Hiragino Sans', sans-serif">
+<rect width="1200" height="630" fill="#1a1a2e"/>
+<!-- Decorative giant chat bubble bg -->
+<text x="980" y="600" font-size="500" fill="#fa006d" opacity="0.08" text-anchor="middle">💬</text>
+<!-- Eyebrow -->
+<rect x="80" y="80" width="200" height="32" rx="16" fill="#fa006d"/>
+<text x="180" y="102" font-size="13" font-weight="700" fill="#fff" letter-spacing="3" text-anchor="middle">INTERNAL MANUAL</text>
+<!-- Title -->
+<text x="80" y="200" font-size="64" font-weight="900" fill="#fff">コメント<tspan fill="#fa006d">ピックアップ</tspan></text>
+<text x="80" y="276" font-size="64" font-weight="900" fill="#fff">ツール v4 マニュアル</text>
+<!-- Subtitle -->
+<text x="80" y="332" font-size="22" fill="rgba(255,255,255,0.7)">配信ごとにフルセットアップを通す</text>
+<text x="80" y="364" font-size="22" fill="rgba(255,255,255,0.7)">Chrome 拡張機能の手順書（@fireworkhq.com 限定）</text>
+<!-- Mode badges -->
+<rect x="80" y="408" width="160" height="56" rx="10" fill="#1976d2"/>
+<text x="160" y="446" font-size="22" font-weight="700" fill="#fff" text-anchor="middle">Q 質問のみ</text>
+<rect x="256" y="408" width="180" height="56" rx="10" fill="#e50914"/>
+<text x="346" y="446" font-size="22" font-weight="700" fill="#fff" text-anchor="middle">A 全コメント</text>
+<!-- Meta -->
+<g font-size="16" fill="rgba(255,255,255,0.5)">
+<text x="80" y="540">VERSION  <tspan fill="#fff" font-weight="700">v4.4.0</tspan></text>
+<text x="280" y="540">UPDATED  <tspan fill="#fff" font-weight="700">2026年6月26日</tspan></text>
+<text x="540" y="540">AUDIENCE  <tspan fill="#fff" font-weight="700">Firework 配信担当者 3名</tspan></text>
+</g>
+<!-- Bottom accent -->
+<rect x="0" y="600" width="1200" height="30" fill="#fa006d"/>
+<text x="1140" y="620" font-size="16" font-weight="700" fill="#fff" text-anchor="end">Firework Live</text>
+</svg>

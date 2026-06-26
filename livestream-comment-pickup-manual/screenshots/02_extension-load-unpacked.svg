@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
+<rect width="1200" height="750" fill="#f5f5f5"/>
+
+<!-- Chrome window -->
+<rect x="0" y="0" width="1200" height="68" fill="#dee1e6"/>
+<!-- Traffic light -->
+<circle cx="20" cy="22" r="6" fill="#ff5f56"/>
+<circle cx="40" cy="22" r="6" fill="#ffbd2e"/>
+<circle cx="60" cy="22" r="6" fill="#27c93f"/>
+<!-- Tab -->
+<path d="M 90 44 Q 90 12 110 12 L 320 12 Q 340 12 340 44 Z" fill="#fff"/>
+<circle cx="115" cy="28" r="7" fill="#1a73e8"/>
+<text x="130" y="32" font-size="12" fill="#202124">拡張機能</text>
+<!-- Nav buttons -->
+<circle cx="22" cy="56" r="10" fill="none" stroke="#5f6368" stroke-width="1.5"/>
+<text x="18" y="60" font-size="13" fill="#5f6368">←</text>
+<circle cx="52" cy="56" r="10" fill="none" stroke="#5f6368" stroke-width="1.5"/>
+<text x="48" y="60" font-size="13" fill="#5f6368">→</text>
+<circle cx="82" cy="56" r="10" fill="none" stroke="#5f6368" stroke-width="1.5"/>
+<text x="78" y="60" font-size="11" fill="#5f6368">⟳</text>
+<!-- Address bar -->
+<rect x="110" y="46" width="980" height="22" rx="11" fill="#fff" stroke="#dadce0"/>
+<text x="124" y="61" font-size="11" fill="#5f6368">🔒 chrome://extensions</text>
+
+<rect x="0" y="68" width="1200" height="682" fill="#f1f3f4"/>
+<!-- Dimmed background -->
+<rect x="0" y="68" width="1200" height="682" fill="rgba(0,0,0,0.35)"/>
+<!-- Folder dialog -->
+<rect x="220" y="120" width="760" height="540" fill="#fff" rx="12" stroke="#dadce0"/>
+<text x="248" y="158" font-size="16" font-weight="700" fill="#202124">フォルダーを選択</text>
+<line x1="248" y1="178" x2="952" y2="178" stroke="#e8eaed"/>
+<!-- Sidebar -->
+<rect x="240" y="190" width="180" height="430" fill="#f8f9fa"/>
+<text x="260" y="216" font-size="11" font-weight="700" fill="#5f6368">よく使う項目</text>
+<text x="260" y="244" font-size="12" fill="#202124">📁 デスクトップ</text>
+<text x="260" y="270" font-size="12" fill="#202124">⬇ ダウンロード</text>
+<text x="260" y="296" font-size="12" fill="#202124">📁 書類</text>
+<text x="260" y="326" font-size="11" font-weight="700" fill="#5f6368">場所</text>
+<text x="260" y="354" font-size="12" fill="#202124">💻 MacBook Pro</text>
+<text x="260" y="380" font-size="12" fill="#202124">📁 iCloud Drive</text>
+<!-- File list -->
+<rect x="440" y="190" width="500" height="370" fill="#fff"/>
+<text x="460" y="216" font-size="11" font-weight="700" fill="#5f6368">名前</text>
+<rect x="450" y="232" width="480" height="32" fill="#fff"/>
+<text x="468" y="252" font-size="13" fill="#202124">📁 livestream-comment-pickup_tool_v4_260624</text>
+<rect x="450" y="264" width="480" height="32" fill="#e8f0fe" stroke="#1a73e8" stroke-width="2"/>
+<text x="468" y="284" font-size="13" font-weight="700" fill="#1a73e8">📂 extension/</text>
+<text x="900" y="284" font-size="11" fill="#5f6368">フォルダ</text>
+<rect x="450" y="296" width="480" height="32" fill="#fff"/>
+<text x="468" y="316" font-size="13" fill="#202124">📁 gas/</text>
+<rect x="450" y="328" width="480" height="32" fill="#fff"/>
+<text x="468" y="348" font-size="13" fill="#202124">📁 docs/</text>
+<rect x="450" y="360" width="480" height="32" fill="#fff"/>
+<text x="468" y="380" font-size="13" fill="#202124">📄 README.md</text>
+<!-- Action -->
+<rect x="248" y="590" width="704" height="56" fill="#fff"/>
+<rect x="760" y="600" width="84" height="36" rx="6" fill="#fff" stroke="#dadce0"/>
+<text x="788" y="623" font-size="13" fill="#1a73e8">キャンセル</text>
+<rect x="850" y="600" width="100" height="36" rx="6" fill="#1a73e8"/>
+<text x="877" y="623" font-size="13" font-weight="700" fill="#fff">選択</text>
+<!-- Callout -->
+<rect x="450" y="438" width="500" height="60" rx="8" fill="#fef0f5" stroke="#fa006d" stroke-width="2"/>
+<text x="468" y="462" font-size="13" font-weight="700" fill="#fa006d">📌 extension/ フォルダを選んで「選択」</text>
+<text x="468" y="484" font-size="12" fill="#8b1a4a">この中の manifest.json が拡張本体になります</text>
+
+</svg>

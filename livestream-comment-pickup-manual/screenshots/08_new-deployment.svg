@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
+<rect width="1200" height="750" fill="#f5f5f5"/>
+
+<rect x="0" y="0" width="1200" height="68" fill="#dee1e6"/>
+<circle cx="20" cy="22" r="6" fill="#ff5f56"/>
+<circle cx="40" cy="22" r="6" fill="#ffbd2e"/>
+<circle cx="60" cy="22" r="6" fill="#27c93f"/>
+<path d="M 90 44 Q 90 12 110 12 L 320 12 Q 340 12 340 44 Z" fill="#fff"/>
+<circle cx="115" cy="28" r="7" fill="#1a73e8"/>
+<text x="130" y="32" font-size="12" fill="#202124">Apps Script</text>
+<rect x="110" y="46" width="980" height="22" rx="11" fill="#fff" stroke="#dadce0"/>
+<text x="124" y="61" font-size="11" fill="#5f6368">🔒 script.google.com/.../edit</text>
+
+<rect x="0" y="68" width="1200" height="682" fill="#f1f3f4"/>
+<rect x="0" y="68" width="1200" height="682" fill="rgba(0,0,0,0.4)"/>
+<!-- Dialog -->
+<rect x="280" y="100" width="640" height="600" fill="#fff" rx="12"/>
+<text x="312" y="142" font-size="20" font-weight="700" fill="#202124">新しいデプロイ</text>
+<line x1="312" y1="162" x2="888" y2="162" stroke="#e8eaed"/>
+<!-- Type select with gear icon -->
+<text x="312" y="200" font-size="11" font-weight="700" fill="#5f6368" letter-spacing="1">種類を選択</text>
+<g>
+<rect x="312" y="212" width="48" height="48" rx="8" fill="#fef0f5" stroke="#fa006d" stroke-width="2"/>
+<text x="336" y="244" font-size="22" text-anchor="middle" fill="#fa006d">⚙</text>
+<text x="376" y="232" font-size="14" font-weight="700" fill="#202124">ウェブアプリ</text>
+<text x="376" y="252" font-size="11" fill="#5f6368">script.google.com/macros/s/... 形式の URL を発行</text>
+</g>
+<!-- Config -->
+<text x="312" y="298" font-size="11" font-weight="700" fill="#5f6368" letter-spacing="1">設定</text>
+<text x="312" y="328" font-size="12" font-weight="700" fill="#202124">説明</text>
+<rect x="312" y="338" width="576" height="36" rx="4" fill="#fff" stroke="#dadce0"/>
+<text x="324" y="361" font-size="12" fill="#202124">2026-06-28 スタバ配信</text>
+<text x="312" y="396" font-size="12" font-weight="700" fill="#202124">次のユーザーとして実行</text>
+<rect x="312" y="406" width="576" height="40" rx="4" fill="#e8f0fe" stroke="#fa006d" stroke-width="2"/>
+<text x="328" y="431" font-size="13" font-weight="700" fill="#202124">自分 (you@fireworkhq.com)</text>
+<text x="864" y="431" font-size="14" fill="#5f6368">▾</text>
+<text x="312" y="476" font-size="12" font-weight="700" fill="#202124">アクセスできるユーザー</text>
+<rect x="312" y="486" width="576" height="40" rx="4" fill="#e8f0fe" stroke="#fa006d" stroke-width="2"/>
+<text x="328" y="511" font-size="13" font-weight="700" fill="#202124">全員</text>
+<text x="864" y="511" font-size="14" fill="#5f6368">▾</text>
+<text x="312" y="546" font-size="11" fill="#7c8794">⚠ 「自分のみ」ではなく必ず「全員」を選択。Chrome 拡張からの POST に必要です</text>
+<!-- Buttons -->
+<rect x="312" y="626" width="576" height="56" fill="#fff"/>
+<rect x="700" y="636" width="84" height="36" rx="6" fill="#fff" stroke="#dadce0"/>
+<text x="724" y="660" font-size="13" fill="#1a73e8">キャンセル</text>
+<rect x="790" y="636" width="98" height="36" rx="6" fill="#1a73e8"/>
+<text x="816" y="660" font-size="13" font-weight="700" fill="#fff">デプロイ</text>
+<!-- Big callout -->
+<rect x="940" y="200" width="240" height="120" rx="8" fill="#fa006d"/>
+<text x="956" y="226" font-size="13" font-weight="700" fill="#fff">🚨 最重要</text>
+<text x="956" y="250" font-size="12" fill="#fff">「デプロイを管理」ではなく</text>
+<text x="956" y="270" font-size="12" fill="#fff">必ず「新しいデプロイ」</text>
+<text x="956" y="290" font-size="12" fill="#fff">毎回URLが変わるので</text>
+<text x="956" y="308" font-size="12" fill="#fff">popup に貼り直す</text>
+
+</svg>

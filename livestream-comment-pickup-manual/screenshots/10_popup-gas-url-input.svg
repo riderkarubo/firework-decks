@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
+<rect width="1200" height="760" fill="#faf8f5"/>
+
+<text x="600" y="44" font-size="18" font-weight="700" fill="#1a1a2e" text-anchor="middle">Chrome ツールバー → 拡張アイコンクリックで開く popup</text>
+
+<!-- Browser popup window -->
+<rect x="300" y="60" width="600" height="700" fill="#fafafa" rx="14" stroke="#ccc"/>
+<!-- Title row -->
+<g transform="translate(320,82)">
+  <circle cx="6" cy="6" r="5" fill="#e50914"/>
+  <text x="20" y="11" font-size="14" font-weight="700" fill="#222">Livestream コメント抽出 v4</text>
+  <rect x="208" y="-2" width="48" height="18" rx="9" fill="#e50914"/>
+  <text x="232" y="11" font-size="11" font-weight="700" fill="#fff" text-anchor="middle">全コメント</text>
+</g>
+<!-- 共通設定 card -->
+<rect x="320" y="110" width="560" height="200" fill="#fff" stroke="#e0e0e0" rx="8"/>
+<text x="338" y="138" font-size="13" font-weight="700" fill="#666" letter-spacing="2">共通設定</text>
+<text x="338" y="168" font-size="12" font-weight="500" fill="#666">GAS URL</text>
+<rect x="338" y="174" width="524" height="32" fill="#fff" stroke="#fa006d" stroke-width="3" rx="4"/>
+<text x="350" y="195" font-size="11" font-family="'SF Mono','Consolas',monospace" fill="#202124">https://script.google.com/macros/s/AKfycbxQ8z2J/exec</text>
+<text x="338" y="225" font-size="12" font-weight="500" fill="#666">スプシ</text>
+<rect x="338" y="231" width="524" height="32" fill="#fff" stroke="#e0e0e0" stroke-width="1" rx="4"/>
+<text x="350" y="252" font-size="11" font-family="'SF Mono','Consolas',monospace" fill="#bdc1c6">スプシのURLを丸ごとペースト or ID</text>
+<text x="338" y="280" font-size="11" fill="#666">→ ID: <tspan font-weight="700" fill="#202124">(未設定)</tspan></text>
+<rect x="338" y="292" width="180" height="32" fill="#e50914" rx="4"/>
+<text x="428" y="313" font-size="12" font-weight="700" fill="#fff" text-anchor="middle">共通設定を保存</text>
+<rect x="528" y="292" width="120" height="32" fill="#fff" stroke="#e0e0e0" rx="4"/>
+<text x="588" y="313" font-size="12" fill="#222" text-anchor="middle">スプシを開く</text>
+
+<!-- モード切替 card -->
+<rect x="320" y="328" width="560" height="118" fill="#fff" stroke="#e0e0e0" rx="8"/>
+<text x="338" y="356" font-size="13" font-weight="700" fill="#666" letter-spacing="2">モード（クリックで切替）</text>
+<!-- Toggle -->
+<rect x="338" y="368" width="524" height="50" rx="8" fill="#fff" stroke="#e0e0e0"/>
+<rect x="338" y="368" width="262" height="50" rx="8" fill="#fff"/>
+<text x="469" y="399" font-size="16" font-weight="700" fill="#666" text-anchor="middle">質問のみ</text>
+<rect x="600" y="368" width="262" height="50" rx="8" fill="#e50914"/>
+<text x="731" y="399" font-size="16" font-weight="700" fill="#fff" text-anchor="middle">全コメント</text>
+<text x="338" y="438" font-size="11" fill="#666">全コメント収集（FW: ボタン無視 / YT: 全チャット）</text>
+
+<path d="M 150 200 L 320 200" stroke="#fa006d" stroke-width="3" marker-end="url(#a10)"/>
+<defs><marker id="a10" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#fa006d"/></marker></defs>
+<rect x="20" y="172" width="120" height="56" fill="#fa006d" rx="6"/>
+<text x="80" y="196" font-size="13" font-weight="700" fill="#fff" text-anchor="middle">① GAS URL</text>
+<text x="80" y="216" font-size="11" fill="#fff" text-anchor="middle">を貼って保存</text>
+
+</svg>

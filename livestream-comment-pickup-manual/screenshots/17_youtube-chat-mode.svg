@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
+<rect width="1200" height="750" fill="#000"/>
+
+<!-- Browser chrome -->
+<rect x="0" y="0" width="1200" height="68" fill="#dee1e6"/>
+<circle cx="20" cy="22" r="6" fill="#ff5f56"/>
+<circle cx="40" cy="22" r="6" fill="#ffbd2e"/>
+<circle cx="60" cy="22" r="6" fill="#27c93f"/>
+<path d="M 90 44 Q 90 12 110 12 L 460 12 Q 480 12 480 44 Z" fill="#fff"/>
+<circle cx="115" cy="28" r="7" fill="#ff0000"/>
+<text x="130" y="32" font-size="12" fill="#202124">YouTube — Live</text>
+<rect x="110" y="46" width="980" height="22" rx="11" fill="#fff" stroke="#dadce0"/>
+<text x="124" y="61" font-size="11" fill="#5f6368">🔒 youtube.com/live/SAMPLE_ID</text>
+<!-- YT background -->
+<rect x="0" y="68" width="1200" height="682" fill="#0f0f0f"/>
+<!-- YT header -->
+<rect x="0" y="68" width="1200" height="56" fill="#0f0f0f"/>
+<rect x="20" y="84" width="44" height="24" rx="4" fill="#ff0000"/>
+<text x="42" y="102" font-size="13" font-weight="700" fill="#fff" text-anchor="middle">▶</text>
+<text x="74" y="102" font-size="14" font-weight="700" fill="#fff">YouTube</text>
+<!-- Left: video -->
+<rect x="20" y="140" width="780" height="438" rx="8" fill="#1a1a1a"/>
+<text x="410" y="350" font-size="60" fill="#fff" text-anchor="middle" font-weight="700">▶</text>
+<rect x="36" y="156" width="72" height="24" fill="#ff0000" rx="4"/>
+<text x="72" y="174" font-size="11" font-weight="700" fill="#fff" text-anchor="middle">● ライブ配信中</text>
+<text x="116" y="174" font-size="11" fill="#fff">8,432 人が視聴中</text>
+<!-- Right: Chat panel -->
+<rect x="820" y="140" width="360" height="580" rx="8" fill="#181818"/>
+<rect x="820" y="140" width="360" height="48" fill="#272727" rx="8"/>
+<text x="840" y="170" font-size="13" font-weight="700" fill="#fff">💬 チャット</text>
+<!-- Menu icon — clicked -->
+<rect x="1130" y="148" width="36" height="32" fill="#3a3a3a" rx="6"/>
+<text x="1148" y="170" font-size="16" fill="#fff" text-anchor="middle">⋮</text>
+<!-- Dropdown menu -->
+<rect x="980" y="190" width="220" height="120" fill="#272727" rx="8" stroke="#3a3a3a"/>
+<rect x="980" y="190" width="220" height="50" fill="#3a3a3a" rx="8"/>
+<text x="1004" y="222" font-size="13" font-weight="700" fill="#fa006d">✓ 全チャット</text>
+<line x1="980" y1="240" x2="1200" y2="240" stroke="#3a3a3a"/>
+<text x="1004" y="266" font-size="13" fill="#aaa">  トップチャット</text>
+<line x1="980" y1="280" x2="1200" y2="280" stroke="#3a3a3a"/>
+<text x="1004" y="298" font-size="13" fill="#aaa">  チャット設定</text>
+<!-- callout -->
+<rect x="490" y="190" width="460" height="80" fill="#fa006d" rx="8"/>
+<text x="510" y="222" font-size="14" font-weight="700" fill="#fff">🚨 必ず「全チャット」を選択！</text>
+<text x="510" y="248" font-size="12" fill="#fff">デフォルトの「トップチャット」だと一部しか拾えません。</text>
+<text x="510" y="266" font-size="12" fill="#fff">全コメントモードでは「全チャット」が必須です。</text>
+<path d="M 950 240 L 974 220" stroke="#fa006d" stroke-width="3" fill="none" marker-end="url(#a17)"/>
+<defs><marker id="a17" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#fa006d"/></marker></defs>
+<!-- Chat messages -->
+<g font-size="12">
+<text x="840" y="350" font-size="11" font-weight="700" fill="#3ea6ff">きょうこ</text>
+<text x="840" y="368" font-size="11" fill="#fff">気になります！</text>
+<text x="840" y="396" font-size="11" font-weight="700" fill="#ff8a80">たけし</text>
+<text x="840" y="414" font-size="11" fill="#fff">買おうか迷ってます</text>
+<text x="840" y="442" font-size="11" font-weight="700" fill="#aed581">まりこ</text>
+<text x="840" y="460" font-size="11" fill="#fff">画面の右の方が…</text>
+<text x="840" y="488" font-size="11" font-weight="700" fill="#ffb74d">ゆうた</text>
+<text x="840" y="506" font-size="11" fill="#fff">音が小さいです</text>
+<text x="840" y="534" font-size="11" font-weight="700" fill="#9575cd">なお</text>
+<text x="840" y="552" font-size="11" fill="#fff">セール教えてください！</text>
+</g>
+
+</svg>

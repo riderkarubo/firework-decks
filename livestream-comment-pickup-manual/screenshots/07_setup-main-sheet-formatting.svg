@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif">
+<rect width="1200" height="750" fill="#f5f5f5"/>
+
+<!-- Chrome window -->
+<rect x="0" y="0" width="1200" height="68" fill="#dee1e6"/>
+<!-- Traffic light -->
+<circle cx="20" cy="22" r="6" fill="#ff5f56"/>
+<circle cx="40" cy="22" r="6" fill="#ffbd2e"/>
+<circle cx="60" cy="22" r="6" fill="#27c93f"/>
+<!-- Tab -->
+<path d="M 90 44 Q 90 12 110 12 L 320 12 Q 340 12 340 44 Z" fill="#fff"/>
+<circle cx="115" cy="28" r="7" fill="#1a73e8"/>
+<text x="130" y="32" font-size="12" fill="#202124">Apps Script</text>
+<!-- Nav buttons -->
+<circle cx="22" cy="56" r="10" fill="none" stroke="#5f6368" stroke-width="1.5"/>
+<text x="18" y="60" font-size="13" fill="#5f6368">←</text>
+<circle cx="52" cy="56" r="10" fill="none" stroke="#5f6368" stroke-width="1.5"/>
+<text x="48" y="60" font-size="13" fill="#5f6368">→</text>
+<circle cx="82" cy="56" r="10" fill="none" stroke="#5f6368" stroke-width="1.5"/>
+<text x="78" y="60" font-size="11" fill="#5f6368">⟳</text>
+<!-- Address bar -->
+<rect x="110" y="46" width="980" height="22" rx="11" fill="#fff" stroke="#dadce0"/>
+<text x="124" y="61" font-size="11" fill="#5f6368">🔒 script.google.com/.../edit</text>
+
+<!-- GAS Sidebar -->
+<rect x="0" y="68" width="56" height="682" fill="#202124"/>
+<g font-size="14" fill="#9aa0a6" text-anchor="middle">
+<text x="28" y="118">≡</text>
+<text x="28" y="158">📄</text>
+<rect x="10" y="178" width="36" height="36" rx="6" fill="#3c4043"/>
+<text x="28" y="202" fill="#fff">&lt;/&gt;</text>
+<text x="28" y="248">⏰</text>
+<text x="28" y="288">▤</text>
+<text x="28" y="328">🔧</text>
+<text x="28" y="368">📚</text>
+</g>
+<!-- File panel -->
+<rect x="56" y="68" width="240" height="682" fill="#fff" stroke="#e8eaed"/>
+<text x="76" y="100" font-size="14" font-weight="700" fill="#202124">2026-06-28_スタバ配信...</text>
+<text x="76" y="138" font-size="11" font-weight="700" fill="#5f6368" letter-spacing="1">ファイル +</text>
+<rect x="68" y="148" width="216" height="28" fill="#e8f0fe"/>
+<text x="84" y="166" font-size="12" fill="#1a73e8">&lt;/&gt; コード.gs</text>
+<text x="84" y="200" font-size="12" fill="#5f6368">&lt;/&gt; 設定.gs</text>
+<text x="76" y="240" font-size="11" font-weight="700" fill="#5f6368" letter-spacing="1">ライブラリ +</text>
+<text x="76" y="280" font-size="11" font-weight="700" fill="#5f6368" letter-spacing="1">サービス +</text>
+<!-- Top toolbar -->
+<rect x="296" y="68" width="904" height="48" fill="#fff" stroke="#e8eaed"/>
+<rect x="316" y="80" width="80" height="28" rx="4" fill="#fff" stroke="#dadce0"/>
+<text x="328" y="98" font-size="12" fill="#202124">↶  ↷</text>
+<rect x="406" y="80" width="80" height="28" rx="4" fill="#fff" stroke="#dadce0"/>
+<text x="424" y="99" font-size="12" fill="#202124">💾 保存</text>
+<!-- Function selector — highlighted -->
+<rect x="496" y="80" width="260" height="28" rx="4" fill="#fff" stroke="#fa006d" stroke-width="2"/>
+<text x="510" y="98" font-size="12" font-weight="700" fill="#202124">setupMainSheetFormatting ▾</text>
+<!-- Run button -->
+<rect x="766" y="80" width="100" height="28" rx="4" fill="#1a73e8"/>
+<text x="786" y="99" font-size="12" font-weight="700" fill="#fff">▶ 実行</text>
+<rect x="876" y="80" width="100" height="28" rx="4" fill="#fff" stroke="#dadce0"/>
+<text x="894" y="99" font-size="12" fill="#202124">🐞 デバッグ</text>
+<!-- Code area -->
+<rect x="296" y="116" width="904" height="450" fill="#fff"/>
+<g font-family="'SF Mono','Consolas',monospace" font-size="12" fill="#202124">
+<text x="324" y="148" fill="#5f6368">  1</text><text x="364" y="148" fill="#1967d2">function</text><text x="430" y="148">setupMainSheetFormatting() {</text>
+<text x="324" y="170" fill="#5f6368">  2</text><text x="364" y="170" fill="#1967d2">  const</text><text x="416" y="170"> ss = SpreadsheetApp.getActiveSpreadsheet();</text>
+<text x="324" y="192" fill="#5f6368">  3</text><text x="364" y="192" fill="#1967d2">  const</text><text x="416" y="192"> sheet = ss.getSheets()[0];</text>
+<text x="324" y="214" fill="#5f6368">  4</text>
+<text x="324" y="236" fill="#5f6368">  5</text><text x="364" y="236" fill="#5f6368">  // A列にチェックボックス</text>
+<text x="324" y="258" fill="#5f6368">  6</text><text x="364" y="258">  sheet.getRange(</text><text x="498" y="258" fill="#188038">"A2:A"</text><text x="540" y="258"> + sheet.getMaxRows())</text>
+<text x="324" y="280" fill="#5f6368">  7</text><text x="364" y="280">    .insertCheckboxes();</text>
+<text x="324" y="302" fill="#5f6368">  8</text>
+<text x="324" y="324" fill="#5f6368">  9</text><text x="364" y="324" fill="#5f6368">  // チェック行のグレーアウト条件付き書式</text>
+<text x="324" y="346" fill="#5f6368"> 10</text><text x="364" y="346" fill="#1967d2">  const</text><text x="416" y="346"> rule = SpreadsheetApp.newConditionalFormatRule()</text>
+<text x="324" y="368" fill="#5f6368"> 11</text><text x="364" y="368">    .whenFormulaSatisfied(</text><text x="528" y="368" fill="#188038">"=$A2=TRUE"</text><text x="600" y="368">)</text>
+<text x="324" y="390" fill="#5f6368"> 12</text><text x="364" y="390">    .setBackground(</text><text x="478" y="390" fill="#188038">"#e8e8e8"</text><text x="544" y="390">).build();</text>
+<text x="324" y="412" fill="#5f6368"> 13</text><text x="364" y="412">  sheet.setConditionalFormatRules([rule]);</text>
+<text x="324" y="434" fill="#5f6368"> 14</text><text x="364" y="434">}</text>
+</g>
+<!-- Execution log panel -->
+<rect x="296" y="566" width="904" height="184" fill="#202124"/>
+<text x="316" y="588" font-size="11" font-weight="700" fill="#9aa0a6" letter-spacing="1">実行ログ</text>
+<g font-family="'SF Mono','Consolas',monospace" font-size="11" fill="#bdc1c6">
+<text x="316" y="612">14:32:08  通知  実行開始     setupMainSheetFormatting</text>
+<text x="316" y="632">14:32:09  情報  チェックボックス 999行を設定</text>
+<text x="316" y="652">14:32:09  情報  条件付き書式  グレーアウトルールを適用</text>
+<text x="316" y="672" fill="#81c995">14:32:10  通知  実行完了     setupMainSheetFormatting (2.1s)</text>
+</g>
+<!-- Callout -->
+<rect x="780" y="124" width="380" height="36" rx="6" fill="#fa006d"/>
+<text x="800" y="148" font-size="13" font-weight="700" fill="#fff">① 関数を選ぶ → ② ▶ 実行 ボタン</text>
+
+</svg>
