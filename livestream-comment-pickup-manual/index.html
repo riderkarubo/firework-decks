@@ -8,7 +8,7 @@
   <title>コメントピックアップツール v4 マニュアル — Firework Live</title>
   <meta name="robots" content="noindex, nofollow">
   <meta name="description" content="Firework Assistant + YouTube ライブチャットのコメントをスプシに記録するChrome拡張のセットアップ・運用マニュアル。3人運用ゆえ配信ごとにフルセットアップを通します">
-  <meta name="last-modified" content="2026-06-26T16:41:00+09:00">
+  <meta name="last-modified" content="2026-06-26T16:54:00+09:00">
 
   <meta property="og:type" content="article">
   <meta property="og:title" content="コメントピックアップツール v4 マニュアル">
@@ -213,7 +213,7 @@
       </div>
       <div class="cover-meta-item">
         <div class="cover-meta-label">UPDATED</div>
-        <div class="cover-meta-value">2026年6月26日 16:41</div>
+        <div class="cover-meta-value">2026年6月26日 16:54</div>
       </div>
       <div class="cover-meta-item">
         <div class="cover-meta-label">AUDIENCE</div>
@@ -237,8 +237,8 @@
       <li><a href="#sec-4"><span class="toc-num">4</span>モード選択</a></li>
       <li><a href="#sec-5"><span class="toc-num">5</span>配信時の運用</a></li>
       <li><a href="#sec-6"><span class="toc-num">6</span>NGワード・誹謗中傷ワードの編集</a></li>
-      <li><a href="#sec-7"><span class="toc-num">7</span>トラブルシュート</a></li>
-      <li><a href="#sec-8"><span class="toc-num">8</span>触ってはいけないもの</a></li>
+      <li><a href="#sec-7"><span class="toc-num">7</span>触ってはいけないもの</a></li>
+      <li><a href="#sec-8"><span class="toc-num">8</span>トラブルシュート</a></li>
     </ol>
   </nav>
 
@@ -319,17 +319,10 @@
     <div class="flow-title">「1回だけやること」と「毎回やること」の区別</div>
     <div class="flow-wrap">
       <div class="flow-item once">
-        <span class="flow-icon">🔧</span>
-        <div class="flow-label">
-          マスタースプシ＋マスター GAS の準備 <span class="flow-tag once">1回だけ</span>
-          <div class="flow-sub">SECTION 02 — 担当者交代やマスター紛失時のみ作り直し</div>
-        </div>
-      </div>
-      <div class="flow-item once">
         <span class="flow-icon">🧩</span>
         <div class="flow-label">
           Chrome 拡張のインストール <span class="flow-tag once">PCごと1回だけ</span>
-          <div class="flow-sub">SECTION 02 — 各担当者のPCに1度ずつ</div>
+          <div class="flow-sub">SECTION 02 — 各担当者のPCに1度ずつ。マスタースプシ＋GASはIssyさんが用意済み</div>
         </div>
       </div>
       <div class="flow-arrow">↓</div>
@@ -358,64 +351,23 @@
     </div>
   </section>
 
-  <!-- SEC 2 最初の1回 -->
+  <!-- SEC 2 Chrome 拡張だけ -->
   <section class="section-wrap" id="sec-2">
     <div class="sec-heading">
       <span class="sec-num">SECTION 02</span>
-      <h2>最初の1回だけ準備するもの<span class="sec-label-once">ONCE</span></h2>
+      <h2>Chrome 拡張のインストール<span class="sec-label-once">PCごと1回</span></h2>
     </div>
     <p class="sec-lead">
-      ここは <strong>運用開始時・担当者が増えた時・マスターを作り直す時</strong> だけ実施します。<br>
-      普段の配信ごとセットアップ（SECTION 03）には含めません。
+      ここは <strong>各担当者の PC で1度だけ</strong> 実施します。<br>
+      マスタースプシ＋マスター GAS はすでに Issy さん側で用意済みのため、本セクションは Chrome 拡張のインストールだけです。<br>
+      <strong>マスタースプシの URL は Issy さんに確認</strong> してください。
     </p>
 
-    <!-- 2-1 マスタースプシ＋マスターGAS -->
+    <!-- 拡張インストール -->
     <div class="step-card">
-      <div class="step-num">A</div>
+      <div class="step-num">1</div>
       <div class="step-body">
-        <div class="step-title">マスタースプレッドシート＋マスター GAS を作る（チーム共有・1回だけ）</div>
-        <div class="step-text">
-          <ol>
-            <li>Google ドライブで新規スプレッドシートを作成（名前: <span class="file-name">livestream-master-template</span> など）</li>
-            <li>スプシ上で <span class="kbd">拡張機能 → Apps Script</span> を開く</li>
-            <li>このリポジトリの <span class="file-name">gas/Code.gs</span> の中身を全選択コピーしてエディタに貼り付け</li>
-            <li>マスタースプシは <strong>本番では使わない</strong>。配信ごとに「ファイル → コピーを作成」で複製する原本として保管</li>
-          </ol>
-          <div class="info-callout" style="margin-top:14px;">
-            <strong>📊 列構成（v4.4.0）</strong>
-            <div class="table-wrap" style="margin-top:10px;">
-              <table class="sheet-table">
-                <thead><tr><th>列</th><th>内容</th></tr></thead>
-                <tbody>
-                  <tr><td class="col-letter">A</td><td>チェックボックス（手動・チェック=対応済み → グレーアウト）</td></tr>
-                  <tr><td class="col-letter">B</td><td>timestamp（JST <span class="file-name">HH:MM:SS</span>）</td></tr>
-                  <tr><td class="col-letter">C</td><td>配信媒体（<span class="badge-fw">FW</span> = 青 / <span class="badge-yt">YT</span> = 赤）</td></tr>
-                  <tr><td class="col-letter">D</td><td>username</td></tr>
-                  <tr><td class="col-letter">E</td><td>comment</td></tr>
-                  <tr><td class="col-letter">F</td><td>手動入力欄（<span class="file-name">小松原さんより</span> / <span class="file-name">出演者</span> / <span class="file-name">FW→潮崎さんへ</span> を入れるとディレクター向けに即同期）</td></tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-        <div class="ss">
-          <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#01 — マスタースプシ＋GASエディタを開いた状態</span></div>
-          <div class="ss-desc">「拡張機能 → Apps Script」で開いた直後のマスター環境</div>
-          <span class="ss-file">→ screenshots/01_master-spreadsheet-gas.png に配置</span>
-        </div>
-        <div class="ss">
-          <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#02 — Code.gs を貼り付けた直後のマスター GAS エディタ</span></div>
-          <div class="ss-desc">エディタに gas/Code.gs の中身が貼り付いている状態</div>
-          <span class="ss-file">→ screenshots/02_gas-paste-code.png に配置</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- 2-2 拡張インストール -->
-    <div class="step-card">
-      <div class="step-num">B</div>
-      <div class="step-body">
-        <div class="step-title">Chrome 拡張機能をインストールする（PCごと1回だけ）</div>
+        <div class="step-title">Chrome 拡張機能をインストールする（PC ごと1回）</div>
         <div class="step-text">
           <ol>
             <li>Chrome のアドレスバーに <span class="file-name">chrome://extensions/</span> を入力</li>
@@ -429,20 +381,37 @@
           </div>
         </div>
         <div class="ss">
-          <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#03 — chrome://extensions/ のデベロッパーモード ON</span></div>
+          <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#01 — chrome://extensions/ のデベロッパーモード ON</span></div>
           <div class="ss-desc">右上「デベロッパーモード」トグルが ON の状態</div>
-          <span class="ss-file">→ screenshots/03_chrome-extensions-page.png に配置</span>
+          <span class="ss-file">→ screenshots/01_chrome-extensions-page.png に配置</span>
         </div>
         <div class="ss">
-          <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#04 — 「パッケージ化されていない拡張機能を読み込む」でフォルダ選択</span></div>
+          <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#02 — 「パッケージ化されていない拡張機能を読み込む」でフォルダ選択</span></div>
           <div class="ss-desc">extension/ フォルダを選択するダイアログ</div>
-          <span class="ss-file">→ screenshots/04_extension-load-unpacked.png に配置</span>
+          <span class="ss-file">→ screenshots/02_extension-load-unpacked.png に配置</span>
         </div>
       </div>
     </div>
 
     <div class="info-callout">
-      ✅ ここまで終わったら、SECTION 02 はもう触りません。次の配信からは <strong>SECTION 03 を毎回</strong> 通します。
+      <strong>📊 参考：スプシの列構成（v4.4.0）</strong>
+      <div class="table-wrap" style="margin-top:10px;">
+        <table class="sheet-table">
+          <thead><tr><th>列</th><th>内容</th></tr></thead>
+          <tbody>
+            <tr><td class="col-letter">A</td><td>チェックボックス（手動・チェック=対応済み → グレーアウト）</td></tr>
+            <tr><td class="col-letter">B</td><td>timestamp（JST <span class="file-name">HH:MM:SS</span>）</td></tr>
+            <tr><td class="col-letter">C</td><td>配信媒体（<span class="badge-fw">FW</span> = 青 / <span class="badge-yt">YT</span> = 赤）</td></tr>
+            <tr><td class="col-letter">D</td><td>username</td></tr>
+            <tr><td class="col-letter">E</td><td>comment</td></tr>
+            <tr><td class="col-letter">F</td><td>手動入力欄（<span class="file-name">小松原さんより</span> / <span class="file-name">出演者</span> / <span class="file-name">FW→潮崎さんへ</span> を入れるとディレクター向けに即同期）</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="info-callout">
+      ✅ Chrome 拡張のインストールが終わったら、次の配信からは <strong>SECTION 03 を毎回</strong> 通します。
     </div>
   </section>
 
@@ -584,7 +553,7 @@
         <div class="step-text">
           Apps Script エディタ左の <span class="kbd">⏰ トリガー</span> → <strong>+ トリガーを追加</strong>
           <ul style="margin-top:8px;">
-            <li>実行する関数：<span class="file-name">reflectToDirectorSheet</span></li>
+            <li>実行する関数：<span class="file-name">syncAll</span></li>
             <li>イベントのソース：<strong>時間主導型</strong></li>
             <li>トリガーのタイプ：<strong>分ベース → 1 分タイマー</strong>（推奨）</li>
           </ul>
@@ -595,7 +564,7 @@
         </div>
         <div class="ss">
           <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#12 — トリガー追加ダイアログ</span></div>
-          <div class="ss-desc">関数=reflectToDirectorSheet / 時間主導型 / 1分タイマー を選んだ状態</div>
+          <div class="ss-desc">関数=syncAll / 時間主導型 / 1分タイマー を選んだ状態</div>
           <span class="ss-file">→ screenshots/12_trigger-add.png に配置</span>
         </div>
       </div>
@@ -669,8 +638,8 @@
         <div class="step-title">モードを選ぶ</div>
         <div class="step-text">
           <ul>
-            <li>質問だけを抽出したい配信 → <span class="badge-q-mode">質問のみ</span> をクリック</li>
-            <li>全コメントを取りたい配信 → <span class="badge-a-mode">全コメント</span> をクリック</li>
+            <li>質問だけを抽出したい配信（<strong>Starbucks など</strong>） → <span class="badge-q-mode">質問のみ</span> をクリック</li>
+            <li>全コメントを取りたい配信（<strong>Samsung など</strong>） → <span class="badge-a-mode">全コメント</span> をクリック</li>
           </ul>
         </div>
         <div class="ss">
@@ -682,7 +651,7 @@
     </div>
 
     <div class="warn-callout">
-      <strong>⚠ モード切替後は必ず配信ページをリロードしてください。</strong><br>
+      <strong style="color:#fa006d; font-size:14px;">⚠ モード切替後は必ず配信ページをリロードしてください。</strong><br>
       content script は起動時にモードを読み込むため、リロードしないと旧モードのまま動き続けます。
     </div>
   </section>
@@ -705,7 +674,7 @@
         <div class="step-text">
           <ol>
             <li>popup → <span class="badge-q-mode">質問のみ</span> をクリック（バッジが <span class="badge-q">Q</span> 青になる）</li>
-            <li>Firework <strong>Assistant モード</strong> を開いて配信ページをリロード</li>
+            <li>Firework <strong>Assistant モード</strong> を開いて<strong style="color:#fa006d;">配信ページをリロード</strong></li>
             <li>配信ページ上の <strong>「Show Questions Only」ボタンを青 ON</strong> にする</li>
             <li>質問コメントだけがスプシに記録されることを確認</li>
             <li>YouTube は何もしなくてOK（content script が早期終了するため）</li>
@@ -727,11 +696,14 @@
         <div class="step-text">
           <ol>
             <li>popup → <span class="badge-a-mode">全コメント</span> をクリック（バッジが <span class="badge-a">A</span> 赤になる）</li>
-            <li>Firework / YouTube の配信ページをリロード</li>
+            <li>Firework / YouTube の<strong style="color:#fa006d;">配信ページをリロード</strong></li>
             <li>FW: ボタン状態を無視して全コメント収集</li>
-            <li>YouTube: チャット欄を <strong>「全チャット」モード</strong> にしておけば全部記録</li>
+            <li>YouTube: チャット欄を <strong style="color:#fa006d;">「全チャット」モード</strong> にしておけば全部記録 <strong style="color:#fa006d;">（※「トップチャット」ではないので注意！）</strong></li>
             <li>iPhone 関連コメントは既定 NG ワードで除外されます</li>
           </ol>
+          <div class="danger-callout" style="margin-top:12px;">
+            🚨 <strong>YouTube は必ず「全チャット」を選択！</strong> デフォルトの「トップチャット」のままだと一部しか拾えません。
+          </div>
         </div>
         <div class="ss">
           <div class="ss-head"><span class="ss-badge">SCREENSHOT</span><span class="ss-num">#17 — YouTube 配信ページのチャット「全チャット」設定</span></div>
@@ -781,31 +753,10 @@
     </div>
   </section>
 
-  <!-- SEC 7 トラブル -->
-  <section class="section-wrap" id="sec-7">
-    <div class="sec-heading">
-      <span class="sec-num">SECTION 07</span>
-      <h2>トラブルシュート</h2>
-    </div>
-    <p class="sec-lead">配信中にハマりやすい症状と対処をまとめてあります。配信前にざっと目を通しておくと安心です。</p>
-
-    <div class="trouble-list">
-      <div class="trouble-row"><div class="trouble-symptom">コメントが何も書き込まれない</div><div class="trouble-fix">SECTION 03 ステップ4「新規デプロイ」をやり直し、新URLを popup に貼り直す</div></div>
-      <div class="trouble-row"><div class="trouble-symptom">質問のみモードで FW が拾えない</div><div class="trouble-fix">配信ページの「Show Questions Only」ボタンが <strong>青 ON</strong> か確認</div></div>
-      <div class="trouble-row"><div class="trouble-symptom">YouTube が拾われない</div><div class="trouble-fix">モードが <span class="badge-a-mode">全コメント</span> か / チャット欄を <strong>「全チャット」</strong> モードに</div></div>
-      <div class="trouble-row"><div class="trouble-symptom">スプシ URL を貼ったらエラー</div><div class="trouble-fix"><span class="file-name">https://docs.google.com/spreadsheets/d/&lt;ID&gt;/...</span> 形式か確認</div></div>
-      <div class="trouble-row"><div class="trouble-symptom">モード切替が効かない</div><div class="trouble-fix">配信ページを <strong>リロード</strong> 必須</div></div>
-      <div class="trouble-row"><div class="trouble-symptom">iPhone が拾われちゃう</div><div class="trouble-fix">popup のモード設定で <span class="file-name">iphone</span> / <span class="file-name">アイフォン</span> を NG に追加</div></div>
-      <div class="trouble-row"><div class="trouble-symptom">コメントが 4 桁行（10001 行目以降）に飛ぶ</div><div class="trouble-fix">v4.4.0 以降では発生しません。発生時は <strong>古い GAS のまま</strong> → 再デプロイで解消</div></div>
-      <div class="trouble-row"><div class="trouble-symptom">ディレクター向けに反映されない</div><div class="trouble-fix">① F 列に値を入れたか確認<br>② 時間主導トリガー（reflectToDirectorSheet）が登録されているか確認<br>③ onEdit権限が通っているか（SECTION 03 ステップ7）</div></div>
-      <div class="trouble-row"><div class="trouble-symptom">onEdit を手動実行で <span class="file-name">TypeError: Cannot read properties of undefined (reading 'range')</span></div><div class="trouble-fix">onEdit はシンプルトリガー。エディタ実行ではなく <strong>実際に F 列を編集</strong> して動作確認する</div></div>
-    </div>
-  </section>
-
   <!-- SEC 8 触るな -->
   <section class="section-wrap" id="sec-8">
     <div class="sec-heading">
-      <span class="sec-num">SECTION 08</span>
+      <span class="sec-num">SECTION 07</span>
       <h2>触ってはいけないもの</h2>
     </div>
     <p class="sec-lead">複製先で以下を変更すると<strong>即座にロジックが壊れます</strong>。コード前提として固定されている要素です。</p>
@@ -814,7 +765,7 @@
       <div class="dont-card-title">🚫 DO NOT TOUCH</div>
       <div class="dont-card-row">
         <div class="dont-card-item">列構成 A〜F</div>
-        <div class="dont-card-why">doPost / onEdit / reflectToDirectorSheet が決め打ち</div>
+        <div class="dont-card-why">doPost / onEdit / syncAll が決め打ち</div>
       </div>
       <div class="dont-card-row">
         <div class="dont-card-item">シート名「ディレクター向け」</div>
@@ -830,17 +781,26 @@
       </div>
     </div>
 
-    <div class="info-callout">
-      <strong>📌 マスター GAS のコード自体を改修した場合：</strong>
-      <ol style="margin-top:8px; padding-left:20px;">
-        <li>マスタースプシの GAS エディタで修正・clasp push で反映</li>
-        <li>マスター側で動作確認</li>
-        <li>以降の配信は <strong>SECTION 03 の「マスター複製」から自動的に新コード入り</strong> になる</li>
-      </ol>
-      <div style="margin-top:10px; padding-top:10px; border-top:1px dashed #b2dfdb;">
-        ✅ <strong>毎回マスター複製方式の利点：</strong>マスターを直すだけで翌配信から自動的に新コードが入ります。
-        既に走っている過去配信のスプシは触らなくてOK（個別配信は配信が終われば役目を終えるため）。
-      </div>
+  </section>
+
+  <!-- SEC 7 トラブル -->
+  <section class="section-wrap" id="sec-7">
+    <div class="sec-heading">
+      <span class="sec-num">SECTION 08</span>
+      <h2>トラブルシュート</h2>
+    </div>
+    <p class="sec-lead">配信中にハマりやすい症状と対処をまとめてあります。配信前にざっと目を通しておくと安心です。</p>
+
+    <div class="trouble-list">
+      <div class="trouble-row"><div class="trouble-symptom">コメントが何も書き込まれない</div><div class="trouble-fix">SECTION 03 ステップ4「新規デプロイ」をやり直し、新URLを popup に貼り直す</div></div>
+      <div class="trouble-row"><div class="trouble-symptom">質問のみモードで FW が拾えない</div><div class="trouble-fix">配信ページの「Show Questions Only」ボタンが <strong>青 ON</strong> か確認</div></div>
+      <div class="trouble-row"><div class="trouble-symptom">YouTube が拾われない</div><div class="trouble-fix">モードが <span class="badge-a-mode">全コメント</span> か / チャット欄を <strong>「全チャット」</strong> モードに</div></div>
+      <div class="trouble-row"><div class="trouble-symptom">スプシ URL を貼ったらエラー</div><div class="trouble-fix"><span class="file-name">https://docs.google.com/spreadsheets/d/&lt;ID&gt;/...</span> 形式か確認</div></div>
+      <div class="trouble-row"><div class="trouble-symptom">モード切替が効かない</div><div class="trouble-fix">配信ページを <strong>リロード</strong> 必須</div></div>
+      <div class="trouble-row"><div class="trouble-symptom">iPhone が拾われちゃう</div><div class="trouble-fix">popup のモード設定で <span class="file-name">iphone</span> / <span class="file-name">アイフォン</span> を NG に追加</div></div>
+      <div class="trouble-row"><div class="trouble-symptom">コメントが 4 桁行（10001 行目以降）に飛ぶ</div><div class="trouble-fix">v4.4.0 以降では発生しません。発生時は <strong>古い GAS のまま</strong> → 再デプロイで解消</div></div>
+      <div class="trouble-row"><div class="trouble-symptom">ディレクター向けに反映されない</div><div class="trouble-fix">① F 列に値を入れたか確認<br>② 時間主導トリガー（syncAll）が登録されているか確認<br>③ onEdit権限が通っているか（SECTION 03 ステップ7）</div></div>
+      <div class="trouble-row"><div class="trouble-symptom">onEdit を手動実行で <span class="file-name">TypeError: Cannot read properties of undefined (reading 'range')</span></div><div class="trouble-fix">onEdit はシンプルトリガー。エディタ実行ではなく <strong>実際に F 列を編集</strong> して動作確認する</div></div>
     </div>
   </section>
 
@@ -848,7 +808,7 @@
 
   <footer class="footer">
     <div>Livestream Comment Pickup Tool v4.4.0 — Internal Manual</div>
-    <div style="margin-top:6px;">最終更新: 2026年6月26日 16:41 / Maintainer: Issy</div>
+    <div style="margin-top:6px;">最終更新: 2026年6月26日 16:54 / Maintainer: Issy</div>
     <div style="margin-top:6px;">本マニュアルは @fireworkhq.com アカウント限定で公開されています</div>
   </footer>
 
